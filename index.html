@@ -784,7 +784,8 @@
 
     .step-demo-stage {
       position: absolute;
-      inset: 0;
+      inset: -3px;
+      overflow: hidden;
     }
 
     .step-demo-slide {
@@ -794,24 +795,23 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      transform: scale(1.045) translateY(8px);
-      filter: blur(12px) brightness(0.92) saturate(0.92);
-      clip-path: inset(7% 7% 7% 7% round 18px);
+      transform: scale(1.055);
+      transform-origin: center center;
+      filter: blur(10px) brightness(0.94) saturate(0.94);
       transition:
         opacity 0.82s cubic-bezier(0.22, 1, 0.36, 1),
         transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-        clip-path 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
       pointer-events: none;
       user-select: none;
-      will-change: opacity, transform, filter, clip-path;
+      backface-visibility: hidden;
+      will-change: opacity, transform, filter;
     }
 
     .step-demo-slide.active {
       opacity: 1;
-      transform: scale(1) translateY(0);
+      transform: scale(1.015);
       filter: blur(0) brightness(1) saturate(1);
-      clip-path: inset(0 0 0 0 round 0);
     }
 
     .step-demo-overlay {
@@ -1450,7 +1450,7 @@
                   id="stepDemoCenterText"
                   type="button"
                   aria-label="Start adding lines">
-                  Click to start adding lines
+                  Click to start adding lights
                 </button>
 
                 <div class="step-demo-corner-copy" id="stepDemoCornerText"></div>
@@ -1658,7 +1658,7 @@
 
         const stepMeta = [
           {
-            centerText: "Click to start adding Lights",
+            centerText: "Click to start adding lights",
             cornerText: "",
             isRestore: false
           },
