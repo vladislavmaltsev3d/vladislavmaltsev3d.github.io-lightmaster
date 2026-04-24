@@ -704,18 +704,6 @@
       margin-bottom: 22px;
     }
 
-    .media-grid {
-      display: grid;
-      grid-template-columns: 1.18fr 0.82fr;
-      gap: 18px;
-    }
-
-    .media-left,
-    .media-right {
-      display: grid;
-      gap: 18px;
-    }
-
     .media-card {
       background: rgba(255,255,255,0.28);
       border: 1px solid rgba(255,255,255,0.72);
@@ -731,21 +719,156 @@
       z-index: 3;
     }
 
-    .media-card img {
+    .difference-compare {
+      --difference-compare: 100%;
+      position: relative;
       width: 100%;
-      display: block;
-      border-radius: 22px;
+      aspect-ratio: 32 / 9;
+      border-radius: 26px;
+      overflow: hidden;
+      background: #0c1118;
+      box-shadow: 0 24px 52px rgba(15,16,18,0.16);
+      isolation: isolate;
+    }
+
+    .difference-compare::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(7,10,16,0.10) 0%, rgba(7,10,16,0.00) 40%, rgba(7,10,16,0.22) 100%),
+        radial-gradient(circle at top left, rgba(255,255,255,0.10), transparent 28%);
+    }
+
+    .difference-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      box-shadow: 0 20px 42px rgba(15,16,18,0.14);
-      background: #eef0f5;
+      display: block;
+      user-select: none;
+      pointer-events: none;
     }
 
-    .media-large img {
-      aspect-ratio: 16 / 10;
+    .difference-image.lightmaster {
+      z-index: 2;
+      clip-path: inset(0 calc(100% - var(--difference-compare)) 0 0);
+      transition: clip-path 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: clip-path;
     }
 
-    .media-small img {
-      aspect-ratio: 1 / 1;
+    .difference-image.default {
+      z-index: 1;
+    }
+
+    .difference-label {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      z-index: 6;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: #ffffff;
+      background: rgba(10,14,22,0.46);
+      border: 1px solid rgba(255,255,255,0.20);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.16);
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.34);
+      pointer-events: none;
+    }
+
+    .difference-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--difference-compare);
+      width: 0;
+      z-index: 5;
+      pointer-events: none;
+      transition: left 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: left;
+    }
+
+    .difference-divider::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -0.5px;
+      width: 1px;
+      background: rgba(255,255,255,0.42);
+      box-shadow: 0 0 12px rgba(0,0,0,0.20);
+    }
+
+    .difference-toggle {
+      position: absolute;
+      top: 24%;
+      left: clamp(28px, var(--difference-compare), calc(100% - 28px));
+      z-index: 7;
+      width: 54px;
+      height: 60px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+      transition:
+        left 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.25s ease;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .difference-toggle::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      border-top: 2px solid #ffffff;
+      border-right: 2px solid #ffffff;
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.42));
+      transform: translate(-42%, -50%) rotate(225deg);
+      animation: arrowHintLeft 1.45s ease-in-out infinite;
+    }
+
+    .difference-toggle::after {
+      content: "click";
+      position: absolute;
+      top: 50%;
+      right: 50px;
+      transform: translateY(-50%);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+      pointer-events: none;
+      animation: clickHintLeft 1.45s ease-in-out infinite;
+      white-space: nowrap;
+    }
+
+    .difference-toggle.is-default::before {
+      transform: translate(-58%, -50%) rotate(45deg);
+      animation: arrowHintRight 1.45s ease-in-out infinite;
+    }
+
+    .difference-toggle.is-default::after {
+      left: 50px;
+      right: auto;
+      animation: clickHintRight 1.45s ease-in-out infinite;
     }
 
     .step-demo-shell {
@@ -1557,7 +1680,6 @@
 
     @media (max-width: 960px) {
       .features-grid,
-      .media-grid,
       .addons-grid {
         grid-template-columns: 1fr;
       }
@@ -1739,6 +1861,34 @@
 
       .content-pad {
         padding: 24px;
+      }
+
+      .difference-compare {
+        border-radius: 20px;
+      }
+
+      .difference-toggle {
+        width: 42px;
+        height: 54px;
+        left: clamp(24px, var(--difference-compare), calc(100% - 24px));
+        top: 22%;
+      }
+
+      .difference-toggle::after {
+        font-size: 10px;
+        right: 46px;
+      }
+
+      .difference-toggle.is-default::after {
+        left: 46px;
+        right: auto;
+      }
+
+      .difference-label {
+        left: 12px;
+        bottom: 12px;
+        padding: 7px 10px;
+        font-size: 10px;
       }
 
       .step-demo-center-copy {
@@ -2086,26 +2236,29 @@
         </p>
       </div>
 
-      <div class="media-grid">
-        <div class="media-left">
-          <div class="media-card media-large">
-            <div class="media-inner">
-              <img src="G.png" alt="LightMaster Pro preview">
-            </div>
-          </div>
-        </div>
+      <div class="media-card">
+        <div class="media-inner">
+          <div class="difference-compare" id="differenceCompare">
+            <img
+              class="difference-image default"
+              src="https://assets.superhivemarket.com/cache/1ee2b6a7360d8480bb0494629fa37976.gif"
+              alt="Default lights comparison preview">
 
-        <div class="media-right">
-          <div class="media-card media-small">
-            <div class="media-inner">
-              <img src="YOUR_GIF_1.gif" alt="Workflow animation preview">
-            </div>
-          </div>
+            <img
+              class="difference-image lightmaster"
+              src="https://assets.superhivemarket.com/cache/22328ca1a707fadf0ddf49e6765b558a.gif"
+              alt="Light Master Pro comparison preview">
 
-          <div class="media-card media-small">
-            <div class="media-inner">
-              <img src="YOUR_IMAGE_2.jpg" alt="Lighting example preview">
-            </div>
+            <div class="difference-label" id="differenceLabel">With Light Master Pro</div>
+
+            <div class="difference-divider"></div>
+
+            <button
+              class="difference-toggle"
+              id="differenceToggle"
+              type="button"
+              aria-label="Show default lights">
+            </button>
           </div>
         </div>
       </div>
@@ -2434,6 +2587,38 @@
 
         heroToggle.addEventListener("click", () => {
           setHeroComparison(!heroIsAfter);
+        });
+      }
+
+      const differenceCompare = document.getElementById("differenceCompare");
+      const differenceToggle = document.getElementById("differenceToggle");
+      const differenceLabel = document.getElementById("differenceLabel");
+
+      let differenceIsLightMaster = true;
+
+      function setDifferenceComparison(showLightMaster) {
+        differenceIsLightMaster = showLightMaster;
+
+        const value = differenceIsLightMaster ? 100 : 0;
+        differenceCompare.style.setProperty("--difference-compare", value + "%");
+
+        differenceToggle.classList.toggle("is-default", !differenceIsLightMaster);
+
+        differenceLabel.textContent = differenceIsLightMaster
+          ? "With Light Master Pro"
+          : "Default Lights";
+
+        differenceToggle.setAttribute(
+          "aria-label",
+          differenceIsLightMaster ? "Show default lights" : "Show Light Master Pro"
+        );
+      }
+
+      if (differenceCompare && differenceToggle && differenceLabel) {
+        setDifferenceComparison(true);
+
+        differenceToggle.addEventListener("click", () => {
+          setDifferenceComparison(!differenceIsLightMaster);
         });
       }
 
