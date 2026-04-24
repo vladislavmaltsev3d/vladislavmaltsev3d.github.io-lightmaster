@@ -1157,6 +1157,43 @@
       font-weight: 500;
     }
 
+    .variation-get-button {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      margin-top: 18px;
+      padding: 13px 18px;
+      border: none;
+      border-radius: 999px;
+      color: #ffffff;
+      background:
+        linear-gradient(180deg, rgba(10,132,255,0.92), rgba(0,102,204,0.92)),
+        rgba(10,132,255,0.9);
+      box-shadow:
+        0 14px 30px rgba(10,132,255,0.20),
+        inset 0 1px 0 rgba(255,255,255,0.30);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .variation-get-button:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow:
+        0 18px 38px rgba(10,132,255,0.28),
+        inset 0 1px 0 rgba(255,255,255,0.38);
+    }
+
+    .variation-get-button:active {
+      transform: translateY(0) scale(0.99);
+    }
+
     .faq-list {
       display: grid;
       gap: 14px;
@@ -1632,6 +1669,12 @@
       .variation-note {
         font-size: 11px;
       }
+
+      .variation-get-button {
+        margin-top: 14px;
+        padding: 11px 14px;
+        font-size: 12px;
+      }
     }
 
     @media (max-width: 760px) {
@@ -1665,10 +1708,16 @@
         gap: 3px;
       }
 
-      .hero .liquid-button {
+      .hero-actions .liquid-button {
         min-width: 80px;
         padding: 7px 8px;
         font-size: 11px;
+      }
+
+      .liquid-button {
+        min-width: 120px;
+        padding: 10px 12px;
+        font-size: 16px;
       }
 
       .hero-toggle {
@@ -1769,7 +1818,7 @@
 
       .variation-card {
         padding: 10px;
-        min-height: 210px;
+        min-height: 240px;
         border-radius: 18px;
       }
 
@@ -1843,6 +1892,12 @@
       .variation-note {
         font-size: 9px;
         line-height: 1.3;
+      }
+
+      .variation-get-button {
+        margin-top: 10px;
+        padding: 9px 10px;
+        font-size: 10px;
       }
 
       .faq-question {
@@ -2106,6 +2161,10 @@
               <strong>100 assets</strong>
               <div class="variation-note">Essential artistic lighting collection.</div>
             </div>
+
+            <button class="variation-get-button" type="button">
+              Get it
+            </button>
           </div>
         </article>
 
@@ -2131,6 +2190,10 @@
               <strong>200 assets</strong>
               <div class="variation-note">Expanded library for flexible use.</div>
             </div>
+
+            <button class="variation-get-button" type="button">
+              Get it
+            </button>
           </div>
         </article>
 
@@ -2157,6 +2220,10 @@
               <strong>400+ assets</strong>
               <div class="variation-note">Complete collection with all lighting categories.</div>
             </div>
+
+            <button class="variation-get-button" type="button">
+              Get it
+            </button>
           </div>
         </article>
       </div>
@@ -2230,8 +2297,7 @@
               <div class="faq-answer-inner">
                 <p>
                   Light Master Pro and the Light Textures Addon by Nodeworks share a similar creative idea, and Nodeworks and I are colleagues. However, these are separate products. Light Master Pro does not use any assets from the Nodeworks addon.
-
-                  Light Master Pro was created as a way more advanced lighting tool with a larger library, expanded controls, and a broader workflow. Owners of the Nodeworks addon will also receive a tool for merging both libraries into the Light Master Pro workflow, allowing Nodeworks light assets to be used inside Light Master Pro.
+                  Light Master Pro was created as a more advanced lighting tool with a larger library, expanded controls, and a broader workflow. Owners of the Nodeworks addon will also receive a tool for merging both libraries into the Light Master Pro workflow, allowing Nodeworks light assets to be used inside Light Master Pro.
                 </p>
               </div>
             </div>
@@ -2248,9 +2314,7 @@
               <div class="faq-answer-inner">
                 <p>
                   Yes, AI-assisted tools were used during development, mainly for upscaling light textures to higher resolution with Topaz AI Upscaler. In some cases, AI tools were also used to help isolate light patterns from their original backgrounds.
-
-                  However, the library is not just a set of raw AI-generated images. Most light patterns are based on real-life visual references, photographed or observed lighting behavior, and practical light phenomena. The exception is digitally simulated caustics and rays, which are also widely represented in the library and made only by me without AI.
-
+                  However, the library is not just a set of raw AI-generated images. Most light patterns are based on real-life visual references, photographed or observed lighting behavior, and practical light phenomena. The exception is digitally simulated caustics and rays, which are also widely represented in the library and made by hand without AI.
                   A significant amount of manual work was involved in creating, selecting, cleaning, editing, refining, categorizing, and preparing the final assets for use inside Blender. All final textures were reviewed and adjusted by hand to make sure they are useful for real production workflows.
                 </p>
 
@@ -2540,6 +2604,90 @@
           if (!isOpen) {
             item.classList.add("is-open");
             question.setAttribute("aria-expanded", "true");
+          }
+        });
+      });
+
+      const variationGetButtons = Array.from(document.querySelectorAll(".variation-get-button"));
+
+      function isMobileLayout() {
+        return window.matchMedia("(max-width: 760px), (pointer: coarse)").matches;
+      }
+
+      function tryScrollParentToTop() {
+        try {
+          if (window.parent && window.parent !== window) {
+            window.parent.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+            return true;
+          }
+        } catch (error) {
+          return false;
+        }
+
+        return false;
+      }
+
+      function tryScrollParentToCart() {
+        try {
+          if (window.parent && window.parent !== window && window.parent.document) {
+            const parentCartButton = window.parent.document.querySelector(
+              ".js-item-addToCart, .btn-add-to-cart, .cy-add-to-cart-btn, input[value='Add to cart']"
+            );
+
+            if (parentCartButton) {
+              parentCartButton.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+              });
+              return true;
+            }
+          }
+        } catch (error) {
+          return false;
+        }
+
+        return false;
+      }
+
+      function scrollToLocalCartOrBottom() {
+        const localCartButton = document.querySelector(
+          ".js-item-addToCart, .btn-add-to-cart, .cy-add-to-cart-btn, input[value='Add to cart']"
+        );
+
+        if (localCartButton) {
+          localCartButton.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+          return;
+        }
+
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: "smooth"
+        });
+      }
+
+      variationGetButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          if (isMobileLayout()) {
+            const parentCartFound = tryScrollParentToCart();
+
+            if (!parentCartFound) {
+              scrollToLocalCartOrBottom();
+            }
+          } else {
+            const parentScrolled = tryScrollParentToTop();
+
+            if (!parentScrolled) {
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+              });
+            }
           }
         });
       });
