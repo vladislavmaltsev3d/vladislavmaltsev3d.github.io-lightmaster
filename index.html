@@ -891,10 +891,10 @@
       transform: translateY(0);
     }
 
-    .step-demo-control {
+    .step-demo-control,
+    .step-demo-default-toggle {
       position: absolute;
       top: 16px;
-      right: 16px;
       z-index: 6;
       pointer-events: auto;
       border: none;
@@ -918,13 +918,32 @@
         border-color 0.25s ease;
     }
 
-    .step-demo-control:hover {
+    .step-demo-control {
+      right: 16px;
+    }
+
+    .step-demo-default-toggle {
+      right: 132px;
+      min-width: 150px;
+      height: 42px;
+      padding: 0 15px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .step-demo-control:hover,
+    .step-demo-default-toggle:hover {
       transform: translateY(-2px);
       background: rgba(16,22,30,0.74);
       border-color: rgba(255,255,255,0.34);
     }
 
-    .step-demo-control.is-hidden {
+    .step-demo-control.is-hidden,
+    .step-demo-default-toggle.is-hidden {
       opacity: 0;
       pointer-events: none;
       transform: translateY(-8px) scale(0.92);
@@ -1742,6 +1761,15 @@
         right: 12px;
       }
 
+      .step-demo-default-toggle {
+        top: 12px;
+        right: 106px;
+        min-width: 118px;
+        height: 38px;
+        padding: 0 10px;
+        font-size: 10px;
+      }
+
       .step-demo-control.is-plus {
         width: 38px;
         height: 38px;
@@ -1998,6 +2026,7 @@
                 <img class="step-demo-slide" src="step-04.jpg" alt="Step 4 preview">
                 <img class="step-demo-slide" src="step-05.jpg" alt="Step 5 preview">
                 <img class="step-demo-slide" src="step-06.jpg" alt="Step 6 preview">
+                <img class="step-demo-slide step-demo-default-slide" src="step-06-default.jpeg" alt="Step 6 default lights preview">
               </div>
 
               <div class="step-demo-overlay">
@@ -2010,6 +2039,14 @@
                 </button>
 
                 <div class="step-demo-corner-copy" id="stepDemoCornerText"></div>
+
+                <button
+                  class="step-demo-default-toggle is-hidden"
+                  id="stepDemoDefaultToggle"
+                  type="button"
+                  aria-label="Show default lights">
+                  Show default lights
+                </button>
 
                 <button
                   class="step-demo-control is-plus is-hidden"
@@ -2231,7 +2268,7 @@
                 <p>
                   Light Master Pro and the Light Textures Addon by Nodeworks share a similar creative idea, and Nodeworks and I are colleagues. However, these are separate products. Light Master Pro does not use any assets from the Nodeworks addon.
 
-            Light Master Pro was created as a way more advanced lighting tool with a larger library, expanded controls, and a broader workflow. Owners of the Nodeworks addon will also receive a tool for merging both libraries into the Light Master Pro workflow, allowing Nodeworks light assets to be used inside Light Master Pro.
+                  Light Master Pro was created as a way more advanced lighting tool with a larger library, expanded controls, and a broader workflow. Owners of the Nodeworks addon will also receive a tool for merging both libraries into the Light Master Pro workflow, allowing Nodeworks light assets to be used inside Light Master Pro.
                 </p>
               </div>
             </div>
@@ -2249,9 +2286,9 @@
                 <p>
                   Yes, AI-assisted tools were used during development, mainly for upscaling light textures to higher resolution with Topaz AI Upscaler. In some cases, AI tools were also used to help isolate light patterns from their original backgrounds.
 
-                    However, the library is not just a set of raw AI-generated images. Most light patterns are based on real-life visual references, photographed or observed lighting behavior, and practical light phenomena. The exception is digitally simulated caustics and rays, which are also widely represented in the library and made only by me without ai.
-                    
-                    A significant amount of manual work was involved in creating, selecting, cleaning, editing, refining, categorizing, and preparing the final assets for use inside Blender. All final textures were reviewed and adjusted by hand to make sure they are useful for real production workflows.
+                  However, the library is not just a set of raw AI-generated images. Most light patterns are based on real-life visual references, photographed or observed lighting behavior, and practical light phenomena. The exception is digitally simulated caustics and rays, which are also widely represented in the library and made only by me without AI.
+
+                  A significant amount of manual work was involved in creating, selecting, cleaning, editing, refining, categorizing, and preparing the final assets for use inside Blender. All final textures were reviewed and adjusted by hand to make sure they are useful for real production workflows.
                 </p>
 
                 <div class="faq-image-box">
@@ -2404,9 +2441,11 @@
       const stepDemoButton = document.getElementById("stepDemoButton");
       const stepDemoCenterText = document.getElementById("stepDemoCenterText");
       const stepDemoCornerText = document.getElementById("stepDemoCornerText");
+      const stepDemoDefaultToggle = document.getElementById("stepDemoDefaultToggle");
 
-      if (stepDemo && stepDemoButton && stepDemoCenterText && stepDemoCornerText) {
-        const stepSlides = Array.from(stepDemo.querySelectorAll(".step-demo-slide"));
+      if (stepDemo && stepDemoButton && stepDemoCenterText && stepDemoCornerText && stepDemoDefaultToggle) {
+        const stepSlides = Array.from(stepDemo.querySelectorAll(".step-demo-slide:not(.step-demo-default-slide)"));
+        const stepDefaultSlide = stepDemo.querySelector(".step-demo-default-slide");
 
         const stepMeta = [
           {
@@ -2447,6 +2486,7 @@
         ];
 
         let currentStep = 0;
+        let isDefaultLightsView = false;
         let transitionTimer = null;
 
         function playStepTransition() {
@@ -2465,8 +2505,19 @@
           }, 860);
         }
 
+        function updateDefaultToggleButton() {
+          if (isDefaultLightsView) {
+            stepDemoDefaultToggle.textContent = "Show light master";
+            stepDemoDefaultToggle.setAttribute("aria-label", "Show Light Master lights");
+          } else {
+            stepDemoDefaultToggle.textContent = "Show default lights";
+            stepDemoDefaultToggle.setAttribute("aria-label", "Show default lights");
+          }
+        }
+
         function renderStep(index, animate = true) {
           currentStep = index;
+          isDefaultLightsView = false;
 
           if (animate) {
             playStepTransition();
@@ -2476,8 +2527,13 @@
             slide.classList.toggle("active", slideIndex === index);
           });
 
+          if (stepDefaultSlide) {
+            stepDefaultSlide.classList.remove("active");
+          }
+
           const currentMeta = stepMeta[index];
           const isStartStep = index === 0;
+          const isFinalStep = index === stepMeta.length - 1;
 
           if (currentMeta.centerText) {
             stepDemoCenterText.textContent = currentMeta.centerText;
@@ -2497,6 +2553,9 @@
           stepDemoButton.classList.toggle("is-plus", !currentMeta.isRestore);
           stepDemoButton.classList.toggle("is-restore", currentMeta.isRestore);
 
+          stepDemoDefaultToggle.classList.toggle("is-hidden", !isFinalStep);
+          updateDefaultToggleButton();
+
           stepDemoButton.setAttribute(
             "aria-label",
             currentMeta.isRestore ? "Restore the demo to step zero" : "Show next step"
@@ -2513,6 +2572,30 @@
           } else {
             renderStep(currentStep + 1, true);
           }
+        });
+
+        stepDemoDefaultToggle.addEventListener("click", () => {
+          if (currentStep !== stepMeta.length - 1 || !stepDefaultSlide) return;
+
+          isDefaultLightsView = !isDefaultLightsView;
+
+          playStepTransition();
+
+          stepSlides.forEach((slide, slideIndex) => {
+            slide.classList.toggle("active", !isDefaultLightsView && slideIndex === currentStep);
+          });
+
+          stepDefaultSlide.classList.toggle("active", isDefaultLightsView);
+
+          if (isDefaultLightsView) {
+            stepDemoCornerText.textContent = "Default lights preview";
+            stepDemoCornerText.classList.add("visible");
+          } else {
+            stepDemoCornerText.textContent = stepMeta[currentStep].cornerText;
+            stepDemoCornerText.classList.add("visible");
+          }
+
+          updateDefaultToggleButton();
         });
 
         renderStep(0, false);
