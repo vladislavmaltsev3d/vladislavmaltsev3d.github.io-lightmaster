@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <title>LightMaster Pro | Artistic Lighting Toolkit</title>
+
   <style>
     :root {
       --bg-1: #f7f7f9;
@@ -32,12 +37,15 @@
 
     body {
       margin: 0;
-      font-family: "Inter";
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       color: var(--text);
       background:
         radial-gradient(circle at top left, rgba(255,255,255,1) 0%, rgba(247,247,249,1) 28%, rgba(236,236,242,1) 64%, rgba(230,231,238,1) 100%);
       min-height: 100vh;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: geometricPrecision;
     }
 
     .bg-orb {
@@ -97,23 +105,6 @@
       padding: 22px 0 90px;
     }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 18px;
-      padding: 14px 18px;
-      margin-bottom: 20px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.34);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      box-shadow: var(--shadow-sm);
-      backdrop-filter: blur(30px) saturate(150%);
-      -webkit-backdrop-filter: blur(30px) saturate(150%);
-      position: sticky;
-      top: 14px;
-    }
-
     .liquid-sheen,
     .liquid-button,
     .liquid-pill,
@@ -139,38 +130,20 @@
       position: absolute;
       inset: -1px;
       background:
-        linear-gradient(120deg,
+        linear-gradient(
+          120deg,
           rgba(255,255,255,0.00) 0%,
           rgba(255,255,255,0.00) 28%,
           rgba(255,255,255,0.26) 40%,
           rgba(255,255,255,0.48) 50%,
           rgba(255,255,255,0.22) 60%,
           rgba(255,255,255,0.00) 72%,
-          rgba(255,255,255,0.00) 100%);
+          rgba(255,255,255,0.00) 100%
+        );
       transform: translateX(-120%);
       animation: sheenMove 9s linear infinite;
       pointer-events: none;
       z-index: 2;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-    }
-
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 14px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.16)),
-        linear-gradient(135deg, #111111, #34343a);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.18),
-        0 14px 24px rgba(0,0,0,0.16);
     }
 
     .hero {
@@ -239,8 +212,6 @@
       color: #ffffff;
       text-shadow: 0 14px 38px rgba(0,0,0,0.32);
     }
-    
-
 
     .hero-actions {
       display: flex;
@@ -370,7 +341,7 @@
       margin: 0 0 10px;
       font-size: clamp(30px, 4vw, 50px);
       line-height: 1.02;
-      letter-spacing: -0.055em;
+      letter-spacing: -0.02em;
       font-weight: 740;
     }
 
@@ -461,7 +432,8 @@
     .feature-card h3 {
       margin: 0 0 10px;
       font-size: 24px;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.02em;
+      font-weight: 700;
     }
 
     .feature-card p {
@@ -631,15 +603,14 @@
         width: min(100% - 18px, 1240px);
       }
 
-      .nav {
-        border-radius: 26px;
-        padding: 14px;
-      }
-
       .hero-banner {
         min-height: 460px;
         padding: 24px;
         border-radius: 30px;
+      }
+
+      .hero h1 {
+        font-size: clamp(44px, 15vw, 72px);
       }
 
       .content-pad {
@@ -657,6 +628,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="bg-orb one"></div>
   <div class="bg-orb two"></div>
@@ -683,26 +655,25 @@
       <div class="glass-card">
         <div class="content-pad clean-copy">
           <div class="section-head">
-           
             <h2>Artistic lighting. Made effortless.</h2>
           </div>
 
-        <p>
-          A powerful library for artistic lighting with 400+ ready-made assets.
-          Instantly place and shape light with full control over behavior, texture, and form.
-        </p>
-        <p style="margin-bottom: 0;">
-          Forget complex setups and technical limitations.
-          <strong>Create visually rich, stylized lighting and make your renders stand out in minutes.</strong>
-        </p>
+          <p>
+            A powerful library for artistic lighting with 400+ ready-made assets.
+            Instantly place and shape light with full control over behavior, texture, and form.
+          </p>
 
+          <p style="margin-bottom: 0;">
+            Forget complex setups and technical limitations.
+            <strong>Create visually rich, stylized lighting and make your renders stand out in minutes.</strong>
+          </p>
         </div>
       </div>
     </section>
 
     <section class="section reveal" id="video">
       <div class="section-head">
-       <h2><strong>Video Overview</strong></h2>
+        <h2><strong>Video Overview</strong></h2>
       </div>
 
       <div class="video-shell">
@@ -710,6 +681,8 @@
           <iframe
             src="https://www.youtube.com/embed/ujGnTHjr3vg?rel=0"
             title="Light Master Pro Video"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
           </iframe>
         </div>
@@ -718,10 +691,9 @@
 
     <section class="section reveal" id="features">
       <div class="section-head">
-
         <h2><strong>Key Features</strong></h2>
         <p>
-          Explore the core features and capabilities of <strong> Light Master Pro</strong>.
+          Explore the core features and capabilities of <strong>Light Master Pro</strong>.
         </p>
       </div>
 
@@ -781,7 +753,7 @@
         <div class="media-left">
           <div class="media-card media-large">
             <div class="media-inner">
-              <img src="G.png" alt="Preview 1">
+              <img src="G.png" alt="Light Master Pro preview">
             </div>
           </div>
         </div>
@@ -789,13 +761,13 @@
         <div class="media-right">
           <div class="media-card media-small">
             <div class="media-inner">
-              <img src="YOUR_GIF_1.gif" alt="Preview 2">
+              <img src="YOUR_GIF_1.gif" alt="Workflow animation preview">
             </div>
           </div>
 
           <div class="media-card media-small">
             <div class="media-inner">
-              <img src="YOUR_IMAGE_2.jpg" alt="Preview 3">
+              <img src="YOUR_IMAGE_2.jpg" alt="Lighting example preview">
             </div>
           </div>
         </div>
@@ -812,56 +784,56 @@
       </div>
 
       <div class="addons-grid">
-        <a class="addon-card" href="https://superhivemarket.com/products/physical-fog-addon" target="_blank">
+        <a class="addon-card" href="https://superhivemarket.com/products/physical-fog-addon" target="_blank" rel="noopener noreferrer">
           <div class="addon-inner">
             <img src="https://assets.superhivemarket.com/cache/ccc9462aa9ba7e7a1951a306910d3a0f.jpg" alt="Physical Fog">
             <div class="addon-card-title">Physical Fog</div>
           </div>
         </a>
 
-        <a class="addon-card" href="https://superhivemarket.com/products/lazy-composer-2-pro" target="_blank">
+        <a class="addon-card" href="https://superhivemarket.com/products/lazy-composer-2-pro" target="_blank" rel="noopener noreferrer">
           <div class="addon-inner">
             <img src="https://assets.superhivemarket.com/cache/8422a38a158a2f019bdaac8fd3ab05e7.png" alt="Lazy Composer 2 Pro">
             <div class="addon-card-title">Lazy Composer 2 Pro</div>
           </div>
         </a>
 
-        <a class="addon-card" href="https://superhivemarket.com/products/fauna-master-pro" target="_blank">
+        <a class="addon-card" href="https://superhivemarket.com/products/fauna-master-pro" target="_blank" rel="noopener noreferrer">
           <div class="addon-inner">
             <img src="https://assets.superhivemarket.com/cache/60686f07bbc879ade8381a9a3342c128.jpg" alt="Fauna Master Pro">
             <div class="addon-card-title">Fauna Master Pro</div>
           </div>
         </a>
 
-        <a class="addon-card" href="https://blendermarket.com/products/physical-weather-master" target="_blank">
+        <a class="addon-card" href="https://blendermarket.com/products/physical-weather-master" target="_blank" rel="noopener noreferrer">
           <div class="addon-inner">
             <img src="https://assets.superhivemarket.com/cache/9695dbd9f004846ec6eec88f8114b2f3.png" alt="Physical Weather FX">
             <div class="addon-card-title">Physical Weather FX</div>
           </div>
         </a>
 
-        <a class="addon-card" href="https://superhivemarket.com/products/water-vfx-master-real-time-fluid-effects" target="_blank">
+        <a class="addon-card" href="https://superhivemarket.com/products/water-vfx-master-real-time-fluid-effects" target="_blank" rel="noopener noreferrer">
           <div class="addon-inner">
             <img src="https://assets.superhivemarket.com/cache/cfcfb17dc2af54669708d3cbcd20f923.png" alt="Water VFX Master">
             <div class="addon-card-title">Water VFX Master</div>
           </div>
         </a>
 
-        <a class="addon-card" href="https://superhivemarket.com/products/physical-water-deluxe" target="_blank">
+        <a class="addon-card" href="https://superhivemarket.com/products/physical-water-deluxe" target="_blank" rel="noopener noreferrer">
           <div class="addon-inner">
             <img src="https://assets.superhivemarket.com/cache/5ef578ab6304302c11de42a2ad6c9c39.png" alt="Physical Water FX">
             <div class="addon-card-title">Physical Water FX</div>
           </div>
         </a>
 
-        <a class="addon-card" href="https://superhivemarket.com/products/physical-cables-next-gen" target="_blank">
+        <a class="addon-card" href="https://superhivemarket.com/products/physical-cables-next-gen" target="_blank" rel="noopener noreferrer">
           <div class="addon-inner">
             <img src="https://assets.superhivemarket.com/cache/051a59ae9f8decbaec40456d4fc98767.jpg" alt="Physical Cables Next-Gen">
             <div class="addon-card-title">Physical Cables Next-Gen</div>
           </div>
         </a>
 
-        <a class="addon-card" href="https://superhivemarket.com/products/geodroplets-plus-ultimate-droplet-toolkit" target="_blank">
+        <a class="addon-card" href="https://superhivemarket.com/products/geodroplets-plus-ultimate-droplet-toolkit" target="_blank" rel="noopener noreferrer">
           <div class="addon-inner">
             <img src="https://assets.superhivemarket.com/cache/7928c9dbf63d3b85c3c3e5788e6d9adf.png" alt="GeoDroplets Plus">
             <div class="addon-card-title">GeoDroplets Plus</div>
@@ -887,7 +859,7 @@
       const revealItems = document.querySelectorAll(".reveal");
 
       if ("IntersectionObserver" in window) {
-        const sectionObserver = new IntersectionObserver((entries, obs) => {
+        const sectionObserver = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add("visible");
