@@ -106,7 +106,6 @@
     }
 
     .liquid-sheen,
-    .liquid-button,
     .liquid-pill,
     .glass-card,
     .feature-card,
@@ -118,8 +117,13 @@
       overflow: hidden;
     }
 
+    .liquid-button {
+      position: relative;
+      overflow: visible;
+      transform-origin: center center;
+    }
+
     .liquid-sheen::before,
-    .liquid-button::before,
     .liquid-pill::before,
     .glass-card::before,
     .feature-card::before,
@@ -361,13 +365,16 @@
       gap: 14px;
       flex-wrap: wrap;
       margin-top: 28px;
+      margin-left: -8px;
+      padding: 8px;
       transition:
         opacity 0.55s ease,
         transform 0.55s ease,
         max-height 0.55s ease,
-        margin 0.55s ease;
-      max-height: 120px;
-      overflow: hidden;
+        margin 0.55s ease,
+        padding 0.55s ease;
+      max-height: 136px;
+      overflow: visible;
     }
 
     .hero-banner.is-before-view .hero-content {
@@ -387,6 +394,8 @@
       transform: translateY(12px);
       max-height: 0;
       margin-top: 8px;
+      margin-left: 0;
+      padding: 0;
       pointer-events: none;
     }
 
@@ -490,6 +499,29 @@
         border-color 0.28s ease,
         background 0.28s ease;
       isolation: isolate;
+    }
+
+    .liquid-button::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(255,255,255,0.00) 0%,
+          rgba(255,255,255,0.00) 28%,
+          rgba(255,255,255,0.20) 40%,
+          rgba(255,255,255,0.38) 50%,
+          rgba(255,255,255,0.18) 60%,
+          rgba(255,255,255,0.00) 72%,
+          rgba(255,255,255,0.00) 100%
+        );
+      background-size: 260% 100%;
+      background-position: -160% 0;
+      animation: buttonSheenMove 9s linear infinite;
+      pointer-events: none;
+      z-index: 2;
     }
 
     .liquid-button span {
@@ -829,6 +861,18 @@
       }
     }
 
+    @keyframes buttonSheenMove {
+      0% {
+        background-position: -160% 0;
+      }
+      18% {
+        background-position: 160% 0;
+      }
+      100% {
+        background-position: 160% 0;
+      }
+    }
+
     @keyframes arrowHintRight {
       0%, 100% {
         transform: translate(-58%, -50%) rotate(45deg);
@@ -928,6 +972,8 @@
 
       .hero-actions {
         margin-top: 22px;
+        margin-left: -8px;
+        padding: 8px;
       }
 
       .liquid-button {
