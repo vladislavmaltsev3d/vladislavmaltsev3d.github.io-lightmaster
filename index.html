@@ -6,7 +6,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 
   <title>LightMaster Pro | Artistic Lighting Toolkit</title>
 
@@ -698,6 +698,10 @@
       line-height: 1.75;
     }
 
+    .feature-card-demo .step-demo-shell {
+      margin-bottom: 22px;
+    }
+
     .media-grid {
       display: grid;
       grid-template-columns: 1.18fr 0.82fr;
@@ -748,7 +752,6 @@
       aspect-ratio: 1 / 1;
     }
 
-    /* STEP DEMO */
     .step-demo-shell {
       position: relative;
       width: 100%;
@@ -810,33 +813,47 @@
       top: 50%;
       transform: translate(-50%, -50%);
       max-width: min(82%, 520px);
-      padding: 14px 22px;
+      padding: 12px 18px;
       border-radius: 999px;
       background: rgba(255,255,255,0.14);
       border: 1px solid rgba(255,255,255,0.24);
       backdrop-filter: blur(18px) saturate(140%);
       -webkit-backdrop-filter: blur(18px) saturate(140%);
-      font-size: clamp(16px, 2vw, 24px);
+      font-family: inherit;
+      font-size: clamp(13px, 1.4vw, 18px);
       font-weight: 600;
       letter-spacing: -0.02em;
       text-align: center;
       opacity: 0;
+      white-space: nowrap;
+      cursor: pointer;
+      pointer-events: none;
+      box-shadow:
+        0 14px 30px rgba(0,0,0,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.18);
     }
 
     .step-demo-center-copy.visible {
       opacity: 1;
+      pointer-events: auto;
+    }
+
+    .step-demo-center-copy:hover {
+      transform: translate(-50%, -50%) scale(1.03);
+      background: rgba(255,255,255,0.20);
+      border-color: rgba(255,255,255,0.34);
     }
 
     .step-demo-corner-copy {
-      left: 18px;
-      bottom: 18px;
-      padding: 10px 14px;
+      left: 16px;
+      bottom: 16px;
+      padding: 9px 13px;
       border-radius: 999px;
       background: rgba(10,14,22,0.46);
       border: 1px solid rgba(255,255,255,0.20);
       backdrop-filter: blur(16px) saturate(140%);
       -webkit-backdrop-filter: blur(16px) saturate(140%);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
       letter-spacing: 0.01em;
       opacity: 0;
@@ -850,8 +867,8 @@
 
     .step-demo-control {
       position: absolute;
-      top: 18px;
-      right: 18px;
+      top: 16px;
+      right: 16px;
       z-index: 3;
       pointer-events: auto;
       border: none;
@@ -866,6 +883,7 @@
       backdrop-filter: blur(16px) saturate(150%);
       -webkit-backdrop-filter: blur(16px) saturate(150%);
       transition:
+        opacity 0.25s ease,
         transform 0.25s ease,
         background 0.25s ease,
         width 0.25s ease,
@@ -880,10 +898,16 @@
       border-color: rgba(255,255,255,0.34);
     }
 
+    .step-demo-control.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px) scale(0.92);
+    }
+
     .step-demo-control.is-plus {
-      width: 48px;
-      height: 48px;
-      min-width: 48px;
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
       padding: 0;
       border-radius: 50%;
       display: inline-flex;
@@ -891,10 +915,14 @@
       justify-content: center;
     }
 
+    .step-demo-control.is-plus:not(.is-hidden) {
+      animation: plusGlowPulse 1.8s ease-in-out infinite;
+    }
+
     .step-demo-control.is-restore {
-      min-width: 108px;
-      height: 44px;
-      padding: 0 16px;
+      min-width: 102px;
+      height: 42px;
+      padding: 0 15px;
       border-radius: 999px;
       display: inline-flex;
       align-items: center;
@@ -902,7 +930,7 @@
     }
 
     .step-demo-plus {
-      font-size: 28px;
+      font-size: 26px;
       line-height: 1;
       font-weight: 400;
       transform: translateY(-1px);
@@ -910,7 +938,7 @@
 
     .step-demo-restore-label {
       display: none;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       letter-spacing: -0.01em;
     }
@@ -1018,6 +1046,27 @@
       }
       100% {
         background-position: 160% 0;
+      }
+    }
+
+    @keyframes plusGlowPulse {
+      0%, 100% {
+        box-shadow:
+          0 14px 30px rgba(0,0,0,0.20),
+          0 0 0 rgba(255,255,255,0.00),
+          inset 0 1px 0 rgba(255,255,255,0.12);
+        border-color: rgba(255,255,255,0.24);
+        background: rgba(12,16,22,0.62);
+      }
+
+      50% {
+        box-shadow:
+          0 14px 30px rgba(0,0,0,0.20),
+          0 0 22px rgba(255,255,255,0.48),
+          0 0 42px rgba(90,200,250,0.28),
+          inset 0 1px 0 rgba(255,255,255,0.22);
+        border-color: rgba(255,255,255,0.52);
+        background: rgba(24,32,42,0.76);
       }
     }
 
@@ -1180,9 +1229,9 @@
       }
 
       .step-demo-center-copy {
-        padding: 10px 14px;
+        padding: 9px 12px;
         max-width: 88%;
-        font-size: 14px;
+        font-size: 12px;
       }
 
       .step-demo-corner-copy {
@@ -1191,7 +1240,7 @@
         bottom: 12px;
         width: fit-content;
         max-width: calc(100% - 24px);
-        font-size: 11px;
+        font-size: 10px;
       }
 
       .step-demo-control {
@@ -1200,23 +1249,23 @@
       }
 
       .step-demo-control.is-plus {
-        width: 42px;
-        height: 42px;
-        min-width: 42px;
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
       }
 
       .step-demo-control.is-restore {
-        min-width: 92px;
-        height: 40px;
-        padding: 0 14px;
+        min-width: 88px;
+        height: 38px;
+        padding: 0 12px;
       }
 
       .step-demo-plus {
-        font-size: 24px;
+        font-size: 22px;
       }
 
       .step-demo-restore-label {
-        font-size: 12px;
+        font-size: 11px;
       }
     }
   </style>
@@ -1332,9 +1381,41 @@
           </div>
         </article>
 
-        <article class="feature-card">
+        <article class="feature-card feature-card-demo">
           <div class="feature-inner">
-            <div class="feature-icon"></div>
+            <div class="step-demo-shell" id="stepDemo">
+              <div class="step-demo-stage">
+                <img class="step-demo-slide active" src="step-0.jpg" alt="Step 0 preview">
+                <img class="step-demo-slide" src="step-01.jpg" alt="Step 1 preview">
+                <img class="step-demo-slide" src="step-02.jpg" alt="Step 2 preview">
+                <img class="step-demo-slide" src="step-03.jpg" alt="Step 3 preview">
+                <img class="step-demo-slide" src="step-04.jpg" alt="Step 4 preview">
+                <img class="step-demo-slide" src="step-05.jpg" alt="Step 5 preview">
+                <img class="step-demo-slide" src="step-06.jpg" alt="Step 6 preview">
+              </div>
+
+              <div class="step-demo-overlay">
+                <button
+                  class="step-demo-center-copy visible"
+                  id="stepDemoCenterText"
+                  type="button"
+                  aria-label="Start adding lines">
+                  Click to start adding lines
+                </button>
+
+                <div class="step-demo-corner-copy" id="stepDemoCornerText"></div>
+
+                <button
+                  class="step-demo-control is-plus is-hidden"
+                  id="stepDemoButton"
+                  type="button"
+                  aria-label="Show next step">
+                  <span class="step-demo-plus">+</span>
+                  <span class="step-demo-restore-label">Restore</span>
+                </button>
+              </div>
+            </div>
+
             <h3>400+ Lighting Assets</h3>
             <p>
               Choose from more than 400 ready-made assets across multiple categories, including Abstract Light, Caustic, Colored, Flashlight, Light Reflections, Rays, Shadows, Simple Gobos, and Water.
@@ -1366,34 +1447,7 @@
         <div class="media-left">
           <div class="media-card media-large">
             <div class="media-inner">
-              <div class="step-demo-shell" id="stepDemo">
-                <div class="step-demo-stage">
-                  <img class="step-demo-slide active" src="step-0.jpg" alt="Step 0 preview">
-                  <img class="step-demo-slide" src="step-01.jpg" alt="Step 1 preview">
-                  <img class="step-demo-slide" src="step-02.jpg" alt="Step 2 preview">
-                  <img class="step-demo-slide" src="step-03.jpg" alt="Step 3 preview">
-                  <img class="step-demo-slide" src="step-04.jpg" alt="Step 4 preview">
-                  <img class="step-demo-slide" src="step-05.jpg" alt="Step 5 preview">
-                  <img class="step-demo-slide" src="step-06.jpg" alt="Step 6 preview">
-                </div>
-
-                <div class="step-demo-overlay">
-                  <div class="step-demo-center-copy visible" id="stepDemoCenterText">
-                    Click to start adding lines
-                  </div>
-
-                  <div class="step-demo-corner-copy" id="stepDemoCornerText"></div>
-
-                  <button
-                    class="step-demo-control is-plus"
-                    id="stepDemoButton"
-                    type="button"
-                    aria-label="Show next step">
-                    <span class="step-demo-plus">+</span>
-                    <span class="step-demo-restore-label">Restore</span>
-                  </button>
-                </div>
-              </div>
+              <img src="G.png" alt="LightMaster Pro preview">
             </div>
           </div>
         </div>
@@ -1401,13 +1455,13 @@
         <div class="media-right">
           <div class="media-card media-small">
             <div class="media-inner">
-              <img src="step-03.jpg" alt="Lighting workflow step 3 preview">
+              <img src="YOUR_GIF_1.gif" alt="Workflow animation preview">
             </div>
           </div>
 
           <div class="media-card media-small">
             <div class="media-inner">
-              <img src="step-06.jpg" alt="Lighting workflow final preview">
+              <img src="YOUR_IMAGE_2.jpg" alt="Lighting example preview">
             </div>
           </div>
         </div>
@@ -1600,6 +1654,7 @@
           });
 
           const currentMeta = stepMeta[index];
+          const isStartStep = index === 0;
 
           if (currentMeta.centerText) {
             stepDemoCenterText.textContent = currentMeta.centerText;
@@ -1615,6 +1670,7 @@
             stepDemoCornerText.classList.remove("visible");
           }
 
+          stepDemoButton.classList.toggle("is-hidden", isStartStep);
           stepDemoButton.classList.toggle("is-plus", !currentMeta.isRestore);
           stepDemoButton.classList.toggle("is-restore", currentMeta.isRestore);
 
@@ -1623,6 +1679,10 @@
             currentMeta.isRestore ? "Restore the demo to step zero" : "Show next step"
           );
         }
+
+        stepDemoCenterText.addEventListener("click", () => {
+          renderStep(1);
+        });
 
         stepDemoButton.addEventListener("click", () => {
           if (currentStep >= stepMeta.length - 1) {
