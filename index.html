@@ -156,7 +156,9 @@
 
     .hero-banner {
       --compare: 100%;
-      min-height: 640px;
+      width: 100%;
+      aspect-ratio: 2 / 1;
+      min-height: 0;
       border-radius: 40px;
       box-shadow: var(--shadow-xl);
       border: 1px solid rgba(255,255,255,0.54);
@@ -183,7 +185,7 @@
     .hero-image.before {
       background-image:
         linear-gradient(180deg, rgba(8, 10, 16, 0.12) 0%, rgba(8, 10, 16, 0.28) 55%, rgba(8, 10, 16, 0.58) 100%),
-        url("https://assets.superhivemarket.com/store/product/250614/image/xlarge-906298e1dbf96a9dc4587eded7af8169.jpg");
+        url("https://assets.superhivemarket.com/cache/e833214b5ecfb51e7dedc090551c8750.gif");
     }
 
     .hero-image.after {
@@ -297,12 +299,11 @@
     }
 
     .hero-content {
-      position: relative;
+      position: absolute;
+      left: 44px;
+      bottom: 44px;
       z-index: 6;
       max-width: 760px;
-      margin-top: 340px;
-      margin-left: 44px;
-      margin-bottom: 44px;
       padding: 0;
       background: none;
       border: none;
@@ -922,15 +923,14 @@
         grid-template-columns: 1fr;
       }
 
-      .hero-banner {
-        min-height: 600px;
+      .hero-content {
+        left: 28px;
+        bottom: 28px;
+        right: 28px;
       }
 
-      .hero-content {
-        margin-top: 300px;
-        margin-left: 28px;
-        margin-right: 28px;
-        margin-bottom: 28px;
+      .hero h1 {
+        font-size: clamp(44px, 8vw, 82px);
       }
 
       .hero-banner.is-before-view .hero-content {
@@ -950,15 +950,13 @@
       }
 
       .hero-banner {
-        min-height: 540px;
         border-radius: 30px;
       }
 
       .hero-content {
-        margin-top: 250px;
-        margin-left: 18px;
-        margin-right: 18px;
-        margin-bottom: 18px;
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
         padding: 0;
       }
 
@@ -966,19 +964,28 @@
         transform: translateY(46px);
       }
 
+      .liquid-pill {
+        padding: 8px 12px;
+        font-size: 9px;
+        margin-bottom: 10px;
+      }
+
       .hero h1 {
-        font-size: clamp(42px, 14vw, 70px);
+        font-size: clamp(28px, 11vw, 56px);
       }
 
       .hero-actions {
-        margin-top: 22px;
-        margin-left: -8px;
-        padding: 8px;
+        margin-top: 14px;
+        margin-left: -6px;
+        padding: 6px;
+        gap: 8px;
       }
 
       .liquid-button {
-        width: 100%;
-        max-width: 320px;
+        min-width: 130px;
+        max-width: 220px;
+        padding: 12px 16px;
+        font-size: 12px;
       }
 
       .hero-toggle {
@@ -1004,22 +1011,28 @@
         bottom: 18px;
         min-width: 0;
         max-width: none;
-        padding: 12px;
-        gap: 12px;
+        padding: 10px;
+        gap: 10px;
       }
 
       .hero-state-thumb {
-        flex-basis: 58px;
-        width: 58px;
-        height: 58px;
+        flex-basis: 48px;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
       }
 
       .hero-state-title {
-        font-size: 18px;
+        font-size: 16px;
       }
 
       .hero-state-copy p {
-        font-size: 13px;
+        font-size: 12px;
+      }
+
+      .hero-state-kicker {
+        font-size: 9px;
+        margin-bottom: 4px;
       }
 
       .content-pad {
