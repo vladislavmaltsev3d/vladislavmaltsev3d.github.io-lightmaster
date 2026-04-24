@@ -6,23 +6,24 @@
   <title>Light Master Pro | Artistic Lighting Toolkit</title>
   <style>
     :root {
-      --bg: #f5f5f7;
-      --bg-2: #ececf1;
-      --text: #111111;
-      --muted: #6e6e73;
-      --line: rgba(17, 17, 17, 0.08);
-      --card: rgba(255, 255, 255, 0.62);
-      --card-strong: rgba(255, 255, 255, 0.76);
-      --card-border: rgba(255, 255, 255, 0.82);
-      --shadow-xl: 0 30px 90px rgba(0, 0, 0, 0.10);
-      --shadow-lg: 0 22px 60px rgba(0, 0, 0, 0.09);
-      --shadow-md: 0 16px 36px rgba(0, 0, 0, 0.08);
-      --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.06);
-      --radius-xl: 34px;
+      --bg-1: #f7f7f9;
+      --bg-2: #ececf2;
+      --bg-3: #e6e7ee;
+      --text: #0f1012;
+      --muted: #6a6b73;
+      --line: rgba(255, 255, 255, 0.66);
+      --glass: rgba(255, 255, 255, 0.34);
+      --glass-strong: rgba(255, 255, 255, 0.48);
+      --glass-soft: rgba(255, 255, 255, 0.24);
+      --shadow-xl: 0 32px 90px rgba(15, 16, 18, 0.12);
+      --shadow-lg: 0 24px 60px rgba(15, 16, 18, 0.10);
+      --shadow-md: 0 16px 34px rgba(15, 16, 18, 0.08);
+      --shadow-sm: 0 10px 22px rgba(15, 16, 18, 0.06);
+      --radius-xl: 36px;
       --radius-lg: 28px;
       --radius-md: 22px;
-      --accent: #0071e3;
-      --accent-soft: rgba(0, 113, 227, 0.12);
+      --accent: #0a84ff;
+      --accent-2: #5ac8fa;
     }
 
     * {
@@ -35,10 +36,10 @@
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.98) 0%, rgba(245,245,247,1) 26%, rgba(237,237,243,1) 60%, rgba(232,232,239,1) 100%);
+        radial-gradient(circle at top left, rgba(255,255,255,1) 0%, rgba(247,247,249,1) 28%, rgba(236,236,242,1) 64%, rgba(230,231,238,1) 100%);
       min-height: 100vh;
       overflow-x: hidden;
     }
@@ -46,36 +47,36 @@
     .bg-orb {
       position: fixed;
       border-radius: 50%;
-      filter: blur(70px);
-      opacity: 0.55;
+      filter: blur(80px);
       pointer-events: none;
       z-index: 0;
-      animation: orbFloat 16s ease-in-out infinite;
+      opacity: 0.7;
+      animation: orbFloat 18s ease-in-out infinite;
     }
 
     .bg-orb.one {
-      width: 340px;
-      height: 340px;
-      top: -70px;
-      left: -30px;
-      background: rgba(255, 255, 255, 0.95);
+      width: 360px;
+      height: 360px;
+      left: -80px;
+      top: -60px;
+      background: rgba(255, 255, 255, 0.9);
     }
 
     .bg-orb.two {
       width: 420px;
       height: 420px;
-      top: 24%;
       right: -120px;
-      background: rgba(90, 200, 250, 0.22);
+      top: 22%;
+      background: rgba(90, 200, 250, 0.18);
       animation-delay: -5s;
     }
 
     .bg-orb.three {
-      width: 300px;
-      height: 300px;
-      bottom: -80px;
-      left: 12%;
-      background: rgba(0, 113, 227, 0.10);
+      width: 320px;
+      height: 320px;
+      left: 14%;
+      bottom: -90px;
+      background: rgba(10, 132, 255, 0.10);
       animation-delay: -9s;
     }
 
@@ -85,35 +86,74 @@
       pointer-events: none;
       z-index: 0;
       background: radial-gradient(
-        560px circle at var(--x, 50%) var(--y, 24%),
-        rgba(255, 255, 255, 0.33),
-        transparent 56%
+        620px circle at var(--x, 50%) var(--y, 24%),
+        rgba(255,255,255,0.36),
+        transparent 55%
       );
-      transition: background 0.12s linear;
+      transition: background 0.14s linear;
     }
 
     .page {
       position: relative;
       z-index: 1;
-      width: min(1220px, calc(100% - 32px));
+      width: min(1240px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 24px 0 90px;
+      padding: 22px 0 90px;
     }
 
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 18px;
       padding: 14px 18px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.78);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      background: rgba(255, 255, 255, 0.34);
+      border: 1px solid rgba(255, 255, 255, 0.7);
       box-shadow: var(--shadow-sm);
-      animation: fadeUp 0.9s ease both;
+      backdrop-filter: blur(30px) saturate(150%);
+      -webkit-backdrop-filter: blur(30px) saturate(150%);
+      position: sticky;
+      top: 14px;
+    }
+
+    .liquid-sheen,
+    .liquid-button,
+    .liquid-pill,
+    .glass-card,
+    .feature-card,
+    .media-card,
+    .addon-card,
+    .video-shell {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .liquid-sheen::before,
+    .liquid-button::before,
+    .liquid-pill::before,
+    .glass-card::before,
+    .feature-card::before,
+    .media-card::before,
+    .addon-card::before,
+    .video-shell::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background:
+        linear-gradient(120deg,
+          rgba(255,255,255,0.00) 0%,
+          rgba(255,255,255,0.00) 28%,
+          rgba(255,255,255,0.26) 40%,
+          rgba(255,255,255,0.48) 50%,
+          rgba(255,255,255,0.22) 60%,
+          rgba(255,255,255,0.00) 72%,
+          rgba(255,255,255,0.00) 100%);
+      transform: translateX(-120%);
+      animation: sheenMove 9s linear infinite;
+      pointer-events: none;
+      z-index: 2;
     }
 
     .brand {
@@ -125,11 +165,15 @@
     }
 
     .brand-mark {
-      width: 36px;
-      height: 36px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #111111, #38383c);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 12px 22px rgba(0,0,0,0.16);
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.16)),
+        linear-gradient(135deg, #111111, #34343a);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.18),
+        0 14px 24px rgba(0,0,0,0.16);
     }
 
     .nav-links {
@@ -142,41 +186,70 @@
       text-decoration: none;
       color: var(--muted);
       font-size: 14px;
-      transition: color 0.25s ease;
+      transition: color 0.25s ease, transform 0.25s ease;
     }
 
     .nav-links a:hover {
       color: var(--text);
+      transform: translateY(-1px);
     }
 
     .hero {
-      padding: 56px 0 30px;
+      padding: 62px 0 26px;
       text-align: center;
     }
 
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 18px;
-      padding: 9px 15px;
+    .liquid-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
       border-radius: 999px;
+      background: rgba(255, 255, 255, 0.36);
+      border: 1px solid rgba(255, 255, 255, 0.74);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(30px) saturate(150%);
+      -webkit-backdrop-filter: blur(30px) saturate(150%);
+      color: #45464d;
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      color: #444;
-      background: rgba(255,255,255,0.66);
-      border: 1px solid rgba(255,255,255,0.86);
-      box-shadow: var(--shadow-sm);
-      animation: fadeUp 0.8s ease both;
+      margin-bottom: 20px;
     }
 
     .hero h1 {
-      margin: 0 0 18px 0;
-      font-size: clamp(44px, 7vw, 92px);
-      line-height: 0.94;
-      letter-spacing: -0.06em;
+      margin: 0 0 18px;
+      font-size: clamp(46px, 7vw, 96px);
+      line-height: 0.93;
+      letter-spacing: -0.065em;
       font-weight: 760;
-      animation: fadeUp 0.95s ease both;
-      animation-delay: 0.08s;
+    }
+
+    .hero-copy-glass {
+      display: inline-block;
+      padding: 0.02em 0.16em 0.08em;
+      border-radius: 0.32em;
+      background: linear-gradient(180deg, rgba(255,255,255,0.26), rgba(255,255,255,0.08));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.34),
+        0 8px 20px rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px) saturate(130%);
+      -webkit-backdrop-filter: blur(10px) saturate(130%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-copy-glass::after {
+      content: "";
+      position: absolute;
+      top: -20%;
+      left: -60%;
+      width: 50%;
+      height: 140%;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.45), rgba(255,255,255,0));
+      transform: skewX(-22deg);
+      animation: sweepText 7.5s ease-in-out infinite;
+      pointer-events: none;
     }
 
     .hero p {
@@ -185,8 +258,6 @@
       color: var(--muted);
       font-size: clamp(18px, 2vw, 22px);
       line-height: 1.65;
-      animation: fadeUp 1s ease both;
-      animation-delay: 0.16s;
     }
 
     .hero-actions {
@@ -194,70 +265,238 @@
       justify-content: center;
       gap: 14px;
       flex-wrap: wrap;
-      margin-top: 30px;
-      animation: fadeUp 1.05s ease both;
-      animation-delay: 0.25s;
+      margin-top: 32px;
     }
 
-    .btn {
+    .liquid-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 160px;
-      padding: 15px 24px;
+      min-width: 170px;
+      padding: 16px 24px;
       border-radius: 999px;
+      text-decoration: none;
       font-size: 15px;
       font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      letter-spacing: -0.01em;
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      box-shadow:
+        0 16px 34px rgba(15, 16, 18, 0.10),
+        inset 0 1px 0 rgba(255,255,255,0.70);
+      backdrop-filter: blur(28px) saturate(170%);
+      -webkit-backdrop-filter: blur(28px) saturate(170%);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+      isolation: isolate;
     }
 
-    .btn-primary {
-      color: #fff;
-      background: linear-gradient(180deg, #1580ef, #0067d8);
-      box-shadow: 0 16px 32px rgba(0, 113, 227, 0.25);
-    }
-
-    .btn-secondary {
-      color: var(--text);
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(255,255,255,0.86);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .btn:hover {
-      transform: translateY(-3px) scale(1.015);
-    }
-
-    .section {
-      margin-top: 28px;
-      animation: fadeUp 1s ease both;
-    }
-
-    .glass-block {
+    .liquid-button span {
       position: relative;
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-lg);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      overflow: hidden;
+      z-index: 3;
     }
 
-    .glass-block::before {
+    .liquid-button::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.55), transparent 36%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,0.16), transparent 42%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .liquid-button.primary {
+      color: #ffffff;
+      background:
+        linear-gradient(180deg, rgba(30,144,255,0.84), rgba(10,132,255,0.88)),
+        rgba(255,255,255,0.14);
+    }
+
+    .liquid-button.secondary {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.34);
+    }
+
+    .liquid-button:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow:
+        0 22px 44px rgba(15, 16, 18, 0.14),
+        inset 0 1px 0 rgba(255,255,255,0.82);
+      border-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero-preview {
+      margin-top: 36px;
+      padding: 18px;
+      border-radius: 38px;
+      background: rgba(255,255,255,0.28);
+      border: 1px solid rgba(255,255,255,0.70);
+      box-shadow: var(--shadow-xl);
+      backdrop-filter: blur(32px) saturate(150%);
+      -webkit-backdrop-filter: blur(32px) saturate(150%);
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-preview-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+    }
+
+    .preview-panel,
+    .preview-stack-card {
+      border-radius: 28px;
+      background: rgba(255,255,255,0.34);
+      border: 1px solid rgba(255,255,255,0.72);
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(24px) saturate(140%);
+      -webkit-backdrop-filter: blur(24px) saturate(140%);
+    }
+
+    .preview-panel {
+      min-height: 360px;
+      position: relative;
+      overflow: hidden;
+      padding: 18px;
+    }
+
+    .preview-panel::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.55), transparent 34%),
-        radial-gradient(circle at bottom right, rgba(90,200,250,0.12), transparent 28%);
+        radial-gradient(circle at 22% 24%, rgba(255,255,255,0.28), transparent 18%),
+        radial-gradient(circle at 68% 56%, rgba(90,200,250,0.20), transparent 24%),
+        radial-gradient(circle at 78% 30%, rgba(10,132,255,0.18), transparent 20%);
       pointer-events: none;
+    }
+
+    .preview-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(15,16,18,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,16,18,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.38;
+    }
+
+    .light-streak {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(16px);
+      animation: pulse 5s ease-in-out infinite;
+    }
+
+    .light-streak.one {
+      width: 180px;
+      height: 42px;
+      top: 86px;
+      left: 48px;
+      background: rgba(255,255,255,0.95);
+    }
+
+    .light-streak.two {
+      width: 120px;
+      height: 34px;
+      top: 160px;
+      left: 120px;
+      background: rgba(90,200,250,0.75);
+      animation-delay: -1.2s;
+    }
+
+    .light-streak.three {
+      width: 170px;
+      height: 46px;
+      right: 40px;
+      bottom: 82px;
+      background: rgba(10,132,255,0.32);
+      animation-delay: -2.3s;
+    }
+
+    .preview-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .preview-stack-card {
+      min-height: 172px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .preview-stack-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .mini-label {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .mini-value {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+    }
+
+    .bar {
+      height: 11px;
+      border-radius: 999px;
+      background: rgba(15,16,18,0.06);
+      overflow: hidden;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .bar > span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, rgba(90,200,250,0.95), rgba(10,132,255,0.95));
+      box-shadow: 0 8px 16px rgba(10,132,255,0.24);
+      animation: growBar 2.2s ease both;
+    }
+
+    .section {
+      margin-top: 30px;
+    }
+
+    .glass-card {
+      background: rgba(255,255,255,0.28);
+      border: 1px solid rgba(255,255,255,0.72);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(28px) saturate(150%);
+      -webkit-backdrop-filter: blur(28px) saturate(150%);
+    }
+
+    .glass-card::after,
+    .feature-card::after,
+    .media-card::after,
+    .addon-card::after,
+    .video-shell::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.32), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,0.10), transparent 36%);
+      pointer-events: none;
+      z-index: 1;
     }
 
     .content-pad {
       position: relative;
-      z-index: 1;
+      z-index: 3;
       padding: 34px;
     }
 
@@ -265,66 +504,76 @@
       margin-bottom: 18px;
     }
 
+    .section-head .section-chip {
+      margin-bottom: 14px;
+    }
+
+    .section-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.34);
+      border: 1px solid rgba(255,255,255,0.76);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(24px) saturate(140%);
+      -webkit-backdrop-filter: blur(24px) saturate(140%);
+      font-size: 12px;
+      color: #4d4e56;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
     .section-head h2 {
-      margin: 0 0 12px 0;
-      font-size: clamp(28px, 4vw, 48px);
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4vw, 50px);
       line-height: 1.02;
-      letter-spacing: -0.05em;
+      letter-spacing: -0.055em;
+      font-weight: 740;
     }
 
     .section-head p {
       margin: 0;
-      max-width: 760px;
       color: var(--muted);
       font-size: 18px;
       line-height: 1.7;
+      max-width: 800px;
     }
 
     .clean-copy p {
-      margin: 0 0 16px 0;
-      color: #555;
+      margin: 0 0 16px;
+      color: #555861;
       font-size: 17px;
-      line-height: 1.75;
-      max-width: 900px;
+      line-height: 1.8;
+      max-width: 920px;
     }
 
     .video-shell {
-      position: relative;
-      background: rgba(255,255,255,0.34);
-      border: 1px solid rgba(255,255,255,0.80);
-      border-radius: 30px;
       padding: 16px;
+      border-radius: 32px;
+      background: rgba(255,255,255,0.26);
+      border: 1px solid rgba(255,255,255,0.72);
       box-shadow: var(--shadow-xl);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      overflow: hidden;
-    }
-
-    .video-shell::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.32), rgba(255,255,255,0.05) 45%, rgba(255,255,255,0.20) 100%);
-      pointer-events: none;
+      backdrop-filter: blur(30px) saturate(150%);
+      -webkit-backdrop-filter: blur(30px) saturate(150%);
     }
 
     .video-wrap {
       position: relative;
-      z-index: 1;
+      z-index: 3;
       width: 100%;
       aspect-ratio: 16 / 9;
-      border-radius: 22px;
+      border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 20px 44px rgba(0,0,0,0.18);
+      box-shadow: 0 24px 52px rgba(15,16,18,0.16);
       background: #000;
     }
 
     .video-wrap iframe {
       width: 100%;
       height: 100%;
-      display: block;
       border: 0;
+      display: block;
     }
 
     .features-grid {
@@ -334,63 +583,55 @@
     }
 
     .feature-card {
-      position: relative;
-      padding: 26px;
-      border-radius: var(--radius-lg);
-      background: var(--card-strong);
-      border: 1px solid rgba(255,255,255,0.86);
+      background: rgba(255,255,255,0.30);
+      border: 1px solid rgba(255,255,255,0.74);
+      border-radius: 30px;
       box-shadow: var(--shadow-md);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      transition: transform 0.28s ease, box-shadow 0.28s ease;
-      overflow: hidden;
-    }
-
-    .feature-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at top right, rgba(90,200,250,0.14), transparent 28%);
-      pointer-events: none;
+      backdrop-filter: blur(26px) saturate(145%);
+      -webkit-backdrop-filter: blur(26px) saturate(145%);
+      padding: 28px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .feature-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-7px);
       box-shadow: var(--shadow-xl);
     }
 
+    .feature-inner {
+      position: relative;
+      z-index: 3;
+    }
+
     .feature-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
       margin-bottom: 18px;
-      background: linear-gradient(135deg, #ffffff, #dfe9ff);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.28)),
+        linear-gradient(135deg, rgba(90,200,250,0.24), rgba(10,132,255,0.20));
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.9),
-        0 12px 24px rgba(0,0,0,0.08);
+        inset 0 1px 0 rgba(255,255,255,0.92),
+        0 12px 24px rgba(15,16,18,0.08);
     }
 
     .feature-card h3 {
-      position: relative;
-      z-index: 1;
-      margin: 0 0 10px 0;
+      margin: 0 0 10px;
       font-size: 24px;
       letter-spacing: -0.04em;
     }
 
     .feature-card p {
-      position: relative;
-      z-index: 1;
       margin: 0;
-      color: #555;
-      line-height: 1.7;
+      color: #555861;
       font-size: 16px;
+      line-height: 1.75;
     }
 
     .media-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.18fr 0.82fr;
       gap: 18px;
     }
 
@@ -401,41 +642,33 @@
     }
 
     .media-card {
-      position: relative;
-      background: rgba(255,255,255,0.34);
-      border: 1px solid rgba(255,255,255,0.80);
+      background: rgba(255,255,255,0.28);
+      border: 1px solid rgba(255,255,255,0.72);
       border-radius: 30px;
-      padding: 16px;
       box-shadow: var(--shadow-lg);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      overflow: hidden;
-      transition: transform 0.30s ease, box-shadow 0.30s ease;
+      backdrop-filter: blur(26px) saturate(150%);
+      -webkit-backdrop-filter: blur(26px) saturate(150%);
+      padding: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .media-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-7px);
       box-shadow: var(--shadow-xl);
     }
 
-    .media-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.32), rgba(255,255,255,0.05) 44%, rgba(255,255,255,0.20) 100%);
-      pointer-events: none;
+    .media-inner {
+      position: relative;
+      z-index: 3;
     }
 
     .media-card img {
-      position: relative;
-      z-index: 1;
       width: 100%;
       display: block;
       border-radius: 22px;
       object-fit: cover;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.16);
-      background: #ececf1;
+      box-shadow: 0 20px 42px rgba(15,16,18,0.14);
+      background: #eef0f5;
     }
 
     .media-large img {
@@ -453,58 +686,48 @@
     }
 
     .addon-card {
-      position: relative;
+      display: block;
       text-decoration: none;
       color: inherit;
-      background: rgba(255,255,255,0.68);
-      border: 1px solid rgba(255,255,255,0.86);
+      background: rgba(255,255,255,0.28);
+      border: 1px solid rgba(255,255,255,0.72);
       border-radius: 28px;
       padding: 16px;
       box-shadow: var(--shadow-md);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      overflow: hidden;
-      transition: transform 0.28s ease, box-shadow 0.28s ease;
-    }
-
-    .addon-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.45), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(90,200,250,0.12), transparent 24%);
-      pointer-events: none;
+      backdrop-filter: blur(26px) saturate(145%);
+      -webkit-backdrop-filter: blur(26px) saturate(145%);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .addon-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-7px);
       box-shadow: var(--shadow-xl);
     }
 
-    .addon-card img {
+    .addon-inner {
       position: relative;
-      z-index: 1;
+      z-index: 3;
+    }
+
+    .addon-card img {
       width: 100%;
       display: block;
       border-radius: 20px;
-      box-shadow: 0 16px 34px rgba(0,0,0,0.14);
-      background: #f2f2f2;
+      box-shadow: 0 16px 34px rgba(15,16,18,0.13);
+      background: #f1f2f5;
     }
 
     .addon-card-title {
-      position: relative;
-      z-index: 1;
       text-align: center;
       margin-top: 14px;
-      font-weight: 600;
       font-size: 16px;
-      letter-spacing: -0.01em;
+      font-weight: 600;
       line-height: 1.4;
+      letter-spacing: -0.01em;
     }
 
     .footer {
-      margin-top: 46px;
+      margin-top: 48px;
       text-align: center;
       color: var(--muted);
       font-size: 14px;
@@ -512,8 +735,8 @@
 
     .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: translateY(26px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
     }
 
     .reveal.visible {
@@ -521,23 +744,62 @@
       transform: translateY(0);
     }
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(28px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
     @keyframes orbFloat {
       0%, 100% {
         transform: translate3d(0, 0, 0) scale(1);
       }
       50% {
-        transform: translate3d(18px, 24px, 0) scale(1.06);
+        transform: translate3d(20px, 24px, 0) scale(1.06);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.88;
+      }
+      50% {
+        transform: scale(1.08);
+        opacity: 1;
+      }
+    }
+
+    @keyframes growBar {
+      from {
+        width: 0%;
+      }
+      to {
+        width: var(--fill, 72%);
+      }
+    }
+
+    @keyframes sheenMove {
+      0% {
+        transform: translateX(-130%);
+      }
+      18% {
+        transform: translateX(130%);
+      }
+      100% {
+        transform: translateX(130%);
+      }
+    }
+
+    @keyframes sweepText {
+      0%, 18% {
+        transform: translateX(0) skewX(-22deg);
+        opacity: 0;
+      }
+      24% {
+        opacity: 1;
+      }
+      40% {
+        transform: translateX(260%) skewX(-22deg);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(260%) skewX(-22deg);
+        opacity: 0;
       }
     }
 
@@ -547,26 +809,22 @@
       }
     }
 
-    @media (max-width: 920px) {
+    @media (max-width: 960px) {
+      .hero-preview-inner,
       .features-grid,
       .media-grid,
       .addons-grid {
         grid-template-columns: 1fr;
       }
-
-      .media-left,
-      .media-right {
-        grid-template-columns: 1fr;
-      }
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 760px) {
       .page {
-        width: min(100% - 18px, 1220px);
+        width: min(100% - 18px, 1240px);
       }
 
       .nav {
-        border-radius: 24px;
+        border-radius: 26px;
         padding: 14px;
       }
 
@@ -579,16 +837,24 @@
       }
 
       .hero {
-        padding-top: 42px;
+        padding-top: 46px;
       }
 
       .hero-actions {
         margin-top: 24px;
       }
 
-      .btn {
+      .liquid-button {
         width: 100%;
         max-width: 320px;
+      }
+
+      .hero-preview {
+        padding: 14px;
+      }
+
+      .preview-panel {
+        min-height: 280px;
       }
     }
   </style>
@@ -600,11 +866,12 @@
   <div class="spotlight"></div>
 
   <main class="page">
-    <nav class="nav">
+    <nav class="nav liquid-sheen">
       <div class="brand">
         <div class="brand-mark"></div>
         <div>Light Master Pro</div>
       </div>
+
       <div class="nav-links">
         <a href="#overview">Overview</a>
         <a href="#video">Video</a>
@@ -614,30 +881,65 @@
       </div>
     </nav>
 
-    <section class="hero">
-      <div class="eyebrow">Artistic Lighting Toolkit</div>
-      <h1>Fast, texture-driven lighting workflow for Blender.</h1>
+    <section class="hero reveal">
+      <div class="liquid-pill">Artistic Lighting Toolkit</div>
+
+      <h1>
+        Fast, texture-driven
+        <span class="hero-copy-glass">lighting workflow</span>
+        for Blender.
+      </h1>
+
       <p>
         Browse light assets, import ready-made setups, place them directly in the viewport,
-        and refine the final look with one modern, focused workflow.
+        and refine the final look with one focused, modern workflow built for fast visual results.
       </p>
+
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#video">Watch Overview</a>
-        <a class="btn btn-secondary" href="#features">Explore Features</a>
+        <a class="liquid-button primary" href="#video"><span>Watch Overview</span></a>
+        <a class="liquid-button secondary" href="#features"><span>Explore Features</span></a>
+      </div>
+
+      <div class="hero-preview liquid-sheen">
+        <div class="hero-preview-inner">
+          <div class="preview-panel">
+            <div class="preview-grid"></div>
+            <div class="light-streak one"></div>
+            <div class="light-streak two"></div>
+            <div class="light-streak three"></div>
+          </div>
+
+          <div class="preview-stack">
+            <div class="preview-stack-card">
+              <div class="mini-label">Advanced Placement</div>
+              <div class="mini-value">Realtime</div>
+              <div class="bar"><span style="--fill: 76%; width: 76%;"></span></div>
+            </div>
+
+            <div class="preview-stack-card">
+              <div class="mini-label">Light Control</div>
+              <div class="mini-value">Precision</div>
+              <div class="bar"><span style="--fill: 84%; width: 84%;"></span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section reveal" id="overview">
-      <div class="glass-block">
+      <div class="glass-card">
         <div class="content-pad clean-copy">
           <div class="section-head">
+            <div class="section-chip liquid-sheen">Overview</div>
             <h2>Clean workflow. Fast results.</h2>
           </div>
+
           <p>
             Browse light assets, import ready-made setups, place them directly in the viewport,
             and adjust the final result from one clean sidebar workflow.
           </p>
-          <p style="margin-bottom:0;">
+
+          <p style="margin-bottom: 0;">
             Works with both Cycles and Eevee workflows and gives you fast control over placement,
             texture behavior, blur, animation, and light shaping.
           </p>
@@ -647,10 +949,9 @@
 
     <section class="section reveal" id="video">
       <div class="section-head">
+        <div class="section-chip liquid-sheen">Video</div>
         <h2>Video Overview</h2>
-        <p>
-          Main product walkthrough and workflow presentation.
-        </p>
+        <p>Main product walkthrough and workflow presentation.</p>
       </div>
 
       <div class="video-shell">
@@ -666,49 +967,59 @@
 
     <section class="section reveal" id="features">
       <div class="section-head">
+        <div class="section-chip liquid-sheen">Features</div>
         <h2>Key Features</h2>
         <p>
-          Core functionality presented as a premium feature grid for the standalone GitHub version.
+          A cleaner and more premium presentation of the core Light Master Pro workflow.
         </p>
       </div>
 
       <div class="features-grid">
         <article class="feature-card">
-          <div class="feature-icon"></div>
-          <h3>Preview Manager</h3>
-          <p>
-            Browse categories, search assets by name, and switch between preview pages quickly.
-          </p>
+          <div class="feature-inner">
+            <div class="feature-icon"></div>
+            <h3>Preview Manager</h3>
+            <p>
+              Browse categories, search assets by name, and switch between preview pages quickly.
+            </p>
+          </div>
         </article>
 
         <article class="feature-card">
-          <div class="feature-icon"></div>
-          <h3>Advanced Placement</h3>
-          <p>
-            Place and aim lights directly in the viewport with interactive controls and fast iteration.
-          </p>
+          <div class="feature-inner">
+            <div class="feature-icon"></div>
+            <h3>Advanced Placement</h3>
+            <p>
+              Place and aim lights directly in the viewport with interactive controls and fast iteration.
+            </p>
+          </div>
         </article>
 
         <article class="feature-card">
-          <div class="feature-icon"></div>
-          <h3>Cycles and Eevee Workflows</h3>
-          <p>
-            Import the correct setup depending on the render backend and keep the workflow consistent.
-          </p>
+          <div class="feature-inner">
+            <div class="feature-icon"></div>
+            <h3>Cycles and Eevee Workflows</h3>
+            <p>
+              Import the correct setup depending on the render backend and keep the workflow consistent.
+            </p>
+          </div>
         </article>
 
         <article class="feature-card">
-          <div class="feature-icon"></div>
-          <h3>PaintMask Tools</h3>
-          <p>
-            Modify light textures directly by masking, repainting, restoring, or deleting the edited image.
-          </p>
+          <div class="feature-inner">
+            <div class="feature-icon"></div>
+            <h3>PaintMask Tools</h3>
+            <p>
+              Modify light textures directly by masking, repainting, restoring, or deleting the edited image.
+            </p>
+          </div>
         </article>
       </div>
     </section>
 
     <section class="section reveal" id="gallery">
       <div class="section-head">
+        <div class="section-chip liquid-sheen">Gallery</div>
         <h2>GIFs and Images</h2>
         <p>
           Replace the filenames below with your actual local media files in the repository.
@@ -718,68 +1029,92 @@
       <div class="media-grid">
         <div class="media-left">
           <div class="media-card media-large">
-            <img src="G.png" alt="Preview 1">
+            <div class="media-inner">
+              <img src="G.png" alt="Preview 1">
+            </div>
           </div>
         </div>
 
         <div class="media-right">
           <div class="media-card media-small">
-            <img src="YOUR_GIF_1.gif" alt="Preview 2">
+            <div class="media-inner">
+              <img src="YOUR_GIF_1.gif" alt="Preview 2">
+            </div>
           </div>
+
           <div class="media-card media-small">
-            <img src="YOUR_IMAGE_2.jpg" alt="Preview 3">
+            <div class="media-inner">
+              <img src="YOUR_IMAGE_2.jpg" alt="Preview 3">
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <section class="section reveal" id="addons">
-      <div class="section-head" style="text-align:center;">
+      <div class="section-head" style="text-align: center;">
+        <div class="section-chip liquid-sheen">Lazy3D</div>
         <h2>More Lazy3D Addons</h2>
-        <p style="margin-left:auto;margin-right:auto;">
-          A redesigned product grid based on your Blender Market block, adapted for the GitHub presentation.
+        <p style="margin-left: auto; margin-right: auto;">
+          A cleaner premium grid for the rest of the Lazy3D lineup.
         </p>
       </div>
 
       <div class="addons-grid">
         <a class="addon-card" href="https://superhivemarket.com/products/physical-fog-addon" target="_blank">
-          <img src="https://assets.superhivemarket.com/cache/ccc9462aa9ba7e7a1951a306910d3a0f.jpg" alt="Physical Fog">
-          <div class="addon-card-title">Physical Fog</div>
+          <div class="addon-inner">
+            <img src="https://assets.superhivemarket.com/cache/ccc9462aa9ba7e7a1951a306910d3a0f.jpg" alt="Physical Fog">
+            <div class="addon-card-title">Physical Fog</div>
+          </div>
         </a>
 
         <a class="addon-card" href="https://superhivemarket.com/products/lazy-composer-2-pro" target="_blank">
-          <img src="https://assets.superhivemarket.com/cache/8422a38a158a2f019bdaac8fd3ab05e7.png" alt="Lazy Composer 2 Pro">
-          <div class="addon-card-title">Lazy Composer 2 Pro</div>
+          <div class="addon-inner">
+            <img src="https://assets.superhivemarket.com/cache/8422a38a158a2f019bdaac8fd3ab05e7.png" alt="Lazy Composer 2 Pro">
+            <div class="addon-card-title">Lazy Composer 2 Pro</div>
+          </div>
         </a>
 
         <a class="addon-card" href="https://superhivemarket.com/products/fauna-master-pro" target="_blank">
-          <img src="https://assets.superhivemarket.com/cache/60686f07bbc879ade8381a9a3342c128.jpg" alt="Fauna Master Pro">
-          <div class="addon-card-title">Fauna Master Pro</div>
+          <div class="addon-inner">
+            <img src="https://assets.superhivemarket.com/cache/60686f07bbc879ade8381a9a3342c128.jpg" alt="Fauna Master Pro">
+            <div class="addon-card-title">Fauna Master Pro</div>
+          </div>
         </a>
 
         <a class="addon-card" href="https://blendermarket.com/products/physical-weather-master" target="_blank">
-          <img src="https://assets.superhivemarket.com/cache/9695dbd9f004846ec6eec88f8114b2f3.png" alt="Physical Weather FX">
-          <div class="addon-card-title">Physical Weather FX</div>
+          <div class="addon-inner">
+            <img src="https://assets.superhivemarket.com/cache/9695dbd9f004846ec6eec88f8114b2f3.png" alt="Physical Weather FX">
+            <div class="addon-card-title">Physical Weather FX</div>
+          </div>
         </a>
 
         <a class="addon-card" href="https://superhivemarket.com/products/water-vfx-master-real-time-fluid-effects" target="_blank">
-          <img src="https://assets.superhivemarket.com/cache/cfcfb17dc2af54669708d3cbcd20f923.png" alt="Water VFX Master">
-          <div class="addon-card-title">Water VFX Master</div>
+          <div class="addon-inner">
+            <img src="https://assets.superhivemarket.com/cache/cfcfb17dc2af54669708d3cbcd20f923.png" alt="Water VFX Master">
+            <div class="addon-card-title">Water VFX Master</div>
+          </div>
         </a>
 
         <a class="addon-card" href="https://superhivemarket.com/products/physical-water-deluxe" target="_blank">
-          <img src="https://assets.superhivemarket.com/cache/5ef578ab6304302c11de42a2ad6c9c39.png" alt="Physical Water FX">
-          <div class="addon-card-title">Physical Water FX</div>
+          <div class="addon-inner">
+            <img src="https://assets.superhivemarket.com/cache/5ef578ab6304302c11de42a2ad6c9c39.png" alt="Physical Water FX">
+            <div class="addon-card-title">Physical Water FX</div>
+          </div>
         </a>
 
         <a class="addon-card" href="https://superhivemarket.com/products/physical-cables-next-gen" target="_blank">
-          <img src="https://assets.superhivemarket.com/cache/051a59ae9f8decbaec40456d4fc98767.jpg" alt="Physical Cables Next-Gen">
-          <div class="addon-card-title">Physical Cables Next-Gen</div>
+          <div class="addon-inner">
+            <img src="https://assets.superhivemarket.com/cache/051a59ae9f8decbaec40456d4fc98767.jpg" alt="Physical Cables Next-Gen">
+            <div class="addon-card-title">Physical Cables Next-Gen</div>
+          </div>
         </a>
 
         <a class="addon-card" href="https://superhivemarket.com/products/geodroplets-plus-ultimate-droplet-toolkit" target="_blank">
-          <img src="https://assets.superhivemarket.com/cache/7928c9dbf63d3b85c3c3e5788e6d9adf.png" alt="GeoDroplets Plus">
-          <div class="addon-card-title">GeoDroplets Plus</div>
+          <div class="addon-inner">
+            <img src="https://assets.superhivemarket.com/cache/7928c9dbf63d3b85c3c3e5788e6d9adf.png" alt="GeoDroplets Plus">
+            <div class="addon-card-title">GeoDroplets Plus</div>
+          </div>
         </a>
       </div>
     </section>
