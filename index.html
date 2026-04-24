@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Light Master Pro | Artistic Lighting Toolkit</title>
+  <title>LightMaster Pro | Artistic Lighting Toolkit</title>
   <style>
     :root {
       --bg-1: #f7f7f9;
@@ -99,7 +99,7 @@
     .nav {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       gap: 18px;
       padding: 14px 18px;
       margin-bottom: 20px;
@@ -120,7 +120,8 @@
     .feature-card,
     .media-card,
     .addon-card,
-    .video-shell {
+    .video-shell,
+    .hero-banner {
       position: relative;
       overflow: hidden;
     }
@@ -171,27 +172,43 @@
         0 14px 24px rgba(0,0,0,0.16);
     }
 
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 14px;
-      transition: color 0.25s ease, transform 0.25s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-      transform: translateY(-1px);
-    }
-
     .hero {
-      padding: 62px 0 26px;
-      text-align: center;
+      padding: 8px 0 26px;
+    }
+
+    .hero-banner {
+      min-height: 640px;
+      border-radius: 40px;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid rgba(255,255,255,0.54);
+      background-image:
+        linear-gradient(180deg, rgba(8, 10, 16, 0.18) 0%, rgba(8, 10, 16, 0.42) 52%, rgba(8, 10, 16, 0.72) 100%),
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.10), transparent 24%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.08), transparent 20%),
+        url("https://assets.superhivemarket.com/store/productimage/1234087/image/xlarge_og-6cd286eb8fe69e0b9528b2517dee08b1.jpg");
+      background-size: cover;
+      background-position: center center;
+      display: flex;
+      align-items: flex-end;
+      padding: 44px;
+      isolation: isolate;
+    }
+
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.02) 35%, rgba(255,255,255,0.10) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 760px;
     }
 
     .liquid-pill {
@@ -200,67 +217,34 @@
       justify-content: center;
       padding: 11px 18px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.36);
-      border: 1px solid rgba(255, 255, 255, 0.74);
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.26);
       box-shadow: var(--shadow-sm);
       backdrop-filter: blur(30px) saturate(150%);
       -webkit-backdrop-filter: blur(30px) saturate(150%);
-      color: #45464d;
+      color: rgba(255,255,255,0.88);
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .hero h1 {
-      margin: 0 0 18px;
-      font-size: clamp(46px, 7vw, 96px);
-      line-height: 0.93;
+      margin: 0;
+      font-size: clamp(52px, 8vw, 108px);
+      line-height: 0.95;
       letter-spacing: -0.065em;
       font-weight: 760;
-    }
-
-    .hero-copy-glass {
-      display: inline-block;
-      padding: 0.02em 0.16em 0.08em;
-      border-radius: 0.32em;
-      background: linear-gradient(180deg, rgba(255,255,255,0.26), rgba(255,255,255,0.08));
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.34),
-        0 8px 20px rgba(255,255,255,0.12);
-      backdrop-filter: blur(10px) saturate(130%);
-      -webkit-backdrop-filter: blur(10px) saturate(130%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-copy-glass::after {
-      content: "";
-      position: absolute;
-      top: -20%;
-      left: -60%;
-      width: 50%;
-      height: 140%;
-      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.45), rgba(255,255,255,0));
-      transform: skewX(-22deg);
-      animation: sweepText 7.5s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .hero p {
-      max-width: 860px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: clamp(18px, 2vw, 22px);
-      line-height: 1.65;
+      color: #ffffff;
+      text-shadow: 0 14px 38px rgba(0,0,0,0.32);
     }
 
     .hero-actions {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 14px;
       flex-wrap: wrap;
-      margin-top: 32px;
+      margin-top: 28px;
     }
 
     .liquid-button {
@@ -274,10 +258,10 @@
       font-size: 15px;
       font-weight: 600;
       letter-spacing: -0.01em;
-      border: 1px solid rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.36);
       box-shadow:
-        0 16px 34px rgba(15, 16, 18, 0.10),
-        inset 0 1px 0 rgba(255,255,255,0.70);
+        0 16px 34px rgba(15, 16, 18, 0.18),
+        inset 0 1px 0 rgba(255,255,255,0.28);
       backdrop-filter: blur(28px) saturate(170%);
       -webkit-backdrop-filter: blur(28px) saturate(170%);
       transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
@@ -295,8 +279,8 @@
       inset: 1px;
       border-radius: inherit;
       background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.55), transparent 36%),
-        radial-gradient(circle at bottom right, rgba(255,255,255,0.16), transparent 42%);
+        radial-gradient(circle at top left, rgba(255,255,255,0.32), transparent 36%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,0.10), transparent 42%);
       pointer-events: none;
       z-index: 1;
     }
@@ -304,161 +288,21 @@
     .liquid-button.primary {
       color: #ffffff;
       background:
-        linear-gradient(180deg, rgba(30,144,255,0.84), rgba(10,132,255,0.88)),
-        rgba(255,255,255,0.14);
+        linear-gradient(180deg, rgba(30,144,255,0.62), rgba(10,132,255,0.64)),
+        rgba(255,255,255,0.10);
     }
 
     .liquid-button.secondary {
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.34);
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.12);
     }
 
     .liquid-button:hover {
       transform: translateY(-4px) scale(1.02);
       box-shadow:
-        0 22px 44px rgba(15, 16, 18, 0.14),
-        inset 0 1px 0 rgba(255,255,255,0.82);
-      border-color: rgba(255, 255, 255, 0.9);
-    }
-
-    .hero-preview {
-      margin-top: 36px;
-      padding: 18px;
-      border-radius: 38px;
-      background: rgba(255,255,255,0.28);
-      border: 1px solid rgba(255,255,255,0.70);
-      box-shadow: var(--shadow-xl);
-      backdrop-filter: blur(32px) saturate(150%);
-      -webkit-backdrop-filter: blur(32px) saturate(150%);
-      max-width: 980px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-preview-inner {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 16px;
-    }
-
-    .preview-panel,
-    .preview-stack-card {
-      border-radius: 28px;
-      background: rgba(255,255,255,0.34);
-      border: 1px solid rgba(255,255,255,0.72);
-      box-shadow: var(--shadow-md);
-      backdrop-filter: blur(24px) saturate(140%);
-      -webkit-backdrop-filter: blur(24px) saturate(140%);
-    }
-
-    .preview-panel {
-      min-height: 360px;
-      position: relative;
-      overflow: hidden;
-      padding: 18px;
-    }
-
-    .preview-panel::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 22% 24%, rgba(255,255,255,0.28), transparent 18%),
-        radial-gradient(circle at 68% 56%, rgba(90,200,250,0.20), transparent 24%),
-        radial-gradient(circle at 78% 30%, rgba(10,132,255,0.18), transparent 20%);
-      pointer-events: none;
-    }
-
-    .preview-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(15,16,18,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15,16,18,0.04) 1px, transparent 1px);
-      background-size: 28px 28px;
-      opacity: 0.38;
-    }
-
-    .light-streak {
-      position: absolute;
-      border-radius: 999px;
-      filter: blur(16px);
-      animation: pulse 5s ease-in-out infinite;
-    }
-
-    .light-streak.one {
-      width: 180px;
-      height: 42px;
-      top: 86px;
-      left: 48px;
-      background: rgba(255,255,255,0.95);
-    }
-
-    .light-streak.two {
-      width: 120px;
-      height: 34px;
-      top: 160px;
-      left: 120px;
-      background: rgba(90,200,250,0.75);
-      animation-delay: -1.2s;
-    }
-
-    .light-streak.three {
-      width: 170px;
-      height: 46px;
-      right: 40px;
-      bottom: 82px;
-      background: rgba(10,132,255,0.32);
-      animation-delay: -2.3s;
-    }
-
-    .preview-stack {
-      display: grid;
-      gap: 16px;
-    }
-
-    .preview-stack-card {
-      min-height: 172px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .preview-stack-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .mini-label {
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .mini-value {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -0.05em;
-    }
-
-    .bar {
-      height: 11px;
-      border-radius: 999px;
-      background: rgba(15,16,18,0.06);
-      overflow: hidden;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
-    }
-
-    .bar > span {
-      display: block;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, rgba(90,200,250,0.95), rgba(10,132,255,0.95));
-      box-shadow: 0 8px 16px rgba(10,132,255,0.24);
-      animation: growBar 2.2s ease both;
+        0 22px 44px rgba(15, 16, 18, 0.22),
+        inset 0 1px 0 rgba(255,255,255,0.34);
+      border-color: rgba(255, 255, 255, 0.46);
     }
 
     .section {
@@ -739,90 +583,12 @@
       transform: translateY(0);
     }
 
-    .scroll-reveal-image {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 16px;
-      border-radius: 34px;
-      background: rgba(255,255,255,0.28);
-      border: 1px solid rgba(255,255,255,0.72);
-      box-shadow: 0 24px 60px rgba(15,16,18,0.10);
-      backdrop-filter: blur(28px) saturate(150%);
-      -webkit-backdrop-filter: blur(28px) saturate(150%);
-      overflow: hidden;
-      position: relative;
-      will-change: opacity, transform, filter;
-      opacity: 0;
-      transform: translateY(60px) scale(0.94);
-      filter: blur(18px);
-    }
-    
-    .scroll-reveal-image::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(120deg,
-          rgba(255,255,255,0.00) 0%,
-          rgba(255,255,255,0.00) 28%,
-          rgba(255,255,255,0.18) 40%,
-          rgba(255,255,255,0.38) 50%,
-          rgba(255,255,255,0.16) 60%,
-          rgba(255,255,255,0.00) 72%,
-          rgba(255,255,255,0.00) 100%);
-      transform: translateX(-120%);
-      animation: sheenMove 9s linear infinite;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .scroll-reveal-image.visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      filter: blur(0);
-    }
-
-    .scroll-reveal-image img {
-      display: block;
-      width: 100%;
-      border-radius: 24px;
-      box-shadow: 0 20px 42px rgba(15,16,18,0.16);
-      opacity: 0;
-      transform: scale(1.04);
-      will-change: opacity, transform;
-    }
-
-    .scroll-reveal-image.visible img {
-      opacity: 1;
-      transform: scale(1);
-    }
-
     @keyframes orbFloat {
       0%, 100% {
         transform: translate3d(0, 0, 0) scale(1);
       }
       50% {
         transform: translate3d(20px, 24px, 0) scale(1.06);
-      }
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-        opacity: 0.88;
-      }
-      50% {
-        transform: scale(1.08);
-        opacity: 1;
-      }
-    }
-
-    @keyframes growBar {
-      from {
-        width: 0%;
-      }
-      to {
-        width: var(--fill, 72%);
       }
     }
 
@@ -838,24 +604,6 @@
       }
     }
 
-    @keyframes sweepText {
-      0%, 18% {
-        transform: translateX(0) skewX(-22deg);
-        opacity: 0;
-      }
-      24% {
-        opacity: 1;
-      }
-      40% {
-        transform: translateX(260%) skewX(-22deg);
-        opacity: 0;
-      }
-      100% {
-        transform: translateX(260%) skewX(-22deg);
-        opacity: 0;
-      }
-    }
-
     @media (max-width: 1080px) {
       .addons-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -863,11 +611,15 @@
     }
 
     @media (max-width: 960px) {
-      .hero-preview-inner,
       .features-grid,
       .media-grid,
       .addons-grid {
         grid-template-columns: 1fr;
+      }
+
+      .hero-banner {
+        min-height: 520px;
+        padding: 28px;
       }
     }
 
@@ -881,33 +633,23 @@
         padding: 14px;
       }
 
-      .nav-links {
-        display: none;
+      .hero-banner {
+        min-height: 460px;
+        padding: 24px;
+        border-radius: 30px;
       }
 
       .content-pad {
         padding: 24px;
       }
 
-      .hero {
-        padding-top: 46px;
-      }
-
       .hero-actions {
-        margin-top: 24px;
+        margin-top: 22px;
       }
 
       .liquid-button {
         width: 100%;
         max-width: 320px;
-      }
-
-      .hero-preview {
-        padding: 14px;
-      }
-
-      .preview-panel {
-        min-height: 280px;
       }
     }
   </style>
@@ -924,57 +666,18 @@
         <div class="brand-mark"></div>
         <div>Light Master Pro</div>
       </div>
-
-      <div class="nav-links">
-        <a href="#overview">Overview</a>
-        <a href="#video">Video</a>
-        <a href="#features">Features</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#addons">More Addons</a>
-        <a href="#preview-reveal">Preview</a>
-      </div>
     </nav>
 
     <section class="hero reveal">
-      <div class="liquid-pill">Artistic Lighting Toolkit</div>
+      <div class="hero-banner">
+        <div class="hero-content">
+          <div class="liquid-pill">Artistic Lighting Toolkit</div>
 
-      <h1>
-        Fast, texture-driven
-        <span class="hero-copy-glass">lighting workflow</span>
-        for Blender.
-      </h1>
+          <h1>LightMaster Pro</h1>
 
-      <p>
-        Browse light assets, import ready-made setups, place them directly in the viewport,
-        and refine the final look with one focused, modern workflow built for fast visual results.
-      </p>
-
-      <div class="hero-actions">
-        <a class="liquid-button primary" href="#video"><span>Watch Overview</span></a>
-        <a class="liquid-button secondary" href="#features"><span>Explore Features</span></a>
-      </div>
-
-      <div class="hero-preview liquid-sheen">
-        <div class="hero-preview-inner">
-          <div class="preview-panel">
-            <div class="preview-grid"></div>
-            <div class="light-streak one"></div>
-            <div class="light-streak two"></div>
-            <div class="light-streak three"></div>
-          </div>
-
-          <div class="preview-stack">
-            <div class="preview-stack-card">
-              <div class="mini-label">Advanced Placement</div>
-              <div class="mini-value">Realtime</div>
-              <div class="bar"><span style="--fill: 76%; width: 76%;"></span></div>
-            </div>
-
-            <div class="preview-stack-card">
-              <div class="mini-label">Light Control</div>
-              <div class="mini-value">Precision</div>
-              <div class="bar"><span style="--fill: 84%; width: 84%;"></span></div>
-            </div>
+          <div class="hero-actions">
+            <a class="liquid-button primary" href="#video"><span>Watch Overview</span></a>
+            <a class="liquid-button secondary" href="#features"><span>Explore Features</span></a>
           </div>
         </div>
       </div>
@@ -1173,25 +876,8 @@
       </div>
     </section>
 
-    <section class="section" id="preview-reveal">
-      <div class="section-head" style="text-align:center;">
-        <div class="section-chip liquid-sheen">Preview</div>
-        <h2>Lighting Preview</h2>
-        <p style="margin-left:auto;margin-right:auto;">
-          Scroll down to reveal the image.
-        </p>
-      </div>
-
-      <div class="scroll-reveal-image" id="scrollRevealImage">
-        <img
-          src="https://assets.superhivemarket.com/store/productimage/1234087/image/xlarge_og-6cd286eb8fe69e0b9528b2517dee08b1.jpg"
-          alt="Light Master Pro Preview"
-        />
-      </div>
-    </section>
-
     <footer class="footer">
-      Light Master Pro | Artistic Lighting Toolkit
+      LightMaster Pro | Artistic Lighting Toolkit
     </footer>
   </main>
 
@@ -1211,80 +897,18 @@
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add("visible");
-              obs.unobserve(entry.target);
+            } else {
+              entry.target.classList.remove("visible");
             }
           });
         }, {
-          threshold: 0.08,
-          rootMargin: "0px 0px -8% 0px"
+          threshold: 0.12
         });
 
         revealItems.forEach((item) => sectionObserver.observe(item));
       } else {
         revealItems.forEach((item) => item.classList.add("visible"));
       }
-
-      const revealImage = document.getElementById("scrollRevealImage");
-
-      function clamp(value, min, max) {
-        return Math.max(min, Math.min(max, value));
-      }
-    
-      function easeOutCubic(t) {
-        return 1 - Math.pow(1 - t, 3);
-      }
-    
-      function updateScrollRevealImage() {
-        if (!revealImage) return;
-    
-        const rect = revealImage.getBoundingClientRect();
-        const vh = window.innerHeight || document.documentElement.clientHeight;
-    
-        const elementCenter = rect.top + rect.height / 2;
-        const viewportCenter = vh / 2;
-    
-        const distance = Math.abs(elementCenter - viewportCenter);
-    
-        const maxDistance = (vh * 0.7) + (rect.height * 0.5);
-        let progress = 1 - distance / maxDistance;
-        progress = clamp(progress, 0, 1);
-    
-        const eased = easeOutCubic(progress);
-    
-        const opacity = eased;
-        const translateY = 60 * (1 - eased);
-        const scale = 0.94 + (0.06 * eased);
-        const blur = 18 * (1 - eased);
-    
-        revealImage.style.opacity = opacity;
-        revealImage.style.transform = `translateY(${translateY}px) scale(${scale})`;
-        revealImage.style.filter = `blur(${blur}px)`;
-    
-        const img = revealImage.querySelector("img");
-        if (img) {
-          const imgOpacity = clamp(eased * 1.08, 0, 1);
-          const imgScale = 1.04 - (0.04 * eased);
-          img.style.opacity = imgOpacity;
-          img.style.transform = `scale(${imgScale})`;
-        }
-      }
-    
-      let revealTicking = false;
-    
-      function requestRevealUpdate() {
-        if (!revealTicking) {
-          window.requestAnimationFrame(() => {
-            updateScrollRevealImage();
-            revealTicking = false;
-          });
-          revealTicking = true;
-        }
-      }
-    
-      window.addEventListener("scroll", requestRevealUpdate, { passive: true });
-      window.addEventListener("resize", requestRevealUpdate);
-      window.addEventListener("load", requestRevealUpdate);
-      document.addEventListener("DOMContentLoaded", requestRevealUpdate);
     });
   </script>
 </body>
