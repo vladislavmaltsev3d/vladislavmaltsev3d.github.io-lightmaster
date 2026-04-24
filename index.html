@@ -54,7 +54,7 @@
       filter: blur(80px);
       pointer-events: none;
       z-index: 0;
-      opacity: 0.7;
+      opacity: 1;
       animation: orbFloat 18s ease-in-out infinite;
     }
 
@@ -151,21 +151,46 @@
     }
 
     .hero-banner {
+      --compare: 0%;
       min-height: 640px;
       border-radius: 40px;
       box-shadow: var(--shadow-xl);
       border: 1px solid rgba(255,255,255,0.54);
+      background: #0f1117;
+      isolation: isolate;
+    }
+
+    .hero-compare-stage {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    .hero-image.before {
       background-image:
-        linear-gradient(180deg, rgba(8, 10, 16, 0.18) 0%, rgba(8, 10, 16, 0.42) 52%, rgba(8, 10, 16, 0.72) 100%),
+        linear-gradient(180deg, rgba(8, 10, 16, 0.12) 0%, rgba(8, 10, 16, 0.28) 55%, rgba(8, 10, 16, 0.58) 100%),
+        url("https://assets.superhivemarket.com/store/product/250614/image/xlarge-906298e1dbf96a9dc4587eded7af8169.jpg");
+    }
+
+    .hero-image.after {
+      background-image:
+        linear-gradient(180deg, rgba(8, 10, 16, 0.14) 0%, rgba(8, 10, 16, 0.32) 55%, rgba(8, 10, 16, 0.68) 100%),
         radial-gradient(circle at 20% 20%, rgba(255,255,255,0.10), transparent 24%),
         radial-gradient(circle at 80% 30%, rgba(255,255,255,0.08), transparent 20%),
         url("https://assets.superhivemarket.com/store/productimage/1234087/image/xlarge_og-6cd286eb8fe69e0b9528b2517dee08b1.jpg");
-      background-size: cover;
-      background-position: center center;
-      display: flex;
-      align-items: flex-end;
-      padding: 44px;
-      isolation: isolate;
+      clip-path: inset(0 calc(100% - var(--compare)) 0 0);
+      transition: clip-path 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: clip-path;
     }
 
     .hero-banner::after {
@@ -174,15 +199,125 @@
       inset: 0;
       border-radius: inherit;
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.02) 35%, rgba(255,255,255,0.10) 100%);
+        linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02) 35%, rgba(255,255,255,0.08) 100%);
       pointer-events: none;
-      z-index: 1;
+      z-index: 2;
+    }
+
+    .hero-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--compare);
+      width: 0;
+      z-index: 4;
+      pointer-events: none;
+      transition: left 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: left;
+    }
+
+    .hero-divider::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -0.5px;
+      width: 1px;
+      background: rgba(255,255,255,0.38);
+      box-shadow: 0 0 12px rgba(0,0,0,0.18);
+    }
+
+    .hero-toggle {
+      position: absolute;
+      top: 20%;
+      left: clamp(28px, var(--compare), calc(100% - 28px));
+      z-index: 7;
+      width: 46px;
+      height: 60px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+      transition: left 1.15s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .hero-toggle:hover {
+      opacity: 0.7;
+    }
+
+    .hero-toggle::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      border-top: 2px solid #ffffff;
+      border-right: 2px solid #ffffff;
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.42));
+      transform: translate(-58%, -50%) rotate(45deg);
+      animation: arrowHintRight 1.45s ease-in-out 0.45s 5;
+    }
+
+    .hero-toggle::after {
+      content: "click";
+      position: absolute;
+      top: 50%;
+      left: 40px;
+      transform: translateY(-50%);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      animation: clickHintRight 1.45s ease-in-out 0.45s 5;
+    }
+
+    .hero-toggle.is-after::before {
+      transform: translate(-42%, -50%) rotate(225deg);
+      animation: arrowHintLeft 1.45s ease-in-out 0.45s 3;
+    }
+
+    .hero-toggle.is-after::after {
+      left: auto;
+      right: 40px;
+      animation: clickHintLeft 1.45s ease-in-out 0.45s 3;
+    }
+
+    .hero-toggle.is-used::before {
+      animation: none;
+    }
+
+    .hero-toggle.is-used::after {
+      opacity: 0;
+      animation: none;
     }
 
     .hero-content {
       position: relative;
-      z-index: 3;
+      z-index: 6;
       max-width: 760px;
+      margin-top: 340px;
+      margin-left: 44px;
+      margin-bottom: 44px;
+      padding: 0;
+      background: none;
+      border: none;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      pointer-events: none;
+    }
+
+    .hero-content a,
+    .hero-content button {
+      pointer-events: auto;
     }
 
     .liquid-pill {
@@ -210,7 +345,9 @@
       letter-spacing: 0em;
       font-weight: 760;
       color: #ffffff;
-      text-shadow: 0 14px 38px rgba(0,0,0,0.32);
+      text-shadow:
+        0 14px 38px rgba(0,0,0,0.32),
+        0 2px 10px rgba(0,0,0,0.24);
     }
 
     .hero-actions {
@@ -579,6 +716,42 @@
       }
     }
 
+    @keyframes arrowHintRight {
+      0%, 100% {
+        transform: translate(-58%, -50%) rotate(45deg);
+      }
+      50% {
+        transform: translate(-22%, -50%) rotate(45deg);
+      }
+    }
+
+    @keyframes arrowHintLeft {
+      0%, 100% {
+        transform: translate(-42%, -50%) rotate(225deg);
+      }
+      50% {
+        transform: translate(-78%, -50%) rotate(225deg);
+      }
+    }
+
+    @keyframes clickHintRight {
+      0%, 100% {
+        transform: translate(0, -50%);
+      }
+      50% {
+        transform: translate(10px, -50%);
+      }
+    }
+
+    @keyframes clickHintLeft {
+      0%, 100% {
+        transform: translate(0, -50%);
+      }
+      50% {
+        transform: translate(-10px, -50%);
+      }
+    }
+
     @media (max-width: 1080px) {
       .addons-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -593,8 +766,14 @@
       }
 
       .hero-banner {
-        min-height: 520px;
-        padding: 28px;
+        min-height: 560px;
+      }
+
+      .hero-content {
+        margin-top: 300px;
+        margin-left: 28px;
+        margin-right: 28px;
+        margin-bottom: 28px;
       }
     }
 
@@ -604,17 +783,20 @@
       }
 
       .hero-banner {
-        min-height: 460px;
-        padding: 24px;
+        min-height: 500px;
         border-radius: 30px;
       }
 
-      .hero h1 {
-        font-size: clamp(44px, 15vw, 72px);
+      .hero-content {
+        margin-top: 250px;
+        margin-left: 18px;
+        margin-right: 18px;
+        margin-bottom: 18px;
+        padding: 0;
       }
 
-      .content-pad {
-        padding: 24px;
+      .hero h1 {
+        font-size: clamp(42px, 14vw, 70px);
       }
 
       .hero-actions {
@@ -624,6 +806,25 @@
       .liquid-button {
         width: 100%;
         max-width: 320px;
+      }
+
+      .hero-toggle {
+        width: 42px;
+        height: 54px;
+        left: clamp(24px, var(--compare), calc(100% - 24px));
+      }
+
+      .hero-toggle::after {
+        left: 36px;
+        font-size: 10px;
+      }
+
+      .hero-toggle.is-after::after {
+        right: 36px;
+      }
+
+      .content-pad {
+        padding: 24px;
       }
     }
   </style>
@@ -637,11 +838,25 @@
 
   <main class="page">
     <section class="hero reveal">
-      <div class="hero-banner">
+      <div class="hero-banner" id="heroCompareBox">
+        <div class="hero-compare-stage">
+          <div class="hero-image before"></div>
+          <div class="hero-image after" id="heroAfterImage"></div>
+
+          <div class="hero-divider"></div>
+
+          <button
+            class="hero-toggle"
+            id="heroToggle"
+            type="button"
+            aria-label="Show after image">
+          </button>
+        </div>
+
         <div class="hero-content">
           <div class="liquid-pill">Artistic Lighting Toolkit</div>
 
-          <h1>Light Master Pro</h1>
+          <h1>LightMaster Pro</h1>
 
           <div class="hero-actions">
             <a class="liquid-button primary" href="#video"><span>Watch Overview</span></a>
@@ -680,7 +895,7 @@
         <div class="video-wrap">
           <iframe
             src="https://www.youtube.com/embed/ujGnTHjr3vg?rel=0"
-            title="Light Master Pro Video"
+            title="LightMaster Pro Video"
             loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
@@ -693,7 +908,7 @@
       <div class="section-head">
         <h2><strong>Key Features</strong></h2>
         <p>
-          Explore the core features and capabilities of <strong>Light Master Pro</strong>.
+          Explore the core features and capabilities of <strong>LightMaster Pro</strong>.
         </p>
       </div>
 
@@ -753,7 +968,7 @@
         <div class="media-left">
           <div class="media-card media-large">
             <div class="media-inner">
-              <img src="G.png" alt="Light Master Pro preview">
+              <img src="G.png" alt="LightMaster Pro preview">
             </div>
           </div>
         </div>
@@ -874,6 +1089,33 @@
         revealItems.forEach((item) => sectionObserver.observe(item));
       } else {
         revealItems.forEach((item) => item.classList.add("visible"));
+      }
+
+      const heroCompareBox = document.getElementById("heroCompareBox");
+      const heroToggle = document.getElementById("heroToggle");
+
+      let heroIsAfter = false;
+
+      function setHeroComparison(showAfter) {
+        heroIsAfter = showAfter;
+
+        const value = heroIsAfter ? 100 : 0;
+        heroCompareBox.style.setProperty("--compare", value + "%");
+
+        heroToggle.classList.toggle("is-after", heroIsAfter);
+        heroToggle.setAttribute(
+          "aria-label",
+          heroIsAfter ? "Show before image" : "Show after image"
+        );
+      }
+
+      if (heroCompareBox && heroToggle) {
+        setHeroComparison(false);
+
+        heroToggle.addEventListener("click", () => {
+          heroToggle.classList.add("is-used");
+          setHeroComparison(!heroIsAfter);
+        });
       }
     });
   </script>
