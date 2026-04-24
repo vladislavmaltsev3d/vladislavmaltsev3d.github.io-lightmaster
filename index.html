@@ -54,7 +54,7 @@
       filter: blur(80px);
       pointer-events: none;
       z-index: 0;
-      opacity: 1;
+      opacity: 0.7;
       animation: orbFloat 18s ease-in-out infinite;
     }
 
@@ -151,7 +151,7 @@
     }
 
     .hero-banner {
-      --compare: 0%;
+      --compare: 100%;
       min-height: 640px;
       border-radius: 40px;
       box-shadow: var(--shadow-xl);
@@ -229,23 +229,25 @@
 
     .hero-toggle {
       position: absolute;
-      top: 20%;
+      top: 18%;
       left: clamp(28px, var(--compare), calc(100% - 28px));
       z-index: 7;
-      width: 46px;
+      width: 54px;
       height: 60px;
       padding: 0;
       border: none;
       background: transparent;
       cursor: pointer;
       transform: translate(-50%, -50%);
-      transition: left 1.15s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+      transition:
+        left 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.25s ease;
       appearance: none;
       -webkit-appearance: none;
     }
 
     .hero-toggle:hover {
-      opacity: 0.7;
+      opacity: 1;
     }
 
     .hero-toggle::before {
@@ -258,15 +260,15 @@
       border-top: 2px solid #ffffff;
       border-right: 2px solid #ffffff;
       filter: drop-shadow(0 1px 3px rgba(0,0,0,0.42));
-      transform: translate(-58%, -50%) rotate(45deg);
-      animation: arrowHintRight 1.45s ease-in-out 0.45s 5;
+      transform: translate(-42%, -50%) rotate(225deg);
+      animation: arrowHintLeft 1.45s ease-in-out infinite;
     }
 
     .hero-toggle::after {
       content: "click";
       position: absolute;
       top: 50%;
-      left: 40px;
+      right: 50px;
       transform: translateY(-50%);
       font-size: 11px;
       font-weight: 600;
@@ -275,28 +277,19 @@
       color: #ffffff;
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
       pointer-events: none;
-      transition: opacity 0.25s ease;
-      animation: clickHintRight 1.45s ease-in-out 0.45s 5;
+      animation: clickHintLeft 1.45s ease-in-out infinite;
+      white-space: nowrap;
     }
 
-    .hero-toggle.is-after::before {
-      transform: translate(-42%, -50%) rotate(225deg);
-      animation: arrowHintLeft 1.45s ease-in-out 0.45s 3;
+    .hero-toggle.is-before::before {
+      transform: translate(-58%, -50%) rotate(45deg);
+      animation: arrowHintRight 1.45s ease-in-out infinite;
     }
 
-    .hero-toggle.is-after::after {
-      left: auto;
-      right: 40px;
-      animation: clickHintLeft 1.45s ease-in-out 0.45s 3;
-    }
-
-    .hero-toggle.is-used::before {
-      animation: none;
-    }
-
-    .hero-toggle.is-used::after {
-      opacity: 0;
-      animation: none;
+    .hero-toggle.is-before::after {
+      left: 50px;
+      right: auto;
+      animation: clickHintRight 1.45s ease-in-out infinite;
     }
 
     .hero-content {
@@ -313,6 +306,10 @@
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
       pointer-events: none;
+      transition:
+        transform 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.65s ease,
+        filter 0.65s ease;
     }
 
     .hero-content a,
@@ -336,6 +333,10 @@
       text-transform: uppercase;
       letter-spacing: 0.14em;
       margin-bottom: 18px;
+      transition:
+        opacity 0.55s ease,
+        transform 0.55s ease,
+        margin 0.55s ease;
     }
 
     .hero h1 {
@@ -348,6 +349,10 @@
       text-shadow:
         0 14px 38px rgba(0,0,0,0.32),
         0 2px 10px rgba(0,0,0,0.24);
+      transition:
+        opacity 0.65s ease,
+        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.65s ease;
     }
 
     .hero-actions {
@@ -356,6 +361,110 @@
       gap: 14px;
       flex-wrap: wrap;
       margin-top: 28px;
+      transition:
+        opacity 0.55s ease,
+        transform 0.55s ease,
+        max-height 0.55s ease,
+        margin 0.55s ease;
+      max-height: 120px;
+      overflow: hidden;
+    }
+
+    .hero-banner.is-before-view .hero-content {
+      opacity: 0;
+      transform: translateY(72px);
+      filter: blur(8px);
+    }
+
+    .hero-banner.is-before-view .liquid-pill {
+      opacity: 0;
+      transform: translateY(10px);
+      margin-bottom: 0;
+    }
+
+    .hero-banner.is-before-view .hero-actions {
+      opacity: 0;
+      transform: translateY(12px);
+      max-height: 0;
+      margin-top: 8px;
+      pointer-events: none;
+    }
+
+    .hero-banner.is-before-view h1 {
+      opacity: 0;
+      transform: translateY(34px);
+      filter: blur(8px);
+    }
+
+    .hero-state-note {
+      position: absolute;
+      right: 32px;
+      bottom: 38px;
+      z-index: 6;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 320px;
+      max-width: 420px;
+      padding: 14px 16px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.20);
+      box-shadow: 0 20px 44px rgba(0,0,0,0.18);
+      backdrop-filter: blur(24px) saturate(140%);
+      -webkit-backdrop-filter: blur(24px) saturate(140%);
+      opacity: 0;
+      transform: translateY(22px);
+      pointer-events: none;
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+    }
+
+    .hero-banner.is-before-view .hero-state-note {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-state-thumb {
+      flex: 0 0 72px;
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      background-image:
+        linear-gradient(180deg, rgba(8, 10, 16, 0.08) 0%, rgba(8, 10, 16, 0.30) 100%),
+        url("https://assets.superhivemarket.com/store/product/250614/image/xlarge-906298e1dbf96a9dc4587eded7af8169.jpg");
+      background-size: cover;
+      background-position: center center;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.16);
+    }
+
+    .hero-state-copy {
+      color: #ffffff;
+    }
+
+    .hero-state-kicker {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.62);
+      margin-bottom: 6px;
+    }
+
+    .hero-state-title {
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .hero-state-copy p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.80);
     }
 
     .liquid-button {
@@ -375,7 +484,11 @@
         inset 0 1px 0 rgba(255,255,255,0.28);
       backdrop-filter: blur(28px) saturate(170%);
       -webkit-backdrop-filter: blur(28px) saturate(170%);
-      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+      transition:
+        transform 0.28s ease,
+        box-shadow 0.28s ease,
+        border-color 0.28s ease,
+        background 0.28s ease;
       isolation: isolate;
     }
 
@@ -736,19 +849,19 @@
 
     @keyframes clickHintRight {
       0%, 100% {
-        transform: translate(0, -50%);
+        transform: translateY(-50%) translateX(0);
       }
       50% {
-        transform: translate(10px, -50%);
+        transform: translateY(-50%) translateX(6px);
       }
     }
 
     @keyframes clickHintLeft {
       0%, 100% {
-        transform: translate(0, -50%);
+        transform: translateY(-50%) translateX(0);
       }
       50% {
-        transform: translate(-10px, -50%);
+        transform: translateY(-50%) translateX(-6px);
       }
     }
 
@@ -766,7 +879,7 @@
       }
 
       .hero-banner {
-        min-height: 560px;
+        min-height: 600px;
       }
 
       .hero-content {
@@ -774,6 +887,16 @@
         margin-left: 28px;
         margin-right: 28px;
         margin-bottom: 28px;
+      }
+
+      .hero-banner.is-before-view .hero-content {
+        transform: translateY(60px);
+      }
+
+      .hero-state-note {
+        right: 24px;
+        bottom: 24px;
+        max-width: 360px;
       }
     }
 
@@ -783,7 +906,7 @@
       }
 
       .hero-banner {
-        min-height: 500px;
+        min-height: 540px;
         border-radius: 30px;
       }
 
@@ -793,6 +916,10 @@
         margin-right: 18px;
         margin-bottom: 18px;
         padding: 0;
+      }
+
+      .hero-banner.is-before-view .hero-content {
+        transform: translateY(46px);
       }
 
       .hero h1 {
@@ -812,15 +939,41 @@
         width: 42px;
         height: 54px;
         left: clamp(24px, var(--compare), calc(100% - 24px));
+        top: 16%;
       }
 
       .hero-toggle::after {
-        left: 36px;
         font-size: 10px;
+        right: 46px;
       }
 
-      .hero-toggle.is-after::after {
-        right: 36px;
+      .hero-toggle.is-before::after {
+        left: 46px;
+        right: auto;
+      }
+
+      .hero-state-note {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+        min-width: 0;
+        max-width: none;
+        padding: 12px;
+        gap: 12px;
+      }
+
+      .hero-state-thumb {
+        flex-basis: 58px;
+        width: 58px;
+        height: 58px;
+      }
+
+      .hero-state-title {
+        font-size: 18px;
+      }
+
+      .hero-state-copy p {
+        font-size: 13px;
       }
 
       .content-pad {
@@ -841,7 +994,7 @@
       <div class="hero-banner" id="heroCompareBox">
         <div class="hero-compare-stage">
           <div class="hero-image before"></div>
-          <div class="hero-image after" id="heroAfterImage"></div>
+          <div class="hero-image after"></div>
 
           <div class="hero-divider"></div>
 
@@ -849,7 +1002,7 @@
             class="hero-toggle"
             id="heroToggle"
             type="button"
-            aria-label="Show after image">
+            aria-label="Show Default Blender Light">
           </button>
         </div>
 
@@ -861,6 +1014,15 @@
           <div class="hero-actions">
             <a class="liquid-button primary" href="#video"><span>Watch Overview</span></a>
             <a class="liquid-button secondary" href="#features"><span>Explore Features</span></a>
+          </div>
+        </div>
+
+        <div class="hero-state-note">
+          <div class="hero-state-thumb"></div>
+          <div class="hero-state-copy">
+            <div class="hero-state-kicker">Current view</div>
+            <div class="hero-state-title">Default Blender Light</div>
+            <p>Press again to switch to LightMaster Pro.</p>
           </div>
         </div>
       </div>
@@ -1094,7 +1256,7 @@
       const heroCompareBox = document.getElementById("heroCompareBox");
       const heroToggle = document.getElementById("heroToggle");
 
-      let heroIsAfter = false;
+      let heroIsAfter = true;
 
       function setHeroComparison(showAfter) {
         heroIsAfter = showAfter;
@@ -1102,18 +1264,19 @@
         const value = heroIsAfter ? 100 : 0;
         heroCompareBox.style.setProperty("--compare", value + "%");
 
-        heroToggle.classList.toggle("is-after", heroIsAfter);
+        heroCompareBox.classList.toggle("is-before-view", !heroIsAfter);
+        heroToggle.classList.toggle("is-before", !heroIsAfter);
+
         heroToggle.setAttribute(
           "aria-label",
-          heroIsAfter ? "Show before image" : "Show after image"
+          heroIsAfter ? "Show Default Blender Light" : "Show LightMaster Pro"
         );
       }
 
       if (heroCompareBox && heroToggle) {
-        setHeroComparison(false);
+        setHeroComparison(true);
 
         heroToggle.addEventListener("click", () => {
-          heroToggle.classList.add("is-used");
           setHeroComparison(!heroIsAfter);
         });
       }
