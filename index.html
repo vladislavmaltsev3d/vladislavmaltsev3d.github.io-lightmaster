@@ -112,7 +112,8 @@
     .media-card,
     .addon-card,
     .video-shell,
-    .hero-banner {
+    .hero-banner,
+    .variation-card {
       position: relative;
       overflow: hidden;
     }
@@ -129,7 +130,8 @@
     .feature-card::before,
     .media-card::before,
     .addon-card::before,
-    .video-shell::before {
+    .video-shell::before,
+    .variation-card::before {
       content: "";
       position: absolute;
       inset: -1px;
@@ -551,7 +553,8 @@
     .feature-card::after,
     .media-card::after,
     .addon-card::after,
-    .video-shell::after {
+    .video-shell::after,
+    .variation-card::after {
       content: "";
       position: absolute;
       inset: 0;
@@ -975,6 +978,164 @@
       display: block;
     }
 
+    .variations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .variation-card {
+      background: rgba(255,255,255,0.30);
+      border: 1px solid rgba(255,255,255,0.74);
+      border-radius: 30px;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(26px) saturate(145%);
+      -webkit-backdrop-filter: blur(26px) saturate(145%);
+      padding: 28px;
+      min-height: 260px;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .variation-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow-xl);
+      border-color: rgba(255,255,255,0.92);
+    }
+
+    .variation-card.featured {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.42), rgba(255,255,255,0.28)),
+        rgba(255,255,255,0.32);
+      border-color: rgba(255,255,255,0.92);
+      box-shadow:
+        0 24px 60px rgba(15, 16, 18, 0.12),
+        0 0 48px rgba(90,200,250,0.16);
+    }
+
+    .variation-inner {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .variation-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .variation-name {
+      font-size: 26px;
+      font-weight: 750;
+      letter-spacing: -0.04em;
+      margin: 0;
+    }
+
+    .variation-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.38);
+      border: 1px solid rgba(255,255,255,0.72);
+      box-shadow: var(--shadow-sm);
+      color: #4d4e56;
+      font-size: 11px;
+      font-weight: 650;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .variation-price {
+      display: flex;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .variation-sale-price {
+      font-size: 48px;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      font-weight: 800;
+    }
+
+    .variation-sale-price span {
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      color: var(--muted);
+      font-weight: 600;
+      margin-left: 4px;
+    }
+
+    .variation-old-price {
+      position: relative;
+      bottom: 4px;
+      color: rgba(106, 107, 115, 0.72);
+      font-size: 22px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      font-weight: 750;
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+      text-decoration-color: rgba(106, 107, 115, 0.78);
+    }
+
+    .variation-sale-tag {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #0a5bc2;
+      background: rgba(10,132,255,0.10);
+      border: 1px solid rgba(10,132,255,0.18);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .variation-description {
+      margin: 0 0 18px;
+      color: #555861;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .variation-assets {
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid rgba(15,16,18,0.08);
+      color: #23242a;
+      font-size: 15px;
+      font-weight: 650;
+      line-height: 1.45;
+    }
+
+    .variation-assets strong {
+      font-size: 18px;
+    }
+
+    .variation-note {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
     .addons-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1214,12 +1375,17 @@
       .addons-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
+
+      .variations-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 960px) {
       .features-grid,
       .media-grid,
-      .addons-grid {
+      .addons-grid,
+      .variations-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1370,6 +1536,19 @@
 
       .step-demo-restore-label {
         font-size: 11px;
+      }
+
+      .variation-card {
+        padding: 24px;
+        min-height: 230px;
+      }
+
+      .variation-sale-price {
+        font-size: 42px;
+      }
+
+      .variation-old-price {
+        font-size: 20px;
       }
 
       .back-top-button {
@@ -1575,6 +1754,93 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="variations">
+      <div class="section-head" style="text-align: center;">
+        <div class="section-chip liquid-sheen">Variations</div>
+        <h2>Choose your edition</h2>
+        <p style="margin-left: auto; margin-right: auto;">
+          Pick the version that fits your workflow - from a compact light library to the complete LightMaster Pro collection.
+        </p>
+      </div>
+
+      <div class="variations-grid">
+        <article class="variation-card">
+          <div class="variation-inner">
+            <div class="variation-topline">
+              <h3 class="variation-name">Lite</h3>
+              <div class="variation-badge">Starter</div>
+            </div>
+
+            <div class="variation-price">
+              <div class="variation-sale-price">$9<span>USD</span></div>
+              <div class="variation-old-price">$18</div>
+            </div>
+
+            <div class="variation-sale-tag">Launch Sale</div>
+
+            <p class="variation-description">
+              A focused entry version for artists who want to improve their lighting quickly without a large asset library.
+            </p>
+
+            <div class="variation-assets">
+              <strong>100 assets</strong>
+              <div class="variation-note">Essential artistic lighting collection.</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="variation-card">
+          <div class="variation-inner">
+            <div class="variation-topline">
+              <h3 class="variation-name">Base</h3>
+              <div class="variation-badge">Balanced</div>
+            </div>
+
+            <div class="variation-price">
+              <div class="variation-sale-price">$18<span>USD</span></div>
+              <div class="variation-old-price">$36</div>
+            </div>
+
+            <div class="variation-sale-tag">Launch Sale</div>
+
+            <p class="variation-description">
+              A larger lighting toolkit with more variety for regular render work, product shots, interiors, and stylized scenes.
+            </p>
+
+            <div class="variation-assets">
+              <strong>200 assets</strong>
+              <div class="variation-note">Expanded library for flexible use.</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="variation-card featured">
+          <div class="variation-inner">
+            <div class="variation-topline">
+              <h3 class="variation-name">Pro</h3>
+              <div class="variation-badge">Full Pack</div>
+            </div>
+
+            <div class="variation-price">
+              <div class="variation-sale-price">$33<span>USD</span></div>
+              <div class="variation-old-price">$66</div>
+            </div>
+
+            <div class="variation-sale-tag">Launch Sale</div>
+
+            <p class="variation-description">
+              The complete LightMaster Pro package with the full asset library and maximum creative range for cinematic lighting.
+            </p>
+
+            <div class="variation-assets">
+              <strong>400+ assets</strong>
+              <div class="variation-note">Complete collection with all lighting categories.</div>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
