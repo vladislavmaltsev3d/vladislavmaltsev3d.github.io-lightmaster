@@ -763,6 +763,25 @@
       isolation: isolate;
     }
 
+    .step-demo-shell::after {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      z-index: 4;
+      pointer-events: none;
+      opacity: 0;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.42), rgba(255,255,255,0.10) 28%, transparent 58%),
+        linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.00) 32%, rgba(255,255,255,0.38) 48%, rgba(90,200,250,0.18) 58%, transparent 76%);
+      transform: translateX(-32%) scale(0.92);
+      mix-blend-mode: screen;
+      filter: blur(8px);
+    }
+
+    .step-demo-shell.is-switching::after {
+      animation: stepLiquidFlash 0.82s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
     .step-demo-stage {
       position: absolute;
       inset: 0;
@@ -775,19 +794,30 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      transition: opacity 0.7s ease;
+      transform: scale(1.045) translateY(8px);
+      filter: blur(12px) brightness(0.92) saturate(0.92);
+      clip-path: inset(7% 7% 7% 7% round 18px);
+      transition:
+        opacity 0.82s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        clip-path 0.9s cubic-bezier(0.22, 1, 0.36, 1);
       pointer-events: none;
       user-select: none;
+      will-change: opacity, transform, filter, clip-path;
     }
 
     .step-demo-slide.active {
       opacity: 1;
+      transform: scale(1) translateY(0);
+      filter: blur(0) brightness(1) saturate(1);
+      clip-path: inset(0 0 0 0 round 0);
     }
 
     .step-demo-overlay {
       position: absolute;
       inset: 0;
-      z-index: 2;
+      z-index: 5;
       pointer-events: none;
     }
 
@@ -869,7 +899,7 @@
       position: absolute;
       top: 16px;
       right: 16px;
-      z-index: 3;
+      z-index: 6;
       pointer-events: auto;
       border: none;
       outline: none;
@@ -1046,6 +1076,26 @@
       }
       100% {
         background-position: 160% 0;
+      }
+    }
+
+    @keyframes stepLiquidFlash {
+      0% {
+        opacity: 0;
+        transform: translateX(-42%) scale(0.88);
+      }
+
+      34% {
+        opacity: 0.85;
+      }
+
+      62% {
+        opacity: 0.42;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(42%) scale(1.08);
       }
     }
 
@@ -1645,9 +1695,30 @@
         ];
 
         let currentStep = 0;
+        let transitionTimer = null;
 
-        function renderStep(index) {
+        function playStepTransition() {
+          stepDemo.classList.remove("is-switching");
+
+          void stepDemo.offsetWidth;
+
+          stepDemo.classList.add("is-switching");
+
+          if (transitionTimer) {
+            clearTimeout(transitionTimer);
+          }
+
+          transitionTimer = setTimeout(() => {
+            stepDemo.classList.remove("is-switching");
+          }, 860);
+        }
+
+        function renderStep(index, animate = true) {
           currentStep = index;
+
+          if (animate) {
+            playStepTransition();
+          }
 
           stepSlides.forEach((slide, slideIndex) => {
             slide.classList.toggle("active", slideIndex === index);
@@ -1681,18 +1752,18 @@
         }
 
         stepDemoCenterText.addEventListener("click", () => {
-          renderStep(1);
+          renderStep(1, true);
         });
 
         stepDemoButton.addEventListener("click", () => {
           if (currentStep >= stepMeta.length - 1) {
-            renderStep(0);
+            renderStep(0, true);
           } else {
-            renderStep(currentStep + 1);
+            renderStep(currentStep + 1, true);
           }
         });
 
-        renderStep(0);
+        renderStep(0, false);
       }
     });
   </script>
