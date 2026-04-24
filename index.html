@@ -857,6 +857,71 @@
         min-height: 280px;
       }
     }
+      .scroll-reveal-image {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 16px;
+        border-radius: 34px;
+        background: rgba(255,255,255,0.28);
+        border: 1px solid rgba(255,255,255,0.72);
+        box-shadow: 0 24px 60px rgba(15,16,18,0.10);
+        backdrop-filter: blur(28px) saturate(150%);
+        -webkit-backdrop-filter: blur(28px) saturate(150%);
+        opacity: 0;
+        transform: translateY(42px) scale(0.96);
+        filter: blur(14px);
+        transition:
+          opacity 0.9s ease,
+          transform 1s ease,
+          filter 1s ease,
+          box-shadow 0.3s ease;
+        overflow: hidden;
+        position: relative;
+      }
+      
+      .scroll-reveal-image::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(120deg,
+            rgba(255,255,255,0.00) 0%,
+            rgba(255,255,255,0.00) 28%,
+            rgba(255,255,255,0.18) 40%,
+            rgba(255,255,255,0.38) 50%,
+            rgba(255,255,255,0.16) 60%,
+            rgba(255,255,255,0.00) 72%,
+            rgba(255,255,255,0.00) 100%);
+        transform: translateX(-120%);
+        animation: sheenMove 9s linear infinite;
+        pointer-events: none;
+        z-index: 2;
+      }
+      
+      .scroll-reveal-image.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+      
+      .scroll-reveal-image img {
+        display: block;
+        width: 100%;
+        border-radius: 24px;
+        box-shadow: 0 20px 42px rgba(15,16,18,0.16);
+      }
+      
+      @keyframes sheenMove {
+        0% {
+          transform: translateX(-130%);
+        }
+        18% {
+          transform: translateX(130%);
+        }
+        100% {
+          transform: translateX(130%);
+        }
+      }
   </style>
 </head>
 <body>
@@ -1118,6 +1183,22 @@
         </a>
       </div>
     </section>
+    <section class="section">
+      <div class="section-head" style="text-align:center;">
+        <div class="section-chip liquid-sheen">Preview</div>
+        <h2>Lighting Preview</h2>
+        <p style="margin-left:auto;margin-right:auto;">
+          Scroll down to reveal the image.
+        </p>
+      </div>
+
+      <div class="scroll-reveal-image">
+        <img
+          src="https://assets.superhivemarket.com/store/productimage/1234087/image/xlarge_og-6cd286eb8fe69e0b9528b2517dee08b1.jpg"
+          alt="Light Master Pro Preview"
+        />
+      </div>
+    </section>
 
     <footer class="footer">
       Light Master Pro | Artistic Lighting Toolkit
@@ -1144,6 +1225,25 @@
     }, { threshold: 0.12 });
 
     revealItems.forEach((item) => observer.observe(item));
+  </script>
+  <script>
+    const revealImage = document.querySelector(".scroll-reveal-image");
+  
+    if (revealImage) {
+      const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            revealImage.classList.add("visible");
+            imageObserver.unobserve(revealImage);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: "0px 0px 120px 0px"
+      });
+  
+      imageObserver.observe(revealImage);
+    }
   </script>
 </body>
 </html>
