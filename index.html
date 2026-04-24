@@ -113,7 +113,8 @@
     .addon-card,
     .video-shell,
     .hero-banner,
-    .variation-card {
+    .variation-card,
+    .faq-item {
       position: relative;
       overflow: hidden;
     }
@@ -131,7 +132,8 @@
     .media-card::before,
     .addon-card::before,
     .video-shell::before,
-    .variation-card::before {
+    .variation-card::before,
+    .faq-item::before {
       content: "";
       position: absolute;
       inset: -1px;
@@ -252,10 +254,6 @@
         opacity 0.25s ease;
       appearance: none;
       -webkit-appearance: none;
-    }
-
-    .hero-toggle:hover {
-      opacity: 1;
     }
 
     .hero-toggle::before {
@@ -554,7 +552,8 @@
     .media-card::after,
     .addon-card::after,
     .video-shell::after,
-    .variation-card::after {
+    .variation-card::after,
+    .faq-item::after {
       content: "";
       position: absolute;
       inset: 0;
@@ -1091,6 +1090,28 @@
       text-decoration-color: rgba(106, 107, 115, 0.78);
     }
 
+    .variation-value-label {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      color: #ffffff;
+      background:
+        linear-gradient(180deg, rgba(10,132,255,0.92), rgba(0,102,204,0.90)),
+        rgba(10,132,255,0.9);
+      border: 1px solid rgba(255,255,255,0.42);
+      box-shadow:
+        0 12px 26px rgba(10,132,255,0.24),
+        inset 0 1px 0 rgba(255,255,255,0.30);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     .variation-sale-tag {
       display: inline-flex;
       width: fit-content;
@@ -1134,6 +1155,131 @@
       color: var(--muted);
       font-size: 13px;
       font-weight: 500;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background: rgba(255,255,255,0.30);
+      border: 1px solid rgba(255,255,255,0.74);
+      border-radius: 28px;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(26px) saturate(145%);
+      -webkit-backdrop-filter: blur(26px) saturate(145%);
+    }
+
+    .faq-inner {
+      position: relative;
+      z-index: 3;
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 20px 22px;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-align: left;
+      cursor: pointer;
+      transition:
+        transform 0.25s ease,
+        color 0.25s ease;
+      transform-origin: center center;
+    }
+
+    .faq-question:hover {
+      transform: scale(1.018);
+      color: #0a5bc2;
+    }
+
+    .faq-plus {
+      flex: 0 0 34px;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.42);
+      border: 1px solid rgba(255,255,255,0.80);
+      box-shadow:
+        0 10px 22px rgba(15,16,18,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.72);
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1;
+      transition:
+        transform 0.28s ease,
+        background 0.28s ease,
+        color 0.28s ease;
+    }
+
+    .faq-item.is-open .faq-plus {
+      transform: rotate(45deg);
+      color: #0a5bc2;
+      background: rgba(10,132,255,0.10);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition:
+        max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .faq-item.is-open .faq-answer {
+      max-height: 520px;
+      opacity: 1;
+    }
+
+    .faq-answer-inner {
+      margin: 0 18px 18px;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.38);
+      border: 1px solid rgba(255,255,255,0.72);
+      box-shadow:
+        0 14px 32px rgba(15,16,18,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.68);
+    }
+
+    .faq-answer-inner p {
+      margin: 0;
+      color: #555861;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .faq-image-box {
+      width: 100%;
+      aspect-ratio: 2 / 1;
+      margin-top: 16px;
+      border-radius: 20px;
+      border: 1px dashed rgba(15,16,18,0.18);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.44), rgba(255,255,255,0.20)),
+        rgba(255,255,255,0.26);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(15,16,18,0.38);
+      font-size: 13px;
+      font-weight: 650;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .addons-grid {
@@ -1265,6 +1411,7 @@
       0%, 100% {
         transform: translate3d(0, 0, 0) scale(1);
       }
+
       50% {
         transform: translate3d(20px, 24px, 0) scale(1.06);
       }
@@ -1274,9 +1421,11 @@
       0% {
         transform: translateX(-130%);
       }
+
       18% {
         transform: translateX(130%);
       }
+
       100% {
         transform: translateX(130%);
       }
@@ -1286,9 +1435,11 @@
       0% {
         background-position: -160% 0;
       }
+
       18% {
         background-position: 160% 0;
       }
+
       100% {
         background-position: 160% 0;
       }
@@ -1339,6 +1490,7 @@
       0%, 100% {
         transform: translate(-58%, -50%) rotate(45deg);
       }
+
       50% {
         transform: translate(-22%, -50%) rotate(45deg);
       }
@@ -1348,6 +1500,7 @@
       0%, 100% {
         transform: translate(-42%, -50%) rotate(225deg);
       }
+
       50% {
         transform: translate(-78%, -50%) rotate(225deg);
       }
@@ -1357,6 +1510,7 @@
       0%, 100% {
         transform: translateY(-50%) translateX(0);
       }
+
       50% {
         transform: translateY(-50%) translateX(6px);
       }
@@ -1366,6 +1520,7 @@
       0%, 100% {
         transform: translateY(-50%) translateX(0);
       }
+
       50% {
         transform: translateY(-50%) translateX(-6px);
       }
@@ -1384,9 +1539,13 @@
     @media (max-width: 960px) {
       .features-grid,
       .media-grid,
-      .addons-grid,
-      .variations-grid {
+      .addons-grid {
         grid-template-columns: 1fr;
+      }
+
+      .variations-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
       }
 
       .hero-content {
@@ -1407,6 +1566,71 @@
         right: 24px;
         bottom: 24px;
         max-width: 360px;
+      }
+
+      .variation-card {
+        padding: 16px;
+        min-height: 230px;
+        border-radius: 24px;
+      }
+
+      .variation-topline {
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .variation-name {
+        font-size: 20px;
+      }
+
+      .variation-badge {
+        padding: 5px 8px;
+        font-size: 9px;
+        letter-spacing: 0.06em;
+      }
+
+      .variation-sale-price {
+        font-size: 34px;
+      }
+
+      .variation-sale-price span {
+        font-size: 12px;
+      }
+
+      .variation-old-price {
+        font-size: 17px;
+      }
+
+      .variation-value-label {
+        margin-bottom: 8px;
+        padding: 5px 8px;
+        font-size: 9px;
+        letter-spacing: 0.06em;
+      }
+
+      .variation-sale-tag {
+        margin-bottom: 10px;
+        padding: 5px 8px;
+        font-size: 9px;
+      }
+
+      .variation-description {
+        font-size: 12px;
+        line-height: 1.5;
+        margin-bottom: 14px;
+      }
+
+      .variation-assets {
+        padding-top: 12px;
+        font-size: 12px;
+      }
+
+      .variation-assets strong {
+        font-size: 14px;
+      }
+
+      .variation-note {
+        font-size: 11px;
       }
     }
 
@@ -1538,17 +1762,110 @@
         font-size: 11px;
       }
 
+      .variations-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
       .variation-card {
-        padding: 24px;
-        min-height: 230px;
+        padding: 10px;
+        min-height: 210px;
+        border-radius: 18px;
+      }
+
+      .variation-topline {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        margin-bottom: 10px;
+      }
+
+      .variation-name {
+        font-size: 16px;
+        letter-spacing: -0.03em;
+      }
+
+      .variation-badge {
+        padding: 4px 6px;
+        font-size: 7px;
+        letter-spacing: 0.04em;
+      }
+
+      .variation-price {
+        gap: 5px;
+        margin-bottom: 6px;
       }
 
       .variation-sale-price {
-        font-size: 42px;
+        font-size: 26px;
+      }
+
+      .variation-sale-price span {
+        display: none;
       }
 
       .variation-old-price {
-        font-size: 20px;
+        bottom: 2px;
+        font-size: 13px;
+        text-decoration-thickness: 1.5px;
+      }
+
+      .variation-value-label {
+        margin-bottom: 6px;
+        padding: 4px 6px;
+        font-size: 7px;
+        letter-spacing: 0.04em;
+      }
+
+      .variation-sale-tag {
+        margin-bottom: 8px;
+        padding: 4px 6px;
+        font-size: 7px;
+        letter-spacing: 0.04em;
+      }
+
+      .variation-description {
+        font-size: 10px;
+        line-height: 1.4;
+        margin-bottom: 10px;
+      }
+
+      .variation-assets {
+        padding-top: 9px;
+        font-size: 10px;
+        line-height: 1.35;
+      }
+
+      .variation-assets strong {
+        font-size: 12px;
+      }
+
+      .variation-note {
+        font-size: 9px;
+        line-height: 1.3;
+      }
+
+      .faq-question {
+        padding: 16px;
+        font-size: 14px;
+      }
+
+      .faq-plus {
+        flex-basis: 30px;
+        width: 30px;
+        height: 30px;
+        font-size: 19px;
+      }
+
+      .faq-answer-inner {
+        margin: 0 12px 12px;
+        padding: 14px;
+        border-radius: 18px;
+      }
+
+      .faq-answer-inner p {
+        font-size: 13px;
+        line-height: 1.6;
       }
 
       .back-top-button {
@@ -1829,6 +2146,7 @@
               <div class="variation-old-price">$66</div>
             </div>
 
+            <div class="variation-value-label">Most Valuable</div>
             <div class="variation-sale-tag">Launch Sale</div>
 
             <p class="variation-description">
@@ -1838,6 +2156,102 @@
             <div class="variation-assets">
               <strong>400+ assets</strong>
               <div class="variation-note">Complete collection with all lighting categories.</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="faq">
+      <div class="section-head" style="text-align: center;">
+        <div class="section-chip liquid-sheen">FAQ</div>
+        <h2>Frequently asked questions</h2>
+        <p style="margin-left: auto; margin-right: auto;">
+          Quick answers about support, compatibility, performance, AI usage, and related light texture tools.
+        </p>
+      </div>
+
+      <div class="faq-list">
+        <article class="faq-item">
+          <div class="faq-inner">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Product support and updates</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  We offer lifetime support for this product, and all product updates are free.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-inner">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Does it work in EEVEE?</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  Yes, it works in EEVEE. However, some features are more limited because of engine limitations.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-inner">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Are the assets performance heavy?</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  No, they are lightweight and do not significantly affect performance.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-inner">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>I bought Light Textures Addon by Nodeworks earlier</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  Thats great. Light Textures Addon by Nodeworks and Light Master Pro share a similar idea because Nodeworks is my colleague, but this product does not use his assets. We developed Light Master Pro as a more advanced tool with a wider library. Note: assets from his addon are not included here. Owners of the Nodeworks addon will get a tool to merge both libraries into one Light Master Pro workflow, so you will be able to add his lights inside my addon.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-inner">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>AI usage</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  AI was used during development, mostly to upscale light textures to higher resolution with Topaz AI upscaler. In some cases, AI was also useful for isolating light patterns from their background.
+                </p>
+
+                <div class="faq-image-box">
+                  Image box
+                </div>
+              </div>
             </div>
           </div>
         </article>
@@ -1996,32 +2410,32 @@
           },
           {
             centerText: "",
-            cornerText: "Light Rays",
+            cornerText: "This is rate number 1",
             isRestore: false
           },
           {
             centerText: "",
-            cornerText: "Swirling light Refraction",
+            cornerText: "This is rate number 2",
             isRestore: false
           },
           {
             centerText: "",
-            cornerText: "Flashlight Bright Lens",
+            cornerText: "This is rate number 3",
             isRestore: false
           },
           {
             centerText: "",
-            cornerText: "Refracted light and subtle colors",
+            cornerText: "This is rate number 4",
             isRestore: false
           },
           {
             centerText: "",
-            cornerText: "Caustic Dense Bright",
+            cornerText: "This is rate number 5",
             isRestore: false
           },
           {
             centerText: "",
-            cornerText: "Wheel Metal Light Reflections",
+            cornerText: "This is rate number 6",
             isRestore: true
           }
         ];
@@ -2097,6 +2511,32 @@
 
         renderStep(0, false);
       }
+
+      const faqItems = Array.from(document.querySelectorAll(".faq-item"));
+
+      faqItems.forEach((item) => {
+        const question = item.querySelector(".faq-question");
+
+        if (!question) return;
+
+        question.addEventListener("click", () => {
+          const isOpen = item.classList.contains("is-open");
+
+          faqItems.forEach((otherItem) => {
+            const otherQuestion = otherItem.querySelector(".faq-question");
+            otherItem.classList.remove("is-open");
+
+            if (otherQuestion) {
+              otherQuestion.setAttribute("aria-expanded", "false");
+            }
+          });
+
+          if (!isOpen) {
+            item.classList.add("is-open");
+            question.setAttribute("aria-expanded", "true");
+          }
+        });
+      });
     });
   </script>
 </body>
