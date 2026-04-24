@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Light Master Pro | Artistic Lighting Toolkit</title>
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --bg-2: #ececf1;
+      --text: #111111;
+      --muted: #6e6e73;
+      --line: rgba(17, 17, 17, 0.08);
+      --card: rgba(255, 255, 255, 0.62);
+      --card-strong: rgba(255, 255, 255, 0.76);
+      --card-border: rgba(255, 255, 255, 0.82);
+      --shadow-xl: 0 30px 90px rgba(0, 0, 0, 0.10);
+      --shadow-lg: 0 22px 60px rgba(0, 0, 0, 0.09);
+      --shadow-md: 0 16px 36px rgba(0, 0, 0, 0.08);
+      --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.06);
+      --radius-xl: 34px;
+      --radius-lg: 28px;
+      --radius-md: 22px;
+      --accent: #0071e3;
+      --accent-soft: rgba(0, 113, 227, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.98) 0%, rgba(245,245,247,1) 26%, rgba(237,237,243,1) 60%, rgba(232,232,239,1) 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .bg-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 0;
+      animation: orbFloat 16s ease-in-out infinite;
+    }
+
+    .bg-orb.one {
+      width: 340px;
+      height: 340px;
+      top: -70px;
+      left: -30px;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .bg-orb.two {
+      width: 420px;
+      height: 420px;
+      top: 24%;
+      right: -120px;
+      background: rgba(90, 200, 250, 0.22);
+      animation-delay: -5s;
+    }
+
+    .bg-orb.three {
+      width: 300px;
+      height: 300px;
+      bottom: -80px;
+      left: 12%;
+      background: rgba(0, 113, 227, 0.10);
+      animation-delay: -9s;
+    }
+
+    .spotlight {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(
+        560px circle at var(--x, 50%) var(--y, 24%),
+        rgba(255, 255, 255, 0.33),
+        transparent 56%
+      );
+      transition: background 0.12s linear;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(1220px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 90px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: var(--shadow-sm);
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #111111, #38383c);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 12px 22px rgba(0,0,0,0.16);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 56px 0 30px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #444;
+      background: rgba(255,255,255,0.66);
+      border: 1px solid rgba(255,255,255,0.86);
+      box-shadow: var(--shadow-sm);
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero h1 {
+      margin: 0 0 18px 0;
+      font-size: clamp(44px, 7vw, 92px);
+      line-height: 0.94;
+      letter-spacing: -0.06em;
+      font-weight: 760;
+      animation: fadeUp 0.95s ease both;
+      animation-delay: 0.08s;
+    }
+
+    .hero p {
+      max-width: 860px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.65;
+      animation: fadeUp 1s ease both;
+      animation-delay: 0.16s;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      animation: fadeUp 1.05s ease both;
+      animation-delay: 0.25s;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 160px;
+      padding: 15px 24px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(180deg, #1580ef, #0067d8);
+      box-shadow: 0 16px 32px rgba(0, 113, 227, 0.25);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.86);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.015);
+    }
+
+    .section {
+      margin-top: 28px;
+      animation: fadeUp 1s ease both;
+    }
+
+    .glass-block {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      overflow: hidden;
+    }
+
+    .glass-block::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.55), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(90,200,250,0.12), transparent 28%);
+      pointer-events: none;
+    }
+
+    .content-pad {
+      position: relative;
+      z-index: 1;
+      padding: 34px;
+    }
+
+    .section-head {
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 12px 0;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .clean-copy p {
+      margin: 0 0 16px 0;
+      color: #555;
+      font-size: 17px;
+      line-height: 1.75;
+      max-width: 900px;
+    }
+
+    .video-shell {
+      position: relative;
+      background: rgba(255,255,255,0.34);
+      border: 1px solid rgba(255,255,255,0.80);
+      border-radius: 30px;
+      padding: 16px;
+      box-shadow: var(--shadow-xl);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      overflow: hidden;
+    }
+
+    .video-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.32), rgba(255,255,255,0.05) 45%, rgba(255,255,255,0.20) 100%);
+      pointer-events: none;
+    }
+
+    .video-wrap {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 20px 44px rgba(0,0,0,0.18);
+      background: #000;
+    }
+
+    .video-wrap iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature-card {
+      position: relative;
+      padding: 26px;
+      border-radius: var(--radius-lg);
+      background: var(--card-strong);
+      border: 1px solid rgba(255,255,255,0.86);
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(90,200,250,0.14), transparent 28%);
+      pointer-events: none;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #ffffff, #dfe9ff);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.9),
+        0 12px 24px rgba(0,0,0,0.08);
+    }
+
+    .feature-card h3 {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 10px 0;
+      font-size: 24px;
+      letter-spacing: -0.04em;
+    }
+
+    .feature-card p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      color: #555;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+    }
+
+    .media-left,
+    .media-right {
+      display: grid;
+      gap: 18px;
+    }
+
+    .media-card {
+      position: relative;
+      background: rgba(255,255,255,0.34);
+      border: 1px solid rgba(255,255,255,0.80);
+      border-radius: 30px;
+      padding: 16px;
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      overflow: hidden;
+      transition: transform 0.30s ease, box-shadow 0.30s ease;
+    }
+
+    .media-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .media-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.32), rgba(255,255,255,0.05) 44%, rgba(255,255,255,0.20) 100%);
+      pointer-events: none;
+    }
+
+    .media-card img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+      object-fit: cover;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.16);
+      background: #ececf1;
+    }
+
+    .media-large img {
+      aspect-ratio: 16 / 10;
+    }
+
+    .media-small img {
+      aspect-ratio: 1 / 1;
+    }
+
+    .addons-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .addon-card {
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+      background: rgba(255,255,255,0.68);
+      border: 1px solid rgba(255,255,255,0.86);
+      border-radius: 28px;
+      padding: 16px;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      overflow: hidden;
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .addon-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.45), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(90,200,250,0.12), transparent 24%);
+      pointer-events: none;
+    }
+
+    .addon-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .addon-card img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      display: block;
+      border-radius: 20px;
+      box-shadow: 0 16px 34px rgba(0,0,0,0.14);
+      background: #f2f2f2;
+    }
+
+    .addon-card-title {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      margin-top: 14px;
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+      line-height: 1.4;
+    }
+
+    .footer {
+      margin-top: 46px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes orbFloat {
+      0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(18px, 24px, 0) scale(1.06);
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .addons-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 920px) {
+      .features-grid,
+      .media-grid,
+      .addons-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .media-left,
+      .media-right {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(100% - 18px, 1220px);
+      }
+
+      .nav {
+        border-radius: 24px;
+        padding: 14px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .content-pad {
+        padding: 24px;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero-actions {
+        margin-top: 24px;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-orb one"></div>
+  <div class="bg-orb two"></div>
+  <div class="bg-orb three"></div>
+  <div class="spotlight"></div>
+
+  <main class="page">
+    <nav class="nav">
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <div>Light Master Pro</div>
+      </div>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#video">Video</a>
+        <a href="#features">Features</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#addons">More Addons</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="eyebrow">Artistic Lighting Toolkit</div>
+      <h1>Fast, texture-driven lighting workflow for Blender.</h1>
+      <p>
+        Browse light assets, import ready-made setups, place them directly in the viewport,
+        and refine the final look with one modern, focused workflow.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#video">Watch Overview</a>
+        <a class="btn btn-secondary" href="#features">Explore Features</a>
+      </div>
+    </section>
+
+    <section class="section reveal" id="overview">
+      <div class="glass-block">
+        <div class="content-pad clean-copy">
+          <div class="section-head">
+            <h2>Clean workflow. Fast results.</h2>
+          </div>
+          <p>
+            Browse light assets, import ready-made setups, place them directly in the viewport,
+            and adjust the final result from one clean sidebar workflow.
+          </p>
+          <p style="margin-bottom:0;">
+            Works with both Cycles and Eevee workflows and gives you fast control over placement,
+            texture behavior, blur, animation, and light shaping.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="video">
+      <div class="section-head">
+        <h2>Video Overview</h2>
+        <p>
+          Main product walkthrough and workflow presentation.
+        </p>
+      </div>
+
+      <div class="video-shell">
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/ujGnTHjr3vg?rel=0"
+            title="Light Master Pro Video"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="features">
+      <div class="section-head">
+        <h2>Key Features</h2>
+        <p>
+          Core functionality presented as a premium feature grid for the standalone GitHub version.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <article class="feature-card">
+          <div class="feature-icon"></div>
+          <h3>Preview Manager</h3>
+          <p>
+            Browse categories, search assets by name, and switch between preview pages quickly.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon"></div>
+          <h3>Advanced Placement</h3>
+          <p>
+            Place and aim lights directly in the viewport with interactive controls and fast iteration.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon"></div>
+          <h3>Cycles and Eevee Workflows</h3>
+          <p>
+            Import the correct setup depending on the render backend and keep the workflow consistent.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon"></div>
+          <h3>PaintMask Tools</h3>
+          <p>
+            Modify light textures directly by masking, repainting, restoring, or deleting the edited image.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="gallery">
+      <div class="section-head">
+        <h2>GIFs and Images</h2>
+        <p>
+          Replace the filenames below with your actual local media files in the repository.
+        </p>
+      </div>
+
+      <div class="media-grid">
+        <div class="media-left">
+          <div class="media-card media-large">
+            <img src="G.png" alt="Preview 1">
+          </div>
+        </div>
+
+        <div class="media-right">
+          <div class="media-card media-small">
+            <img src="YOUR_GIF_1.gif" alt="Preview 2">
+          </div>
+          <div class="media-card media-small">
+            <img src="YOUR_IMAGE_2.jpg" alt="Preview 3">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="addons">
+      <div class="section-head" style="text-align:center;">
+        <h2>More Lazy3D Addons</h2>
+        <p style="margin-left:auto;margin-right:auto;">
+          A redesigned product grid based on your Blender Market block, adapted for the GitHub presentation.
+        </p>
+      </div>
+
+      <div class="addons-grid">
+        <a class="addon-card" href="https://superhivemarket.com/products/physical-fog-addon" target="_blank">
+          <img src="https://assets.superhivemarket.com/cache/ccc9462aa9ba7e7a1951a306910d3a0f.jpg" alt="Physical Fog">
+          <div class="addon-card-title">Physical Fog</div>
+        </a>
+
+        <a class="addon-card" href="https://superhivemarket.com/products/lazy-composer-2-pro" target="_blank">
+          <img src="https://assets.superhivemarket.com/cache/8422a38a158a2f019bdaac8fd3ab05e7.png" alt="Lazy Composer 2 Pro">
+          <div class="addon-card-title">Lazy Composer 2 Pro</div>
+        </a>
+
+        <a class="addon-card" href="https://superhivemarket.com/products/fauna-master-pro" target="_blank">
+          <img src="https://assets.superhivemarket.com/cache/60686f07bbc879ade8381a9a3342c128.jpg" alt="Fauna Master Pro">
+          <div class="addon-card-title">Fauna Master Pro</div>
+        </a>
+
+        <a class="addon-card" href="https://blendermarket.com/products/physical-weather-master" target="_blank">
+          <img src="https://assets.superhivemarket.com/cache/9695dbd9f004846ec6eec88f8114b2f3.png" alt="Physical Weather FX">
+          <div class="addon-card-title">Physical Weather FX</div>
+        </a>
+
+        <a class="addon-card" href="https://superhivemarket.com/products/water-vfx-master-real-time-fluid-effects" target="_blank">
+          <img src="https://assets.superhivemarket.com/cache/cfcfb17dc2af54669708d3cbcd20f923.png" alt="Water VFX Master">
+          <div class="addon-card-title">Water VFX Master</div>
+        </a>
+
+        <a class="addon-card" href="https://superhivemarket.com/products/physical-water-deluxe" target="_blank">
+          <img src="https://assets.superhivemarket.com/cache/5ef578ab6304302c11de42a2ad6c9c39.png" alt="Physical Water FX">
+          <div class="addon-card-title">Physical Water FX</div>
+        </a>
+
+        <a class="addon-card" href="https://superhivemarket.com/products/physical-cables-next-gen" target="_blank">
+          <img src="https://assets.superhivemarket.com/cache/051a59ae9f8decbaec40456d4fc98767.jpg" alt="Physical Cables Next-Gen">
+          <div class="addon-card-title">Physical Cables Next-Gen</div>
+        </a>
+
+        <a class="addon-card" href="https://superhivemarket.com/products/geodroplets-plus-ultimate-droplet-toolkit" target="_blank">
+          <img src="https://assets.superhivemarket.com/cache/7928c9dbf63d3b85c3c3e5788e6d9adf.png" alt="GeoDroplets Plus">
+          <div class="addon-card-title">GeoDroplets Plus</div>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Light Master Pro | Artistic Lighting Toolkit
+    </footer>
+  </main>
+
+  <script>
+    const root = document.documentElement;
+
+    window.addEventListener("mousemove", (e) => {
+      root.style.setProperty("--x", e.clientX + "px");
+      root.style.setProperty("--y", e.clientY + "px");
+    });
+
+    const revealItems = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach((item) => observer.observe(item));
+  </script>
+</body>
+</html>
