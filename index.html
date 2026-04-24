@@ -11,17 +11,12 @@
       --bg-3: #e6e7ee;
       --text: #0f1012;
       --muted: #6a6b73;
-      --line: rgba(255, 255, 255, 0.66);
-      --glass: rgba(255, 255, 255, 0.34);
-      --glass-strong: rgba(255, 255, 255, 0.48);
-      --glass-soft: rgba(255, 255, 255, 0.24);
       --shadow-xl: 0 32px 90px rgba(15, 16, 18, 0.12);
       --shadow-lg: 0 24px 60px rgba(15, 16, 18, 0.10);
       --shadow-md: 0 16px 34px rgba(15, 16, 18, 0.08);
       --shadow-sm: 0 10px 22px rgba(15, 16, 18, 0.06);
       --radius-xl: 36px;
       --radius-lg: 28px;
-      --radius-md: 22px;
       --accent: #0a84ff;
       --accent-2: #5ac8fa;
     }
@@ -744,6 +739,69 @@
       transform: translateY(0);
     }
 
+    .scroll-reveal-image {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px;
+      border-radius: 34px;
+      background: rgba(255,255,255,0.28);
+      border: 1px solid rgba(255,255,255,0.72);
+      box-shadow: 0 24px 60px rgba(15,16,18,0.10);
+      backdrop-filter: blur(28px) saturate(150%);
+      -webkit-backdrop-filter: blur(28px) saturate(150%);
+      opacity: 0;
+      transform: translateY(60px) scale(0.96);
+      filter: blur(16px);
+      transition:
+        opacity 1.1s ease,
+        transform 1.1s ease,
+        filter 1.1s ease,
+        box-shadow 0.3s ease;
+      overflow: hidden;
+      position: relative;
+      will-change: opacity, transform, filter;
+    }
+
+    .scroll-reveal-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg,
+          rgba(255,255,255,0.00) 0%,
+          rgba(255,255,255,0.00) 28%,
+          rgba(255,255,255,0.18) 40%,
+          rgba(255,255,255,0.38) 50%,
+          rgba(255,255,255,0.16) 60%,
+          rgba(255,255,255,0.00) 72%,
+          rgba(255,255,255,0.00) 100%);
+      transform: translateX(-120%);
+      animation: sheenMove 9s linear infinite;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .scroll-reveal-image.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    .scroll-reveal-image img {
+      display: block;
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 20px 42px rgba(15,16,18,0.16);
+      opacity: 0;
+      transform: scale(1.04);
+      transition: opacity 1.15s ease 0.12s, transform 1.15s ease 0.12s;
+    }
+
+    .scroll-reveal-image.visible img {
+      opacity: 1;
+      transform: scale(1);
+    }
+
     @keyframes orbFloat {
       0%, 100% {
         transform: translate3d(0, 0, 0) scale(1);
@@ -857,71 +915,6 @@
         min-height: 280px;
       }
     }
-      .scroll-reveal-image {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 16px;
-        border-radius: 34px;
-        background: rgba(255,255,255,0.28);
-        border: 1px solid rgba(255,255,255,0.72);
-        box-shadow: 0 24px 60px rgba(15,16,18,0.10);
-        backdrop-filter: blur(28px) saturate(150%);
-        -webkit-backdrop-filter: blur(28px) saturate(150%);
-        opacity: 0;
-        transform: translateY(42px) scale(0.96);
-        filter: blur(14px);
-        transition:
-          opacity 0.9s ease,
-          transform 1s ease,
-          filter 1s ease,
-          box-shadow 0.3s ease;
-        overflow: hidden;
-        position: relative;
-      }
-      
-      .scroll-reveal-image::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          linear-gradient(120deg,
-            rgba(255,255,255,0.00) 0%,
-            rgba(255,255,255,0.00) 28%,
-            rgba(255,255,255,0.18) 40%,
-            rgba(255,255,255,0.38) 50%,
-            rgba(255,255,255,0.16) 60%,
-            rgba(255,255,255,0.00) 72%,
-            rgba(255,255,255,0.00) 100%);
-        transform: translateX(-120%);
-        animation: sheenMove 9s linear infinite;
-        pointer-events: none;
-        z-index: 2;
-      }
-      
-      .scroll-reveal-image.visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
-      }
-      
-      .scroll-reveal-image img {
-        display: block;
-        width: 100%;
-        border-radius: 24px;
-        box-shadow: 0 20px 42px rgba(15,16,18,0.16);
-      }
-      
-      @keyframes sheenMove {
-        0% {
-          transform: translateX(-130%);
-        }
-        18% {
-          transform: translateX(130%);
-        }
-        100% {
-          transform: translateX(130%);
-        }
-      }
   </style>
 </head>
 <body>
@@ -943,6 +936,7 @@
         <a href="#features">Features</a>
         <a href="#gallery">Gallery</a>
         <a href="#addons">More Addons</a>
+        <a href="#preview-reveal">Preview</a>
       </div>
     </nav>
 
@@ -1183,7 +1177,8 @@
         </a>
       </div>
     </section>
-    <section class="section">
+
+    <section class="section" id="preview-reveal">
       <div class="section-head" style="text-align:center;">
         <div class="section-chip liquid-sheen">Preview</div>
         <h2>Lighting Preview</h2>
@@ -1192,7 +1187,7 @@
         </p>
       </div>
 
-      <div class="scroll-reveal-image">
+      <div class="scroll-reveal-image" id="scrollRevealImage">
         <img
           src="https://assets.superhivemarket.com/store/productimage/1234087/image/xlarge_og-6cd286eb8fe69e0b9528b2517dee08b1.jpg"
           alt="Light Master Pro Preview"
@@ -1213,37 +1208,49 @@
       root.style.setProperty("--y", e.clientY + "px");
     });
 
-    const revealItems = document.querySelectorAll(".reveal");
+    document.addEventListener("DOMContentLoaded", () => {
+      const revealItems = document.querySelectorAll(".reveal");
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    revealItems.forEach((item) => observer.observe(item));
-  </script>
-  <script>
-    const revealImage = document.querySelector(".scroll-reveal-image");
-  
-    if (revealImage) {
-      const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            revealImage.classList.add("visible");
-            imageObserver.unobserve(revealImage);
-          }
+      if ("IntersectionObserver" in window) {
+        const sectionObserver = new IntersectionObserver((entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              obs.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.08,
+          rootMargin: "0px 0px -8% 0px"
         });
-      }, {
-        threshold: 0.15,
-        rootMargin: "0px 0px 120px 0px"
-      });
-  
-      imageObserver.observe(revealImage);
-    }
+
+        revealItems.forEach((item) => sectionObserver.observe(item));
+      } else {
+        revealItems.forEach((item) => item.classList.add("visible"));
+      }
+
+      const revealImage = document.getElementById("scrollRevealImage");
+
+      if (revealImage) {
+        if ("IntersectionObserver" in window) {
+          const imageObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                obs.unobserve(entry.target);
+              }
+            });
+          }, {
+            threshold: 0.01,
+            rootMargin: "0px 0px -12% 0px"
+          });
+
+          imageObserver.observe(revealImage);
+        } else {
+          revealImage.classList.add("visible");
+        }
+      }
+    });
   </script>
 </body>
 </html>
