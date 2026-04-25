@@ -705,6 +705,190 @@
       margin-bottom: 22px;
     }
 
+    .feature-card-advanced {
+      padding: 16px;
+    }
+
+    .feature-card-advanced .feature-inner {
+      height: 100%;
+    }
+
+    .advanced-placement-demo {
+      position: relative;
+      width: 100%;
+      min-height: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 22px;
+      overflow: hidden;
+      background-image:
+        linear-gradient(90deg, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.66) 26%, rgba(0,0,0,0.18) 54%, rgba(0,0,0,0.20) 100%),
+        url("https://assets.superhivemarket.com/cache/ee833e32b97c5b6729ea2f3c7d439ce7.gif");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      box-shadow: 0 20px 42px rgba(15,16,18,0.14);
+      isolation: isolate;
+    }
+
+    .advanced-placement-demo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 12% 16%, rgba(255,255,255,0.10), transparent 28%),
+        linear-gradient(180deg, rgba(7,10,16,0.08) 0%, rgba(7,10,16,0.00) 42%, rgba(7,10,16,0.28) 100%);
+    }
+
+    .advanced-placement-copy {
+      position: absolute;
+      left: 42px;
+      top: 34px;
+      z-index: 3;
+      width: min(360px, calc(100% - 84px));
+      color: #ffffff;
+    }
+
+    .advanced-placement-copy h3 {
+      margin: 0 0 10px;
+      color: #ffffff;
+      font-size: clamp(22px, 2.4vw, 34px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      text-shadow: 0 12px 34px rgba(0,0,0,0.45);
+    }
+
+    .advanced-placement-copy p {
+      margin: 0;
+      color: rgba(255,255,255,0.74);
+      font-size: 14px;
+      line-height: 1.65;
+      max-width: 330px;
+      text-shadow: 0 8px 22px rgba(0,0,0,0.44);
+    }
+
+    .advanced-see-more {
+      position: relative;
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 112px;
+      min-height: 38px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.30);
+      color: #ffffff;
+      background: rgba(255,255,255,0.13);
+      box-shadow:
+        0 14px 30px rgba(0,0,0,0.22),
+        inset 0 1px 0 rgba(255,255,255,0.16);
+      backdrop-filter: blur(18px) saturate(150%);
+      -webkit-backdrop-filter: blur(18px) saturate(150%);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .advanced-see-more:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.20);
+      border-color: rgba(255,255,255,0.44);
+      box-shadow:
+        0 18px 38px rgba(0,0,0,0.28),
+        inset 0 1px 0 rgba(255,255,255,0.24);
+    }
+
+    .advanced-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease;
+    }
+
+    .advanced-modal.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .advanced-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(8,10,16,0.62);
+      backdrop-filter: blur(18px) saturate(135%);
+      -webkit-backdrop-filter: blur(18px) saturate(135%);
+    }
+
+    .advanced-modal-card {
+      position: relative;
+      z-index: 2;
+      width: min(1040px, 100%);
+      aspect-ratio: 16 / 9;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #05070c;
+      border: 1px solid rgba(255,255,255,0.20);
+      box-shadow: 0 36px 100px rgba(0,0,0,0.42);
+      transform: translateY(16px) scale(0.98);
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .advanced-modal.is-open .advanced-modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .advanced-modal-card img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      user-select: none;
+    }
+
+    .advanced-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 3;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.26);
+      background: rgba(10,14,22,0.56);
+      color: #ffffff;
+      backdrop-filter: blur(16px) saturate(145%);
+      -webkit-backdrop-filter: blur(16px) saturate(145%);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.24);
+      font-family: inherit;
+      font-size: 25px;
+      line-height: 1;
+      cursor: pointer;
+      transition:
+        transform 0.24s ease,
+        background 0.24s ease,
+        border-color 0.24s ease;
+    }
+
+    .advanced-modal-close:hover {
+      transform: scale(1.06);
+      background: rgba(20,26,36,0.74);
+      border-color: rgba(255,255,255,0.40);
+    }
+
     .animation-demo-shell {
       position: relative;
       width: 100%;
@@ -1834,6 +2018,12 @@
         max-width: 360px;
       }
 
+      .advanced-placement-copy {
+        left: 34px;
+        top: 28px;
+        width: min(340px, calc(100% - 68px));
+      }
+
       .variation-card {
         padding: 16px;
         min-height: 275px;
@@ -1992,6 +2182,51 @@
 
       .content-pad {
         padding: 24px;
+      }
+
+      .advanced-placement-demo {
+        border-radius: 18px;
+      }
+
+      .advanced-placement-copy {
+        left: 18px;
+        top: 18px;
+        width: min(250px, calc(100% - 36px));
+      }
+
+      .advanced-placement-copy h3 {
+        margin-bottom: 6px;
+        font-size: 20px;
+      }
+
+      .advanced-placement-copy p {
+        font-size: 11px;
+        line-height: 1.45;
+        max-width: 230px;
+      }
+
+      .advanced-see-more {
+        margin-top: 10px;
+        min-width: 92px;
+        min-height: 32px;
+        padding: 7px 12px;
+        font-size: 11px;
+      }
+
+      .advanced-modal {
+        padding: 14px;
+      }
+
+      .advanced-modal-card {
+        border-radius: 20px;
+      }
+
+      .advanced-modal-close {
+        top: 10px;
+        right: 10px;
+        width: 36px;
+        height: 36px;
+        font-size: 22px;
       }
 
       .animation-demo-copy {
@@ -2299,13 +2534,19 @@
           </div>
         </article>
 
-        <article class="feature-card">
+        <article class="feature-card feature-card-advanced">
           <div class="feature-inner">
-            <div class="feature-icon"></div>
-            <h3>Advanced Placement</h3>
-            <p>
-              Place and aim lights directly in the viewport with interactive controls and fast iteration.
-            </p>
+            <div class="advanced-placement-demo">
+              <div class="advanced-placement-copy">
+                <h3>Advanced Placement</h3>
+                <p>
+                  Place and aim lights directly in the viewport with interactive controls, quick confirmation, precise movement, and fast artistic iteration.
+                </p>
+                <button class="advanced-see-more" id="advancedSeeMore" type="button">
+                  See More
+                </button>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -2741,6 +2982,22 @@
     </footer>
   </main>
 
+  <div class="advanced-modal" id="advancedModal" aria-hidden="true">
+    <div class="advanced-modal-backdrop" id="advancedModalBackdrop"></div>
+
+    <div class="advanced-modal-card" id="advancedModalCard">
+      <button class="advanced-modal-close" id="advancedModalClose" type="button" aria-label="Close advanced placement preview">
+        ×
+      </button>
+
+      <img
+        id="advancedModalGif"
+        src=""
+        data-src="https://assets.superhivemarket.com/cache/890265b0806d2a9d1e8253b94c6b1cfa.gif"
+        alt="Advanced Placement extended preview">
+    </div>
+  </div>
+
   <script>
     const root = document.documentElement;
 
@@ -2797,6 +3054,61 @@
           setHeroComparison(!heroIsAfter);
         });
       }
+
+      const advancedSeeMore = document.getElementById("advancedSeeMore");
+      const advancedModal = document.getElementById("advancedModal");
+      const advancedModalBackdrop = document.getElementById("advancedModalBackdrop");
+      const advancedModalClose = document.getElementById("advancedModalClose");
+      const advancedModalCard = document.getElementById("advancedModalCard");
+      const advancedModalGif = document.getElementById("advancedModalGif");
+
+      function openAdvancedModal() {
+        if (!advancedModal || !advancedModalGif) return;
+
+        const src = advancedModalGif.getAttribute("data-src");
+
+        advancedModalGif.removeAttribute("src");
+
+        window.requestAnimationFrame(() => {
+          advancedModalGif.src = src + "?restart=" + Date.now();
+        });
+
+        advancedModal.classList.add("is-open");
+        advancedModal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeAdvancedModal() {
+        if (!advancedModal) return;
+
+        advancedModal.classList.remove("is-open");
+        advancedModal.setAttribute("aria-hidden", "true");
+      }
+
+      if (advancedSeeMore && advancedModal) {
+        advancedSeeMore.addEventListener("click", openAdvancedModal);
+      }
+
+      if (advancedModalClose) {
+        advancedModalClose.addEventListener("click", closeAdvancedModal);
+      }
+
+      if (advancedModalBackdrop) {
+        advancedModalBackdrop.addEventListener("click", closeAdvancedModal);
+      }
+
+      if (advancedModalCard) {
+        advancedModalCard.addEventListener("mouseleave", () => {
+          if (advancedModal && advancedModal.classList.contains("is-open")) {
+            closeAdvancedModal();
+          }
+        });
+      }
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeAdvancedModal();
+        }
+      });
 
       const animationDemo = document.getElementById("animationDemo");
       const animationDemoImage = document.getElementById("animationDemoImage");
