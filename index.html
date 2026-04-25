@@ -704,177 +704,6 @@
       margin-bottom: 22px;
     }
 
-    .media-card {
-      background: rgba(255,255,255,0.28);
-      border: 1px solid rgba(255,255,255,0.72);
-      border-radius: 30px;
-      box-shadow: var(--shadow-lg);
-      backdrop-filter: blur(26px) saturate(150%);
-      -webkit-backdrop-filter: blur(26px) saturate(150%);
-      padding: 16px;
-    }
-
-    .media-card + .media-card {
-      margin-top: 18px;
-    }
-
-    .media-inner {
-      position: relative;
-      z-index: 3;
-    }
-
-    .difference-compare {
-      --difference-compare: 100%;
-      position: relative;
-      width: 100%;
-      aspect-ratio: 32 / 9;
-      border-radius: 26px;
-      overflow: hidden;
-      background: #0c1118;
-      box-shadow: 0 24px 52px rgba(15,16,18,0.16);
-      isolation: isolate;
-    }
-
-    .difference-compare::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 3;
-      pointer-events: none;
-      background:
-        linear-gradient(180deg, rgba(7,10,16,0.10) 0%, rgba(7,10,16,0.00) 40%, rgba(7,10,16,0.22) 100%),
-        radial-gradient(circle at top left, rgba(255,255,255,0.10), transparent 28%);
-    }
-
-    .difference-image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      user-select: none;
-      pointer-events: none;
-    }
-
-    .difference-image.lightmaster {
-      z-index: 2;
-      clip-path: inset(0 calc(100% - var(--difference-compare)) 0 0);
-      transition: clip-path 1.15s cubic-bezier(0.22, 1, 0.36, 1);
-      will-change: clip-path;
-    }
-
-    .difference-image.default {
-      z-index: 1;
-    }
-
-    .difference-label {
-      position: absolute;
-      left: 18px;
-      bottom: 18px;
-      z-index: 6;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 9px 13px;
-      border-radius: 999px;
-      color: #ffffff;
-      background: rgba(10,14,22,0.46);
-      border: 1px solid rgba(255,255,255,0.20);
-      backdrop-filter: blur(16px) saturate(140%);
-      -webkit-backdrop-filter: blur(16px) saturate(140%);
-      box-shadow: 0 12px 26px rgba(0,0,0,0.16);
-      font-size: 12px;
-      font-weight: 650;
-      letter-spacing: 0.02em;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.34);
-      pointer-events: none;
-    }
-
-    .difference-divider {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: var(--difference-compare);
-      width: 0;
-      z-index: 5;
-      pointer-events: none;
-      transition: left 1.15s cubic-bezier(0.22, 1, 0.36, 1);
-      will-change: left;
-    }
-
-    .difference-divider::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: -0.5px;
-      width: 1px;
-      background: rgba(255,255,255,0.42);
-      box-shadow: 0 0 12px rgba(0,0,0,0.20);
-    }
-
-    .difference-toggle {
-      position: absolute;
-      top: 24%;
-      left: clamp(28px, var(--difference-compare), calc(100% - 28px));
-      z-index: 7;
-      width: 54px;
-      height: 60px;
-      padding: 0;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      transform: translate(-50%, -50%);
-      transition:
-        left 1.15s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.25s ease;
-      appearance: none;
-      -webkit-appearance: none;
-    }
-
-    .difference-toggle::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 12px;
-      height: 12px;
-      border-top: 2px solid #ffffff;
-      border-right: 2px solid #ffffff;
-      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.42));
-      transform: translate(-42%, -50%) rotate(225deg);
-      animation: arrowHintLeft 1.45s ease-in-out infinite;
-    }
-
-    .difference-toggle::after {
-      content: "click";
-      position: absolute;
-      top: 50%;
-      right: 50px;
-      transform: translateY(-50%);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #ffffff;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.35);
-      pointer-events: none;
-      animation: clickHintLeft 1.45s ease-in-out infinite;
-      white-space: nowrap;
-    }
-
-    .difference-toggle.is-default::before {
-      transform: translate(-58%, -50%) rotate(45deg);
-      animation: arrowHintRight 1.45s ease-in-out infinite;
-    }
-
-    .difference-toggle.is-default::after {
-      left: 50px;
-      right: auto;
-      animation: clickHintRight 1.45s ease-in-out infinite;
-    }
-
     .step-demo-shell {
       position: relative;
       width: 100%;
@@ -1050,16 +879,28 @@
     }
 
     .step-demo-default-toggle {
-      right: 132px;
-      min-width: 150px;
+      right: 126px;
+      min-width: 148px;
       height: 42px;
       padding: 0 15px;
       border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       font-family: inherit;
       font-size: 12px;
       font-weight: 650;
       letter-spacing: -0.01em;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px) scale(0.92);
       white-space: nowrap;
+    }
+
+    .step-demo-default-toggle.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
     }
 
     .step-demo-control:hover,
@@ -1069,8 +910,7 @@
       border-color: rgba(255,255,255,0.34);
     }
 
-    .step-demo-control.is-hidden,
-    .step-demo-default-toggle.is-hidden {
+    .step-demo-control.is-hidden {
       opacity: 0;
       pointer-events: none;
       transform: translateY(-8px) scale(0.92);
@@ -1123,6 +963,158 @@
       display: block;
     }
 
+    .media-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .difference-compare {
+      --difference-compare: 100%;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 32 / 9;
+      border-radius: 26px;
+      overflow: hidden;
+      background: #0c1118;
+      box-shadow: 0 24px 52px rgba(15,16,18,0.16);
+      isolation: isolate;
+    }
+
+    .difference-compare.ratio-5-2 {
+      aspect-ratio: 5 / 2;
+    }
+
+    .difference-image {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    .difference-image.default {
+      z-index: 1;
+    }
+
+    .difference-image.light-master {
+      z-index: 2;
+      clip-path: inset(0 calc(100% - var(--difference-compare)) 0 0);
+      transition: clip-path 1.05s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: clip-path;
+    }
+
+    .difference-compare::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(7, 10, 16, 0.08) 0%, rgba(7, 10, 16, 0.00) 32%, rgba(7, 10, 16, 0.20) 100%);
+    }
+
+    .difference-label {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      z-index: 5;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: #ffffff;
+      background: rgba(10,14,22,0.46);
+      border: 1px solid rgba(255,255,255,0.20);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.26);
+    }
+
+    .difference-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--difference-compare);
+      z-index: 4;
+      width: 0;
+      pointer-events: none;
+      transition: left 1.05s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .difference-divider::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -0.5px;
+      width: 1px;
+      background: rgba(255,255,255,0.38);
+      box-shadow: 0 0 12px rgba(0,0,0,0.18);
+    }
+
+    .difference-toggle {
+      position: absolute;
+      top: 18%;
+      left: clamp(28px, var(--difference-compare), calc(100% - 28px));
+      z-index: 6;
+      width: 54px;
+      height: 60px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+      transition: left 1.05s cubic-bezier(0.22, 1, 0.36, 1);
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .difference-toggle::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      border-top: 2px solid #ffffff;
+      border-right: 2px solid #ffffff;
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.42));
+      transform: translate(-42%, -50%) rotate(225deg);
+      animation: arrowHintLeft 1.45s ease-in-out infinite;
+    }
+
+    .difference-toggle::after {
+      content: "click";
+      position: absolute;
+      top: 50%;
+      right: 50px;
+      transform: translateY(-50%);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+      pointer-events: none;
+      animation: clickHintLeft 1.45s ease-in-out infinite;
+      white-space: nowrap;
+    }
+
+    .difference-compare.is-default .difference-toggle::before {
+      transform: translate(-58%, -50%) rotate(45deg);
+      animation: arrowHintRight 1.45s ease-in-out infinite;
+    }
+
+    .difference-compare.is-default .difference-toggle::after {
+      left: 50px;
+      right: auto;
+      animation: clickHintRight 1.45s ease-in-out infinite;
+    }
+
     .variations-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1137,7 +1129,7 @@
       backdrop-filter: blur(26px) saturate(145%);
       -webkit-backdrop-filter: blur(26px) saturate(145%);
       padding: 28px;
-      min-height: 260px;
+      min-height: 310px;
       transition:
         transform 0.3s ease,
         box-shadow 0.3s ease,
@@ -1303,6 +1295,39 @@
       font-weight: 500;
     }
 
+    .variation-cta {
+      margin-top: 18px;
+      width: 100%;
+      min-height: 44px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      background:
+        linear-gradient(180deg, rgba(30,144,255,0.86), rgba(10,132,255,0.88)),
+        rgba(10,132,255,0.86);
+      border: 1px solid rgba(255,255,255,0.44);
+      box-shadow:
+        0 14px 30px rgba(10,132,255,0.22),
+        inset 0 1px 0 rgba(255,255,255,0.28);
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .variation-cta:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 18px 38px rgba(10,132,255,0.30),
+        inset 0 1px 0 rgba(255,255,255,0.36);
+      border-color: rgba(255,255,255,0.62);
+    }
+
     .faq-list {
       display: grid;
       gap: 14px;
@@ -1387,7 +1412,7 @@
     }
 
     .faq-item.is-open .faq-answer {
-      max-height: 520px;
+      max-height: 720px;
       opacity: 1;
     }
 
@@ -1407,6 +1432,10 @@
       color: #555861;
       font-size: 15px;
       line-height: 1.75;
+    }
+
+    .faq-answer-inner p + p {
+      margin-top: 14px;
     }
 
     .faq-image-box {
@@ -1715,7 +1744,7 @@
 
       .variation-card {
         padding: 16px;
-        min-height: 230px;
+        min-height: 275px;
         border-radius: 24px;
       }
 
@@ -1777,6 +1806,12 @@
       .variation-note {
         font-size: 11px;
       }
+
+      .variation-cta {
+        min-height: 38px;
+        margin-top: 12px;
+        font-size: 12px;
+      }
     }
 
     @media (max-width: 760px) {
@@ -1810,10 +1845,10 @@
         gap: 4px;
       }
 
-      .liquid-button {
-        min-width: 120px;
-        padding: 10px 12px;
-        font-size: 16px;
+      .hero .liquid-button {
+        min-width: 80px;
+        padding: 7px 8px;
+        font-size: 10px;
       }
 
       .hero-toggle {
@@ -1867,34 +1902,6 @@
         padding: 24px;
       }
 
-      .difference-compare {
-        border-radius: 20px;
-      }
-
-      .difference-toggle {
-        width: 42px;
-        height: 54px;
-        left: clamp(24px, var(--difference-compare), calc(100% - 24px));
-        top: 22%;
-      }
-
-      .difference-toggle::after {
-        font-size: 10px;
-        right: 46px;
-      }
-
-      .difference-toggle.is-default::after {
-        left: 46px;
-        right: auto;
-      }
-
-      .difference-label {
-        left: 12px;
-        bottom: 12px;
-        padding: 7px 10px;
-        font-size: 10px;
-      }
-
       .step-demo-center-copy {
         padding: 9px 12px;
         max-width: 88%;
@@ -1915,15 +1922,6 @@
         right: 12px;
       }
 
-      .step-demo-default-toggle {
-        top: 12px;
-        right: 106px;
-        min-width: 118px;
-        height: 38px;
-        padding: 0 10px;
-        font-size: 10px;
-      }
-
       .step-demo-control.is-plus {
         width: 38px;
         height: 38px;
@@ -1931,9 +1929,18 @@
       }
 
       .step-demo-control.is-restore {
-        min-width: 88px;
+        min-width: 82px;
         height: 38px;
-        padding: 0 12px;
+        padding: 0 11px;
+      }
+
+      .step-demo-default-toggle {
+        top: 56px;
+        right: 12px;
+        min-width: 124px;
+        height: 34px;
+        padding: 0 10px;
+        font-size: 10px;
       }
 
       .step-demo-plus {
@@ -1944,6 +1951,34 @@
         font-size: 11px;
       }
 
+      .difference-compare {
+        border-radius: 20px;
+      }
+
+      .difference-toggle {
+        width: 42px;
+        height: 54px;
+        left: clamp(24px, var(--difference-compare), calc(100% - 24px));
+        top: 16%;
+      }
+
+      .difference-toggle::after {
+        font-size: 10px;
+        right: 46px;
+      }
+
+      .difference-compare.is-default .difference-toggle::after {
+        left: 46px;
+        right: auto;
+      }
+
+      .difference-label {
+        left: 12px;
+        bottom: 12px;
+        padding: 7px 10px;
+        font-size: 10px;
+      }
+
       .variations-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 8px;
@@ -1951,7 +1986,7 @@
 
       .variation-card {
         padding: 10px;
-        min-height: 210px;
+        min-height: 255px;
         border-radius: 18px;
       }
 
@@ -2025,6 +2060,12 @@
       .variation-note {
         font-size: 9px;
         line-height: 1.3;
+      }
+
+      .variation-cta {
+        min-height: 32px;
+        margin-top: 10px;
+        font-size: 10px;
       }
 
       .faq-question {
@@ -2180,7 +2221,7 @@
                 <img class="step-demo-slide" src="step-04.jpg" alt="Step 4 preview">
                 <img class="step-demo-slide" src="step-05.jpg" alt="Step 5 preview">
                 <img class="step-demo-slide" src="step-06.jpg" alt="Step 6 preview">
-                <img class="step-demo-slide step-demo-default-slide" src="step-06-default.jpeg" alt="Step 6 default lights preview">
+                <img class="step-demo-slide" src="step-06-default.jpeg" alt="Step 6 default lights preview">
               </div>
 
               <div class="step-demo-overlay">
@@ -2188,14 +2229,14 @@
                   class="step-demo-center-copy visible"
                   id="stepDemoCenterText"
                   type="button"
-                  aria-label="Start adding lines">
+                  aria-label="Start adding lights">
                   Click to start adding lights
                 </button>
 
                 <div class="step-demo-corner-copy" id="stepDemoCornerText"></div>
 
                 <button
-                  class="step-demo-default-toggle is-hidden"
+                  class="step-demo-default-toggle"
                   id="stepDemoDefaultToggle"
                   type="button"
                   aria-label="Show default lights">
@@ -2240,61 +2281,56 @@
         </p>
       </div>
 
-      <div class="media-card">
-        <div class="media-inner">
+      <div class="media-stack">
+        <div
+          class="difference-compare"
+          data-light-label="With Light Master Pro"
+          data-default-label="Default Lights">
           <div
-            class="difference-compare"
-            data-light-label="With Light Master Pro"
-            data-default-label="Default Lights">
-            <img
-              class="difference-image default"
-              src="https://assets.superhivemarket.com/cache/1b48522c7c82e31b4f3bab9868fb9ca4.gif"
-              alt="Default lights comparison preview">
-
-            <img
-              class="difference-image lightmaster"
-              src="https://assets.superhivemarket.com/cache/84708df650d9bdc542cb9bfe977c9c2c.gif"
-              alt="Light Master Pro comparison preview">
-
-            <div class="difference-label">With Light Master Pro</div>
-
-            <div class="difference-divider"></div>
-
-            <button
-              class="difference-toggle"
-              type="button"
-              aria-label="Show default lights">
-            </button>
+            class="difference-image default"
+            style="background-image: url('https://assets.superhivemarket.com/cache/1ee2b6a7360d8480bb0494629fa37976.gif');">
           </div>
+          <div
+            class="difference-image light-master"
+            style="background-image: url('https://assets.superhivemarket.com/cache/22328ca1a707fadf0ddf49e6765b558a.gif');">
+          </div>
+          <div class="difference-divider"></div>
+          <div class="difference-label">With Light Master Pro</div>
+          <button class="difference-toggle" type="button" aria-label="Show default lights"></button>
         </div>
-      </div>
 
-      <div class="media-card">
-        <div class="media-inner">
+        <div
+          class="difference-compare ratio-5-2"
+          data-light-label="With Light Master Pro"
+          data-default-label="Default Lights">
           <div
-            class="difference-compare"
-            data-light-label="Light Master Pro"
-            data-default-label="Default lights">
-            <img
-              class="difference-image default"
-              src="https://assets.superhivemarket.com/cache/74a35ce1a8d2e61805f1cf90b8574ddb.gif"
-              alt="Default lights second comparison preview">
-
-            <img
-              class="difference-image lightmaster"
-              src="https://assets.superhivemarket.com/cache/0b1238902a4faf3b2a4464064a936572.gif"
-              alt="Light Master Pro second comparison preview">
-
-            <div class="difference-label">Light Master Pro</div>
-
-            <div class="difference-divider"></div>
-
-            <button
-              class="difference-toggle"
-              type="button"
-              aria-label="Show default lights">
-            </button>
+            class="difference-image default"
+            style="background-image: url('https://assets.superhivemarket.com/cache/073a4945f40666ea2feb8c1506f74031.jpg');">
           </div>
+          <div
+            class="difference-image light-master"
+            style="background-image: url('https://assets.superhivemarket.com/cache/1ecbf5a32fcabfee903aa15a6a5ddcb3.jpg');">
+          </div>
+          <div class="difference-divider"></div>
+          <div class="difference-label">With Light Master Pro</div>
+          <button class="difference-toggle" type="button" aria-label="Show default lights"></button>
+        </div>
+
+        <div
+          class="difference-compare"
+          data-light-label="Light Master Pro"
+          data-default-label="Default Lights">
+          <div
+            class="difference-image default"
+            style="background-image: url('https://assets.superhivemarket.com/cache/74a35ce1a8d2e61805f1cf90b8574ddb.gif');">
+          </div>
+          <div
+            class="difference-image light-master"
+            style="background-image: url('https://assets.superhivemarket.com/cache/0b1238902a4faf3b2a4464064a936572.gif');">
+          </div>
+          <div class="difference-divider"></div>
+          <div class="difference-label">Light Master Pro</div>
+          <button class="difference-toggle" type="button" aria-label="Show default lights"></button>
         </div>
       </div>
     </section>
@@ -2331,6 +2367,8 @@
               <strong>100 assets</strong>
               <div class="variation-note">Essential artistic lighting collection.</div>
             </div>
+
+            <button class="variation-cta" type="button">Get it</button>
           </div>
         </article>
 
@@ -2356,6 +2394,8 @@
               <strong>200 assets</strong>
               <div class="variation-note">Expanded library for flexible use.</div>
             </div>
+
+            <button class="variation-cta" type="button">Get it</button>
           </div>
         </article>
 
@@ -2382,6 +2422,8 @@
               <strong>400+ assets</strong>
               <div class="variation-note">Complete collection with all lighting categories.</div>
             </div>
+
+            <button class="variation-cta" type="button">Get it</button>
           </div>
         </article>
       </div>
@@ -2406,7 +2448,7 @@
             <div class="faq-answer">
               <div class="faq-answer-inner">
                 <p>
-                  We provide lifetime support for this product. All future updates are included for free. If you have any questions - feel free to contact me on Superhive, I will be happy to help you.
+                  We provide lifetime support for this product, and future updates are included for free. If you have any questions about the workflow, installation, or features, feel free to contact me on Superhive.
                 </p>
               </div>
             </div>
@@ -2422,7 +2464,7 @@
             <div class="faq-answer">
               <div class="faq-answer-inner">
                 <p>
-                  Yes, Light Master Pro works in EEVEE. However, some features may be more limited compared to Cycles because of EEVEE engine limitations.
+                  Yes, Light Master Pro works in EEVEE. Some features are more limited than in Cycles because EEVEE has different engine limitations, but the core lighting workflow is supported.
                 </p>
               </div>
             </div>
@@ -2438,7 +2480,7 @@
             <div class="faq-answer">
               <div class="faq-answer-inner">
                 <p>
-                  No. The assets are designed to stay lightweight and should not significantly affect scene performance.
+                  No. The assets are designed to stay lightweight and should not significantly affect scene performance. The workflow is based on practical light textures and controlled setups rather than heavy simulations.
                 </p>
               </div>
             </div>
@@ -2454,9 +2496,10 @@
             <div class="faq-answer">
               <div class="faq-answer-inner">
                 <p>
-                  Light Master Pro and the Light Textures Addon by Nodeworks share a similar creative idea, and Nodeworks and I are colleagues. However, these are separate products. Light Master Pro does not use any assets from the Nodeworks addon.
-
-                  Light Master Pro was created as a way more advanced lighting tool with a larger library, expanded controls, and a broader workflow. Owners of the Nodeworks addon will also receive a tool for merging both libraries into the Light Master Pro workflow, allowing Nodeworks light assets to be used inside Light Master Pro.
+                  Light Master Pro and the Light Textures Addon by Nodeworks share a similar creative idea, and Nodeworks and I are colleagues. However, these are separate products. Light Master Pro does not use assets from the Nodeworks addon.
+                </p>
+                <p>
+                  Light Master Pro was created as a more advanced lighting tool with a larger library, expanded controls, and a broader workflow. Owners of the Nodeworks addon will also receive a tool for merging both libraries into the Light Master Pro workflow, so Nodeworks light assets can be added inside Light Master Pro.
                 </p>
               </div>
             </div>
@@ -2472,10 +2515,12 @@
             <div class="faq-answer">
               <div class="faq-answer-inner">
                 <p>
-                  Yes, AI-assisted tools were used during development, mainly for upscaling light textures to higher resolution with Topaz AI Upscaler. In some cases, AI tools were also used to help isolate light patterns from their original backgrounds.
-
-                  However, the library is not just a set of raw AI-generated images. Most light patterns are based on real-life visual references, photographed or observed lighting behavior, and practical light phenomena. The exception is digitally simulated caustics and rays, which are also widely represented in the library and made only by me without AI.
-
+                  Yes, AI-assisted tools were used during development, mainly for upscaling light textures to higher resolution with Topaz AI Upscaler. In some cases, AI tools were also useful for isolating light patterns from their original backgrounds.
+                </p>
+                <p>
+                  However, the library is not just a set of raw AI-generated images. Most light patterns are based on real-life visual references, photographed or observed lighting behavior, and practical light phenomena. The exception is digitally simulated caustics and rays, which are also widely represented in the library and were created manually without AI generation.
+                </p>
+                <p>
                   A significant amount of manual work was involved in creating, selecting, cleaning, editing, refining, categorizing, and preparing the final assets for use inside Blender. All final textures were reviewed and adjusted by hand to make sure they are useful for real production workflows.
                 </p>
 
@@ -2625,53 +2670,14 @@
         });
       }
 
-      const differenceItems = Array.from(document.querySelectorAll(".difference-compare"));
-
-      differenceItems.forEach((differenceCompare) => {
-        const differenceToggle = differenceCompare.querySelector(".difference-toggle");
-        const differenceLabel = differenceCompare.querySelector(".difference-label");
-
-        if (!differenceToggle || !differenceLabel) return;
-
-        const lightLabel = differenceCompare.dataset.lightLabel || "Light Master Pro";
-        const defaultLabel = differenceCompare.dataset.defaultLabel || "Default lights";
-
-        let differenceIsLightMaster = true;
-
-        function setDifferenceComparison(showLightMaster) {
-          differenceIsLightMaster = showLightMaster;
-
-          const value = differenceIsLightMaster ? 100 : 0;
-          differenceCompare.style.setProperty("--difference-compare", value + "%");
-
-          differenceToggle.classList.toggle("is-default", !differenceIsLightMaster);
-
-          differenceLabel.textContent = differenceIsLightMaster
-            ? lightLabel
-            : defaultLabel;
-
-          differenceToggle.setAttribute(
-            "aria-label",
-            differenceIsLightMaster ? "Show default lights" : "Show Light Master Pro"
-          );
-        }
-
-        setDifferenceComparison(true);
-
-        differenceToggle.addEventListener("click", () => {
-          setDifferenceComparison(!differenceIsLightMaster);
-        });
-      });
-
       const stepDemo = document.getElementById("stepDemo");
       const stepDemoButton = document.getElementById("stepDemoButton");
+      const stepDemoDefaultToggle = document.getElementById("stepDemoDefaultToggle");
       const stepDemoCenterText = document.getElementById("stepDemoCenterText");
       const stepDemoCornerText = document.getElementById("stepDemoCornerText");
-      const stepDemoDefaultToggle = document.getElementById("stepDemoDefaultToggle");
 
-      if (stepDemo && stepDemoButton && stepDemoCenterText && stepDemoCornerText && stepDemoDefaultToggle) {
-        const stepSlides = Array.from(stepDemo.querySelectorAll(".step-demo-slide:not(.step-demo-default-slide)"));
-        const stepDefaultSlide = stepDemo.querySelector(".step-demo-default-slide");
+      if (stepDemo && stepDemoButton && stepDemoDefaultToggle && stepDemoCenterText && stepDemoCornerText) {
+        const stepSlides = Array.from(stepDemo.querySelectorAll(".step-demo-slide"));
 
         const stepMeta = [
           {
@@ -2712,7 +2718,7 @@
         ];
 
         let currentStep = 0;
-        let isDefaultLightsView = false;
+        let showingStepDefault = false;
         let transitionTimer = null;
 
         function playStepTransition() {
@@ -2731,35 +2737,25 @@
           }, 860);
         }
 
-        function updateDefaultToggleButton() {
-          if (isDefaultLightsView) {
-            stepDemoDefaultToggle.textContent = "Show light master";
-            stepDemoDefaultToggle.setAttribute("aria-label", "Show Light Master lights");
-          } else {
-            stepDemoDefaultToggle.textContent = "Show default lights";
-            stepDemoDefaultToggle.setAttribute("aria-label", "Show default lights");
-          }
+        function setActiveStepSlide(index) {
+          stepSlides.forEach((slide, slideIndex) => {
+            slide.classList.toggle("active", slideIndex === index);
+          });
         }
 
         function renderStep(index, animate = true) {
           currentStep = index;
-          isDefaultLightsView = false;
+          showingStepDefault = false;
 
           if (animate) {
             playStepTransition();
           }
 
-          stepSlides.forEach((slide, slideIndex) => {
-            slide.classList.toggle("active", slideIndex === index);
-          });
-
-          if (stepDefaultSlide) {
-            stepDefaultSlide.classList.remove("active");
-          }
+          setActiveStepSlide(index);
 
           const currentMeta = stepMeta[index];
           const isStartStep = index === 0;
-          const isFinalStep = index === stepMeta.length - 1;
+          const isLastStep = index === stepMeta.length - 1;
 
           if (currentMeta.centerText) {
             stepDemoCenterText.textContent = currentMeta.centerText;
@@ -2779,13 +2775,36 @@
           stepDemoButton.classList.toggle("is-plus", !currentMeta.isRestore);
           stepDemoButton.classList.toggle("is-restore", currentMeta.isRestore);
 
-          stepDemoDefaultToggle.classList.toggle("is-hidden", !isFinalStep);
-          updateDefaultToggleButton();
+          stepDemoDefaultToggle.classList.toggle("visible", isLastStep);
+          stepDemoDefaultToggle.textContent = "Show default lights";
+          stepDemoDefaultToggle.setAttribute("aria-label", "Show default lights");
 
           stepDemoButton.setAttribute(
             "aria-label",
             currentMeta.isRestore ? "Restore the demo to step zero" : "Show next step"
           );
+        }
+
+        function toggleStepDefaultLights() {
+          if (currentStep !== stepMeta.length - 1) return;
+
+          showingStepDefault = !showingStepDefault;
+
+          playStepTransition();
+
+          if (showingStepDefault) {
+            setActiveStepSlide(7);
+            stepDemoDefaultToggle.textContent = "Show Light Master";
+            stepDemoDefaultToggle.setAttribute("aria-label", "Show Light Master");
+            stepDemoCornerText.textContent = "Default lights";
+          } else {
+            setActiveStepSlide(6);
+            stepDemoDefaultToggle.textContent = "Show default lights";
+            stepDemoDefaultToggle.setAttribute("aria-label", "Show default lights");
+            stepDemoCornerText.textContent = "This is rate number 6";
+          }
+
+          stepDemoCornerText.classList.add("visible");
         }
 
         stepDemoCenterText.addEventListener("click", () => {
@@ -2801,31 +2820,83 @@
         });
 
         stepDemoDefaultToggle.addEventListener("click", () => {
-          if (currentStep !== stepMeta.length - 1 || !stepDefaultSlide) return;
-
-          isDefaultLightsView = !isDefaultLightsView;
-
-          playStepTransition();
-
-          stepSlides.forEach((slide, slideIndex) => {
-            slide.classList.toggle("active", !isDefaultLightsView && slideIndex === currentStep);
-          });
-
-          stepDefaultSlide.classList.toggle("active", isDefaultLightsView);
-
-          if (isDefaultLightsView) {
-            stepDemoCornerText.textContent = "Default lights preview";
-            stepDemoCornerText.classList.add("visible");
-          } else {
-            stepDemoCornerText.textContent = stepMeta[currentStep].cornerText;
-            stepDemoCornerText.classList.add("visible");
-          }
-
-          updateDefaultToggleButton();
+          toggleStepDefaultLights();
         });
 
         renderStep(0, false);
       }
+
+      const differenceBlocks = Array.from(document.querySelectorAll(".difference-compare"));
+
+      differenceBlocks.forEach((block) => {
+        const toggle = block.querySelector(".difference-toggle");
+        const label = block.querySelector(".difference-label");
+        const lightLabel = block.getAttribute("data-light-label") || "Light Master Pro";
+        const defaultLabel = block.getAttribute("data-default-label") || "Default Lights";
+
+        let isLightMaster = true;
+
+        function setDifferenceState(showLightMaster) {
+          isLightMaster = showLightMaster;
+
+          const value = isLightMaster ? 100 : 0;
+          block.style.setProperty("--difference-compare", value + "%");
+          block.classList.toggle("is-default", !isLightMaster);
+
+          if (label) {
+            label.textContent = isLightMaster ? lightLabel : defaultLabel;
+          }
+
+          if (toggle) {
+            toggle.setAttribute(
+              "aria-label",
+              isLightMaster ? "Show default lights" : "Show Light Master Pro"
+            );
+          }
+        }
+
+        if (toggle) {
+          setDifferenceState(true);
+
+          toggle.addEventListener("click", () => {
+            setDifferenceState(!isLightMaster);
+          });
+        }
+      });
+
+      const variationButtons = Array.from(document.querySelectorAll(".variation-cta"));
+
+      function scrollToAddToCartOrTop() {
+        const isMobile = window.matchMedia("(max-width: 760px)").matches;
+
+        if (!isMobile) {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+          return;
+        }
+
+        const addToCartButton = document.querySelector(
+          ".js-item-addToCart, .btn-add-to-cart, .cy-add-to-cart-btn, input[value='Add to cart'], button[type='submit']"
+        );
+
+        if (addToCartButton) {
+          addToCartButton.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+        } else {
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: "smooth"
+          });
+        }
+      }
+
+      variationButtons.forEach((button) => {
+        button.addEventListener("click", scrollToAddToCartOrTop);
+      });
 
       const faqItems = Array.from(document.querySelectorAll(".faq-item"));
 
