@@ -700,15 +700,14 @@
       line-height: 1.75;
     }
 
-    .feature-card-demo .step-demo-shell,
-    .feature-card-animation .animation-demo-shell {
-      margin-bottom: 22px;
-    }
-
+    .feature-card-demo,
+    .feature-card-animation,
     .feature-card-advanced {
       padding: 16px;
     }
 
+    .feature-card-demo .feature-inner,
+    .feature-card-animation .feature-inner,
     .feature-card-advanced .feature-inner {
       height: 100%;
     }
@@ -898,7 +897,7 @@
       background: #0c1118;
       box-shadow: 0 20px 42px rgba(15,16,18,0.14);
       isolation: isolate;
-      cursor: pointer;
+      cursor: default;
     }
 
     .animation-demo-shell img {
@@ -916,10 +915,6 @@
       transform: scale(1.018);
     }
 
-    .animation-demo-shell.is-playing {
-      cursor: default;
-    }
-
     .animation-demo-shell.is-playing:hover img {
       transform: scale(1);
     }
@@ -931,49 +926,89 @@
       z-index: 2;
       pointer-events: none;
       background:
-        linear-gradient(180deg, rgba(7, 10, 16, 0.08) 0%, rgba(7, 10, 16, 0.00) 32%, rgba(7, 10, 16, 0.18) 100%);
+        linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.30) 42%, rgba(0,0,0,0.06) 100%),
+        linear-gradient(180deg, rgba(7, 10, 16, 0.12) 0%, rgba(7, 10, 16, 0.00) 42%, rgba(7, 10, 16, 0.24) 100%);
     }
 
-    .animation-demo-copy {
+    .animation-demo-info {
       position: absolute;
-      top: 14px;
-      left: 14px;
+      left: 28px;
+      top: 24px;
       z-index: 4;
+      width: min(370px, calc(100% - 56px));
+      color: #ffffff;
+      transition:
+        opacity 0.55s ease,
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.55s ease;
+    }
+
+    .animation-demo-info h3 {
+      margin: 0 0 10px;
+      color: #ffffff;
+      font-size: clamp(22px, 2.4vw, 34px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      text-shadow: 0 12px 34px rgba(0,0,0,0.46);
+    }
+
+    .animation-demo-info p {
+      margin: 0;
+      color: rgba(255,255,255,0.74);
+      font-size: 14px;
+      line-height: 1.65;
+      max-width: 350px;
+      text-shadow: 0 8px 22px rgba(0,0,0,0.44);
+    }
+
+    .animation-demo-action {
+      position: absolute;
+      left: 28px;
+      bottom: 22px;
+      z-index: 5;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 14px;
+      min-height: 42px;
+      padding: 10px 16px;
       border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.30);
       color: #ffffff;
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.26);
+      background: rgba(255,255,255,0.13);
+      box-shadow:
+        0 14px 30px rgba(0,0,0,0.22),
+        inset 0 1px 0 rgba(255,255,255,0.16);
       backdrop-filter: blur(18px) saturate(150%);
       -webkit-backdrop-filter: blur(18px) saturate(150%);
-      box-shadow:
-        0 14px 30px rgba(0,0,0,0.18),
-        inset 0 1px 0 rgba(255,255,255,0.18);
+      font-family: inherit;
       font-size: 13px;
-      font-weight: 650;
+      font-weight: 700;
       letter-spacing: -0.01em;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.28);
-      transition:
-        opacity 0.35s ease,
-        transform 0.35s ease,
-        background 0.35s ease,
-        border-color 0.35s ease;
-      pointer-events: none;
+      cursor: pointer;
       white-space: nowrap;
+      transition:
+        opacity 0.45s ease,
+        transform 0.45s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
     }
 
-    .animation-demo-shell:hover .animation-demo-copy {
+    .animation-demo-action:hover {
       transform: translateY(-2px);
       background: rgba(255,255,255,0.20);
-      border-color: rgba(255,255,255,0.36);
+      border-color: rgba(255,255,255,0.44);
+      box-shadow:
+        0 18px 38px rgba(0,0,0,0.28),
+        inset 0 1px 0 rgba(255,255,255,0.24);
     }
 
-    .animation-demo-shell.is-playing .animation-demo-copy {
+    .animation-demo-shell.is-playing .animation-demo-info,
+    .animation-demo-shell.is-playing .animation-demo-action {
       opacity: 0;
-      transform: translateY(-8px);
+      transform: translateY(18px);
+      filter: blur(8px);
+      pointer-events: none;
     }
 
     .step-demo-shell {
@@ -1050,7 +1085,46 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(7, 10, 16, 0.08) 0%, rgba(7, 10, 16, 0.00) 30%, rgba(7, 10, 16, 0.20) 100%);
+        linear-gradient(90deg, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.32) 46%, rgba(0,0,0,0.08) 100%),
+        linear-gradient(180deg, rgba(7, 10, 16, 0.16) 0%, rgba(7, 10, 16, 0.00) 42%, rgba(7, 10, 16, 0.24) 100%);
+      pointer-events: none;
+    }
+
+    .step-demo-info {
+      position: absolute;
+      left: 28px;
+      top: 24px;
+      z-index: 6;
+      width: min(410px, calc(100% - 56px));
+      color: #ffffff;
+      transition:
+        opacity 0.55s ease,
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.55s ease;
+    }
+
+    .step-demo-info h3 {
+      margin: 0 0 10px;
+      color: #ffffff;
+      font-size: clamp(22px, 2.4vw, 34px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      text-shadow: 0 12px 34px rgba(0,0,0,0.46);
+    }
+
+    .step-demo-info p {
+      margin: 0;
+      color: rgba(255,255,255,0.74);
+      font-size: 14px;
+      line-height: 1.65;
+      max-width: 380px;
+      text-shadow: 0 8px 22px rgba(0,0,0,0.44);
+    }
+
+    .step-demo-shell.is-started .step-demo-info {
+      opacity: 0;
+      transform: translateY(18px);
+      filter: blur(8px);
       pointer-events: none;
     }
 
@@ -1064,8 +1138,8 @@
 
     .step-demo-center-copy {
       left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+      bottom: 18px;
+      transform: translate(-50%, 0);
       max-width: min(82%, 520px);
       padding: 12px 18px;
       border-radius: 999px;
@@ -1093,7 +1167,7 @@
     }
 
     .step-demo-center-copy:hover {
-      transform: translate(-50%, -50%) scale(1.03);
+      transform: translate(-50%, -2px) scale(1.03);
       background: rgba(255,255,255,0.20);
       border-color: rgba(255,255,255,0.34);
     }
@@ -2229,14 +2303,35 @@
         font-size: 22px;
       }
 
-      .animation-demo-copy {
-        top: 10px;
-        left: 10px;
-        padding: 8px 11px;
+      .animation-demo-info,
+      .step-demo-info {
+        left: 16px;
+        top: 14px;
+        width: min(250px, calc(100% - 32px));
+      }
+
+      .animation-demo-info h3,
+      .step-demo-info h3 {
+        font-size: 19px;
+        margin-bottom: 6px;
+      }
+
+      .animation-demo-info p,
+      .step-demo-info p {
+        font-size: 10px;
+        line-height: 1.45;
+      }
+
+      .animation-demo-action {
+        left: 16px;
+        bottom: 14px;
+        min-height: 34px;
+        padding: 8px 12px;
         font-size: 11px;
       }
 
       .step-demo-center-copy {
+        bottom: 14px;
         padding: 9px 12px;
         max-width: 88%;
         font-size: 12px;
@@ -2565,6 +2660,13 @@
               </div>
 
               <div class="step-demo-overlay">
+                <div class="step-demo-info">
+                  <h3>400+ Lighting Assets</h3>
+                  <p>
+                    Choose from more than 400 ready-made assets across multiple categories, including Abstract Light, Caustic, Colored, Flashlight, Light Reflections, Rays, Shadows, Simple Gobos, and Water.
+                  </p>
+                </div>
+
                 <button
                   class="step-demo-center-copy visible"
                   id="stepDemoCenterText"
@@ -2593,11 +2695,6 @@
                 </button>
               </div>
             </div>
-
-            <h3>400+ Lighting Assets</h3>
-            <p>
-              Choose from more than 400 ready-made assets across multiple categories, including Abstract Light, Caustic, Colored, Flashlight, Light Reflections, Rays, Shadows, Simple Gobos, and Water.
-            </p>
           </div>
         </article>
 
@@ -2613,13 +2710,18 @@
                 id="animationDemoImage"
                 src="https://assets.superhivemarket.com/cache/80205d06db4a3454e221ddc901a32163.jpg"
                 alt="Animation feature static preview">
-              <div class="animation-demo-copy">Click to enable animation</div>
-            </div>
 
-            <h3>Animation Feature</h3>
-            <p>
-              Enable dynamic asset movement with Flow Maps to add motion and visual interest, while keeping the system lightweight and avoiding unnecessary memory usage.
-            </p>
+              <div class="animation-demo-info">
+                <h3>Animation Feature</h3>
+                <p>
+                  Enable dynamic asset movement with Flow Maps to add motion and visual interest, while keeping the system lightweight and avoiding unnecessary memory usage.
+                </p>
+              </div>
+
+              <button class="animation-demo-action" id="animationDemoButton" type="button">
+                Click to enable animation
+              </button>
+            </div>
           </div>
         </article>
       </div>
@@ -3112,8 +3214,9 @@
 
       const animationDemo = document.getElementById("animationDemo");
       const animationDemoImage = document.getElementById("animationDemoImage");
+      const animationDemoButton = document.getElementById("animationDemoButton");
 
-      if (animationDemo && animationDemoImage) {
+      if (animationDemo && animationDemoImage && animationDemoButton) {
         const animationGifSrc = "https://assets.superhivemarket.com/cache/cfa574976ce79675204208d2d9b19573.gif";
         let animationStarted = false;
 
@@ -3132,7 +3235,7 @@
           });
         }
 
-        animationDemo.addEventListener("click", startAnimationDemo);
+        animationDemoButton.addEventListener("click", startAnimationDemo);
 
         animationDemo.addEventListener("keydown", (event) => {
           if (event.key === "Enter" || event.key === " ") {
@@ -3228,6 +3331,8 @@
           const currentMeta = stepMeta[index];
           const isStartStep = index === 0;
           const isLastStep = index === stepMeta.length - 1;
+
+          stepDemo.classList.toggle("is-started", !isStartStep);
 
           if (currentMeta.centerText) {
             stepDemoCenterText.textContent = currentMeta.centerText;
