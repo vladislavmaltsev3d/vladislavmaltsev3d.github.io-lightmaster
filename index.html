@@ -714,6 +714,10 @@
       padding: 16px;
     }
 
+    .media-card + .media-card {
+      margin-top: 18px;
+    }
+
     .media-inner {
       position: relative;
       z-index: 3;
@@ -2238,7 +2242,10 @@
 
       <div class="media-card">
         <div class="media-inner">
-          <div class="difference-compare" id="differenceCompare">
+          <div
+            class="difference-compare"
+            data-light-label="With Light Master Pro"
+            data-default-label="Default Lights">
             <img
               class="difference-image default"
               src="https://assets.superhivemarket.com/cache/1b48522c7c82e31b4f3bab9868fb9ca4.gif"
@@ -2249,13 +2256,41 @@
               src="https://assets.superhivemarket.com/cache/84708df650d9bdc542cb9bfe977c9c2c.gif"
               alt="Light Master Pro comparison preview">
 
-            <div class="difference-label" id="differenceLabel">With Light Master Pro</div>
+            <div class="difference-label">With Light Master Pro</div>
 
             <div class="difference-divider"></div>
 
             <button
               class="difference-toggle"
-              id="differenceToggle"
+              type="button"
+              aria-label="Show default lights">
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="media-card">
+        <div class="media-inner">
+          <div
+            class="difference-compare"
+            data-light-label="Light Master Pro"
+            data-default-label="Default lights">
+            <img
+              class="difference-image default"
+              src="https://assets.superhivemarket.com/cache/74a35ce1a8d2e61805f1cf90b8574ddb.gif"
+              alt="Default lights second comparison preview">
+
+            <img
+              class="difference-image lightmaster"
+              src="https://assets.superhivemarket.com/cache/0b1238902a4faf3b2a4464064a936572.gif"
+              alt="Light Master Pro second comparison preview">
+
+            <div class="difference-label">Light Master Pro</div>
+
+            <div class="difference-divider"></div>
+
+            <button
+              class="difference-toggle"
               type="button"
               aria-label="Show default lights">
             </button>
@@ -2590,37 +2625,43 @@
         });
       }
 
-      const differenceCompare = document.getElementById("differenceCompare");
-      const differenceToggle = document.getElementById("differenceToggle");
-      const differenceLabel = document.getElementById("differenceLabel");
+      const differenceItems = Array.from(document.querySelectorAll(".difference-compare"));
 
-      let differenceIsLightMaster = true;
+      differenceItems.forEach((differenceCompare) => {
+        const differenceToggle = differenceCompare.querySelector(".difference-toggle");
+        const differenceLabel = differenceCompare.querySelector(".difference-label");
 
-      function setDifferenceComparison(showLightMaster) {
-        differenceIsLightMaster = showLightMaster;
+        if (!differenceToggle || !differenceLabel) return;
 
-        const value = differenceIsLightMaster ? 100 : 0;
-        differenceCompare.style.setProperty("--difference-compare", value + "%");
+        const lightLabel = differenceCompare.dataset.lightLabel || "Light Master Pro";
+        const defaultLabel = differenceCompare.dataset.defaultLabel || "Default lights";
 
-        differenceToggle.classList.toggle("is-default", !differenceIsLightMaster);
+        let differenceIsLightMaster = true;
 
-        differenceLabel.textContent = differenceIsLightMaster
-          ? "With Light Master Pro"
-          : "Default Lights";
+        function setDifferenceComparison(showLightMaster) {
+          differenceIsLightMaster = showLightMaster;
 
-        differenceToggle.setAttribute(
-          "aria-label",
-          differenceIsLightMaster ? "Show default lights" : "Show Light Master Pro"
-        );
-      }
+          const value = differenceIsLightMaster ? 100 : 0;
+          differenceCompare.style.setProperty("--difference-compare", value + "%");
 
-      if (differenceCompare && differenceToggle && differenceLabel) {
+          differenceToggle.classList.toggle("is-default", !differenceIsLightMaster);
+
+          differenceLabel.textContent = differenceIsLightMaster
+            ? lightLabel
+            : defaultLabel;
+
+          differenceToggle.setAttribute(
+            "aria-label",
+            differenceIsLightMaster ? "Show default lights" : "Show Light Master Pro"
+          );
+        }
+
         setDifferenceComparison(true);
 
         differenceToggle.addEventListener("click", () => {
           setDifferenceComparison(!differenceIsLightMaster);
         });
-      }
+      });
 
       const stepDemo = document.getElementById("stepDemo");
       const stepDemoButton = document.getElementById("stepDemoButton");
