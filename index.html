@@ -700,326 +700,215 @@
       line-height: 1.75;
     }
 
-    .feature-card-demo,
-    .feature-card-animation,
-    .feature-card-advanced {
-      padding: 16px;
-    }
-
-    .feature-card-demo .feature-inner,
-    .feature-card-animation .feature-inner,
-    .feature-card-advanced .feature-inner {
-      height: 100%;
-    }
-
-    .advanced-placement-demo {
+    .advanced-demo-shell,
+    .animation-demo-shell,
+    .step-demo-shell {
       position: relative;
       width: 100%;
-      min-height: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 22px;
-      overflow: hidden;
-      background-image:
-        linear-gradient(90deg, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.66) 26%, rgba(0,0,0,0.18) 54%, rgba(0,0,0,0.20) 100%),
-        url("https://assets.superhivemarket.com/cache/ee833e32b97c5b6729ea2f3c7d439ce7.gif");
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      box-shadow: 0 20px 42px rgba(15,16,18,0.14);
-      isolation: isolate;
-    }
-
-    .advanced-placement-demo::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 12% 16%, rgba(255,255,255,0.10), transparent 28%),
-        linear-gradient(180deg, rgba(7,10,16,0.08) 0%, rgba(7,10,16,0.00) 42%, rgba(7,10,16,0.28) 100%);
-    }
-
-    .advanced-placement-copy {
-      position: absolute;
-      left: 42px;
-      top: 34px;
-      z-index: 3;
-      width: min(360px, calc(100% - 84px));
-      color: #ffffff;
-    }
-
-    .advanced-placement-copy h3 {
-      margin: 0 0 10px;
-      color: #ffffff;
-      font-size: clamp(22px, 2.4vw, 34px);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      text-shadow: 0 12px 34px rgba(0,0,0,0.45);
-    }
-
-    .advanced-placement-copy p {
-      margin: 0;
-      color: rgba(255,255,255,0.74);
-      font-size: 14px;
-      line-height: 1.65;
-      max-width: 330px;
-      text-shadow: 0 8px 22px rgba(0,0,0,0.44);
-    }
-
-    .advanced-see-more {
-      position: relative;
-      margin-top: 16px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 112px;
-      min-height: 38px;
-      padding: 9px 15px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.30);
-      color: #ffffff;
-      background: rgba(255,255,255,0.13);
-      box-shadow:
-        0 14px 30px rgba(0,0,0,0.22),
-        inset 0 1px 0 rgba(255,255,255,0.16);
-      backdrop-filter: blur(18px) saturate(150%);
-      -webkit-backdrop-filter: blur(18px) saturate(150%);
-      font-family: inherit;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      cursor: pointer;
-      transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-    }
-
-    .advanced-see-more:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.20);
-      border-color: rgba(255,255,255,0.44);
-      box-shadow:
-        0 18px 38px rgba(0,0,0,0.28),
-        inset 0 1px 0 rgba(255,255,255,0.24);
-    }
-
-    .advanced-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 22px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.28s ease;
-    }
-
-    .advanced-modal.is-open {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .advanced-modal-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(8,10,16,0.62);
-      backdrop-filter: blur(18px) saturate(135%);
-      -webkit-backdrop-filter: blur(18px) saturate(135%);
-    }
-
-    .advanced-modal-card {
-      position: relative;
-      z-index: 2;
-      width: min(1040px, 100%);
-      aspect-ratio: 16 / 9;
-      border-radius: 28px;
-      overflow: hidden;
-      background: #05070c;
-      border: 1px solid rgba(255,255,255,0.20);
-      box-shadow: 0 36px 100px rgba(0,0,0,0.42);
-      transform: translateY(16px) scale(0.98);
-      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .advanced-modal.is-open .advanced-modal-card {
-      transform: translateY(0) scale(1);
-    }
-
-    .advanced-modal-card img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      user-select: none;
-    }
-
-    .advanced-modal-close {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      z-index: 3;
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.26);
-      background: rgba(10,14,22,0.56);
-      color: #ffffff;
-      backdrop-filter: blur(16px) saturate(145%);
-      -webkit-backdrop-filter: blur(16px) saturate(145%);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.24);
-      font-family: inherit;
-      font-size: 25px;
-      line-height: 1;
-      cursor: pointer;
-      transition:
-        transform 0.24s ease,
-        background 0.24s ease,
-        border-color 0.24s ease;
-    }
-
-    .advanced-modal-close:hover {
-      transform: scale(1.06);
-      background: rgba(20,26,36,0.74);
-      border-color: rgba(255,255,255,0.40);
-    }
-
-    .animation-demo-shell {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 2 / 1;
       border-radius: 22px;
       overflow: hidden;
       background: #0c1118;
       box-shadow: 0 20px 42px rgba(15,16,18,0.14);
       isolation: isolate;
-      cursor: default;
+      margin-bottom: 22px;
     }
 
+    .advanced-demo-shell {
+      aspect-ratio: 16 / 9;
+    }
+
+    .animation-demo-shell,
+    .step-demo-shell {
+      aspect-ratio: 2 / 1;
+    }
+
+    .advanced-demo-shell img,
     .animation-demo-shell img {
       width: 100%;
       height: 100%;
       display: block;
       object-fit: cover;
-      transform: scale(1);
-      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
       user-select: none;
       pointer-events: none;
     }
 
-    .animation-demo-shell:hover img {
-      transform: scale(1.018);
-    }
-
-    .animation-demo-shell.is-playing:hover img {
-      transform: scale(1);
-    }
-
-    .animation-demo-shell::after {
-      content: "";
+    .advanced-demo-overlay,
+    .animation-demo-overlay {
       position: absolute;
       inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.30) 42%, rgba(0,0,0,0.06) 100%),
-        linear-gradient(180deg, rgba(7, 10, 16, 0.12) 0%, rgba(7, 10, 16, 0.00) 42%, rgba(7, 10, 16, 0.24) 100%);
-    }
-
-    .animation-demo-info {
-      position: absolute;
-      left: 28px;
-      top: 24px;
       z-index: 4;
-      width: min(370px, calc(100% - 56px));
-      color: #ffffff;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.34) 34%, rgba(0,0,0,0.02) 72%),
+        linear-gradient(180deg, rgba(0,0,0,0.20), rgba(0,0,0,0.22));
       transition:
         opacity 0.55s ease,
-        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.55s ease,
         filter 0.55s ease;
     }
 
-    .animation-demo-info h3 {
-      margin: 0 0 10px;
+    .advanced-demo-copy,
+    .animation-demo-copy {
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      max-width: min(62%, 360px);
       color: #ffffff;
-      font-size: clamp(22px, 2.4vw, 34px);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      text-shadow: 0 12px 34px rgba(0,0,0,0.46);
+      z-index: 5;
+      transition:
+        opacity 0.55s ease,
+        transform 0.55s ease,
+        filter 0.55s ease;
     }
 
-    .animation-demo-info p {
+    .advanced-demo-copy h3,
+    .animation-demo-copy h3,
+    .step-demo-title h3 {
+      margin: 0 0 8px;
+      color: #ffffff;
+      font-size: clamp(20px, 2vw, 28px);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    .advanced-demo-copy p,
+    .animation-demo-copy p,
+    .step-demo-title p {
       margin: 0;
-      color: rgba(255,255,255,0.74);
-      font-size: 14px;
-      line-height: 1.65;
-      max-width: 350px;
-      text-shadow: 0 8px 22px rgba(0,0,0,0.44);
+      color: rgba(255,255,255,0.72);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .advanced-demo-action,
+    .animation-demo-action,
+    .step-demo-center-copy {
+      position: absolute;
+      z-index: 6;
+      border: 1px solid rgba(255,255,255,0.24);
+      color: #ffffff;
+      background: rgba(255,255,255,0.14);
+      box-shadow:
+        0 14px 30px rgba(0,0,0,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.18);
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      font-family: inherit;
+      font-weight: 650;
+      cursor: pointer;
+      transition:
+        opacity 0.35s ease,
+        transform 0.35s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .advanced-demo-action {
+      left: 18px;
+      top: 110px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 12px;
     }
 
     .animation-demo-action {
-      position: absolute;
-      left: 28px;
-      bottom: 22px;
-      z-index: 5;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 42px;
-      padding: 10px 16px;
+      left: 18px;
+      bottom: 18px;
+      padding: 11px 15px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.30);
-      color: #ffffff;
-      background: rgba(255,255,255,0.13);
-      box-shadow:
-        0 14px 30px rgba(0,0,0,0.22),
-        inset 0 1px 0 rgba(255,255,255,0.16);
-      backdrop-filter: blur(18px) saturate(150%);
-      -webkit-backdrop-filter: blur(18px) saturate(150%);
-      font-family: inherit;
       font-size: 13px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      cursor: pointer;
-      white-space: nowrap;
-      transition:
-        opacity 0.45s ease,
-        transform 0.45s ease,
-        background 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
     }
 
-    .animation-demo-action:hover {
-      transform: translateY(-2px);
+    .advanced-demo-action:hover,
+    .animation-demo-action:hover,
+    .step-demo-center-copy:hover {
+      transform: translateY(-2px) scale(1.03);
       background: rgba(255,255,255,0.20);
-      border-color: rgba(255,255,255,0.44);
-      box-shadow:
-        0 18px 38px rgba(0,0,0,0.28),
-        inset 0 1px 0 rgba(255,255,255,0.24);
+      border-color: rgba(255,255,255,0.34);
     }
 
-    .animation-demo-shell.is-playing .animation-demo-info,
+    .advanced-demo-popover {
+      position: absolute;
+      inset: 14px;
+      z-index: 10;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid rgba(255,255,255,0.24);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.36);
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.96);
+      transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+    }
+
+    .advanced-demo-shell.is-open .advanced-demo-popover {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+
+    .advanced-demo-popover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .advanced-demo-close,
+    .animation-demo-reset {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 12;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.28);
+      color: #ffffff;
+      background: rgba(12,16,22,0.62);
+      box-shadow:
+        0 14px 30px rgba(0,0,0,0.20),
+        inset 0 1px 0 rgba(255,255,255,0.12);
+      backdrop-filter: blur(16px) saturate(150%);
+      -webkit-backdrop-filter: blur(16px) saturate(150%);
+      font-family: inherit;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      transition:
+        opacity 0.28s ease,
+        transform 0.28s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .advanced-demo-close:hover,
+    .animation-demo-reset:hover {
+      transform: translateY(-2px) scale(1.03);
+      background: rgba(16,22,30,0.76);
+      border-color: rgba(255,255,255,0.42);
+    }
+
+    .animation-demo-reset {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px) scale(0.92);
+    }
+
+    .animation-demo-shell.is-playing .animation-demo-reset {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .animation-demo-shell.is-playing .animation-demo-overlay,
+    .animation-demo-shell.is-playing .animation-demo-copy,
     .animation-demo-shell.is-playing .animation-demo-action {
       opacity: 0;
-      transform: translateY(18px);
+      transform: translateY(10px);
       filter: blur(8px);
       pointer-events: none;
-    }
-
-    .step-demo-shell {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 2 / 1;
-      border-radius: 22px;
-      overflow: hidden;
-      background: #0c1118;
-      box-shadow: 0 20px 42px rgba(15,16,18,0.14);
-      isolation: isolate;
     }
 
     .step-demo-shell::after {
@@ -1085,80 +974,43 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.32) 46%, rgba(0,0,0,0.08) 100%),
-        linear-gradient(180deg, rgba(7, 10, 16, 0.16) 0%, rgba(7, 10, 16, 0.00) 42%, rgba(7, 10, 16, 0.24) 100%);
+        linear-gradient(180deg, rgba(7, 10, 16, 0.34) 0%, rgba(7, 10, 16, 0.04) 44%, rgba(7, 10, 16, 0.38) 100%);
       pointer-events: none;
     }
 
-    .step-demo-info {
+    .step-demo-title {
       position: absolute;
-      left: 28px;
-      top: 24px;
+      top: 18px;
+      left: 18px;
+      right: 18px;
       z-index: 6;
-      width: min(410px, calc(100% - 56px));
-      color: #ffffff;
+      max-width: 580px;
       transition:
         opacity 0.55s ease,
-        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.55s ease,
         filter 0.55s ease;
     }
 
-    .step-demo-info h3 {
-      margin: 0 0 10px;
-      color: #ffffff;
-      font-size: clamp(22px, 2.4vw, 34px);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      text-shadow: 0 12px 34px rgba(0,0,0,0.46);
-    }
-
-    .step-demo-info p {
-      margin: 0;
-      color: rgba(255,255,255,0.74);
-      font-size: 14px;
-      line-height: 1.65;
-      max-width: 380px;
-      text-shadow: 0 8px 22px rgba(0,0,0,0.44);
-    }
-
-    .step-demo-shell.is-started .step-demo-info {
+    .step-demo-shell.is-started .step-demo-title {
       opacity: 0;
-      transform: translateY(18px);
+      transform: translateY(-10px);
       filter: blur(8px);
       pointer-events: none;
-    }
-
-    .step-demo-center-copy,
-    .step-demo-corner-copy {
-      position: absolute;
-      color: #ffffff;
-      transition: opacity 0.35s ease, transform 0.35s ease;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.28);
     }
 
     .step-demo-center-copy {
       left: 50%;
       bottom: 18px;
-      transform: translate(-50%, 0);
+      transform: translateX(-50%);
       max-width: min(82%, 520px);
       padding: 12px 18px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.24);
-      backdrop-filter: blur(18px) saturate(140%);
-      -webkit-backdrop-filter: blur(18px) saturate(140%);
-      font-family: inherit;
       font-size: clamp(13px, 1.4vw, 18px);
-      font-weight: 600;
       letter-spacing: -0.02em;
       text-align: center;
       opacity: 0;
       white-space: nowrap;
-      cursor: pointer;
       pointer-events: none;
-      box-shadow:
-        0 14px 30px rgba(0,0,0,0.18),
-        inset 0 1px 0 rgba(255,255,255,0.18);
     }
 
     .step-demo-center-copy.visible {
@@ -1167,12 +1019,11 @@
     }
 
     .step-demo-center-copy:hover {
-      transform: translate(-50%, -2px) scale(1.03);
-      background: rgba(255,255,255,0.20);
-      border-color: rgba(255,255,255,0.34);
+      transform: translateX(-50%) translateY(-2px) scale(1.03);
     }
 
     .step-demo-corner-copy {
+      position: absolute;
       left: 16px;
       bottom: 16px;
       padding: 9px 13px;
@@ -1181,11 +1032,14 @@
       border: 1px solid rgba(255,255,255,0.20);
       backdrop-filter: blur(16px) saturate(140%);
       -webkit-backdrop-filter: blur(16px) saturate(140%);
+      color: #ffffff;
       font-size: 12px;
       font-weight: 500;
       letter-spacing: 0.01em;
       opacity: 0;
       transform: translateY(10px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.28);
     }
 
     .step-demo-corner-copy.visible {
@@ -1225,28 +1079,15 @@
     }
 
     .step-demo-default-toggle {
-      right: 126px;
-      min-width: 148px;
+      right: 128px;
       height: 42px;
+      min-width: 142px;
       padding: 0 15px;
       border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       font-family: inherit;
-      font-size: 12px;
-      font-weight: 650;
+      font-size: 13px;
+      font-weight: 600;
       letter-spacing: -0.01em;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-8px) scale(0.92);
-      white-space: nowrap;
-    }
-
-    .step-demo-default-toggle.visible {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0) scale(1);
     }
 
     .step-demo-control:hover,
@@ -1256,7 +1097,8 @@
       border-color: rgba(255,255,255,0.34);
     }
 
-    .step-demo-control.is-hidden {
+    .step-demo-control.is-hidden,
+    .step-demo-default-toggle.is-hidden {
       opacity: 0;
       pointer-events: none;
       transform: translateY(-8px) scale(0.92);
@@ -1309,32 +1151,25 @@
       display: block;
     }
 
-    .media-stack {
+    .media-grid {
       display: grid;
       gap: 18px;
     }
 
-    .difference-compare {
-      --difference-compare: 100%;
+    .diff-compare-box {
+      --compare: 100%;
       position: relative;
       width: 100%;
-      aspect-ratio: 32 / 9;
-      border-radius: 26px;
+      aspect-ratio: var(--diff-ratio, 16 / 9);
+      border-radius: 30px;
       overflow: hidden;
-      background: #0c1118;
-      box-shadow: 0 24px 52px rgba(15,16,18,0.16);
+      background: #0f1117;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(255,255,255,0.72);
       isolation: isolate;
     }
 
-    .difference-compare.ratio-5-2 {
-      aspect-ratio: 5 / 2;
-    }
-
-    .difference-compare.ratio-2-1 {
-      aspect-ratio: 2 / 1;
-    }
-
-    .difference-image {
+    .diff-image {
       position: absolute;
       inset: 0;
       background-size: cover;
@@ -1342,74 +1177,49 @@
       background-repeat: no-repeat;
     }
 
-    .difference-image.default {
+    .diff-image.default {
       z-index: 1;
     }
 
-    .difference-image.light-master {
+    .diff-image.master {
       z-index: 2;
-      clip-path: inset(0 calc(100% - var(--difference-compare)) 0 0);
+      clip-path: inset(0 calc(100% - var(--compare)) 0 0);
       transition: clip-path 1.05s cubic-bezier(0.22, 1, 0.36, 1);
-      will-change: clip-path;
     }
 
-    .difference-compare::after {
+    .diff-compare-box::after {
       content: "";
       position: absolute;
       inset: 0;
       z-index: 3;
       pointer-events: none;
       background:
-        linear-gradient(180deg, rgba(7, 10, 16, 0.08) 0%, rgba(7, 10, 16, 0.00) 32%, rgba(7, 10, 16, 0.20) 100%);
+        linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.00) 42%, rgba(0,0,0,0.22) 100%);
     }
 
-    .difference-label {
+    .diff-label {
       position: absolute;
-      left: 18px;
-      bottom: 18px;
+      left: 22px;
+      top: 22px;
       z-index: 5;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 9px 14px;
+      padding: 9px 13px;
       border-radius: 999px;
       color: #ffffff;
-      background: rgba(10,14,22,0.46);
-      border: 1px solid rgba(255,255,255,0.20);
+      background: rgba(12,16,22,0.46);
+      border: 1px solid rgba(255,255,255,0.22);
       backdrop-filter: blur(16px) saturate(140%);
       -webkit-backdrop-filter: blur(16px) saturate(140%);
       font-size: 12px;
-      font-weight: 650;
-      letter-spacing: 0.02em;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.26);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.35);
     }
 
-    .difference-divider {
+    .diff-toggle {
       position: absolute;
-      top: 0;
-      bottom: 0;
-      left: var(--difference-compare);
-      z-index: 4;
-      width: 0;
-      pointer-events: none;
-      transition: left 1.05s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .difference-divider::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: -0.5px;
-      width: 1px;
-      background: rgba(255,255,255,0.38);
-      box-shadow: 0 0 12px rgba(0,0,0,0.18);
-    }
-
-    .difference-toggle {
-      position: absolute;
-      top: 18%;
-      left: clamp(28px, var(--difference-compare), calc(100% - 28px));
+      top: 50%;
+      left: clamp(28px, var(--compare), calc(100% - 28px));
       z-index: 6;
       width: 54px;
       height: 60px;
@@ -1418,12 +1228,14 @@
       background: transparent;
       cursor: pointer;
       transform: translate(-50%, -50%);
-      transition: left 1.05s cubic-bezier(0.22, 1, 0.36, 1);
+      transition:
+        left 1.05s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.25s ease;
       appearance: none;
       -webkit-appearance: none;
     }
 
-    .difference-toggle::before {
+    .diff-toggle::before {
       content: "";
       position: absolute;
       top: 50%;
@@ -1437,14 +1249,14 @@
       animation: arrowHintLeft 1.45s ease-in-out infinite;
     }
 
-    .difference-toggle::after {
+    .diff-toggle::after {
       content: "click";
       position: absolute;
       top: 50%;
       right: 50px;
       transform: translateY(-50%);
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #ffffff;
@@ -1454,12 +1266,12 @@
       white-space: nowrap;
     }
 
-    .difference-compare.is-default .difference-toggle::before {
+    .diff-compare-box.is-default-view .diff-toggle::before {
       transform: translate(-58%, -50%) rotate(45deg);
       animation: arrowHintRight 1.45s ease-in-out infinite;
     }
 
-    .difference-compare.is-default .difference-toggle::after {
+    .diff-compare-box.is-default-view .diff-toggle::after {
       left: 50px;
       right: auto;
       animation: clickHintRight 1.45s ease-in-out infinite;
@@ -1479,7 +1291,7 @@
       backdrop-filter: blur(26px) saturate(145%);
       -webkit-backdrop-filter: blur(26px) saturate(145%);
       padding: 28px;
-      min-height: 310px;
+      min-height: 260px;
       transition:
         transform 0.3s ease,
         box-shadow 0.3s ease,
@@ -1649,21 +1461,19 @@
       margin-top: 18px;
       width: 100%;
       min-height: 44px;
-      border: none;
+      border: 1px solid rgba(255,255,255,0.52);
       border-radius: 999px;
-      cursor: pointer;
+      color: #ffffff;
+      background:
+        linear-gradient(180deg, rgba(30,144,255,0.76), rgba(10,132,255,0.78)),
+        rgba(10,132,255,0.72);
+      box-shadow:
+        0 14px 30px rgba(10,132,255,0.20),
+        inset 0 1px 0 rgba(255,255,255,0.30);
       font-family: inherit;
       font-size: 14px;
       font-weight: 750;
-      letter-spacing: -0.01em;
-      color: #ffffff;
-      background:
-        linear-gradient(180deg, rgba(30,144,255,0.86), rgba(10,132,255,0.88)),
-        rgba(10,132,255,0.86);
-      border: 1px solid rgba(255,255,255,0.44);
-      box-shadow:
-        0 14px 30px rgba(10,132,255,0.22),
-        inset 0 1px 0 rgba(255,255,255,0.28);
+      cursor: pointer;
       transition:
         transform 0.25s ease,
         box-shadow 0.25s ease,
@@ -1673,9 +1483,9 @@
     .variation-cta:hover {
       transform: translateY(-2px);
       box-shadow:
-        0 18px 38px rgba(10,132,255,0.30),
-        inset 0 1px 0 rgba(255,255,255,0.36);
-      border-color: rgba(255,255,255,0.62);
+        0 18px 36px rgba(10,132,255,0.28),
+        inset 0 1px 0 rgba(255,255,255,0.38);
+      border-color: rgba(255,255,255,0.72);
     }
 
     .faq-list {
@@ -1762,7 +1572,7 @@
     }
 
     .faq-item.is-open .faq-answer {
-      max-height: 720px;
+      max-height: 560px;
       opacity: 1;
     }
 
@@ -1782,10 +1592,7 @@
       color: #555861;
       font-size: 15px;
       line-height: 1.75;
-    }
-
-    .faq-answer-inner p + p {
-      margin-top: 14px;
+      white-space: pre-line;
     }
 
     .faq-image-box {
@@ -2092,15 +1899,9 @@
         max-width: 360px;
       }
 
-      .advanced-placement-copy {
-        left: 34px;
-        top: 28px;
-        width: min(340px, calc(100% - 68px));
-      }
-
       .variation-card {
         padding: 16px;
-        min-height: 275px;
+        min-height: 230px;
         border-radius: 24px;
       }
 
@@ -2162,12 +1963,6 @@
       .variation-note {
         font-size: 11px;
       }
-
-      .variation-cta {
-        min-height: 38px;
-        margin-top: 12px;
-        font-size: 12px;
-      }
     }
 
     @media (max-width: 760px) {
@@ -2201,10 +1996,10 @@
         gap: 4px;
       }
 
-      .hero .liquid-button {
+      .liquid-button {
         min-width: 80px;
         padding: 7px 8px;
-        font-size: 10px;
+        font-size: 11px;
       }
 
       .hero-toggle {
@@ -2258,80 +2053,53 @@
         padding: 24px;
       }
 
-      .advanced-placement-demo {
-        border-radius: 18px;
+      .advanced-demo-copy,
+      .animation-demo-copy,
+      .step-demo-title {
+        left: 12px;
+        top: 12px;
+        right: 12px;
+        max-width: 74%;
       }
 
-      .advanced-placement-copy {
-        left: 18px;
-        top: 18px;
-        width: min(250px, calc(100% - 36px));
+      .advanced-demo-copy h3,
+      .animation-demo-copy h3,
+      .step-demo-title h3 {
+        font-size: 16px;
       }
 
-      .advanced-placement-copy h3 {
-        margin-bottom: 6px;
-        font-size: 20px;
-      }
-
-      .advanced-placement-copy p {
-        font-size: 11px;
-        line-height: 1.45;
-        max-width: 230px;
-      }
-
-      .advanced-see-more {
-        margin-top: 10px;
-        min-width: 92px;
-        min-height: 32px;
-        padding: 7px 12px;
-        font-size: 11px;
-      }
-
-      .advanced-modal {
-        padding: 14px;
-      }
-
-      .advanced-modal-card {
-        border-radius: 20px;
-      }
-
-      .advanced-modal-close {
-        top: 10px;
-        right: 10px;
-        width: 36px;
-        height: 36px;
-        font-size: 22px;
-      }
-
-      .animation-demo-info,
-      .step-demo-info {
-        left: 16px;
-        top: 14px;
-        width: min(250px, calc(100% - 32px));
-      }
-
-      .animation-demo-info h3,
-      .step-demo-info h3 {
-        font-size: 19px;
-        margin-bottom: 6px;
-      }
-
-      .animation-demo-info p,
-      .step-demo-info p {
+      .advanced-demo-copy p,
+      .animation-demo-copy p,
+      .step-demo-title p {
         font-size: 10px;
         line-height: 1.45;
       }
 
+      .advanced-demo-action {
+        left: 12px;
+        top: 78px;
+        padding: 8px 11px;
+        font-size: 10px;
+      }
+
       .animation-demo-action {
-        left: 16px;
-        bottom: 14px;
-        min-height: 34px;
-        padding: 8px 12px;
+        left: 12px;
+        bottom: 12px;
+        padding: 9px 12px;
         font-size: 11px;
       }
 
+      .advanced-demo-close,
+      .animation-demo-reset {
+        top: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+        font-size: 24px;
+      }
+
       .step-demo-center-copy {
-        bottom: 14px;
+        bottom: 12px;
         padding: 9px 12px;
         max-width: 88%;
         font-size: 12px;
@@ -2346,9 +2114,18 @@
         font-size: 10px;
       }
 
-      .step-demo-control {
+      .step-demo-control,
+      .step-demo-default-toggle {
         top: 12px;
         right: 12px;
+      }
+
+      .step-demo-default-toggle {
+        right: 100px;
+        min-width: 106px;
+        height: 38px;
+        padding: 0 10px;
+        font-size: 10px;
       }
 
       .step-demo-control.is-plus {
@@ -2358,18 +2135,9 @@
       }
 
       .step-demo-control.is-restore {
-        min-width: 82px;
+        min-width: 88px;
         height: 38px;
-        padding: 0 11px;
-      }
-
-      .step-demo-default-toggle {
-        top: 56px;
-        right: 12px;
-        min-width: 124px;
-        height: 34px;
-        padding: 0 10px;
-        font-size: 10px;
+        padding: 0 12px;
       }
 
       .step-demo-plus {
@@ -2380,32 +2148,27 @@
         font-size: 11px;
       }
 
-      .difference-compare {
-        border-radius: 20px;
+      .diff-label {
+        left: 12px;
+        top: 12px;
+        padding: 7px 9px;
+        font-size: 9px;
       }
 
-      .difference-toggle {
+      .diff-toggle {
         width: 42px;
         height: 54px;
-        left: clamp(24px, var(--difference-compare), calc(100% - 24px));
-        top: 16%;
+        left: clamp(24px, var(--compare), calc(100% - 24px));
       }
 
-      .difference-toggle::after {
+      .diff-toggle::after {
         font-size: 10px;
         right: 46px;
       }
 
-      .difference-compare.is-default .difference-toggle::after {
+      .diff-compare-box.is-default-view .diff-toggle::after {
         left: 46px;
         right: auto;
-      }
-
-      .difference-label {
-        left: 12px;
-        bottom: 12px;
-        padding: 7px 10px;
-        font-size: 10px;
       }
 
       .variations-grid {
@@ -2415,7 +2178,7 @@
 
       .variation-card {
         padding: 10px;
-        min-height: 255px;
+        min-height: 250px;
         border-radius: 18px;
       }
 
@@ -2492,9 +2255,9 @@
       }
 
       .variation-cta {
-        min-height: 32px;
-        margin-top: 10px;
-        font-size: 10px;
+        min-height: 34px;
+        margin-top: 12px;
+        font-size: 11px;
       }
 
       .faq-question {
@@ -2629,17 +2392,33 @@
           </div>
         </article>
 
-        <article class="feature-card feature-card-advanced">
+        <article class="feature-card">
           <div class="feature-inner">
-            <div class="advanced-placement-demo">
-              <div class="advanced-placement-copy">
+            <div class="advanced-demo-shell" id="advancedDemo">
+              <img
+                src="https://assets.superhivemarket.com/cache/ee833e32b97c5b6729ea2f3c7d439ce7.gif"
+                alt="Advanced Placement preview">
+
+              <div class="advanced-demo-overlay"></div>
+
+              <div class="advanced-demo-copy">
                 <h3>Advanced Placement</h3>
                 <p>
-                  Place and aim lights directly in the viewport with interactive controls, quick confirmation, precise movement, and fast artistic iteration.
+                  Place and aim lights directly in the viewport with interactive controls and fast iteration.
                 </p>
-                <button class="advanced-see-more" id="advancedSeeMore" type="button">
-                  See More
+              </div>
+
+              <button class="advanced-demo-action" id="advancedDemoButton" type="button">
+                See More
+              </button>
+
+              <div class="advanced-demo-popover" id="advancedDemoPopover">
+                <button class="advanced-demo-close" id="advancedDemoClose" type="button" aria-label="Close advanced placement preview">
+                  ×
                 </button>
+                <img
+                  src="https://assets.superhivemarket.com/cache/890265b0806d2a9d1e8253b94c6b1cfa.gif"
+                  alt="Advanced Placement detailed preview">
               </div>
             </div>
           </div>
@@ -2660,7 +2439,7 @@
               </div>
 
               <div class="step-demo-overlay">
-                <div class="step-demo-info">
+                <div class="step-demo-title" id="stepDemoTitle">
                   <h3>400+ Lighting Assets</h3>
                   <p>
                     Choose from more than 400 ready-made assets across multiple categories, including Abstract Light, Caustic, Colored, Flashlight, Light Reflections, Rays, Shadows, Simple Gobos, and Water.
@@ -2678,8 +2457,8 @@
                 <div class="step-demo-corner-copy" id="stepDemoCornerText"></div>
 
                 <button
-                  class="step-demo-default-toggle"
-                  id="stepDemoDefaultToggle"
+                  class="step-demo-default-toggle is-hidden"
+                  id="stepDemoDefaultButton"
                   type="button"
                   aria-label="Show default lights">
                   Show default lights
@@ -2698,20 +2477,17 @@
           </div>
         </article>
 
-        <article class="feature-card feature-card-animation">
+        <article class="feature-card">
           <div class="feature-inner">
-            <div
-              class="animation-demo-shell"
-              id="animationDemo"
-              role="button"
-              tabindex="0"
-              aria-label="Click to enable animation">
+            <div class="animation-demo-shell" id="animationDemo" tabindex="0" aria-label="Click to enable animation">
               <img
                 id="animationDemoImage"
                 src="https://assets.superhivemarket.com/cache/80205d06db4a3454e221ddc901a32163.jpg"
                 alt="Animation feature static preview">
 
-              <div class="animation-demo-info">
+              <div class="animation-demo-overlay"></div>
+
+              <div class="animation-demo-copy">
                 <h3>Animation Feature</h3>
                 <p>
                   Enable dynamic asset movement with Flow Maps to add motion and visual interest, while keeping the system lightweight and avoiding unnecessary memory usage.
@@ -2720,6 +2496,14 @@
 
               <button class="animation-demo-action" id="animationDemoButton" type="button">
                 Click to enable animation
+              </button>
+
+              <button
+                class="animation-demo-reset"
+                id="animationDemoReset"
+                type="button"
+                aria-label="Reset animation preview">
+                ×
               </button>
             </div>
           </div>
@@ -2735,73 +2519,57 @@
         </p>
       </div>
 
-      <div class="media-stack">
-        <div
-          class="difference-compare"
-          data-light-label="With Light Master Pro"
-          data-default-label="Default Lights">
+      <div class="media-grid">
+        <div class="diff-compare-box" style="--diff-ratio: 1920 / 540;">
           <div
-            class="difference-image default"
+            class="diff-image default"
             style="background-image: url('https://assets.superhivemarket.com/cache/1ee2b6a7360d8480bb0494629fa37976.gif');">
           </div>
           <div
-            class="difference-image light-master"
+            class="diff-image master"
             style="background-image: url('https://assets.superhivemarket.com/cache/22328ca1a707fadf0ddf49e6765b558a.gif');">
           </div>
-          <div class="difference-divider"></div>
-          <div class="difference-label">With Light Master Pro</div>
-          <button class="difference-toggle" type="button" aria-label="Show default lights"></button>
+          <div class="diff-label">Light Master Pro</div>
+          <button class="diff-toggle" type="button" aria-label="Toggle comparison"></button>
         </div>
 
-        <div
-          class="difference-compare ratio-5-2"
-          data-light-label="With Light Master Pro"
-          data-default-label="Default Lights">
+        <div class="diff-compare-box" style="--diff-ratio: 1920 / 540;">
           <div
-            class="difference-image default"
-            style="background-image: url('https://assets.superhivemarket.com/cache/073a4945f40666ea2feb8c1506f74031.jpg');">
-          </div>
-          <div
-            class="difference-image light-master"
-            style="background-image: url('https://assets.superhivemarket.com/cache/1ecbf5a32fcabfee903aa15a6a5ddcb3.jpg');">
-          </div>
-          <div class="difference-divider"></div>
-          <div class="difference-label">With Light Master Pro</div>
-          <button class="difference-toggle" type="button" aria-label="Show default lights"></button>
-        </div>
-
-        <div
-          class="difference-compare"
-          data-light-label="Light Master Pro"
-          data-default-label="Default Lights">
-          <div
-            class="difference-image default"
+            class="diff-image default"
             style="background-image: url('https://assets.superhivemarket.com/cache/74a35ce1a8d2e61805f1cf90b8574ddb.gif');">
           </div>
           <div
-            class="difference-image light-master"
+            class="diff-image master"
             style="background-image: url('https://assets.superhivemarket.com/cache/0b1238902a4faf3b2a4464064a936572.gif');">
           </div>
-          <div class="difference-divider"></div>
-          <div class="difference-label">Light Master Pro</div>
-          <button class="difference-toggle" type="button" aria-label="Show default lights"></button>
+          <div class="diff-label">Light Master Pro</div>
+          <button class="diff-toggle" type="button" aria-label="Toggle comparison"></button>
         </div>
 
-        <div
-          class="difference-compare ratio-2-1"
-          data-light-label="Light Master Pro"
-          data-default-label="Default Lights">
+        <div class="diff-compare-box" style="--diff-ratio: 4000 / 1600;">
           <div
-            class="difference-image default"
+            class="diff-image default"
+            style="background-image: url('https://assets.superhivemarket.com/cache/073a4945f40666ea2feb8c1506f74031.jpg');">
+          </div>
+          <div
+            class="diff-image master"
+            style="background-image: url('https://assets.superhivemarket.com/cache/1ecbf5a32fcabfee903aa15a6a5ddcb3.jpg');">
+          </div>
+          <div class="diff-label">Light Master Pro</div>
+          <button class="diff-toggle" type="button" aria-label="Toggle comparison"></button>
+        </div>
+
+        <div class="diff-compare-box" style="--diff-ratio: 4000 / 2000;">
+          <div
+            class="diff-image default"
             style="background-image: url('https://assets.superhivemarket.com/cache/caf1463b707744a46a361bba60957727.jpg');">
           </div>
           <div
-            class="difference-image light-master"
+            class="diff-image master"
             style="background-image: url('https://assets.superhivemarket.com/cache/99ce2f2420b4a2a3bd5050772d441396.jpg');">
           </div>
-          <div class="difference-divider"></div>
-          <div class="difference-label">Light Master Pro</div>
-          <button class="difference-toggle" type="button" aria-label="Show default lights"></button>
+          <div class="diff-label">Light Master Pro</div>
+          <button class="diff-toggle" type="button" aria-label="Toggle comparison"></button>
         </div>
       </div>
     </section>
@@ -2918,9 +2686,7 @@
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                <p>
-                  We provide lifetime support for this product, and future updates are included for free. If you have any questions about the workflow, installation, or features, feel free to contact me on Superhive.
-                </p>
+                <p>We provide lifetime support for this product. All future updates are included for free. If you have any questions, feel free to contact me on Superhive and I will be happy to help.</p>
               </div>
             </div>
           </div>
@@ -2934,9 +2700,7 @@
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                <p>
-                  Yes, Light Master Pro works in EEVEE. Some features are more limited than in Cycles because EEVEE has different engine limitations, but the core lighting workflow is supported.
-                </p>
+                <p>Yes, Light Master Pro works in EEVEE. Some features may be more limited compared to Cycles because of EEVEE engine limitations.</p>
               </div>
             </div>
           </div>
@@ -2950,9 +2714,7 @@
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                <p>
-                  No. The assets are designed to stay lightweight and should not significantly affect scene performance. The workflow is based on practical light textures and controlled setups rather than heavy simulations.
-                </p>
+                <p>No. The assets are designed to stay lightweight and should not significantly affect scene performance.</p>
               </div>
             </div>
           </div>
@@ -2966,12 +2728,9 @@
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                <p>
-                  Light Master Pro and the Light Textures Addon by Nodeworks share a similar creative idea, and Nodeworks and I are colleagues. However, these are separate products. Light Master Pro does not use assets from the Nodeworks addon.
-                </p>
-                <p>
-                  Light Master Pro was created as a more advanced lighting tool with a larger library, expanded controls, and a broader workflow. Owners of the Nodeworks addon will also receive a tool for merging both libraries into the Light Master Pro workflow, so Nodeworks light assets can be added inside Light Master Pro.
-                </p>
+                <p>Light Master Pro and the Light Textures Addon by Nodeworks share a similar creative idea, and Nodeworks and I are colleagues. However, these are separate products. Light Master Pro does not use any assets from the Nodeworks addon.
+
+Light Master Pro was created as a more advanced lighting tool with a larger library, expanded controls, and a broader workflow. Owners of the Nodeworks addon will also receive a tool for merging both libraries into the Light Master Pro workflow, allowing Nodeworks light assets to be used inside Light Master Pro.</p>
               </div>
             </div>
           </div>
@@ -2985,15 +2744,11 @@
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                <p>
-                  Yes, AI-assisted tools were used during development, mainly for upscaling light textures to higher resolution with Topaz AI Upscaler. In some cases, AI tools were also useful for isolating light patterns from their original backgrounds.
-                </p>
-                <p>
-                  However, the library is not just a set of raw AI-generated images. Most light patterns are based on real-life visual references, photographed or observed lighting behavior, and practical light phenomena. The exception is digitally simulated caustics and rays, which are also widely represented in the library and were created manually without AI generation.
-                </p>
-                <p>
-                  A significant amount of manual work was involved in creating, selecting, cleaning, editing, refining, categorizing, and preparing the final assets for use inside Blender. All final textures were reviewed and adjusted by hand to make sure they are useful for real production workflows.
-                </p>
+                <p>Yes, AI-assisted tools were used during development, mainly for upscaling light textures to higher resolution with Topaz AI Upscaler. In some cases, AI tools were also used to help isolate light patterns from their original backgrounds.
+
+However, the library is not just a set of raw AI-generated images. Most light patterns are based on real-life visual references, photographed or observed lighting behavior, and practical light phenomena. The exception is digitally simulated caustics and rays, which are also widely represented in the library and were made manually without AI.
+
+A significant amount of manual work was involved in creating, selecting, cleaning, editing, refining, categorizing, and preparing the final assets for use inside Blender. All final textures were reviewed and adjusted by hand to make sure they are useful for real production workflows.</p>
 
                 <div class="faq-image-box">
                   Image box
@@ -3084,22 +2839,6 @@
     </footer>
   </main>
 
-  <div class="advanced-modal" id="advancedModal" aria-hidden="true">
-    <div class="advanced-modal-backdrop" id="advancedModalBackdrop"></div>
-
-    <div class="advanced-modal-card" id="advancedModalCard">
-      <button class="advanced-modal-close" id="advancedModalClose" type="button" aria-label="Close advanced placement preview">
-        ×
-      </button>
-
-      <img
-        id="advancedModalGif"
-        src=""
-        data-src="https://assets.superhivemarket.com/cache/890265b0806d2a9d1e8253b94c6b1cfa.gif"
-        alt="Advanced Placement extended preview">
-    </div>
-  </div>
-
   <script>
     const root = document.documentElement;
 
@@ -3157,101 +2896,46 @@
         });
       }
 
-      const advancedSeeMore = document.getElementById("advancedSeeMore");
-      const advancedModal = document.getElementById("advancedModal");
-      const advancedModalBackdrop = document.getElementById("advancedModalBackdrop");
-      const advancedModalClose = document.getElementById("advancedModalClose");
-      const advancedModalCard = document.getElementById("advancedModalCard");
-      const advancedModalGif = document.getElementById("advancedModalGif");
+      const advancedDemo = document.getElementById("advancedDemo");
+      const advancedDemoButton = document.getElementById("advancedDemoButton");
+      const advancedDemoClose = document.getElementById("advancedDemoClose");
+      const advancedDemoPopover = document.getElementById("advancedDemoPopover");
 
-      function openAdvancedModal() {
-        if (!advancedModal || !advancedModalGif) return;
+      if (advancedDemo && advancedDemoButton && advancedDemoClose && advancedDemoPopover) {
+        function openAdvancedDemo(event) {
+          event.stopPropagation();
+          advancedDemo.classList.add("is-open");
+        }
 
-        const src = advancedModalGif.getAttribute("data-src");
-
-        advancedModalGif.removeAttribute("src");
-
-        window.requestAnimationFrame(() => {
-          advancedModalGif.src = src + "?restart=" + Date.now();
-        });
-
-        advancedModal.classList.add("is-open");
-        advancedModal.setAttribute("aria-hidden", "false");
-      }
-
-      function closeAdvancedModal() {
-        if (!advancedModal) return;
-
-        advancedModal.classList.remove("is-open");
-        advancedModal.setAttribute("aria-hidden", "true");
-      }
-
-      if (advancedSeeMore && advancedModal) {
-        advancedSeeMore.addEventListener("click", openAdvancedModal);
-      }
-
-      if (advancedModalClose) {
-        advancedModalClose.addEventListener("click", closeAdvancedModal);
-      }
-
-      if (advancedModalBackdrop) {
-        advancedModalBackdrop.addEventListener("click", closeAdvancedModal);
-      }
-
-      if (advancedModalCard) {
-        advancedModalCard.addEventListener("mouseleave", () => {
-          if (advancedModal && advancedModal.classList.contains("is-open")) {
-            closeAdvancedModal();
+        function closeAdvancedDemo(event) {
+          if (event) {
+            event.stopPropagation();
           }
+
+          advancedDemo.classList.remove("is-open");
+        }
+
+        advancedDemoButton.addEventListener("click", openAdvancedDemo);
+        advancedDemoClose.addEventListener("click", closeAdvancedDemo);
+
+        advancedDemoPopover.addEventListener("mouseleave", () => {
+          advancedDemo.classList.remove("is-open");
         });
-      }
 
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          closeAdvancedModal();
-        }
-      });
-
-      const animationDemo = document.getElementById("animationDemo");
-      const animationDemoImage = document.getElementById("animationDemoImage");
-      const animationDemoButton = document.getElementById("animationDemoButton");
-
-      if (animationDemo && animationDemoImage && animationDemoButton) {
-        const animationGifSrc = "https://assets.superhivemarket.com/cache/cfa574976ce79675204208d2d9b19573.gif";
-        let animationStarted = false;
-
-        function startAnimationDemo() {
-          if (animationStarted) return;
-
-          animationStarted = true;
-          animationDemo.classList.add("is-playing");
-          animationDemo.setAttribute("aria-label", "Animation enabled");
-
-          animationDemoImage.removeAttribute("src");
-
-          window.requestAnimationFrame(() => {
-            animationDemoImage.src = animationGifSrc + "?restart=" + Date.now();
-            animationDemoImage.alt = "Animation feature GIF preview";
-          });
-        }
-
-        animationDemoButton.addEventListener("click", startAnimationDemo);
-
-        animationDemo.addEventListener("keydown", (event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            startAnimationDemo();
+        document.addEventListener("click", (event) => {
+          if (!advancedDemo.contains(event.target)) {
+            advancedDemo.classList.remove("is-open");
           }
         });
       }
 
       const stepDemo = document.getElementById("stepDemo");
       const stepDemoButton = document.getElementById("stepDemoButton");
-      const stepDemoDefaultToggle = document.getElementById("stepDemoDefaultToggle");
       const stepDemoCenterText = document.getElementById("stepDemoCenterText");
       const stepDemoCornerText = document.getElementById("stepDemoCornerText");
+      const stepDemoDefaultButton = document.getElementById("stepDemoDefaultButton");
 
-      if (stepDemo && stepDemoButton && stepDemoDefaultToggle && stepDemoCenterText && stepDemoCornerText) {
+      if (stepDemo && stepDemoButton && stepDemoCenterText && stepDemoCornerText && stepDemoDefaultButton) {
         const stepSlides = Array.from(stepDemo.querySelectorAll(".step-demo-slide"));
 
         const stepMeta = [
@@ -3293,7 +2977,7 @@
         ];
 
         let currentStep = 0;
-        let showingStepDefault = false;
+        let isDefaultStepVisible = false;
         let transitionTimer = null;
 
         function playStepTransition() {
@@ -3312,21 +2996,23 @@
           }, 860);
         }
 
-        function setActiveStepSlide(index) {
+        function updateStepSlides() {
+          const visibleIndex = isDefaultStepVisible ? 7 : currentStep;
+
           stepSlides.forEach((slide, slideIndex) => {
-            slide.classList.toggle("active", slideIndex === index);
+            slide.classList.toggle("active", slideIndex === visibleIndex);
           });
         }
 
         function renderStep(index, animate = true) {
           currentStep = index;
-          showingStepDefault = false;
+          isDefaultStepVisible = false;
 
           if (animate) {
             playStepTransition();
           }
 
-          setActiveStepSlide(index);
+          updateStepSlides();
 
           const currentMeta = stepMeta[index];
           const isStartStep = index === 0;
@@ -3352,36 +3038,14 @@
           stepDemoButton.classList.toggle("is-plus", !currentMeta.isRestore);
           stepDemoButton.classList.toggle("is-restore", currentMeta.isRestore);
 
-          stepDemoDefaultToggle.classList.toggle("visible", isLastStep);
-          stepDemoDefaultToggle.textContent = "Show default lights";
-          stepDemoDefaultToggle.setAttribute("aria-label", "Show default lights");
+          stepDemoDefaultButton.classList.toggle("is-hidden", !isLastStep);
+          stepDemoDefaultButton.textContent = "Show default lights";
+          stepDemoDefaultButton.setAttribute("aria-label", "Show default lights");
 
           stepDemoButton.setAttribute(
             "aria-label",
             currentMeta.isRestore ? "Restore the demo to step zero" : "Show next step"
           );
-        }
-
-        function toggleStepDefaultLights() {
-          if (currentStep !== stepMeta.length - 1) return;
-
-          showingStepDefault = !showingStepDefault;
-
-          playStepTransition();
-
-          if (showingStepDefault) {
-            setActiveStepSlide(7);
-            stepDemoDefaultToggle.textContent = "Show Light Master";
-            stepDemoDefaultToggle.setAttribute("aria-label", "Show Light Master");
-            stepDemoCornerText.textContent = "Default lights";
-          } else {
-            setActiveStepSlide(6);
-            stepDemoDefaultToggle.textContent = "Show default lights";
-            stepDemoDefaultToggle.setAttribute("aria-label", "Show default lights");
-            stepDemoCornerText.textContent = "This is rate number 6";
-          }
-
-          stepDemoCornerText.classList.add("visible");
         }
 
         stepDemoCenterText.addEventListener("click", () => {
@@ -3396,83 +3060,174 @@
           }
         });
 
-        stepDemoDefaultToggle.addEventListener("click", () => {
-          toggleStepDefaultLights();
+        stepDemoDefaultButton.addEventListener("click", () => {
+          if (currentStep !== stepMeta.length - 1) return;
+
+          isDefaultStepVisible = !isDefaultStepVisible;
+          playStepTransition();
+          updateStepSlides();
+
+          stepDemoDefaultButton.textContent = isDefaultStepVisible ? "Show light master" : "Show default lights";
+          stepDemoDefaultButton.setAttribute(
+            "aria-label",
+            isDefaultStepVisible ? "Show Light Master Pro lights" : "Show default lights"
+          );
         });
 
         renderStep(0, false);
       }
 
-      const differenceBlocks = Array.from(document.querySelectorAll(".difference-compare"));
+      const animationDemo = document.getElementById("animationDemo");
+      const animationDemoImage = document.getElementById("animationDemoImage");
+      const animationDemoButton = document.getElementById("animationDemoButton");
+      const animationDemoReset = document.getElementById("animationDemoReset");
 
-      differenceBlocks.forEach((block) => {
-        const toggle = block.querySelector(".difference-toggle");
-        const label = block.querySelector(".difference-label");
-        const lightLabel = block.getAttribute("data-light-label") || "Light Master Pro";
-        const defaultLabel = block.getAttribute("data-default-label") || "Default Lights";
+      if (animationDemo && animationDemoImage && animationDemoButton && animationDemoReset) {
+        const animationStaticSrc = "https://assets.superhivemarket.com/cache/80205d06db4a3454e221ddc901a32163.jpg";
+        const animationGifSrc = "https://assets.superhivemarket.com/cache/cfa574976ce79675204208d2d9b19573.gif";
 
-        let isLightMaster = true;
+        let animationStarted = false;
 
-        function setDifferenceState(showLightMaster) {
-          isLightMaster = showLightMaster;
+        function startAnimationDemo() {
+          if (animationStarted) return;
 
-          const value = isLightMaster ? 100 : 0;
-          block.style.setProperty("--difference-compare", value + "%");
-          block.classList.toggle("is-default", !isLightMaster);
+          animationStarted = true;
+          animationDemo.classList.add("is-playing");
+          animationDemo.setAttribute("aria-label", "Animation enabled");
 
-          if (label) {
-            label.textContent = isLightMaster ? lightLabel : defaultLabel;
+          animationDemoImage.removeAttribute("src");
+
+          window.requestAnimationFrame(() => {
+            animationDemoImage.src = animationGifSrc + "?restart=" + Date.now();
+            animationDemoImage.alt = "Animation feature GIF preview";
+          });
+        }
+
+        function resetAnimationDemo(event) {
+          if (event) {
+            event.stopPropagation();
           }
 
-          if (toggle) {
-            toggle.setAttribute(
+          animationStarted = false;
+          animationDemo.classList.remove("is-playing");
+          animationDemo.setAttribute("aria-label", "Click to enable animation");
+
+          animationDemoImage.removeAttribute("src");
+
+          window.requestAnimationFrame(() => {
+            animationDemoImage.src = animationStaticSrc;
+            animationDemoImage.alt = "Animation feature static preview";
+          });
+        }
+
+        animationDemoButton.addEventListener("click", (event) => {
+          event.stopPropagation();
+          startAnimationDemo();
+        });
+
+        animationDemoReset.addEventListener("click", resetAnimationDemo);
+
+        animationDemo.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+
+            if (animationStarted) {
+              resetAnimationDemo(event);
+            } else {
+              startAnimationDemo();
+            }
+          }
+        });
+      }
+
+      const diffCompareBoxes = Array.from(document.querySelectorAll(".diff-compare-box"));
+
+      diffCompareBoxes.forEach((box) => {
+        const button = box.querySelector(".diff-toggle");
+        const label = box.querySelector(".diff-label");
+
+        let isMasterVisible = true;
+
+        function setDiffState(showMaster) {
+          isMasterVisible = showMaster;
+
+          box.style.setProperty("--compare", showMaster ? "100%" : "0%");
+          box.classList.toggle("is-default-view", !showMaster);
+
+          if (label) {
+            label.textContent = showMaster ? "Light Master Pro" : "Default lights";
+          }
+
+          if (button) {
+            button.setAttribute(
               "aria-label",
-              isLightMaster ? "Show default lights" : "Show Light Master Pro"
+              showMaster ? "Show default lights" : "Show Light Master Pro"
             );
           }
         }
 
-        if (toggle) {
-          setDifferenceState(true);
+        if (button) {
+          setDiffState(true);
 
-          toggle.addEventListener("click", () => {
-            setDifferenceState(!isLightMaster);
+          button.addEventListener("click", () => {
+            setDiffState(!isMasterVisible);
           });
         }
       });
 
       const variationButtons = Array.from(document.querySelectorAll(".variation-cta"));
 
-      function scrollToAddToCartOrTop() {
-        const isMobile = window.matchMedia("(max-width: 760px)").matches;
+      variationButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const isMobile = window.matchMedia("(max-width: 760px)").matches;
 
-        if (!isMobile) {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-          });
-          return;
-        }
+          if (!isMobile) {
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
 
-        const addToCartButton = document.querySelector(
-          ".js-item-addToCart, .btn-add-to-cart, .cy-add-to-cart-btn, input[value='Add to cart'], button[type='submit']"
-        );
+            return;
+          }
 
-        if (addToCartButton) {
-          addToCartButton.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-          });
-        } else {
+          const localTarget = document.querySelector(
+            ".js-item-addToCart, .btn-add-to-cart, input[value='Add to cart'], button[type='submit']"
+          );
+
+          if (localTarget) {
+            localTarget.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+
+            return;
+          }
+
+          try {
+            const parentTarget = window.parent.document.querySelector(
+              ".js-item-addToCart, .btn-add-to-cart, input[value='Add to cart'], button[type='submit']"
+            );
+
+            if (parentTarget) {
+              parentTarget.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+              });
+
+              return;
+            }
+          } catch (error) {
+            window.parent.postMessage({
+              type: "scroll-to-add-to-cart",
+              source: "light-master-pro-page"
+            }, "*");
+          }
+
           window.scrollTo({
             top: document.documentElement.scrollHeight,
             behavior: "smooth"
           });
-        }
-      }
-
-      variationButtons.forEach((button) => {
-        button.addEventListener("click", scrollToAddToCartOrTop);
+        });
       });
 
       const faqItems = Array.from(document.querySelectorAll(".faq-item"));
