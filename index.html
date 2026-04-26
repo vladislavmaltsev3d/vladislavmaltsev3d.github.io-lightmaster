@@ -1614,6 +1614,73 @@
       text-transform: uppercase;
     }
 
+    .faq-link-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .faq-link-button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 11px 15px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #ffffff;
+      background:
+        linear-gradient(180deg, rgba(30,144,255,0.76), rgba(10,132,255,0.78)),
+        rgba(10,132,255,0.72);
+      border: 1px solid rgba(255,255,255,0.52);
+      box-shadow:
+        0 14px 30px rgba(10,132,255,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.30);
+      font-size: 13px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+      overflow: hidden;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .faq-link-button::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(255,255,255,0.00) 0%,
+          rgba(255,255,255,0.00) 30%,
+          rgba(255,255,255,0.34) 50%,
+          rgba(255,255,255,0.00) 70%,
+          rgba(255,255,255,0.00) 100%
+        );
+      background-size: 260% 100%;
+      background-position: -160% 0;
+      animation: buttonSheenMove 9s linear infinite;
+      pointer-events: none;
+    }
+
+    .faq-link-button span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .faq-link-button:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 18px 36px rgba(10,132,255,0.26),
+        inset 0 1px 0 rgba(255,255,255,0.38);
+      border-color: rgba(255,255,255,0.72);
+    }
+
     .addons-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -2283,6 +2350,17 @@
         line-height: 1.6;
       }
 
+      .faq-link-buttons {
+        gap: 8px;
+      }
+
+      .faq-link-button {
+        width: 100%;
+        min-height: 38px;
+        padding: 9px 12px;
+        font-size: 12px;
+      }
+
       .back-top-button {
         min-width: 140px;
         padding: 12px 20px;
@@ -2750,8 +2828,30 @@ However, the library is not just a set of raw AI-generated images. Most light pa
 
 A significant amount of manual work was involved in creating, selecting, cleaning, editing, refining, categorizing, and preparing the final assets for use inside Blender. All final textures were reviewed and adjusted by hand to make sure they are useful for real production workflows.</p>
 
-                <div class="faq-image-box">
-                  Image box
+                <div class="faq-link-buttons">
+                  <a
+                    class="faq-link-button"
+                    href="https://assets.superhivemarket.com/cache/2853bff864f1aefb8cbabf34444d8a1a.png"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <span>Example 1</span>
+                  </a>
+
+                  <a
+                    class="faq-link-button"
+                    href="https://assets.superhivemarket.com/cache/53eaff29bf79b0150aaf116b7546be1e.png"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <span>Example 2 - Digital Noise removal</span>
+                  </a>
+
+                  <a
+                    class="faq-link-button"
+                    href="https://assets.superhivemarket.com/cache/6ede60d48056f99b6f7821bcef14399e.png"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <span>Flashlight inside</span>
+                  </a>
                 </div>
               </div>
             </div>
