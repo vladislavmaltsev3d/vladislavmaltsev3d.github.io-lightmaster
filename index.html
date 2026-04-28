@@ -724,6 +724,10 @@
       aspect-ratio: 2 / 1;
     }
 
+    .improve-demo-shell {
+      --improve-compare: 0%;
+    }
+
     .improve-demo-stage {
       position: absolute;
       inset: 0;
@@ -738,23 +742,156 @@
       height: 100%;
       display: block;
       object-fit: cover;
-      opacity: 0;
-      transform: scale(1.055);
-      filter: blur(10px) brightness(0.94) saturate(0.94);
-      transition:
-        opacity 0.82s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-      user-select: none;
-      pointer-events: none;
-      backface-visibility: hidden;
-      will-change: opacity, transform, filter;
-    }
-
-    .improve-demo-image.active {
       opacity: 1;
       transform: scale(1.015);
       filter: blur(0) brightness(1) saturate(1);
+      user-select: none;
+      pointer-events: none;
+      backface-visibility: hidden;
+      will-change: clip-path;
+    }
+
+    .improve-demo-image.default {
+      z-index: 1;
+    }
+
+    .improve-demo-image.master {
+      z-index: 2;
+      clip-path: inset(0 calc(100% - var(--improve-compare)) 0 0);
+      transition: clip-path 0.12s linear;
+    }
+
+    .improve-demo-handle {
+      position: absolute;
+      top: 50%;
+      left: clamp(10px, var(--improve-compare), calc(100% - 10px));
+      z-index: 8;
+      width: 30px;
+      height: 42px;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0;
+      filter:
+        drop-shadow(0 2px 5px rgba(0,0,0,0.28))
+        drop-shadow(0 0 7px rgba(255,255,255,0.10));
+      transition:
+        left 0.12s linear,
+        transform 0.28s ease,
+        filter 0.28s ease,
+        opacity 0.34s ease;
+    }
+
+    .improve-demo-shell.is-near-start .improve-demo-handle,
+    .improve-demo-shell.is-near-end .improve-demo-handle {
+      opacity: 1;
+    }
+
+    .improve-demo-shell.is-at-start .improve-demo-handle {
+      left: 0;
+      transform: translate(0, -50%);
+    }
+
+    .improve-demo-shell.is-at-end .improve-demo-handle {
+      left: 100%;
+      transform: translate(-100%, -50%);
+    }
+
+    .improve-demo-handle::before,
+    .improve-demo-handle::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 6px;
+      height: 6px;
+      border-top: 1.35px solid rgba(255,255,255,1);
+      border-right: 1.35px solid rgba(255,255,255,1);
+      opacity: 1;
+      transition:
+        opacity 0.28s ease,
+        transform 0.28s ease,
+        border-color 0.28s ease;
+    }
+
+    .improve-demo-handle::before {
+      left: 8px;
+      transform: translateY(-50%) rotate(225deg);
+    }
+
+    .improve-demo-handle::after {
+      right: 8px;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .improve-demo-shell.is-at-start .improve-demo-handle::before {
+      opacity: 0;
+      transform: translateY(-50%) translateX(-4px) rotate(225deg) scale(0.72);
+    }
+
+    .improve-demo-shell.is-at-start .improve-demo-handle::after {
+      right: 10px;
+    }
+
+    .improve-demo-shell.is-at-end .improve-demo-handle::after {
+      opacity: 0;
+      transform: translateY(-50%) translateX(4px) rotate(45deg) scale(0.72);
+    }
+
+    .improve-demo-shell.is-at-end .improve-demo-handle::before {
+      left: 10px;
+    }
+
+    .improve-demo-slider {
+      position: absolute;
+      inset: 0;
+      z-index: 9;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: ew-resize;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .improve-demo-slider::-webkit-slider-thumb {
+      width: 48px;
+      height: 64px;
+      cursor: ew-resize;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .improve-demo-slider::-moz-range-thumb {
+      width: 48px;
+      height: 64px;
+      border: 0;
+      cursor: ew-resize;
+    }
+
+    .improve-demo-shell.is-near-start:hover .improve-demo-handle,
+    .improve-demo-shell.is-near-end:hover .improve-demo-handle,
+    .improve-demo-shell.is-near-start.is-sliding .improve-demo-handle,
+    .improve-demo-shell.is-near-end.is-sliding .improve-demo-handle {
+      filter:
+        drop-shadow(0 3px 7px rgba(0,0,0,0.34))
+        drop-shadow(0 0 9px rgba(255,255,255,0.14));
+    }
+
+    .improve-demo-shell.is-near-start:not(.is-at-start):hover .improve-demo-handle,
+    .improve-demo-shell.is-near-end:not(.is-at-end):hover .improve-demo-handle,
+    .improve-demo-shell.is-near-start:not(.is-at-start).is-sliding .improve-demo-handle,
+    .improve-demo-shell.is-near-end:not(.is-at-end).is-sliding .improve-demo-handle {
+      transform: translate(-50%, -50%) scale(1.04);
+    }
+
+    .improve-demo-shell.is-at-start:hover .improve-demo-handle,
+    .improve-demo-shell.is-at-start.is-sliding .improve-demo-handle {
+      transform: translate(0, -50%) scale(1.04);
+    }
+
+    .improve-demo-shell.is-at-end:hover .improve-demo-handle,
+    .improve-demo-shell.is-at-end.is-sliding .improve-demo-handle {
+      transform: translate(-100%, -50%) scale(1.04);
     }
 
     .advanced-demo-shell img,
@@ -817,7 +954,26 @@
       line-height: 1.6;
     }
 
-    .improve-demo-action,
+    .improve-demo-copy p {
+      max-height: 64px;
+      overflow: hidden;
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+      transition:
+        max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.34s ease,
+        transform 0.34s ease,
+        filter 0.34s ease;
+    }
+
+    .improve-demo-shell.is-sliding .improve-demo-copy p {
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-8px);
+      filter: blur(6px);
+    }
+
     .advanced-demo-action,
     .animation-demo-action,
     .step-demo-center-copy {
@@ -841,16 +997,6 @@
         border-color 0.25s ease;
     }
 
-    .improve-demo-action {
-      position: relative;
-      left: auto;
-      top: auto;
-      margin-top: 14px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 12px;
-    }
-
     .advanced-demo-action {
       left: 18px;
       top: 110px;
@@ -867,7 +1013,6 @@
       font-size: 13px;
     }
 
-    .improve-demo-action:hover,
     .advanced-demo-action:hover,
     .animation-demo-action:hover,
     .step-demo-center-copy:hover {
@@ -1209,7 +1354,7 @@
     }
 
     .diff-compare-box {
-      --compare: 100%;
+      --compare: 0%;
       position: relative;
       width: 100%;
       aspect-ratio: var(--diff-ratio, 16 / 9);
@@ -1230,13 +1375,13 @@
     }
 
     .diff-image.default {
-      z-index: 1;
+      z-index: 2;
+      clip-path: inset(0 calc(100% - var(--compare)) 0 0);
+      transition: clip-path 0.12s linear;
     }
 
     .diff-image.master {
-      z-index: 2;
-      clip-path: inset(0 calc(100% - var(--compare)) 0 0);
-      transition: clip-path 1.05s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 1;
     }
 
     .diff-compare-box::after {
@@ -1266,67 +1411,142 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
       text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
     }
 
-    .diff-toggle {
+    .diff-handle {
       position: absolute;
       top: 50%;
-      left: clamp(28px, var(--compare), calc(100% - 28px));
+      left: clamp(10px, var(--compare), calc(100% - 10px));
       z-index: 6;
-      width: 54px;
-      height: 60px;
-      padding: 0;
-      border: none;
-      background: transparent;
-      cursor: pointer;
+      width: 30px;
+      height: 42px;
       transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0;
+      filter:
+        drop-shadow(0 2px 5px rgba(0,0,0,0.28))
+        drop-shadow(0 0 7px rgba(255,255,255,0.10));
       transition:
-        left 1.05s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.25s ease;
+        left 0.12s linear,
+        transform 0.28s ease,
+        filter 0.28s ease,
+        opacity 0.34s ease;
+    }
+
+    .diff-compare-box.is-near-start .diff-handle,
+    .diff-compare-box.is-near-end .diff-handle {
+      opacity: 1;
+    }
+
+    .diff-compare-box.is-at-start .diff-handle {
+      left: 0;
+      transform: translate(0, -50%);
+    }
+
+    .diff-compare-box.is-at-end .diff-handle {
+      left: 100%;
+      transform: translate(-100%, -50%);
+    }
+
+    .diff-handle::before,
+    .diff-handle::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 6px;
+      height: 6px;
+      border-top: 1.35px solid rgba(255,255,255,1);
+      border-right: 1.35px solid rgba(255,255,255,1);
+      opacity: 1;
+      transition:
+        opacity 0.28s ease,
+        transform 0.28s ease,
+        border-color 0.28s ease;
+    }
+
+    .diff-handle::before {
+      left: 8px;
+      transform: translateY(-50%) rotate(225deg);
+    }
+
+    .diff-handle::after {
+      right: 8px;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .diff-compare-box.is-at-start .diff-handle::before {
+      opacity: 0;
+      transform: translateY(-50%) translateX(-4px) rotate(225deg) scale(0.72);
+    }
+
+    .diff-compare-box.is-at-start .diff-handle::after {
+      right: 10px;
+    }
+
+    .diff-compare-box.is-at-end .diff-handle::after {
+      opacity: 0;
+      transform: translateY(-50%) translateX(4px) rotate(45deg) scale(0.72);
+    }
+
+    .diff-compare-box.is-at-end .diff-handle::before {
+      left: 10px;
+    }
+
+    .diff-slider {
+      position: absolute;
+      inset: 0;
+      z-index: 7;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: ew-resize;
       appearance: none;
       -webkit-appearance: none;
     }
 
-    .diff-toggle::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 12px;
-      height: 12px;
-      border-top: 2px solid #ffffff;
-      border-right: 2px solid #ffffff;
-      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.42));
-      transform: translate(-42%, -50%) rotate(225deg);
-      animation: arrowHintLeft 1.45s ease-in-out infinite;
+    .diff-slider::-webkit-slider-thumb {
+      width: 48px;
+      height: 64px;
+      cursor: ew-resize;
+      appearance: none;
+      -webkit-appearance: none;
     }
 
-    .diff-toggle::after {
-      content: "click";
-      position: absolute;
-      top: 50%;
-      right: 50px;
-      transform: translateY(-50%);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #ffffff;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
-      pointer-events: none;
-      animation: clickHintLeft 1.45s ease-in-out infinite;
-      white-space: nowrap;
+    .diff-slider::-moz-range-thumb {
+      width: 48px;
+      height: 64px;
+      border: 0;
+      cursor: ew-resize;
     }
 
-    .diff-compare-box.is-default-view .diff-toggle::before {
-      transform: translate(-58%, -50%) rotate(45deg);
-      animation: arrowHintRight 1.45s ease-in-out infinite;
+    .diff-compare-box.is-near-start:hover .diff-handle,
+    .diff-compare-box.is-near-end:hover .diff-handle,
+    .diff-compare-box.is-near-start.is-sliding .diff-handle,
+    .diff-compare-box.is-near-end.is-sliding .diff-handle {
+      filter:
+        drop-shadow(0 3px 7px rgba(0,0,0,0.34))
+        drop-shadow(0 0 9px rgba(255,255,255,0.14));
     }
 
-    .diff-compare-box.is-default-view .diff-toggle::after {
-      left: 50px;
-      right: auto;
-      animation: clickHintRight 1.45s ease-in-out infinite;
+    .diff-compare-box.is-near-start:not(.is-at-start):hover .diff-handle,
+    .diff-compare-box.is-near-end:not(.is-at-end):hover .diff-handle,
+    .diff-compare-box.is-near-start:not(.is-at-start).is-sliding .diff-handle,
+    .diff-compare-box.is-near-end:not(.is-at-end).is-sliding .diff-handle {
+      transform: translate(-50%, -50%) scale(1.04);
+    }
+
+    .diff-compare-box.is-at-start:hover .diff-handle,
+    .diff-compare-box.is-at-start.is-sliding .diff-handle {
+      transform: translate(0, -50%) scale(1.04);
+    }
+
+    .diff-compare-box.is-at-end:hover .diff-handle,
+    .diff-compare-box.is-at-end.is-sliding .diff-handle {
+      transform: translate(-100%, -50%) scale(1.04);
     }
 
     .variations-grid {
@@ -2224,12 +2444,6 @@
         line-height: 1.45;
       }
 
-      .improve-demo-action {
-        margin-top: 10px;
-        padding: 8px 11px;
-        font-size: 10px;
-      }
-
       .advanced-demo-action {
         left: 12px;
         top: 78px;
@@ -2308,22 +2522,6 @@
         top: 12px;
         padding: 7px 9px;
         font-size: 9px;
-      }
-
-      .diff-toggle {
-        width: 42px;
-        height: 54px;
-        left: clamp(24px, var(--compare), calc(100% - 24px));
-      }
-
-      .diff-toggle::after {
-        font-size: 10px;
-        right: 46px;
-      }
-
-      .diff-compare-box.is-default-view .diff-toggle::after {
-        left: 46px;
-        right: auto;
       }
 
       .variations-grid {
@@ -2566,27 +2764,34 @@
             <div class="improve-demo-shell" id="improveDemo">
               <div class="improve-demo-stage">
                 <img
-                  class="improve-demo-image master active"
-                  src="https://assets.superhivemarket.com/cache/d4c900a0858509db16ae80ed8c1191b2.jpg"
-                  alt="Improve Your Renders Light Master Pro preview">
+                  class="improve-demo-image default"
+                  src="https://assets.superhivemarket.com/cache/bf9f693743aebc55e2e9e72f59b88f2d.jpg"
+                  alt="Improve Your Renders default light preview">
 
                 <img
-                  class="improve-demo-image default"
-                  src="https://assets.superhivemarket.com/cache/cfb4bf8f684b55b02a97dbfd15aed3a7.jpg"
-                  alt="Improve Your Renders default light preview">
+                  class="improve-demo-image master"
+                  src="https://assets.superhivemarket.com/cache/eb03c17532713e88e01abcb8ebce68a1.jpg"
+                  alt="Improve Your Renders Light Master Pro preview">
               </div>
 
               <div class="improve-demo-overlay"></div>
+              <div class="improve-demo-handle"></div>
+
+              <input
+                class="improve-demo-slider"
+                id="improveDemoSlider"
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                step="1"
+                aria-label="Compare default lighting and Light Master Pro">
 
               <div class="improve-demo-copy">
                 <h3>Improve Your Renders</h3>
                 <p>
                   Turn basic default lighting into a more expressive and cinematic look.
                 </p>
-
-                <button class="improve-demo-action" id="improveDemoButton" type="button" aria-label="See default light">
-                  See default light
-                </button>
               </div>
             </div>
           </div>
@@ -2730,7 +2935,15 @@
             style="background-image: url('https://assets.superhivemarket.com/cache/84708df650d9bdc542cb9bfe977c9c2c.gif');">
           </div>
           <div class="diff-label">Light Master Pro</div>
-          <button class="diff-toggle" type="button" aria-label="Toggle comparison"></button>
+          <div class="diff-handle"></div>
+          <input
+            class="diff-slider"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="1"
+            aria-label="Compare Light Master Pro and default lights">
         </div>
 
         <div class="diff-compare-box" style="--diff-ratio: 1920 / 540;">
@@ -2743,7 +2956,15 @@
             style="background-image: url('https://assets.superhivemarket.com/cache/0b1238902a4faf3b2a4464064a936572.gif');">
           </div>
           <div class="diff-label">Light Master Pro</div>
-          <button class="diff-toggle" type="button" aria-label="Toggle comparison"></button>
+          <div class="diff-handle"></div>
+          <input
+            class="diff-slider"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="1"
+            aria-label="Compare Light Master Pro and default lights">
         </div>
 
         <div class="diff-compare-box" style="--diff-ratio: 4000 / 1600;">
@@ -2756,7 +2977,15 @@
             style="background-image: url('https://assets.superhivemarket.com/cache/1ecbf5a32fcabfee903aa15a6a5ddcb3.jpg');">
           </div>
           <div class="diff-label">Light Master Pro</div>
-          <button class="diff-toggle" type="button" aria-label="Toggle comparison"></button>
+          <div class="diff-handle"></div>
+          <input
+            class="diff-slider"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="1"
+            aria-label="Compare Light Master Pro and default lights">
         </div>
 
         <div class="diff-compare-box" style="--diff-ratio: 4000 / 2000;">
@@ -2769,7 +2998,15 @@
             style="background-image: url('https://assets.superhivemarket.com/cache/99ce2f2420b4a2a3bd5050772d441396.jpg');">
           </div>
           <div class="diff-label">Light Master Pro</div>
-          <button class="diff-toggle" type="button" aria-label="Toggle comparison"></button>
+          <div class="diff-handle"></div>
+          <input
+            class="diff-slider"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="1"
+            aria-label="Compare Light Master Pro and default lights">
         </div>
 
         <div class="diff-compare-box" style="--diff-ratio: 2000 / 800;">
@@ -2782,7 +3019,15 @@
             style="background-image: url('https://assets.superhivemarket.com/cache/45a2afa3a65b39cb42f8dc0170343e49.jpg');">
           </div>
           <div class="diff-label">Light Master Pro</div>
-          <button class="diff-toggle" type="button" aria-label="Toggle comparison"></button>
+          <div class="diff-handle"></div>
+          <input
+            class="diff-slider"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="1"
+            aria-label="Compare Light Master Pro and default lights">
         </div>
       </div>
     </section>
@@ -3094,6 +3339,111 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
     });
 
     document.addEventListener("DOMContentLoaded", () => {
+
+      const syncedGifSources = {
+        heroBefore: "https://assets.superhivemarket.com/cache/e833214b5ecfb51e7dedc090551c8750.gif",
+        heroAfter: "https://assets.superhivemarket.com/cache/72e19cc67e2bb62aeed6eedc33821f81.gif",
+        advancedPreview: "https://assets.superhivemarket.com/cache/ee833e32b97c5b6729ea2f3c7d439ce7.gif",
+        advancedPopover: "https://assets.superhivemarket.com/cache/890265b0806d2a9d1e8253b94c6b1cfa.gif",
+        diffOneDefault: "https://assets.superhivemarket.com/cache/1b48522c7c82e31b4f3bab9868fb9ca4.gif",
+        diffOneMaster: "https://assets.superhivemarket.com/cache/84708df650d9bdc542cb9bfe977c9c2c.gif",
+        diffTwoDefault: "https://assets.superhivemarket.com/cache/74a35ce1a8d2e61805f1cf90b8574ddb.gif",
+        diffTwoMaster: "https://assets.superhivemarket.com/cache/0b1238902a4faf3b2a4464064a936572.gif"
+      };
+
+      function addGifSyncToken(url, token) {
+        const separator = url.includes("?") ? "&" : "?";
+        return `${url}${separator}gifSync=${token}`;
+      }
+
+      async function prepareSyncedGifUrl(url, token) {
+        try {
+          const response = await fetch(url, {
+            mode: "cors",
+            cache: "force-cache"
+          });
+
+          if (!response.ok) {
+            throw new Error("GIF fetch failed");
+          }
+
+          const blob = await response.blob();
+          return URL.createObjectURL(blob);
+        } catch (error) {
+          return addGifSyncToken(url, token);
+        }
+      }
+
+      function applySyncedBackground(element, backgroundValue) {
+        if (!element) return;
+        element.style.backgroundImage = backgroundValue;
+      }
+
+      async function synchronizePageGifs() {
+        const syncToken = Date.now();
+
+        const preparedEntries = await Promise.all(
+          Object.entries(syncedGifSources).map(async ([key, url]) => {
+            const preparedUrl = await prepareSyncedGifUrl(url, syncToken);
+            return [key, preparedUrl];
+          })
+        );
+
+        const synced = Object.fromEntries(preparedEntries);
+
+        window.requestAnimationFrame(() => {
+          const heroBefore = document.querySelector(".hero-image.before");
+          const heroAfter = document.querySelector(".hero-image.after");
+          const heroStateThumb = document.querySelector(".hero-state-thumb");
+
+          applySyncedBackground(
+            heroBefore,
+            `linear-gradient(180deg, rgba(8, 10, 16, 0.12) 0%, rgba(8, 10, 16, 0.28) 55%, rgba(8, 10, 16, 0.58) 100%), url("${synced.heroBefore}")`
+          );
+
+          applySyncedBackground(
+            heroAfter,
+            `linear-gradient(180deg, rgba(8, 10, 16, 0.14) 0%, rgba(8, 10, 16, 0.32) 55%, rgba(8, 10, 16, 0.68) 100%), radial-gradient(circle at 20% 20%, rgba(255,255,255,0.10), transparent 24%), radial-gradient(circle at 80% 30%, rgba(255,255,255,0.08), transparent 20%), url("${synced.heroAfter}")`
+          );
+
+          applySyncedBackground(
+            heroStateThumb,
+            `linear-gradient(180deg, rgba(8, 10, 16, 0.08) 0%, rgba(8, 10, 16, 0.30) 100%), url("${synced.heroBefore}")`
+          );
+
+          const advancedPreviewImage = document.querySelector("#advancedDemo > img");
+          const advancedPopoverImage = document.querySelector("#advancedDemoPopover img");
+
+          if (advancedPreviewImage) {
+            advancedPreviewImage.src = synced.advancedPreview;
+          }
+
+          if (advancedPopoverImage) {
+            advancedPopoverImage.src = synced.advancedPopover;
+          }
+
+          const gifDiffBoxes = Array.from(document.querySelectorAll(".diff-compare-box")).slice(0, 2);
+
+          if (gifDiffBoxes[0]) {
+            const defaultLayer = gifDiffBoxes[0].querySelector(".diff-image.default");
+            const masterLayer = gifDiffBoxes[0].querySelector(".diff-image.master");
+
+            applySyncedBackground(defaultLayer, `url("${synced.diffOneDefault}")`);
+            applySyncedBackground(masterLayer, `url("${synced.diffOneMaster}")`);
+          }
+
+          if (gifDiffBoxes[1]) {
+            const defaultLayer = gifDiffBoxes[1].querySelector(".diff-image.default");
+            const masterLayer = gifDiffBoxes[1].querySelector(".diff-image.master");
+
+            applySyncedBackground(defaultLayer, `url("${synced.diffTwoDefault}")`);
+            applySyncedBackground(masterLayer, `url("${synced.diffTwoMaster}")`);
+          }
+        });
+      }
+
+      synchronizePageGifs();
+
       const heroCompareBox = document.getElementById("heroCompareBox");
       const heroToggle = document.getElementById("heroToggle");
 
@@ -3123,40 +3473,33 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
       }
 
       const improveDemo = document.getElementById("improveDemo");
-      const improveDemoButton = document.getElementById("improveDemoButton");
+      const improveDemoSlider = document.getElementById("improveDemoSlider");
 
-      if (improveDemo && improveDemoButton) {
-        const improveMasterImage = improveDemo.querySelector(".improve-demo-image.master");
-        const improveDefaultImage = improveDemo.querySelector(".improve-demo-image.default");
+      if (improveDemo && improveDemoSlider) {
+        function setImproveSliderValue(value) {
+          const numericValue = Number(value);
+          const safeValue = Number.isFinite(numericValue)
+            ? Math.max(0, Math.min(100, numericValue))
+            : 0;
 
-        let improveDefaultVisible = false;
-
-        function setImproveDemoState(showDefault) {
-          improveDefaultVisible = showDefault;
-
-          improveDemo.classList.toggle("is-default-view", improveDefaultVisible);
-
-          if (improveMasterImage) {
-            improveMasterImage.classList.toggle("active", !improveDefaultVisible);
-          }
-
-          if (improveDefaultImage) {
-            improveDefaultImage.classList.toggle("active", improveDefaultVisible);
-          }
-
-          improveDemoButton.textContent = improveDefaultVisible ? "Switch to Light Master" : "See default light";
-          improveDemoButton.setAttribute(
-            "aria-label",
-            improveDefaultVisible ? "Switch to Light Master" : "See default light"
-          );
+          improveDemo.style.setProperty("--improve-compare", safeValue + "%");
+          improveDemo.classList.toggle("is-sliding", safeValue > 0);
+          improveDemo.classList.toggle("is-at-start", safeValue <= 0);
+          improveDemo.classList.toggle("is-at-end", safeValue >= 100);
+          improveDemo.classList.toggle("is-near-start", safeValue <= 10);
+          improveDemo.classList.toggle("is-near-end", safeValue >= 90);
+          improveDemoSlider.setAttribute("aria-valuenow", String(safeValue));
         }
 
-        improveDemoButton.addEventListener("click", (event) => {
-          event.stopPropagation();
-          setImproveDemoState(!improveDefaultVisible);
+        improveDemoSlider.addEventListener("input", () => {
+          setImproveSliderValue(improveDemoSlider.value);
         });
 
-        setImproveDemoState(false);
+        improveDemoSlider.addEventListener("change", () => {
+          setImproveSliderValue(improveDemoSlider.value);
+        });
+
+        setImproveSliderValue(improveDemoSlider.value);
       }
 
       const advancedDemo = document.getElementById("advancedDemo");
@@ -3361,7 +3704,7 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
           animationDemoImage.removeAttribute("src");
 
           window.requestAnimationFrame(() => {
-            animationDemoImage.src = animationGifSrc + "?restart=" + Date.now();
+            animationDemoImage.src = addGifSyncToken(animationGifSrc, Date.now());
             animationDemoImage.alt = "Animation feature GIF preview";
           });
         }
@@ -3406,35 +3749,41 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
       const diffCompareBoxes = Array.from(document.querySelectorAll(".diff-compare-box"));
 
       diffCompareBoxes.forEach((box) => {
-        const button = box.querySelector(".diff-toggle");
+        const slider = box.querySelector(".diff-slider");
         const label = box.querySelector(".diff-label");
 
-        let isMasterVisible = true;
+        function setDiffSliderValue(value) {
+          const numericValue = Number(value);
+          const safeValue = Number.isFinite(numericValue)
+            ? Math.max(0, Math.min(100, numericValue))
+            : 0;
 
-        function setDiffState(showMaster) {
-          isMasterVisible = showMaster;
-
-          box.style.setProperty("--compare", showMaster ? "100%" : "0%");
-          box.classList.toggle("is-default-view", !showMaster);
+          box.style.setProperty("--compare", safeValue + "%");
+          box.classList.toggle("is-sliding", safeValue > 0 && safeValue < 100);
+          box.classList.toggle("is-at-start", safeValue <= 0);
+          box.classList.toggle("is-at-end", safeValue >= 100);
+          box.classList.toggle("is-near-start", safeValue <= 10);
+          box.classList.toggle("is-near-end", safeValue >= 90);
 
           if (label) {
-            label.textContent = showMaster ? "Light Master Pro" : "Default lights";
+            label.textContent = safeValue > 50 ? "Default Light" : "Light Master Pro";
           }
 
-          if (button) {
-            button.setAttribute(
-              "aria-label",
-              showMaster ? "Show default lights" : "Show Light Master Pro"
-            );
+          if (slider) {
+            slider.setAttribute("aria-valuenow", String(safeValue));
           }
         }
 
-        if (button) {
-          setDiffState(true);
-
-          button.addEventListener("click", () => {
-            setDiffState(!isMasterVisible);
+        if (slider) {
+          slider.addEventListener("input", () => {
+            setDiffSliderValue(slider.value);
           });
+
+          slider.addEventListener("change", () => {
+            setDiffSliderValue(slider.value);
+          });
+
+          setDiffSliderValue(slider.value);
         }
       });
 
