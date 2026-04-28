@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -700,6 +701,7 @@
       line-height: 1.75;
     }
 
+    .improve-demo-shell,
     .advanced-demo-shell,
     .animation-demo-shell,
     .step-demo-shell {
@@ -713,6 +715,7 @@
       margin-bottom: 22px;
     }
 
+    .improve-demo-shell,
     .advanced-demo-shell {
       aspect-ratio: 16 / 9;
     }
@@ -720,6 +723,39 @@
     .animation-demo-shell,
     .step-demo-shell {
       aspect-ratio: 2 / 1;
+    }
+
+    .improve-demo-stage {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .improve-demo-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.055);
+      filter: blur(10px) brightness(0.94) saturate(0.94);
+      transition:
+        opacity 0.82s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      user-select: none;
+      pointer-events: none;
+      backface-visibility: hidden;
+      will-change: opacity, transform, filter;
+    }
+
+    .improve-demo-image.active {
+      opacity: 1;
+      transform: scale(1.015);
+      filter: blur(0) brightness(1) saturate(1);
     }
 
     .advanced-demo-shell img,
@@ -732,13 +768,14 @@
       pointer-events: none;
     }
 
+    .improve-demo-overlay,
     .advanced-demo-overlay,
     .animation-demo-overlay {
       position: absolute;
       inset: 0;
       z-index: 4;
       background:
-        linear-gradient(90deg, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.34) 34%, rgba(0,0,0,0.02) 72%),
+        linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.36) 36%, rgba(0,0,0,0.03) 74%),
         linear-gradient(180deg, rgba(0,0,0,0.20), rgba(0,0,0,0.22));
       transition:
         opacity 0.55s ease,
@@ -746,6 +783,7 @@
         filter 0.55s ease;
     }
 
+    .improve-demo-copy,
     .advanced-demo-copy,
     .animation-demo-copy {
       position: absolute;
@@ -760,6 +798,7 @@
         filter 0.55s ease;
     }
 
+    .improve-demo-copy h3,
     .advanced-demo-copy h3,
     .animation-demo-copy h3,
     .step-demo-title h3 {
@@ -770,6 +809,7 @@
       letter-spacing: -0.04em;
     }
 
+    .improve-demo-copy p,
     .advanced-demo-copy p,
     .animation-demo-copy p,
     .step-demo-title p {
@@ -779,6 +819,7 @@
       line-height: 1.6;
     }
 
+    .improve-demo-action,
     .advanced-demo-action,
     .animation-demo-action,
     .step-demo-center-copy {
@@ -802,6 +843,16 @@
         border-color 0.25s ease;
     }
 
+    .improve-demo-action {
+      position: relative;
+      left: auto;
+      top: auto;
+      margin-top: 14px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
     .advanced-demo-action {
       left: 18px;
       top: 110px;
@@ -818,6 +869,7 @@
       font-size: 13px;
     }
 
+    .improve-demo-action:hover,
     .advanced-demo-action:hover,
     .animation-demo-action:hover,
     .step-demo-center-copy:hover {
@@ -2149,6 +2201,7 @@
         padding: 24px;
       }
 
+      .improve-demo-copy,
       .advanced-demo-copy,
       .animation-demo-copy,
       .step-demo-title {
@@ -2158,17 +2211,25 @@
         max-width: 74%;
       }
 
+      .improve-demo-copy h3,
       .advanced-demo-copy h3,
       .animation-demo-copy h3,
       .step-demo-title h3 {
         font-size: 16px;
       }
 
+      .improve-demo-copy p,
       .advanced-demo-copy p,
       .animation-demo-copy p,
       .step-demo-title p {
         font-size: 10px;
         line-height: 1.45;
+      }
+
+      .improve-demo-action {
+        margin-top: 10px;
+        padding: 8px 11px;
+        font-size: 10px;
       }
 
       .advanced-demo-action {
@@ -2504,11 +2565,32 @@
       <div class="features-grid">
         <article class="feature-card">
           <div class="feature-inner">
-            <div class="feature-icon"></div>
-            <h3>Improve Your Renders</h3>
-            <p>
-              Turn basic default lighting into a more expressive and cinematic look. Light Master Pro helps you add stronger mood and more artistic light variation to make your renders feel more unique and visually polished.
-            </p>
+            <div class="improve-demo-shell" id="improveDemo">
+              <div class="improve-demo-stage">
+                <img
+                  class="improve-demo-image master active"
+                  src="https://assets.superhivemarket.com/cache/d4c900a0858509db16ae80ed8c1191b2.jpg"
+                  alt="Improve Your Renders Light Master Pro preview">
+
+                <img
+                  class="improve-demo-image default"
+                  src="https://assets.superhivemarket.com/cache/cfb4bf8f684b55b02a97dbfd15aed3a7.jpg"
+                  alt="Improve Your Renders default light preview">
+              </div>
+
+              <div class="improve-demo-overlay"></div>
+
+              <div class="improve-demo-copy">
+                <h3>Improve Your Renders</h3>
+                <p>
+                  Turn basic default lighting into a more expressive and cinematic look. Light Master Pro helps you add stronger mood and more artistic light variation to make your renders feel more unique and visually polished.
+                </p>
+
+                <button class="improve-demo-action" id="improveDemoButton" type="button" aria-label="See default light">
+                  See default light
+                </button>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -3062,6 +3144,43 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
         });
       }
 
+      const improveDemo = document.getElementById("improveDemo");
+      const improveDemoButton = document.getElementById("improveDemoButton");
+
+      if (improveDemo && improveDemoButton) {
+        const improveMasterImage = improveDemo.querySelector(".improve-demo-image.master");
+        const improveDefaultImage = improveDemo.querySelector(".improve-demo-image.default");
+
+        let improveDefaultVisible = false;
+
+        function setImproveDemoState(showDefault) {
+          improveDefaultVisible = showDefault;
+
+          improveDemo.classList.toggle("is-default-view", improveDefaultVisible);
+
+          if (improveMasterImage) {
+            improveMasterImage.classList.toggle("active", !improveDefaultVisible);
+          }
+
+          if (improveDefaultImage) {
+            improveDefaultImage.classList.toggle("active", improveDefaultVisible);
+          }
+
+          improveDemoButton.textContent = improveDefaultVisible ? "Switch to Light Master" : "See default light";
+          improveDemoButton.setAttribute(
+            "aria-label",
+            improveDefaultVisible ? "Switch to Light Master" : "See default light"
+          );
+        }
+
+        improveDemoButton.addEventListener("click", (event) => {
+          event.stopPropagation();
+          setImproveDemoState(!improveDefaultVisible);
+        });
+
+        setImproveDemoState(false);
+      }
+
       const advancedDemo = document.getElementById("advancedDemo");
       const advancedDemoButton = document.getElementById("advancedDemoButton");
       const advancedDemoClose = document.getElementById("advancedDemoClose");
@@ -3481,3 +3600,4 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
   </script>
 </body>
 </html>
+```
