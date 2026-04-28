@@ -31,6 +31,19 @@
       box-sizing: border-box;
     }
 
+    img,
+    video,
+    iframe {
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -380,7 +393,8 @@
 
     .hero-state-note {
       position: absolute;
-      right: 32px;
+      left: 32px;
+      right: auto;
       bottom: 38px;
       z-index: 6;
       display: flex;
@@ -614,6 +628,10 @@
       min-width: 0;
     }
 
+    .launch-sale-copy {
+      min-width: 0;
+    }
+
     .launch-sale-kicker {
       display: inline-flex;
       align-items: center;
@@ -681,6 +699,7 @@
       z-index: 4;
       justify-self: end;
       align-self: center;
+      flex: 0 0 auto;
       display: flex;
       align-items: flex-end;
       justify-content: center;
@@ -710,7 +729,8 @@
         background 0.28s ease;
     }
 
-    .launch-sale-price:hover {
+    .launch-sale-price:hover,
+    .launch-sale-price:active {
       transform: translateY(-4px) scale(1.025);
       border-color: rgba(255,255,255,0.48);
       background:
@@ -768,11 +788,13 @@
         linear-gradient(-45deg, rgba(255,255,255,0.96) 0 7px, transparent 7px) 78% 54% / 13px 13px no-repeat;
     }
 
-    .launch-sale-price:hover::before {
+    .launch-sale-price:hover::before,
+    .launch-sale-price:active::before {
       animation: priceConfettiFall 1.05s cubic-bezier(0.18, 0.86, 0.24, 1) both;
     }
 
-    .launch-sale-price:hover::after {
+    .launch-sale-price:hover::after,
+    .launch-sale-price:active::after {
       animation: priceConfettiFallAlt 1.15s cubic-bezier(0.18, 0.86, 0.24, 1) 0.05s both;
     }
 
@@ -1042,6 +1064,8 @@
       width: 100%;
       border-radius: 22px;
       overflow: hidden;
+      clip-path: inset(0 round 22px);
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
       background: #0c1118;
       box-shadow: 0 20px 42px rgba(15,16,18,0.14);
       isolation: isolate;
@@ -1245,7 +1269,7 @@
       inset: 0;
       z-index: 4;
       background:
-        );
+        linear-gradient(180deg, rgba(7, 10, 16, 0.36) 0%, rgba(7, 10, 16, 0.08) 46%, rgba(7, 10, 16, 0.42) 100%);
       transition:
         opacity 0.55s ease,
         transform 0.55s ease,
@@ -2594,8 +2618,10 @@
       }
 
       .hero-state-note {
-        right: 24px;
+        left: 24px;
+        right: auto;
         bottom: 24px;
+        width: fit-content;
         max-width: 360px;
       }
 
@@ -2806,12 +2832,14 @@
 
       .hero-state-note {
         left: 18px;
-        right: 18px;
+        right: auto;
         bottom: 18px;
+        width: fit-content;
         min-width: 0;
-        max-width: none;
-        padding: 10px;
-        gap: 10px;
+        max-width: min(300px, calc(100vw - 36px));
+        padding: 9px 10px;
+        gap: 9px;
+        flex-wrap: nowrap;
       }
 
       .hero-state-thumb {
@@ -2836,6 +2864,12 @@
 
       .content-pad {
         padding: 24px;
+      }
+
+      .step-demo-shell {
+        border-radius: 18px;
+        clip-path: inset(0 round 18px);
+        -webkit-mask-image: -webkit-radial-gradient(white, black);
       }
 
       .improve-demo-copy,
@@ -2944,92 +2978,93 @@
       }
 
       .variations-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 8px;
+        grid-template-columns: 1fr;
+        gap: 14px;
       }
 
       .variation-card {
-        padding: 10px;
-        min-height: 250px;
-        border-radius: 18px;
+        padding: 18px;
+        min-height: auto;
+        border-radius: 24px;
       }
 
       .variation-topline {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-        margin-bottom: 10px;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
       }
 
       .variation-name {
-        font-size: 16px;
-        letter-spacing: -0.03em;
+        font-size: 22px;
+        letter-spacing: -0.035em;
       }
 
       .variation-badge {
-        padding: 4px 6px;
-        font-size: 7px;
-        letter-spacing: 0.04em;
+        padding: 6px 9px;
+        font-size: 9px;
+        letter-spacing: 0.06em;
       }
 
       .variation-price {
-        gap: 5px;
-        margin-bottom: 6px;
+        gap: 8px;
+        margin-bottom: 8px;
       }
 
       .variation-sale-price {
-        font-size: 26px;
+        font-size: 36px;
       }
 
       .variation-sale-price span {
-        display: none;
+        display: inline;
+        font-size: 12px;
       }
 
       .variation-old-price {
-        bottom: 2px;
-        font-size: 13px;
+        bottom: 3px;
+        font-size: 17px;
         text-decoration-thickness: 1.5px;
       }
 
       .variation-value-label {
-        margin-bottom: 6px;
-        padding: 4px 6px;
-        font-size: 7px;
-        letter-spacing: 0.04em;
+        margin-bottom: 8px;
+        padding: 5px 8px;
+        font-size: 9px;
+        letter-spacing: 0.06em;
       }
 
       .variation-sale-tag {
-        margin-bottom: 8px;
-        padding: 4px 6px;
-        font-size: 7px;
-        letter-spacing: 0.04em;
+        margin-bottom: 10px;
+        padding: 5px 8px;
+        font-size: 9px;
+        letter-spacing: 0.06em;
       }
 
       .variation-description {
-        font-size: 10px;
-        line-height: 1.4;
-        margin-bottom: 10px;
+        font-size: 13px;
+        line-height: 1.55;
+        margin-bottom: 12px;
       }
 
       .variation-assets {
-        padding-top: 9px;
-        font-size: 10px;
-        line-height: 1.35;
+        padding-top: 12px;
+        font-size: 13px;
+        line-height: 1.4;
       }
 
       .variation-assets strong {
-        font-size: 12px;
+        font-size: 15px;
       }
 
       .variation-note {
-        font-size: 9px;
-        line-height: 1.3;
+        font-size: 11px;
+        line-height: 1.35;
       }
 
       .variation-cta {
-        min-height: 34px;
-        margin-top: 12px;
-        font-size: 11px;
+        min-height: 38px;
+        margin-top: 14px;
+        font-size: 12px;
       }
 
       .faq-question {
@@ -3085,6 +3120,242 @@
         font-size: 13px;
       }
     }
+
+
+    @media (max-width: 560px) {
+      .page {
+        width: min(100% - 14px, 1240px);
+        padding: 14px 0 70px;
+      }
+
+      .section {
+        margin-top: 22px;
+      }
+
+      .hero {
+        padding: 6px 0 18px;
+      }
+
+      .hero-banner {
+        aspect-ratio: 4 / 3;
+        min-height: 238px;
+        border-radius: 24px;
+      }
+
+      .hero-content {
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+      }
+
+      .hero h1 {
+        font-size: clamp(18px, 8.2vw, 30px);
+        line-height: 1;
+        letter-spacing: 0.07em;
+      }
+
+      .hero-actions {
+        flex-wrap: nowrap;
+        gap: 5px;
+        margin-top: 8px;
+        margin-left: -3px;
+        padding: 3px;
+        max-height: none;
+      }
+
+      .liquid-button {
+        min-width: auto;
+        padding: 8px 10px;
+        font-size: 10px;
+      }
+
+      .hero-toggle {
+        top: 15%;
+      }
+
+      .launch-sale-section {
+        margin-top: 2px;
+      }
+
+      .launch-sale-card {
+        border-radius: 20px;
+      }
+
+      .launch-sale-inner {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 5px;
+        min-height: 84px;
+        padding: 10px 9px;
+      }
+
+      .launch-sale-kicker {
+        margin-bottom: 6px;
+        padding: 5px 7px;
+        font-size: 7px;
+        letter-spacing: 0.10em;
+      }
+
+      .launch-sale-title-row {
+        gap: 4px;
+      }
+
+      .launch-sale-copy h2 {
+        font-size: clamp(12px, 4.45vw, 21px);
+        letter-spacing: -0.06em;
+      }
+
+      .launch-sale-dash {
+        font-size: clamp(11px, 3.8vw, 19px);
+        transform: translateY(-1px);
+      }
+
+      .launch-sale-percent-number {
+        font-size: clamp(17px, 6.2vw, 30px);
+      }
+
+      .launch-sale-percent-symbol {
+        margin-left: 2px;
+        font-size: clamp(12px, 4.5vw, 22px);
+      }
+
+      .launch-sale-copy p {
+        margin-top: 6px;
+        font-size: clamp(7.5px, 2.5vw, 11px);
+        line-height: 1.32;
+        max-width: none;
+      }
+
+      .launch-sale-price {
+        min-width: 68px;
+        padding: 8px 8px 7px;
+        border-radius: 14px;
+        gap: 3px;
+      }
+
+      .launch-sale-now {
+        font-size: clamp(28px, 10.2vw, 42px);
+      }
+
+      .launch-sale-old {
+        bottom: 3px;
+        font-size: clamp(12px, 4vw, 18px);
+        text-decoration-thickness: 2px;
+      }
+
+      .content-pad {
+        padding: 18px;
+      }
+
+      .section-head {
+        margin-bottom: 14px;
+      }
+
+      .section-head h2 {
+        font-size: clamp(24px, 8vw, 34px);
+      }
+
+      .section-head p,
+      .clean-copy p {
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      .feature-card {
+        padding: 16px;
+        border-radius: 24px;
+      }
+
+      .video-shell {
+        padding: 10px;
+        border-radius: 24px;
+      }
+
+      .video-wrap {
+        border-radius: 18px;
+      }
+
+      .addons-grid {
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .page {
+        width: min(100% - 10px, 1240px);
+      }
+
+      .hero-banner {
+        min-height: 220px;
+        border-radius: 22px;
+      }
+
+      .hero h1 {
+        font-size: clamp(16px, 8vw, 26px);
+        letter-spacing: 0.06em;
+      }
+
+      .liquid-button {
+        padding: 7px 8px;
+        font-size: 9px;
+      }
+
+      .launch-sale-inner {
+        min-height: 78px;
+        padding: 9px 7px;
+        gap: 4px;
+      }
+
+      .launch-sale-kicker {
+        padding: 4px 6px;
+        font-size: 6px;
+        margin-bottom: 5px;
+      }
+
+      .launch-sale-copy h2 {
+        font-size: clamp(11px, 4vw, 16px);
+      }
+
+      .launch-sale-dash {
+        font-size: clamp(10px, 3.8vw, 15px);
+      }
+
+      .launch-sale-percent-number {
+        font-size: clamp(16px, 6vw, 24px);
+      }
+
+      .launch-sale-percent-symbol {
+        font-size: clamp(11px, 4.2vw, 17px);
+      }
+
+      .launch-sale-copy p {
+        font-size: clamp(7px, 2.4vw, 9px);
+      }
+
+      .launch-sale-price {
+        min-width: 58px;
+        padding: 7px 7px 6px;
+        border-radius: 12px;
+      }
+
+      .launch-sale-now {
+        font-size: clamp(25px, 9.6vw, 34px);
+      }
+
+      .launch-sale-old {
+        bottom: 2px;
+        font-size: clamp(10px, 3.7vw, 14px);
+      }
+
+      .content-pad,
+      .feature-card {
+        padding: 14px;
+      }
+
+      .variation-card {
+        padding: 15px;
+      }
+    }
+
   </style>
 </head>
 
