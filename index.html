@@ -22,18 +22,25 @@
       --shadow-md: 0 16px 34px rgba(15, 16, 18, 0.08);
       --shadow-sm: 0 10px 22px rgba(15, 16, 18, 0.06);
       --radius-xl: 36px;
+      --radius-lg: 28px;
       --accent: #0a84ff;
       --accent-2: #5ac8fa;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
       font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       color: var(--text);
-      background: radial-gradient(circle at top left, rgba(255,255,255,1) 0%, rgba(247,247,249,1) 28%, rgba(236,236,242,1) 64%, rgba(230,231,238,1) 100%);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,1) 0%, rgba(247,247,249,1) 28%, rgba(236,236,242,1) 64%, rgba(230,231,238,1) 100%);
       min-height: 100vh;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
@@ -51,16 +58,42 @@
       animation: orbFloat 18s ease-in-out infinite;
     }
 
-    .bg-orb.one { width: 360px; height: 360px; left: -80px; top: -60px; background: rgba(255,255,255,0.9); }
-    .bg-orb.two { width: 420px; height: 420px; right: -120px; top: 22%; background: rgba(90,200,250,0.18); animation-delay: -5s; }
-    .bg-orb.three { width: 320px; height: 320px; left: 14%; bottom: -90px; background: rgba(10,132,255,0.10); animation-delay: -9s; }
+    .bg-orb.one {
+      width: 360px;
+      height: 360px;
+      left: -80px;
+      top: -60px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .bg-orb.two {
+      width: 420px;
+      height: 420px;
+      right: -120px;
+      top: 22%;
+      background: rgba(90, 200, 250, 0.18);
+      animation-delay: -5s;
+    }
+
+    .bg-orb.three {
+      width: 320px;
+      height: 320px;
+      left: 14%;
+      bottom: -90px;
+      background: rgba(10, 132, 255, 0.10);
+      animation-delay: -9s;
+    }
 
     .spotlight {
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 0;
-      background: radial-gradient(620px circle at var(--x, 50%) var(--y, 24%), rgba(255,255,255,0.36), transparent 55%);
+      background: radial-gradient(
+        620px circle at var(--x, 50%) var(--y, 24%),
+        rgba(255,255,255,0.36),
+        transparent 55%
+      );
       transition: background 0.14s linear;
     }
 
@@ -86,7 +119,11 @@
       overflow: hidden;
     }
 
-    .liquid-button { position: relative; overflow: visible; transform-origin: center center; }
+    .liquid-button {
+      position: relative;
+      overflow: visible;
+      transform-origin: center center;
+    }
 
     .liquid-sheen::before,
     .liquid-pill::before,
@@ -100,19 +137,32 @@
       content: "";
       position: absolute;
       inset: -1px;
-      background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 28%, rgba(255,255,255,0.26) 40%, rgba(255,255,255,0.48) 50%, rgba(255,255,255,0.22) 60%, rgba(255,255,255,0) 72%, rgba(255,255,255,0) 100%);
+      background:
+        linear-gradient(
+          120deg,
+          rgba(255,255,255,0.00) 0%,
+          rgba(255,255,255,0.00) 28%,
+          rgba(255,255,255,0.26) 40%,
+          rgba(255,255,255,0.48) 50%,
+          rgba(255,255,255,0.22) 60%,
+          rgba(255,255,255,0.00) 72%,
+          rgba(255,255,255,0.00) 100%
+        );
       transform: translateX(-120%);
       animation: sheenMove 9s linear infinite;
       pointer-events: none;
       z-index: 2;
     }
 
-    .hero { padding: 8px 0 26px; }
+    .hero {
+      padding: 8px 0 26px;
+    }
 
     .hero-banner {
       --compare: 100%;
       width: 100%;
       aspect-ratio: 2 / 1;
+      min-height: 0;
       border-radius: 40px;
       box-shadow: var(--shadow-xl);
       border: 1px solid rgba(255,255,255,0.54);
@@ -120,15 +170,34 @@
       isolation: isolate;
     }
 
-    .hero-compare-stage { position: absolute; inset: 0; border-radius: inherit; overflow: hidden; z-index: 1; }
-    .hero-image { position: absolute; inset: 0; background-size: cover; background-position: center center; background-repeat: no-repeat; }
+    .hero-compare-stage {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
 
     .hero-image.before {
-      background-image: linear-gradient(180deg, rgba(8,10,16,0.12) 0%, rgba(8,10,16,0.28) 55%, rgba(8,10,16,0.58) 100%), url("https://assets.superhivemarket.com/cache/e833214b5ecfb51e7dedc090551c8750.gif");
+      background-image:
+        linear-gradient(180deg, rgba(8, 10, 16, 0.12) 0%, rgba(8, 10, 16, 0.28) 55%, rgba(8, 10, 16, 0.58) 100%),
+        url("https://assets.superhivemarket.com/cache/e833214b5ecfb51e7dedc090551c8750.gif");
     }
 
     .hero-image.after {
-      background-image: linear-gradient(180deg, rgba(8,10,16,0.14) 0%, rgba(8,10,16,0.32) 55%, rgba(8,10,16,0.68) 100%), radial-gradient(circle at 20% 20%, rgba(255,255,255,0.10), transparent 24%), radial-gradient(circle at 80% 30%, rgba(255,255,255,0.08), transparent 20%), url("https://assets.superhivemarket.com/cache/72e19cc67e2bb62aeed6eedc33821f81.gif");
+      background-image:
+        linear-gradient(180deg, rgba(8, 10, 16, 0.14) 0%, rgba(8, 10, 16, 0.32) 55%, rgba(8, 10, 16, 0.68) 100%),
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.10), transparent 24%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.08), transparent 20%),
+        url("https://assets.superhivemarket.com/cache/72e19cc67e2bb62aeed6eedc33821f81.gif");
       clip-path: inset(0 calc(100% - var(--compare)) 0 0);
       transition: clip-path 1.15s cubic-bezier(0.22, 1, 0.36, 1);
       will-change: clip-path;
@@ -139,13 +208,34 @@
       position: absolute;
       inset: 0;
       border-radius: inherit;
-      background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02) 35%, rgba(255,255,255,0.08) 100%);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02) 35%, rgba(255,255,255,0.08) 100%);
       pointer-events: none;
       z-index: 2;
     }
 
-    .hero-divider { position: absolute; top: 0; bottom: 0; left: var(--compare); width: 0; z-index: 4; pointer-events: none; transition: left 1.15s cubic-bezier(0.22,1,0.36,1); }
-    .hero-divider::before { content: ""; position: absolute; top: 0; bottom: 0; left: -0.5px; width: 1px; background: rgba(255,255,255,0.38); box-shadow: 0 0 12px rgba(0,0,0,0.18); }
+    .hero-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--compare);
+      width: 0;
+      z-index: 4;
+      pointer-events: none;
+      transition: left 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: left;
+    }
+
+    .hero-divider::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -0.5px;
+      width: 1px;
+      background: rgba(255,255,255,0.38);
+      box-shadow: 0 0 12px rgba(0,0,0,0.18);
+    }
 
     .hero-toggle {
       position: absolute;
@@ -159,7 +249,9 @@
       background: transparent;
       cursor: pointer;
       transform: translate(-50%, -50%);
-      transition: left 1.15s cubic-bezier(0.22,1,0.36,1), opacity 0.25s ease;
+      transition:
+        left 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.25s ease;
       appearance: none;
       -webkit-appearance: none;
     }
@@ -171,8 +263,8 @@
       left: 50%;
       width: 12px;
       height: 12px;
-      border-top: 2px solid #fff;
-      border-right: 2px solid #fff;
+      border-top: 2px solid #ffffff;
+      border-right: 2px solid #ffffff;
       filter: drop-shadow(0 1px 3px rgba(0,0,0,0.42));
       transform: translate(-42%, -50%) rotate(225deg);
       animation: arrowHintLeft 1.45s ease-in-out infinite;
@@ -188,62 +280,425 @@
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #fff;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+      color: #ffffff;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
       pointer-events: none;
       animation: clickHintLeft 1.45s ease-in-out infinite;
       white-space: nowrap;
     }
 
-    .hero-toggle.is-before::before { transform: translate(-58%, -50%) rotate(45deg); animation: arrowHintRight 1.45s ease-in-out infinite; }
-    .hero-toggle.is-before::after { left: 50px; right: auto; animation: clickHintRight 1.45s ease-in-out infinite; }
+    .hero-toggle.is-before::before {
+      transform: translate(-58%, -50%) rotate(45deg);
+      animation: arrowHintRight 1.45s ease-in-out infinite;
+    }
 
-    .hero-content { position: absolute; left: 44px; bottom: 44px; z-index: 6; max-width: 760px; pointer-events: none; transition: transform 0.95s cubic-bezier(0.22,1,0.36,1), opacity 0.65s ease, filter 0.65s ease; }
-    .hero-content a, .hero-content button { pointer-events: auto; }
+    .hero-toggle.is-before::after {
+      left: 50px;
+      right: auto;
+      animation: clickHintRight 1.45s ease-in-out infinite;
+    }
 
-    .hero h1 { margin: 0; font-size: clamp(26px, 4vw, 54px); line-height: 0.95; letter-spacing: 0.1em; font-weight: 760; color: #fff; text-shadow: 0 14px 38px rgba(0,0,0,0.32), 0 2px 10px rgba(0,0,0,0.24); transition: opacity 0.65s ease, transform 0.75s cubic-bezier(0.22,1,0.36,1), filter 0.65s ease; }
-    .hero-actions { display: flex; justify-content: flex-start; gap: 10px; flex-wrap: wrap; margin-top: 18px; margin-left: -6px; padding: 6px; transition: opacity 0.55s ease, transform 0.55s ease, max-height 0.55s ease, margin 0.55s ease, padding 0.55s ease; max-height: 96px; overflow: visible; }
-    .hero-banner.is-before-view .hero-content { opacity: 0; transform: translateY(72px); filter: blur(8px); }
-    .hero-banner.is-before-view .hero-actions { opacity: 0; transform: translateY(12px); max-height: 0; margin-top: 8px; margin-left: 0; padding: 0; pointer-events: none; }
-    .hero-banner.is-before-view h1 { opacity: 0; transform: translateY(34px); filter: blur(8px); }
+    .hero-content {
+      position: absolute;
+      left: 44px;
+      bottom: 44px;
+      z-index: 6;
+      max-width: 760px;
+      padding: 0;
+      background: none;
+      border: none;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      pointer-events: none;
+      transition:
+        transform 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.65s ease,
+        filter 0.65s ease;
+    }
 
-    .hero-state-note { position: absolute; right: 32px; bottom: 38px; z-index: 6; display: flex; align-items: center; gap: 16px; min-width: 320px; max-width: 420px; padding: 14px 16px; border-radius: 22px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.20); box-shadow: 0 20px 44px rgba(0,0,0,0.18); backdrop-filter: blur(24px) saturate(140%); -webkit-backdrop-filter: blur(24px) saturate(140%); opacity: 0; transform: translateY(22px); pointer-events: none; transition: opacity 0.7s ease, transform 0.7s ease; }
-    .hero-banner.is-before-view .hero-state-note { opacity: 1; transform: translateY(0); }
-    .hero-state-thumb { flex: 0 0 72px; width: 72px; height: 72px; border-radius: 16px; background-image: linear-gradient(180deg, rgba(8,10,16,0.08) 0%, rgba(8,10,16,0.30) 100%), url("https://assets.superhivemarket.com/cache/e833214b5ecfb51e7dedc090551c8750.gif"); background-size: cover; background-position: center center; box-shadow: 0 14px 28px rgba(0,0,0,0.16); }
-    .hero-state-copy { color: #fff; }
-    .hero-state-kicker { font-size: 11px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.62); margin-bottom: 6px; }
-    .hero-state-title { font-size: 21px; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 6px; }
-    .hero-state-copy p { margin: 0; font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.80); }
+    .hero-content a,
+    .hero-content button {
+      pointer-events: auto;
+    }
 
-    .liquid-button { display: inline-flex; align-items: center; justify-content: center; min-width: 128px; padding: 12px 18px; border-radius: 999px; text-decoration: none; font-size: 12px; font-weight: 600; letter-spacing: -0.01em; border: 1px solid rgba(255,255,255,0.36); box-shadow: 0 12px 26px rgba(15,16,18,0.18), inset 0 1px 0 rgba(255,255,255,0.28); backdrop-filter: blur(28px) saturate(170%); -webkit-backdrop-filter: blur(28px) saturate(170%); transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease; isolation: isolate; }
-    .liquid-button::before { content: ""; position: absolute; inset: 1px; border-radius: inherit; background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 28%, rgba(255,255,255,0.20) 40%, rgba(255,255,255,0.38) 50%, rgba(255,255,255,0.18) 60%, rgba(255,255,255,0) 72%, rgba(255,255,255,0) 100%); background-size: 260% 100%; background-position: -160% 0; animation: buttonSheenMove 9s linear infinite; pointer-events: none; z-index: 2; }
-    .liquid-button span { position: relative; z-index: 3; }
-    .liquid-button::after { content: ""; position: absolute; inset: 1px; border-radius: inherit; background: radial-gradient(circle at top left, rgba(255,255,255,0.32), transparent 36%), radial-gradient(circle at bottom right, rgba(255,255,255,0.10), transparent 42%); pointer-events: none; z-index: 1; }
-    .liquid-button.primary { color: #fff; background: linear-gradient(180deg, rgba(30,144,255,0.62), rgba(10,132,255,0.64)), rgba(255,255,255,0.10); }
-    .liquid-button.secondary { color: #fff; background: rgba(255,255,255,0.12); }
-    .liquid-button:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 16px 32px rgba(15,16,18,0.22), inset 0 1px 0 rgba(255,255,255,0.34); border-color: rgba(255,255,255,0.46); }
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 54px);
+      line-height: 0.95;
+      letter-spacing: 0.1em;
+      font-weight: 760;
+      color: #ffffff;
+      text-shadow:
+        0 14px 38px rgba(0,0,0,0.32),
+        0 2px 10px rgba(0,0,0,0.24);
+      transition:
+        opacity 0.65s ease,
+        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.65s ease;
+    }
 
-    .section { margin-top: 30px; }
-    .glass-card { background: rgba(255,255,255,0.28); border: 1px solid rgba(255,255,255,0.72); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); backdrop-filter: blur(28px) saturate(150%); -webkit-backdrop-filter: blur(28px) saturate(150%); }
-    .glass-card::after, .feature-card::after, .media-card::after, .addon-card::after, .video-shell::after, .variation-card::after, .faq-item::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(255,255,255,0.32), transparent 28%), radial-gradient(circle at bottom right, rgba(255,255,255,0.10), transparent 36%); pointer-events: none; z-index: 1; }
-    .content-pad { position: relative; z-index: 3; padding: 34px; }
-    .section-head { margin-bottom: 18px; }
-    .section-head .section-chip { margin-bottom: 14px; }
-    .section-chip { display: inline-flex; align-items: center; padding: 10px 16px; border-radius: 999px; background: rgba(255,255,255,0.34); border: 1px solid rgba(255,255,255,0.76); box-shadow: var(--shadow-sm); backdrop-filter: blur(24px) saturate(140%); -webkit-backdrop-filter: blur(24px) saturate(140%); font-size: 12px; color: #4d4e56; letter-spacing: 0.13em; text-transform: uppercase; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(30px, 4vw, 50px); line-height: 1.02; letter-spacing: -0.02em; font-weight: 740; }
-    .section-head p { margin: 0; color: var(--muted); font-size: 18px; line-height: 1.7; max-width: 800px; }
-    .clean-copy p { margin: 0 0 16px; color: #555861; font-size: 17px; line-height: 1.8; max-width: 920px; }
+    .hero-actions {
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      margin-left: -6px;
+      padding: 6px;
+      transition:
+        opacity 0.55s ease,
+        transform 0.55s ease,
+        max-height 0.55s ease,
+        margin 0.55s ease,
+        padding 0.55s ease;
+      max-height: 96px;
+      overflow: visible;
+    }
 
-    .video-shell { padding: 16px; border-radius: 32px; background: rgba(255,255,255,0.26); border: 1px solid rgba(255,255,255,0.72); box-shadow: var(--shadow-xl); backdrop-filter: blur(30px) saturate(150%); -webkit-backdrop-filter: blur(30px) saturate(150%); }
-    .video-wrap { position: relative; z-index: 3; width: 100%; aspect-ratio: 16 / 9; border-radius: 24px; overflow: hidden; box-shadow: 0 24px 52px rgba(15,16,18,0.16); background: #000; }
-    .video-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .hero-banner.is-before-view .hero-content {
+      opacity: 0;
+      transform: translateY(72px);
+      filter: blur(8px);
+    }
 
-    .features-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-    .feature-card { background: rgba(255,255,255,0.30); border: 1px solid rgba(255,255,255,0.74); border-radius: 30px; box-shadow: var(--shadow-md); backdrop-filter: blur(26px) saturate(145%); -webkit-backdrop-filter: blur(26px) saturate(145%); padding: 28px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .feature-card:hover { transform: translateY(-7px); box-shadow: var(--shadow-xl); }
-    .feature-inner { position: relative; z-index: 3; }
-    .feature-card h3 { margin: 0 0 10px; font-size: 24px; letter-spacing: -0.02em; font-weight: 700; }
-    .feature-card p { margin: 0; color: #555861; font-size: 16px; line-height: 1.75; }
+    .hero-banner.is-before-view .hero-actions {
+      opacity: 0;
+      transform: translateY(12px);
+      max-height: 0;
+      margin-top: 8px;
+      margin-left: 0;
+      padding: 0;
+      pointer-events: none;
+    }
+
+    .hero-banner.is-before-view h1 {
+      opacity: 0;
+      transform: translateY(34px);
+      filter: blur(8px);
+    }
+
+    .hero-state-note {
+      position: absolute;
+      right: 32px;
+      bottom: 38px;
+      z-index: 6;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 320px;
+      max-width: 420px;
+      padding: 14px 16px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.20);
+      box-shadow: 0 20px 44px rgba(0,0,0,0.18);
+      backdrop-filter: blur(24px) saturate(140%);
+      -webkit-backdrop-filter: blur(24px) saturate(140%);
+      opacity: 0;
+      transform: translateY(22px);
+      pointer-events: none;
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+    }
+
+    .hero-banner.is-before-view .hero-state-note {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-state-thumb {
+      flex: 0 0 72px;
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      background-image:
+        linear-gradient(180deg, rgba(8, 10, 16, 0.08) 0%, rgba(8, 10, 16, 0.30) 100%),
+        url("https://assets.superhivemarket.com/cache/e833214b5ecfb51e7dedc090551c8750.gif");
+      background-size: cover;
+      background-position: center center;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.16);
+    }
+
+    .hero-state-copy {
+      color: #ffffff;
+    }
+
+    .hero-state-kicker {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.62);
+      margin-bottom: 6px;
+    }
+
+    .hero-state-title {
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .hero-state-copy p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.80);
+    }
+
+    .liquid-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 128px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      border: 1px solid rgba(255, 255, 255, 0.36);
+      box-shadow:
+        0 12px 26px rgba(15, 16, 18, 0.18),
+        inset 0 1px 0 rgba(255,255,255,0.28);
+      backdrop-filter: blur(28px) saturate(170%);
+      -webkit-backdrop-filter: blur(28px) saturate(170%);
+      transition:
+        transform 0.28s ease,
+        box-shadow 0.28s ease,
+        border-color 0.28s ease,
+        background 0.28s ease;
+      isolation: isolate;
+    }
+
+    .liquid-button::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(255,255,255,0.00) 0%,
+          rgba(255,255,255,0.00) 28%,
+          rgba(255,255,255,0.20) 40%,
+          rgba(255,255,255,0.38) 50%,
+          rgba(255,255,255,0.18) 60%,
+          rgba(255,255,255,0.00) 72%,
+          rgba(255,255,255,0.00) 100%
+        );
+      background-size: 260% 100%;
+      background-position: -160% 0;
+      animation: buttonSheenMove 9s linear infinite;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .liquid-button span {
+      position: relative;
+      z-index: 3;
+    }
+
+    .liquid-button::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.32), transparent 36%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,0.10), transparent 42%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .liquid-button.primary {
+      color: #ffffff;
+      background:
+        linear-gradient(180deg, rgba(30,144,255,0.62), rgba(10,132,255,0.64)),
+        rgba(255,255,255,0.10);
+    }
+
+    .liquid-button.secondary {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .liquid-button:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow:
+        0 16px 32px rgba(15, 16, 18, 0.22),
+        inset 0 1px 0 rgba(255,255,255,0.34);
+      border-color: rgba(255, 255, 255, 0.46);
+    }
+
+    .section {
+      margin-top: 30px;
+    }
+
+    .glass-card {
+      background: rgba(255,255,255,0.28);
+      border: 1px solid rgba(255,255,255,0.72);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(28px) saturate(150%);
+      -webkit-backdrop-filter: blur(28px) saturate(150%);
+    }
+
+    .glass-card::after,
+    .feature-card::after,
+    .media-card::after,
+    .addon-card::after,
+    .video-shell::after,
+    .variation-card::after,
+    .faq-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.32), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,0.10), transparent 36%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .content-pad {
+      position: relative;
+      z-index: 3;
+      padding: 34px;
+    }
+
+    .section-head {
+      margin-bottom: 18px;
+    }
+
+    .section-head .section-chip {
+      margin-bottom: 14px;
+    }
+
+    .section-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.34);
+      border: 1px solid rgba(255,255,255,0.76);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(24px) saturate(140%);
+      -webkit-backdrop-filter: blur(24px) saturate(140%);
+      font-size: 12px;
+      color: #4d4e56;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .section-head h2 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4vw, 50px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      font-weight: 740;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
+      max-width: 800px;
+    }
+
+    .clean-copy p {
+      margin: 0 0 16px;
+      color: #555861;
+      font-size: 17px;
+      line-height: 1.8;
+      max-width: 920px;
+    }
+
+    .video-shell {
+      padding: 16px;
+      border-radius: 32px;
+      background: rgba(255,255,255,0.26);
+      border: 1px solid rgba(255,255,255,0.72);
+      box-shadow: var(--shadow-xl);
+      backdrop-filter: blur(30px) saturate(150%);
+      -webkit-backdrop-filter: blur(30px) saturate(150%);
+    }
+
+    .video-wrap {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 24px 52px rgba(15,16,18,0.16);
+      background: #000;
+    }
+
+    .video-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.30);
+      border: 1px solid rgba(255,255,255,0.74);
+      border-radius: 30px;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(26px) saturate(145%);
+      -webkit-backdrop-filter: blur(26px) saturate(145%);
+      padding: 28px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .feature-inner {
+      position: relative;
+      z-index: 3;
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.28)),
+        linear-gradient(135deg, rgba(90,200,250,0.24), rgba(10,132,255,0.20));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.92),
+        0 12px 24px rgba(15,16,18,0.08);
+    }
+
+    .feature-card h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: #555861;
+      font-size: 16px;
+      line-height: 1.75;
+    }
 
     .improve-demo-shell,
     .advanced-demo-shell,
@@ -259,15 +714,195 @@
       margin-bottom: 22px;
     }
 
-    .improve-demo-shell, .advanced-demo-shell { aspect-ratio: 16 / 9; }
-    .animation-demo-shell, .step-demo-shell { aspect-ratio: 2 / 1; }
-    .improve-demo-shell { --improve-compare: 0%; }
-    .improve-demo-stage { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
+    .improve-demo-shell,
+    .advanced-demo-shell {
+      aspect-ratio: 16 / 9;
+    }
 
-    .improve-demo-image { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; opacity: 1; transform: scale(1.015); filter: blur(0) brightness(1) saturate(1); user-select: none; pointer-events: none; backface-visibility: hidden; will-change: clip-path, opacity, transform; transition: opacity 0.35s ease, transform 0.45s ease, clip-path 0.12s linear; }
-    .improve-demo-image.default { z-index: 1; }
-    .improve-demo-image.master { z-index: 2; clip-path: inset(0 calc(100% - var(--improve-compare)) 0 0); }
-    .improve-demo-shell.is-switching .improve-demo-image { opacity: 0.72; transform: scale(1.04); }
+    .animation-demo-shell,
+    .step-demo-shell {
+      aspect-ratio: 2 / 1;
+    }
+
+    .improve-demo-shell {
+      --improve-compare: 0%;
+    }
+
+    .improve-demo-stage {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .improve-demo-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      opacity: 1;
+      transform: scale(1.015);
+      filter: blur(0) brightness(1) saturate(1);
+      user-select: none;
+      pointer-events: none;
+      backface-visibility: hidden;
+      will-change: clip-path;
+    }
+
+    .improve-demo-image.default {
+      z-index: 1;
+    }
+
+    .improve-demo-image.master {
+      z-index: 2;
+      clip-path: inset(0 calc(100% - var(--improve-compare)) 0 0);
+      transition: clip-path 0.12s linear;
+    }
+
+    .improve-demo-handle {
+      position: absolute;
+      top: 50%;
+      left: clamp(10px, var(--improve-compare), calc(100% - 10px));
+      z-index: 8;
+      width: 30px;
+      height: 42px;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0;
+      filter:
+        drop-shadow(0 2px 5px rgba(0,0,0,0.28))
+        drop-shadow(0 0 7px rgba(255,255,255,0.10));
+      transition:
+        left 0.12s linear,
+        transform 0.28s ease,
+        filter 0.28s ease,
+        opacity 0.34s ease;
+    }
+
+    .improve-demo-shell.is-near-start .improve-demo-handle,
+    .improve-demo-shell.is-near-end .improve-demo-handle {
+      opacity: 1;
+    }
+
+    .improve-demo-shell.is-at-start .improve-demo-handle {
+      left: 0;
+      transform: translate(0, -50%);
+    }
+
+    .improve-demo-shell.is-at-end .improve-demo-handle {
+      left: 100%;
+      transform: translate(-100%, -50%);
+    }
+
+    .improve-demo-handle::before,
+    .improve-demo-handle::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 6px;
+      height: 6px;
+      border-top: 1.35px solid rgba(255,255,255,1);
+      border-right: 1.35px solid rgba(255,255,255,1);
+      opacity: 1;
+      transition:
+        opacity 0.28s ease,
+        transform 0.28s ease,
+        border-color 0.28s ease;
+    }
+
+    .improve-demo-handle::before {
+      left: 8px;
+      transform: translateY(-50%) rotate(225deg);
+    }
+
+    .improve-demo-handle::after {
+      right: 8px;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .improve-demo-shell.is-at-start .improve-demo-handle::before {
+      opacity: 0;
+      transform: translateY(-50%) translateX(-4px) rotate(225deg) scale(0.72);
+    }
+
+    .improve-demo-shell.is-at-start .improve-demo-handle::after {
+      right: 10px;
+    }
+
+    .improve-demo-shell.is-at-end .improve-demo-handle::after {
+      opacity: 0;
+      transform: translateY(-50%) translateX(4px) rotate(45deg) scale(0.72);
+    }
+
+    .improve-demo-shell.is-at-end .improve-demo-handle::before {
+      left: 10px;
+    }
+
+    .improve-demo-slider {
+      position: absolute;
+      inset: 0;
+      z-index: 9;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: ew-resize;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .improve-demo-slider::-webkit-slider-thumb {
+      width: 48px;
+      height: 64px;
+      cursor: ew-resize;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .improve-demo-slider::-moz-range-thumb {
+      width: 48px;
+      height: 64px;
+      border: 0;
+      cursor: ew-resize;
+    }
+
+    .improve-demo-shell.is-near-start:hover .improve-demo-handle,
+    .improve-demo-shell.is-near-end:hover .improve-demo-handle,
+    .improve-demo-shell.is-near-start.is-sliding .improve-demo-handle,
+    .improve-demo-shell.is-near-end.is-sliding .improve-demo-handle {
+      filter:
+        drop-shadow(0 3px 7px rgba(0,0,0,0.34))
+        drop-shadow(0 0 9px rgba(255,255,255,0.14));
+    }
+
+    .improve-demo-shell.is-near-start:not(.is-at-start):hover .improve-demo-handle,
+    .improve-demo-shell.is-near-end:not(.is-at-end):hover .improve-demo-handle,
+    .improve-demo-shell.is-near-start:not(.is-at-start).is-sliding .improve-demo-handle,
+    .improve-demo-shell.is-near-end:not(.is-at-end).is-sliding .improve-demo-handle {
+      transform: translate(-50%, -50%) scale(1.04);
+    }
+
+    .improve-demo-shell.is-at-start:hover .improve-demo-handle,
+    .improve-demo-shell.is-at-start.is-sliding .improve-demo-handle {
+      transform: translate(0, -50%) scale(1.04);
+    }
+
+    .improve-demo-shell.is-at-end:hover .improve-demo-handle,
+    .improve-demo-shell.is-at-end.is-sliding .improve-demo-handle {
+      transform: translate(-100%, -50%) scale(1.04);
+    }
+
+    .advanced-demo-shell img,
+    .animation-demo-shell img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      user-select: none;
+      pointer-events: none;
+    }
 
     .improve-demo-overlay,
     .advanced-demo-overlay,
@@ -275,247 +910,1761 @@
       position: absolute;
       inset: 0;
       z-index: 4;
-      background: linear-gradient(180deg, rgba(7,10,16,0.42) 0%, rgba(7,10,16,0.06) 44%, rgba(7,10,16,0.38) 100%);
-      transition: opacity 0.55s ease, transform 0.55s ease, filter 0.55s ease;
-      pointer-events: none;
+      background:
+        );
+      transition:
+        opacity 0.55s ease,
+        transform 0.55s ease,
+        filter 0.55s ease;
     }
 
     .improve-demo-copy,
     .advanced-demo-copy,
-    .animation-demo-copy { position: absolute; left: 18px; top: 18px; max-width: min(62%, 360px); color: #fff; z-index: 5; transition: opacity 0.55s ease, transform 0.55s ease, filter 0.55s ease; }
-    .improve-demo-copy h3, .advanced-demo-copy h3, .animation-demo-copy h3, .step-demo-title h3 { margin: 0 0 8px; color: #fff; font-size: clamp(20px, 2vw, 28px); line-height: 1.08; letter-spacing: -0.04em; }
-    .improve-demo-copy p, .advanced-demo-copy p, .animation-demo-copy p, .step-demo-title p { margin: 0; color: rgba(255,255,255,0.72); font-size: 13px; line-height: 1.6; }
-    .improve-demo-copy p { max-height: 64px; overflow: hidden; opacity: 1; transform: translateY(0); filter: blur(0); transition: max-height 0.45s cubic-bezier(0.22,1,0.36,1), opacity 0.34s ease, transform 0.34s ease, filter 0.34s ease; }
-    .improve-demo-shell.is-sliding .improve-demo-copy p { max-height: 0; opacity: 0; transform: translateY(-8px); filter: blur(6px); }
-
-    .improve-demo-handle, .diff-handle { position: absolute; top: 50%; left: clamp(10px, var(--improve-compare), calc(100% - 10px)); z-index: 8; width: 30px; height: 42px; transform: translate(-50%, -50%); pointer-events: none; opacity: 0; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.28)) drop-shadow(0 0 7px rgba(255,255,255,0.10)); transition: left 0.12s linear, transform 0.28s ease, filter 0.28s ease, opacity 0.34s ease; }
-    .improve-demo-shell.is-near-start .improve-demo-handle, .improve-demo-shell.is-near-end .improve-demo-handle { opacity: 1; }
-    .improve-demo-shell.is-at-start .improve-demo-handle { left: 0; transform: translate(0, -50%); }
-    .improve-demo-shell.is-at-end .improve-demo-handle { left: 100%; transform: translate(-100%, -50%); }
-    .improve-demo-handle::before, .improve-demo-handle::after, .diff-handle::before, .diff-handle::after { content: ""; position: absolute; top: 50%; width: 6px; height: 6px; border-top: 1.35px solid #fff; border-right: 1.35px solid #fff; opacity: 1; transition: opacity 0.28s ease, transform 0.28s ease, border-color 0.28s ease; }
-    .improve-demo-handle::before, .diff-handle::before { left: 8px; transform: translateY(-50%) rotate(225deg); }
-    .improve-demo-handle::after, .diff-handle::after { right: 8px; transform: translateY(-50%) rotate(45deg); }
-
-    .improve-demo-slider, .diff-slider { position: absolute; inset: 0; z-index: 9; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; appearance: none; -webkit-appearance: none; }
-    .improve-demo-slider::-webkit-slider-thumb, .diff-slider::-webkit-slider-thumb { width: 48px; height: 64px; cursor: ew-resize; appearance: none; -webkit-appearance: none; }
-    .improve-demo-slider::-moz-range-thumb, .diff-slider::-moz-range-thumb { width: 48px; height: 64px; border: 0; cursor: ew-resize; }
-
-    .improve-demo-dots {
+    .animation-demo-copy {
       position: absolute;
-      left: 50%;
-      bottom: 15px;
-      z-index: 12;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(12,16,22,0.42);
-      border: 1px solid rgba(255,255,255,0.20);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.10);
-      backdrop-filter: blur(16px) saturate(150%);
-      -webkit-backdrop-filter: blur(16px) saturate(150%);
-      transform: translateX(-50%);
+      left: 18px;
+      top: 18px;
+      max-width: min(62%, 360px);
+      color: #ffffff;
+      z-index: 5;
+      transition:
+        opacity 0.55s ease,
+        transform 0.55s ease,
+        filter 0.55s ease;
     }
 
-    .improve-demo-dot {
-      width: 9px;
-      height: 9px;
+    .improve-demo-copy h3,
+    .advanced-demo-copy h3,
+    .animation-demo-copy h3,
+    .step-demo-title h3 {
+      margin: 0 0 8px;
+      color: #ffffff;
+      font-size: clamp(20px, 2vw, 28px);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    .improve-demo-copy p,
+    .advanced-demo-copy p,
+    .animation-demo-copy p,
+    .step-demo-title p {
+      margin: 0;
+      color: rgba(255,255,255,0.72);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .improve-demo-copy p {
+      max-height: 64px;
+      overflow: hidden;
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+      transition:
+        max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.34s ease,
+        transform 0.34s ease,
+        filter 0.34s ease;
+    }
+
+    .improve-demo-shell.is-sliding .improve-demo-copy p {
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-8px);
+      filter: blur(6px);
+    }
+
+    .advanced-demo-action,
+    .animation-demo-action,
+    .step-demo-center-copy {
+      position: absolute;
+      z-index: 6;
+      border: 1px solid rgba(255,255,255,0.24);
+      color: #ffffff;
+      background: rgba(255,255,255,0.14);
+      box-shadow:
+        0 14px 30px rgba(0,0,0,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.18);
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      font-family: inherit;
+      font-weight: 650;
+      cursor: pointer;
+      transition:
+        opacity 0.35s ease,
+        transform 0.35s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .advanced-demo-action {
+      left: 18px;
+      top: 110px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    .animation-demo-action {
+      left: 18px;
+      bottom: 18px;
+      padding: 11px 15px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    .advanced-demo-action:hover,
+    .animation-demo-action:hover,
+    .step-demo-center-copy:hover {
+      transform: translateY(-2px) scale(1.03);
+      background: rgba(255,255,255,0.20);
+      border-color: rgba(255,255,255,0.34);
+    }
+
+    .advanced-demo-popover {
+      position: absolute;
+      inset: 14px;
+      z-index: 10;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid rgba(255,255,255,0.24);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.36);
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.96);
+      transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+    }
+
+    .advanced-demo-shell.is-open .advanced-demo-popover {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+
+    .advanced-demo-popover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .advanced-demo-close,
+    .animation-demo-reset,
+    .faq-ai-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 12;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.28);
+      color: #ffffff;
+      background: rgba(12,16,22,0.62);
+      box-shadow:
+        0 14px 30px rgba(0,0,0,0.20),
+        inset 0 1px 0 rgba(255,255,255,0.12);
+      backdrop-filter: blur(16px) saturate(150%);
+      -webkit-backdrop-filter: blur(16px) saturate(150%);
+      font-family: inherit;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      transition:
+        opacity 0.28s ease,
+        transform 0.28s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .advanced-demo-close:hover,
+    .animation-demo-reset:hover,
+    .faq-ai-close:hover {
+      transform: translateY(-2px) scale(1.03);
+      background: rgba(16,22,30,0.76);
+      border-color: rgba(255,255,255,0.42);
+    }
+
+    .animation-demo-reset {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px) scale(0.92);
+    }
+
+    .animation-demo-shell.is-playing .animation-demo-reset {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .animation-demo-shell.is-playing .animation-demo-overlay,
+    .animation-demo-shell.is-playing .animation-demo-copy,
+    .animation-demo-shell.is-playing .animation-demo-action {
+      opacity: 0;
+      transform: translateY(10px);
+      filter: blur(8px);
+      pointer-events: none;
+    }
+
+    .step-demo-shell::after {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      z-index: 4;
+      pointer-events: none;
+      opacity: 0;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.42), rgba(255,255,255,0.10) 28%, transparent 58%),
+        linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.00) 32%, rgba(255,255,255,0.38) 48%, rgba(90,200,250,0.18) 58%, transparent 76%);
+      transform: translateX(-32%) scale(0.92);
+      mix-blend-mode: screen;
+      filter: blur(8px);
+    }
+
+    .step-demo-shell.is-switching::after {
+      animation: stepLiquidFlash 0.82s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .step-demo-stage {
+      position: absolute;
+      inset: -3px;
+      overflow: hidden;
+    }
+
+    .step-demo-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.055);
+      transform-origin: center center;
+      filter: blur(10px) brightness(0.94) saturate(0.94);
+      transition:
+        opacity 0.82s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      pointer-events: none;
+      user-select: none;
+      backface-visibility: hidden;
+      will-change: opacity, transform, filter;
+    }
+
+    .step-demo-slide.active {
+      opacity: 1;
+      transform: scale(1.015);
+      filter: blur(0) brightness(1) saturate(1);
+    }
+
+    .step-demo-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .step-demo-overlay::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(7, 10, 16, 0.34) 0%, rgba(7, 10, 16, 0.04) 44%, rgba(7, 10, 16, 0.38) 100%);
+      pointer-events: none;
+    }
+
+    .step-demo-title {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      right: 18px;
+      z-index: 6;
+      max-width: 580px;
+      transition:
+        opacity 0.55s ease,
+        transform 0.55s ease,
+        filter 0.55s ease;
+    }
+
+    .step-demo-shell.is-started .step-demo-title {
+      opacity: 0;
+      transform: translateY(-10px);
+      filter: blur(8px);
+      pointer-events: none;
+    }
+
+    .step-demo-center-copy {
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      max-width: min(82%, 520px);
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-size: clamp(13px, 1.4vw, 18px);
+      letter-spacing: -0.02em;
+      text-align: center;
+      opacity: 0;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .step-demo-center-copy.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .step-demo-center-copy:hover {
+      transform: translateX(-50%) translateY(-2px) scale(1.03);
+    }
+
+    .step-demo-corner-copy {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(10,14,22,0.46);
+      border: 1px solid rgba(255,255,255,0.20);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.28);
+    }
+
+    .step-demo-corner-copy.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .step-demo-control,
+    .step-demo-default-toggle {
+      position: absolute;
+      top: 16px;
+      z-index: 6;
+      pointer-events: auto;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      color: #ffffff;
+      background: rgba(12,16,22,0.62);
+      border: 1px solid rgba(255,255,255,0.24);
+      box-shadow:
+        0 14px 30px rgba(0,0,0,0.20),
+        inset 0 1px 0 rgba(255,255,255,0.12);
+      backdrop-filter: blur(16px) saturate(150%);
+      -webkit-backdrop-filter: blur(16px) saturate(150%);
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        background 0.25s ease,
+        width 0.25s ease,
+        min-width 0.25s ease,
+        padding 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .step-demo-control {
+      right: 16px;
+    }
+
+    .step-demo-default-toggle {
+      right: 128px;
+      height: 42px;
+      min-width: 142px;
+      padding: 0 15px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .step-demo-control:hover,
+    .step-demo-default-toggle:hover {
+      transform: translateY(-2px);
+      background: rgba(16,22,30,0.74);
+      border-color: rgba(255,255,255,0.34);
+    }
+
+    .step-demo-control.is-hidden,
+    .step-demo-default-toggle.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px) scale(0.92);
+    }
+
+    .step-demo-control.is-plus {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
       padding: 0;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.54);
-      background: rgba(255,255,255,0.30);
-      cursor: pointer;
-      transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-demo-control.is-plus:not(.is-hidden) {
+      animation: plusGlowPulse 1.8s ease-in-out infinite;
+    }
+
+    .step-demo-control.is-restore {
+      min-width: 102px;
+      height: 42px;
+      padding: 0 15px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-demo-plus {
+      font-size: 26px;
+      line-height: 1;
+      font-weight: 400;
+      transform: translateY(-1px);
+    }
+
+    .step-demo-restore-label {
+      display: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .step-demo-control.is-restore .step-demo-plus {
+      display: none;
+    }
+
+    .step-demo-control.is-restore .step-demo-restore-label {
+      display: block;
+    }
+
+    .media-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .diff-compare-box {
+      --compare: 0%;
+      position: relative;
+      width: 100%;
+      aspect-ratio: var(--diff-ratio, 16 / 9);
+      border-radius: 30px;
+      overflow: hidden;
+      background: #0f1117;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(255,255,255,0.72);
+      isolation: isolate;
+    }
+
+    .diff-image {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    .diff-image.default {
+      z-index: 2;
+      clip-path: inset(0 calc(100% - var(--compare)) 0 0);
+      transition: clip-path 0.12s linear;
+    }
+
+    .diff-image.master {
+      z-index: 1;
+    }
+
+    .diff-compare-box::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.00) 42%, rgba(0,0,0,0.22) 100%);
+    }
+
+    .diff-label {
+      position: absolute;
+      left: 22px;
+      top: 22px;
+      z-index: 5;
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: #ffffff;
+      background: rgba(12,16,22,0.46);
+      border: 1px solid rgba(255,255,255,0.22);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .diff-handle {
+      position: absolute;
+      top: 50%;
+      left: clamp(10px, var(--compare), calc(100% - 10px));
+      z-index: 6;
+      width: 30px;
+      height: 42px;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0;
+      filter:
+        drop-shadow(0 2px 5px rgba(0,0,0,0.28))
+        drop-shadow(0 0 7px rgba(255,255,255,0.10));
+      transition:
+        left 0.12s linear,
+        transform 0.28s ease,
+        filter 0.28s ease,
+        opacity 0.34s ease;
+    }
+
+    .diff-compare-box.is-near-start .diff-handle,
+    .diff-compare-box.is-near-end .diff-handle {
+      opacity: 1;
+    }
+
+    .diff-compare-box.is-at-start .diff-handle {
+      left: 0;
+      transform: translate(0, -50%);
+    }
+
+    .diff-compare-box.is-at-end .diff-handle {
+      left: 100%;
+      transform: translate(-100%, -50%);
+    }
+
+    .diff-handle::before,
+    .diff-handle::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 6px;
+      height: 6px;
+      border-top: 1.35px solid rgba(255,255,255,1);
+      border-right: 1.35px solid rgba(255,255,255,1);
+      opacity: 1;
+      transition:
+        opacity 0.28s ease,
+        transform 0.28s ease,
+        border-color 0.28s ease;
+    }
+
+    .diff-handle::before {
+      left: 8px;
+      transform: translateY(-50%) rotate(225deg);
+    }
+
+    .diff-handle::after {
+      right: 8px;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .diff-compare-box.is-at-start .diff-handle::before {
+      opacity: 0;
+      transform: translateY(-50%) translateX(-4px) rotate(225deg) scale(0.72);
+    }
+
+    .diff-compare-box.is-at-start .diff-handle::after {
+      right: 10px;
+    }
+
+    .diff-compare-box.is-at-end .diff-handle::after {
+      opacity: 0;
+      transform: translateY(-50%) translateX(4px) rotate(45deg) scale(0.72);
+    }
+
+    .diff-compare-box.is-at-end .diff-handle::before {
+      left: 10px;
+    }
+
+    .diff-slider {
+      position: absolute;
+      inset: 0;
+      z-index: 7;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: ew-resize;
       appearance: none;
       -webkit-appearance: none;
     }
 
-    .improve-demo-dot:hover { transform: scale(1.22); background: rgba(255,255,255,0.62); }
-    .improve-demo-dot.active { background: #ffffff; border-color: rgba(255,255,255,0.92); box-shadow: 0 0 0 4px rgba(255,255,255,0.14), 0 0 18px rgba(90,200,250,0.34); transform: scale(1.12); }
+    .diff-slider::-webkit-slider-thumb {
+      width: 48px;
+      height: 64px;
+      cursor: ew-resize;
+      appearance: none;
+      -webkit-appearance: none;
+    }
 
-    .advanced-demo-shell img, .animation-demo-shell img { width: 100%; height: 100%; display: block; object-fit: cover; user-select: none; pointer-events: none; }
-    .advanced-demo-action, .animation-demo-action, .step-demo-center-copy { position: absolute; z-index: 6; border: 1px solid rgba(255,255,255,0.24); color: #fff; background: rgba(255,255,255,0.14); box-shadow: 0 14px 30px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.18); backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); font-family: inherit; font-weight: 650; cursor: pointer; transition: opacity 0.35s ease, transform 0.35s ease, background 0.25s ease, border-color 0.25s ease; }
-    .advanced-demo-action { left: 18px; top: 110px; padding: 10px 14px; border-radius: 999px; font-size: 12px; }
-    .animation-demo-action { left: 18px; bottom: 18px; padding: 11px 15px; border-radius: 999px; font-size: 13px; }
-    .advanced-demo-action:hover, .animation-demo-action:hover, .step-demo-center-copy:hover { transform: translateY(-2px) scale(1.03); background: rgba(255,255,255,0.20); border-color: rgba(255,255,255,0.34); }
-    .advanced-demo-popover { position: absolute; inset: 14px; z-index: 10; border-radius: 20px; overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,0.24); box-shadow: 0 28px 70px rgba(0,0,0,0.36); opacity: 0; pointer-events: none; transform: scale(0.96); transition: opacity 0.35s ease, transform 0.35s ease; }
-    .advanced-demo-shell.is-open .advanced-demo-popover { opacity: 1; pointer-events: auto; transform: scale(1); }
-    .advanced-demo-popover img { width: 100%; height: 100%; object-fit: cover; }
-    .advanced-demo-close, .animation-demo-reset, .faq-ai-close { position: absolute; top: 16px; right: 16px; z-index: 12; width: 42px; height: 42px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.28); color: #fff; background: rgba(12,16,22,0.62); box-shadow: 0 14px 30px rgba(0,0,0,0.20), inset 0 1px 0 rgba(255,255,255,0.12); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%); font-family: inherit; font-size: 28px; line-height: 1; cursor: pointer; transition: opacity 0.28s ease, transform 0.28s ease, background 0.25s ease, border-color 0.25s ease; }
-    .advanced-demo-close:hover, .animation-demo-reset:hover, .faq-ai-close:hover { transform: translateY(-2px) scale(1.03); background: rgba(16,22,30,0.76); border-color: rgba(255,255,255,0.42); }
-    .animation-demo-reset { opacity: 0; pointer-events: none; transform: translateY(-8px) scale(0.92); }
-    .animation-demo-shell.is-playing .animation-demo-reset { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
-    .animation-demo-shell.is-playing .animation-demo-overlay, .animation-demo-shell.is-playing .animation-demo-copy, .animation-demo-shell.is-playing .animation-demo-action { opacity: 0; transform: translateY(10px); filter: blur(8px); pointer-events: none; }
+    .diff-slider::-moz-range-thumb {
+      width: 48px;
+      height: 64px;
+      border: 0;
+      cursor: ew-resize;
+    }
 
-    .step-demo-shell::after { content: ""; position: absolute; inset: -20%; z-index: 4; pointer-events: none; opacity: 0; background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.42), rgba(255,255,255,0.10) 28%, transparent 58%), linear-gradient(120deg, transparent 0%, rgba(255,255,255,0) 32%, rgba(255,255,255,0.38) 48%, rgba(90,200,250,0.18) 58%, transparent 76%); transform: translateX(-32%) scale(0.92); mix-blend-mode: screen; filter: blur(8px); }
-    .step-demo-shell.is-switching::after { animation: stepLiquidFlash 0.82s cubic-bezier(0.22,1,0.36,1) both; }
-    .step-demo-stage { position: absolute; inset: -3px; overflow: hidden; }
-    .step-demo-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.055); transform-origin: center center; filter: blur(10px) brightness(0.94) saturate(0.94); transition: opacity 0.82s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1), filter 0.9s cubic-bezier(0.22,1,0.36,1); pointer-events: none; user-select: none; backface-visibility: hidden; will-change: opacity, transform, filter; }
-    .step-demo-slide.active { opacity: 1; transform: scale(1.015); filter: blur(0) brightness(1) saturate(1); }
-    .step-demo-overlay { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
-    .step-demo-overlay::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,10,16,0.34) 0%, rgba(7,10,16,0.04) 44%, rgba(7,10,16,0.38) 100%); pointer-events: none; }
-    .step-demo-title { position: absolute; top: 18px; left: 18px; right: 18px; z-index: 6; max-width: 580px; transition: opacity 0.55s ease, transform 0.55s ease, filter 0.55s ease; }
-    .step-demo-shell.is-started .step-demo-title { opacity: 0; transform: translateY(-10px); filter: blur(8px); pointer-events: none; }
-    .step-demo-center-copy { left: 50%; bottom: 18px; transform: translateX(-50%); max-width: min(82%, 520px); padding: 12px 18px; border-radius: 999px; font-size: clamp(13px, 1.4vw, 18px); letter-spacing: -0.02em; text-align: center; opacity: 0; white-space: nowrap; pointer-events: none; }
-    .step-demo-center-copy.visible { opacity: 1; pointer-events: auto; }
-    .step-demo-center-copy:hover { transform: translateX(-50%) translateY(-2px) scale(1.03); }
-    .step-demo-corner-copy { position: absolute; left: 16px; bottom: 16px; padding: 9px 13px; border-radius: 999px; background: rgba(10,14,22,0.46); border: 1px solid rgba(255,255,255,0.20); backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%); color: #fff; font-size: 12px; font-weight: 500; letter-spacing: 0.01em; opacity: 0; transform: translateY(10px); transition: opacity 0.35s ease, transform 0.35s ease; text-shadow: 0 2px 12px rgba(0,0,0,0.28); }
-    .step-demo-corner-copy.visible { opacity: 1; transform: translateY(0); }
-    .step-demo-control, .step-demo-default-toggle { position: absolute; top: 16px; z-index: 6; pointer-events: auto; border: none; outline: none; cursor: pointer; color: #fff; background: rgba(12,16,22,0.62); border: 1px solid rgba(255,255,255,0.24); box-shadow: 0 14px 30px rgba(0,0,0,0.20), inset 0 1px 0 rgba(255,255,255,0.12); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%); transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease, width 0.25s ease, min-width 0.25s ease, padding 0.25s ease, border-color 0.25s ease; }
-    .step-demo-control { right: 16px; }
-    .step-demo-default-toggle { right: 128px; height: 42px; min-width: 142px; padding: 0 15px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 600; letter-spacing: -0.01em; }
-    .step-demo-control:hover, .step-demo-default-toggle:hover { transform: translateY(-2px); background: rgba(16,22,30,0.74); border-color: rgba(255,255,255,0.34); }
-    .step-demo-control.is-hidden, .step-demo-default-toggle.is-hidden { opacity: 0; pointer-events: none; transform: translateY(-8px) scale(0.92); }
-    .step-demo-control.is-plus { width: 44px; height: 44px; min-width: 44px; padding: 0; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
-    .step-demo-control.is-plus:not(.is-hidden) { animation: plusGlowPulse 1.8s ease-in-out infinite; }
-    .step-demo-control.is-restore { min-width: 102px; height: 42px; padding: 0 15px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; }
-    .step-demo-plus { font-size: 26px; line-height: 1; font-weight: 400; transform: translateY(-1px); }
-    .step-demo-restore-label { display: none; font-size: 13px; font-weight: 600; letter-spacing: -0.01em; }
-    .step-demo-control.is-restore .step-demo-plus { display: none; }
-    .step-demo-control.is-restore .step-demo-restore-label { display: block; }
+    .diff-compare-box.is-near-start:hover .diff-handle,
+    .diff-compare-box.is-near-end:hover .diff-handle,
+    .diff-compare-box.is-near-start.is-sliding .diff-handle,
+    .diff-compare-box.is-near-end.is-sliding .diff-handle {
+      filter:
+        drop-shadow(0 3px 7px rgba(0,0,0,0.34))
+        drop-shadow(0 0 9px rgba(255,255,255,0.14));
+    }
 
-    .media-grid { display: grid; gap: 18px; }
-    .diff-compare-box { --compare: 0%; position: relative; width: 100%; aspect-ratio: var(--diff-ratio, 16 / 9); border-radius: 30px; overflow: hidden; background: #0f1117; box-shadow: var(--shadow-lg); border: 1px solid rgba(255,255,255,0.72); isolation: isolate; }
-    .diff-image { position: absolute; inset: 0; background-size: cover; background-position: center center; background-repeat: no-repeat; }
-    .diff-image.default { z-index: 2; clip-path: inset(0 calc(100% - var(--compare)) 0 0); transition: clip-path 0.12s linear; }
-    .diff-image.master { z-index: 1; }
-    .diff-compare-box::after { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; background: linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0) 42%, rgba(0,0,0,0.22) 100%); }
-    .diff-label { position: absolute; left: 22px; top: 22px; z-index: 5; padding: 9px 13px; border-radius: 999px; color: #fff; background: rgba(12,16,22,0.46); border: 1px solid rgba(255,255,255,0.22); backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; text-shadow: 0 2px 12px rgba(0,0,0,0.35); transition: opacity 0.25s ease, transform 0.25s ease; }
-    .diff-handle { left: clamp(10px, var(--compare), calc(100% - 10px)); z-index: 6; }
-    .diff-compare-box.is-near-start .diff-handle, .diff-compare-box.is-near-end .diff-handle { opacity: 1; }
-    .diff-compare-box.is-at-start .diff-handle { left: 0; transform: translate(0, -50%); }
-    .diff-compare-box.is-at-end .diff-handle { left: 100%; transform: translate(-100%, -50%); }
-    .diff-slider { z-index: 7; }
+    .diff-compare-box.is-near-start:not(.is-at-start):hover .diff-handle,
+    .diff-compare-box.is-near-end:not(.is-at-end):hover .diff-handle,
+    .diff-compare-box.is-near-start:not(.is-at-start).is-sliding .diff-handle,
+    .diff-compare-box.is-near-end:not(.is-at-end).is-sliding .diff-handle {
+      transform: translate(-50%, -50%) scale(1.04);
+    }
 
-    .variations-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-    .variation-card { background: rgba(255,255,255,0.30); border: 1px solid rgba(255,255,255,0.74); border-radius: 30px; box-shadow: var(--shadow-md); backdrop-filter: blur(26px) saturate(145%); -webkit-backdrop-filter: blur(26px) saturate(145%); padding: 28px; min-height: 260px; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
-    .variation-card:hover { transform: translateY(-7px); box-shadow: var(--shadow-xl); border-color: rgba(255,255,255,0.92); }
-    .variation-card.featured { background: linear-gradient(180deg, rgba(255,255,255,0.42), rgba(255,255,255,0.28)), rgba(255,255,255,0.32); border-color: rgba(255,255,255,0.92); box-shadow: 0 24px 60px rgba(15,16,18,0.12), 0 0 48px rgba(90,200,250,0.16); }
-    .variation-inner { position: relative; z-index: 3; height: 100%; display: flex; flex-direction: column; }
-    .variation-topline { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
-    .variation-name { font-size: 26px; font-weight: 750; letter-spacing: -0.04em; margin: 0; }
-    .variation-badge { display: inline-flex; align-items: center; justify-content: center; padding: 7px 11px; border-radius: 999px; background: rgba(255,255,255,0.38); border: 1px solid rgba(255,255,255,0.72); box-shadow: var(--shadow-sm); color: #4d4e56; font-size: 11px; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
-    .variation-price { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
-    .variation-sale-price { font-size: 48px; line-height: 1; letter-spacing: -0.06em; font-weight: 800; }
-    .variation-sale-price span { font-size: 18px; letter-spacing: -0.02em; color: var(--muted); font-weight: 600; margin-left: 4px; }
-    .variation-old-price { position: relative; bottom: 4px; color: rgba(106,107,115,0.72); font-size: 22px; line-height: 1; letter-spacing: -0.04em; font-weight: 750; text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: rgba(106,107,115,0.78); }
-    .variation-value-label { display: inline-flex; width: fit-content; align-items: center; justify-content: center; margin-bottom: 10px; padding: 7px 12px; border-radius: 999px; color: #fff; background: linear-gradient(180deg, rgba(10,132,255,0.92), rgba(0,102,204,0.90)), rgba(10,132,255,0.9); border: 1px solid rgba(255,255,255,0.42); box-shadow: 0 12px 26px rgba(10,132,255,0.24), inset 0 1px 0 rgba(255,255,255,0.30); font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
-    .variation-sale-tag { display: inline-flex; width: fit-content; align-items: center; justify-content: center; margin-bottom: 14px; padding: 6px 10px; border-radius: 999px; color: #0a5bc2; background: rgba(10,132,255,0.10); border: 1px solid rgba(10,132,255,0.18); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
-    .variation-description { margin: 0 0 18px; color: #555861; font-size: 15px; line-height: 1.65; }
-    .variation-assets { margin-top: auto; padding-top: 18px; border-top: 1px solid rgba(15,16,18,0.08); color: #23242a; font-size: 15px; font-weight: 650; line-height: 1.45; }
-    .variation-assets strong { font-size: 18px; }
-    .variation-note { margin-top: 6px; color: var(--muted); font-size: 13px; font-weight: 500; }
-    .variation-cta { margin-top: 18px; width: 100%; min-height: 44px; border: 1px solid rgba(255,255,255,0.52); border-radius: 999px; color: #fff; background: linear-gradient(180deg, rgba(30,144,255,0.76), rgba(10,132,255,0.78)), rgba(10,132,255,0.72); box-shadow: 0 14px 30px rgba(10,132,255,0.20), inset 0 1px 0 rgba(255,255,255,0.30); font-family: inherit; font-size: 14px; font-weight: 750; cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
-    .variation-cta:hover { transform: translateY(-2px); box-shadow: 0 18px 36px rgba(10,132,255,0.28), inset 0 1px 0 rgba(255,255,255,0.38); border-color: rgba(255,255,255,0.72); }
+    .diff-compare-box.is-at-start:hover .diff-handle,
+    .diff-compare-box.is-at-start.is-sliding .diff-handle {
+      transform: translate(0, -50%) scale(1.04);
+    }
 
-    .faq-list { display: grid; gap: 14px; }
-    .faq-item { background: rgba(255,255,255,0.30); border: 1px solid rgba(255,255,255,0.74); border-radius: 28px; box-shadow: var(--shadow-md); backdrop-filter: blur(26px) saturate(145%); -webkit-backdrop-filter: blur(26px) saturate(145%); }
-    .faq-inner { position: relative; z-index: 3; }
-    .faq-question { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 20px 22px; border: none; background: transparent; color: var(--text); font-family: inherit; font-size: 17px; font-weight: 700; letter-spacing: -0.02em; text-align: left; cursor: pointer; transition: transform 0.25s ease, color 0.25s ease; transform-origin: center center; }
-    .faq-question:hover { transform: scale(1.018); color: #0a5bc2; }
-    .faq-plus { flex: 0 0 34px; width: 34px; height: 34px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.42); border: 1px solid rgba(255,255,255,0.80); box-shadow: 0 10px 22px rgba(15,16,18,0.08), inset 0 1px 0 rgba(255,255,255,0.72); font-size: 22px; font-weight: 500; line-height: 1; transition: transform 0.28s ease, background 0.28s ease, color 0.28s ease; }
-    .faq-item.is-open .faq-plus { transform: rotate(45deg); color: #0a5bc2; background: rgba(10,132,255,0.10); }
-    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease; opacity: 0; }
-    .faq-item.is-open .faq-answer { max-height: 1260px; opacity: 1; }
-    .faq-answer-inner { position: relative; margin: 0 18px 18px; padding: 18px; border-radius: 22px; background: rgba(255,255,255,0.38); border: 1px solid rgba(255,255,255,0.72); box-shadow: 0 14px 32px rgba(15,16,18,0.08), inset 0 1px 0 rgba(255,255,255,0.68); }
-    .faq-answer-inner p { margin: 0; color: #555861; font-size: 15px; line-height: 1.75; white-space: pre-line; }
-    .faq-link-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-    .faq-link-button { position: relative; display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 11px 15px; border-radius: 999px; text-decoration: none; color: #fff; background: linear-gradient(180deg, rgba(30,144,255,0.76), rgba(10,132,255,0.78)), rgba(10,132,255,0.72); border: 1px solid rgba(255,255,255,0.52); box-shadow: 0 14px 30px rgba(10,132,255,0.18), inset 0 1px 0 rgba(255,255,255,0.30); font-family: inherit; font-size: 13px; font-weight: 750; letter-spacing: -0.01em; overflow: hidden; cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
-    .faq-link-button:hover { transform: translateY(-2px); box-shadow: 0 18px 36px rgba(10,132,255,0.26), inset 0 1px 0 rgba(255,255,255,0.38); border-color: rgba(255,255,255,0.72); }
-    .faq-link-button span { position: relative; z-index: 2; }
-    .faq-ai-popover { position: relative; width: 100%; aspect-ratio: 16 / 9; margin-top: 16px; border-radius: 20px; overflow: hidden; background: #05070b; border: 1px solid rgba(255,255,255,0.28); box-shadow: 0 24px 58px rgba(15,16,18,0.18); opacity: 0; max-height: 0; transform: scale(0.96); pointer-events: none; transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.35s ease; }
-    .faq-ai-popover.is-open { opacity: 1; max-height: 760px; transform: scale(1); pointer-events: auto; }
-    .faq-ai-popover img { width: 100%; height: 100%; display: block; object-fit: contain; background: #05070b; }
-    .faq-ai-close { top: 12px; right: 12px; width: 38px; height: 38px; font-size: 25px; }
+    .diff-compare-box.is-at-end:hover .diff-handle,
+    .diff-compare-box.is-at-end.is-sliding .diff-handle {
+      transform: translate(-100%, -50%) scale(1.04);
+    }
 
-    .addons-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
-    .addon-card { display: block; text-decoration: none; color: inherit; background: rgba(255,255,255,0.28); border: 1px solid rgba(255,255,255,0.72); border-radius: 28px; padding: 16px; box-shadow: var(--shadow-md); backdrop-filter: blur(26px) saturate(145%); -webkit-backdrop-filter: blur(26px) saturate(145%); }
-    .addon-inner { position: relative; z-index: 3; }
-    .addon-card img { width: 100%; display: block; border-radius: 20px; box-shadow: 0 16px 34px rgba(15,16,18,0.13); background: #f1f2f5; }
-    .addon-card-title { text-align: center; margin-top: 14px; font-size: 16px; font-weight: 600; line-height: 1.4; letter-spacing: -0.01em; }
-    .back-top-wrap { display: flex; justify-content: center; margin-top: 46px; }
-    .back-top-button { position: relative; display: inline-flex; align-items: center; justify-content: center; min-width: 150px; padding: 13px 22px; border-radius: 999px; text-decoration: none; color: #1f2025; font-size: 14px; font-weight: 650; letter-spacing: -0.01em; background: rgba(255,255,255,0.34); border: 1px solid rgba(255,255,255,0.78); box-shadow: 0 14px 30px rgba(15,16,18,0.08), inset 0 1px 0 rgba(255,255,255,0.74); backdrop-filter: blur(24px) saturate(150%); -webkit-backdrop-filter: blur(24px) saturate(150%); overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
-    .back-top-button span { position: relative; z-index: 2; }
-    .back-top-button:hover { transform: translateY(-2px); box-shadow: 0 18px 38px rgba(15,16,18,0.12), inset 0 1px 0 rgba(255,255,255,0.86); border-color: rgba(255,255,255,0.92); }
-    .footer { margin-top: 28px; text-align: center; color: var(--muted); font-size: 14px; }
-    .reveal { opacity: 1; transform: none; transition: none; }
-    .reveal.visible { opacity: 1; transform: none; }
+    .variations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
 
-    @keyframes orbFloat { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(20px,24px,0) scale(1.06); } }
-    @keyframes sheenMove { 0% { transform: translateX(-130%); } 18% { transform: translateX(130%); } 100% { transform: translateX(130%); } }
-    @keyframes buttonSheenMove { 0% { background-position: -160% 0; } 18% { background-position: 160% 0; } 100% { background-position: 160% 0; } }
-    @keyframes stepLiquidFlash { 0% { opacity: 0; transform: translateX(-42%) scale(0.88); } 34% { opacity: 0.85; } 62% { opacity: 0.42; } 100% { opacity: 0; transform: translateX(42%) scale(1.08); } }
-    @keyframes plusGlowPulse { 0%,100% { box-shadow: 0 14px 30px rgba(0,0,0,0.20), 0 0 0 rgba(255,255,255,0), inset 0 1px 0 rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.24); background: rgba(12,16,22,0.62); } 50% { box-shadow: 0 14px 30px rgba(0,0,0,0.20), 0 0 22px rgba(255,255,255,0.48), 0 0 42px rgba(90,200,250,0.28), inset 0 1px 0 rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.52); background: rgba(24,32,42,0.76); } }
-    @keyframes arrowHintRight { 0%,100% { transform: translate(-58%, -50%) rotate(45deg); } 50% { transform: translate(-22%, -50%) rotate(45deg); } }
-    @keyframes arrowHintLeft { 0%,100% { transform: translate(-42%, -50%) rotate(225deg); } 50% { transform: translate(-78%, -50%) rotate(225deg); } }
-    @keyframes clickHintRight { 0%,100% { transform: translateY(-50%) translateX(0); } 50% { transform: translateY(-50%) translateX(6px); } }
-    @keyframes clickHintLeft { 0%,100% { transform: translateY(-50%) translateX(0); } 50% { transform: translateY(-50%) translateX(-6px); } }
+    .variation-card {
+      background: rgba(255,255,255,0.30);
+      border: 1px solid rgba(255,255,255,0.74);
+      border-radius: 30px;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(26px) saturate(145%);
+      -webkit-backdrop-filter: blur(26px) saturate(145%);
+      padding: 28px;
+      min-height: 260px;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .variation-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow-xl);
+      border-color: rgba(255,255,255,0.92);
+    }
+
+    .variation-card.featured {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.42), rgba(255,255,255,0.28)),
+        rgba(255,255,255,0.32);
+      border-color: rgba(255,255,255,0.92);
+      box-shadow:
+        0 24px 60px rgba(15, 16, 18, 0.12),
+        0 0 48px rgba(90,200,250,0.16);
+    }
+
+    .variation-inner {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .variation-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .variation-name {
+      font-size: 26px;
+      font-weight: 750;
+      letter-spacing: -0.04em;
+      margin: 0;
+    }
+
+    .variation-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.38);
+      border: 1px solid rgba(255,255,255,0.72);
+      box-shadow: var(--shadow-sm);
+      color: #4d4e56;
+      font-size: 11px;
+      font-weight: 650;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .variation-price {
+      display: flex;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .variation-sale-price {
+      font-size: 48px;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      font-weight: 800;
+    }
+
+    .variation-sale-price span {
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      color: var(--muted);
+      font-weight: 600;
+      margin-left: 4px;
+    }
+
+    .variation-old-price {
+      position: relative;
+      bottom: 4px;
+      color: rgba(106, 107, 115, 0.72);
+      font-size: 22px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      font-weight: 750;
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+      text-decoration-color: rgba(106, 107, 115, 0.78);
+    }
+
+    .variation-value-label {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      color: #ffffff;
+      background:
+        linear-gradient(180deg, rgba(10,132,255,0.92), rgba(0,102,204,0.90)),
+        rgba(10,132,255,0.9);
+      border: 1px solid rgba(255,255,255,0.42);
+      box-shadow:
+        0 12px 26px rgba(10,132,255,0.24),
+        inset 0 1px 0 rgba(255,255,255,0.30);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .variation-sale-tag {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #0a5bc2;
+      background: rgba(10,132,255,0.10);
+      border: 1px solid rgba(10,132,255,0.18);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .variation-description {
+      margin: 0 0 18px;
+      color: #555861;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .variation-assets {
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid rgba(15,16,18,0.08);
+      color: #23242a;
+      font-size: 15px;
+      font-weight: 650;
+      line-height: 1.45;
+    }
+
+    .variation-assets strong {
+      font-size: 18px;
+    }
+
+    .variation-note {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .variation-cta {
+      margin-top: 18px;
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid rgba(255,255,255,0.52);
+      border-radius: 999px;
+      color: #ffffff;
+      background:
+        linear-gradient(180deg, rgba(30,144,255,0.76), rgba(10,132,255,0.78)),
+        rgba(10,132,255,0.72);
+      box-shadow:
+        0 14px 30px rgba(10,132,255,0.20),
+        inset 0 1px 0 rgba(255,255,255,0.30);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 750;
+      cursor: pointer;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .variation-cta:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 18px 36px rgba(10,132,255,0.28),
+        inset 0 1px 0 rgba(255,255,255,0.38);
+      border-color: rgba(255,255,255,0.72);
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background: rgba(255,255,255,0.30);
+      border: 1px solid rgba(255,255,255,0.74);
+      border-radius: 28px;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(26px) saturate(145%);
+      -webkit-backdrop-filter: blur(26px) saturate(145%);
+    }
+
+    .faq-inner {
+      position: relative;
+      z-index: 3;
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 20px 22px;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-align: left;
+      cursor: pointer;
+      transition:
+        transform 0.25s ease,
+        color 0.25s ease;
+      transform-origin: center center;
+    }
+
+    .faq-question:hover {
+      transform: scale(1.018);
+      color: #0a5bc2;
+    }
+
+    .faq-plus {
+      flex: 0 0 34px;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.42);
+      border: 1px solid rgba(255,255,255,0.80);
+      box-shadow:
+        0 10px 22px rgba(15,16,18,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.72);
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1;
+      transition:
+        transform 0.28s ease,
+        background 0.28s ease,
+        color 0.28s ease;
+    }
+
+    .faq-item.is-open .faq-plus {
+      transform: rotate(45deg);
+      color: #0a5bc2;
+      background: rgba(10,132,255,0.10);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition:
+        max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .faq-item.is-open .faq-answer {
+      max-height: 1260px;
+      opacity: 1;
+    }
+
+    .faq-answer-inner {
+      position: relative;
+      margin: 0 18px 18px;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.38);
+      border: 1px solid rgba(255,255,255,0.72);
+      box-shadow:
+        0 14px 32px rgba(15,16,18,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.68);
+    }
+
+    .faq-answer-inner p {
+      margin: 0;
+      color: #555861;
+      font-size: 15px;
+      line-height: 1.75;
+      white-space: pre-line;
+    }
+
+    .faq-link-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .faq-link-button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 11px 15px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #ffffff;
+      background:
+        linear-gradient(180deg, rgba(30,144,255,0.76), rgba(10,132,255,0.78)),
+        rgba(10,132,255,0.72);
+      border: 1px solid rgba(255,255,255,0.52);
+      box-shadow:
+        0 14px 30px rgba(10,132,255,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.30);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+      overflow: hidden;
+      cursor: pointer;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .faq-link-button::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(255,255,255,0.00) 0%,
+          rgba(255,255,255,0.00) 30%,
+          rgba(255,255,255,0.34) 50%,
+          rgba(255,255,255,0.00) 70%,
+          rgba(255,255,255,0.00) 100%
+        );
+      background-size: 260% 100%;
+      background-position: -160% 0;
+      animation: buttonSheenMove 9s linear infinite;
+      pointer-events: none;
+    }
+
+    .faq-link-button span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .faq-link-button:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 18px 36px rgba(10,132,255,0.26),
+        inset 0 1px 0 rgba(255,255,255,0.38);
+      border-color: rgba(255,255,255,0.72);
+    }
+
+    .faq-ai-popover {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      margin-top: 16px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #05070b;
+      border: 1px solid rgba(255,255,255,0.28);
+      box-shadow: 0 24px 58px rgba(15,16,18,0.18);
+      opacity: 0;
+      max-height: 0;
+      transform: scale(0.96);
+      pointer-events: none;
+      transition:
+        opacity 0.35s ease,
+        transform 0.35s ease,
+        max-height 0.35s ease;
+    }
+
+    .faq-ai-popover.is-open {
+      opacity: 1;
+      max-height: 760px;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    .faq-ai-popover img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      background: #05070b;
+    }
+
+    .faq-ai-close {
+      top: 12px;
+      right: 12px;
+      width: 38px;
+      height: 38px;
+      font-size: 25px;
+    }
+
+    .addons-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .addon-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: rgba(255,255,255,0.28);
+      border: 1px solid rgba(255,255,255,0.72);
+      border-radius: 28px;
+      padding: 16px;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(26px) saturate(145%);
+      -webkit-backdrop-filter: blur(26px) saturate(145%);
+    }
+
+    .addon-inner {
+      position: relative;
+      z-index: 3;
+    }
+
+    .addon-card img {
+      width: 100%;
+      display: block;
+      border-radius: 20px;
+      box-shadow: 0 16px 34px rgba(15,16,18,0.13);
+      background: #f1f2f5;
+    }
+
+    .addon-card-title {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    }
+
+    .back-top-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 46px;
+    }
+
+    .back-top-button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 150px;
+      padding: 13px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #1f2025;
+      font-size: 14px;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+      background: rgba(255,255,255,0.34);
+      border: 1px solid rgba(255,255,255,0.78);
+      box-shadow:
+        0 14px 30px rgba(15, 16, 18, 0.08),
+        inset 0 1px 0 rgba(255,255,255,0.74);
+      backdrop-filter: blur(24px) saturate(150%);
+      -webkit-backdrop-filter: blur(24px) saturate(150%);
+      overflow: hidden;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .back-top-button::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(255,255,255,0.00) 0%,
+          rgba(255,255,255,0.00) 30%,
+          rgba(255,255,255,0.42) 50%,
+          rgba(255,255,255,0.00) 70%,
+          rgba(255,255,255,0.00) 100%
+        );
+      background-size: 260% 100%;
+      background-position: -160% 0;
+      animation: buttonSheenMove 9s linear infinite;
+      pointer-events: none;
+    }
+
+    .back-top-button span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .back-top-button:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 18px 38px rgba(15, 16, 18, 0.12),
+        inset 0 1px 0 rgba(255,255,255,0.86);
+      border-color: rgba(255,255,255,0.92);
+    }
+
+    .footer {
+      margin-top: 28px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate3d(20px, 24px, 0) scale(1.06);
+      }
+    }
+
+    @keyframes sheenMove {
+      0% {
+        transform: translateX(-130%);
+      }
+
+      18% {
+        transform: translateX(130%);
+      }
+
+      100% {
+        transform: translateX(130%);
+      }
+    }
+
+    @keyframes buttonSheenMove {
+      0% {
+        background-position: -160% 0;
+      }
+
+      18% {
+        background-position: 160% 0;
+      }
+
+      100% {
+        background-position: 160% 0;
+      }
+    }
+
+    @keyframes stepLiquidFlash {
+      0% {
+        opacity: 0;
+        transform: translateX(-42%) scale(0.88);
+      }
+
+      34% {
+        opacity: 0.85;
+      }
+
+      62% {
+        opacity: 0.42;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(42%) scale(1.08);
+      }
+    }
+
+    @keyframes plusGlowPulse {
+      0%, 100% {
+        box-shadow:
+          0 14px 30px rgba(0,0,0,0.20),
+          0 0 0 rgba(255,255,255,0.00),
+          inset 0 1px 0 rgba(255,255,255,0.12);
+        border-color: rgba(255,255,255,0.24);
+        background: rgba(12,16,22,0.62);
+      }
+
+      50% {
+        box-shadow:
+          0 14px 30px rgba(0,0,0,0.20),
+          0 0 22px rgba(255,255,255,0.48),
+          0 0 42px rgba(90,200,250,0.28),
+          inset 0 1px 0 rgba(255,255,255,0.22);
+        border-color: rgba(255,255,255,0.52);
+        background: rgba(24,32,42,0.76);
+      }
+    }
+
+    @keyframes arrowHintRight {
+      0%, 100% {
+        transform: translate(-58%, -50%) rotate(45deg);
+      }
+
+      50% {
+        transform: translate(-22%, -50%) rotate(45deg);
+      }
+    }
+
+    @keyframes arrowHintLeft {
+      0%, 100% {
+        transform: translate(-42%, -50%) rotate(225deg);
+      }
+
+      50% {
+        transform: translate(-78%, -50%) rotate(225deg);
+      }
+    }
+
+    @keyframes clickHintRight {
+      0%, 100% {
+        transform: translateY(-50%) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-50%) translateX(6px);
+      }
+    }
+
+    @keyframes clickHintLeft {
+      0%, 100% {
+        transform: translateY(-50%) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-50%) translateX(-6px);
+      }
+    }
 
     @media (max-width: 1080px) {
-      .addons-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .variations-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .addons-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .variations-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 960px) {
-      .features-grid, .addons-grid { grid-template-columns: 1fr; }
-      .variations-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-      .hero-content { left: 28px; bottom: 28px; right: 28px; }
-      .hero h1 { font-size: clamp(22px, 4vw, 41px); }
-      .hero-banner.is-before-view .hero-content { transform: translateY(60px); }
-      .hero-state-note { right: 24px; bottom: 24px; max-width: 360px; }
-      .variation-card { padding: 16px; min-height: 230px; border-radius: 24px; }
-      .variation-name { font-size: 20px; }
-      .variation-sale-price { font-size: 34px; }
-      .variation-old-price { font-size: 17px; }
-      .variation-description { font-size: 12px; line-height: 1.5; margin-bottom: 14px; }
-      .variation-assets { padding-top: 12px; font-size: 12px; }
+      .features-grid,
+      .addons-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .variations-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .hero-content {
+        left: 28px;
+        bottom: 28px;
+        right: 28px;
+      }
+
+      .hero h1 {
+        font-size: clamp(22px, 4vw, 41px);
+      }
+
+      .hero-banner.is-before-view .hero-content {
+        transform: translateY(60px);
+      }
+
+      .hero-state-note {
+        right: 24px;
+        bottom: 24px;
+        max-width: 360px;
+      }
+
+      .variation-card {
+        padding: 16px;
+        min-height: 230px;
+        border-radius: 24px;
+      }
+
+      .variation-topline {
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .variation-name {
+        font-size: 20px;
+      }
+
+      .variation-badge {
+        padding: 5px 8px;
+        font-size: 9px;
+        letter-spacing: 0.06em;
+      }
+
+      .variation-sale-price {
+        font-size: 34px;
+      }
+
+      .variation-sale-price span {
+        font-size: 12px;
+      }
+
+      .variation-old-price {
+        font-size: 17px;
+      }
+
+      .variation-value-label {
+        margin-bottom: 8px;
+        padding: 5px 8px;
+        font-size: 9px;
+        letter-spacing: 0.06em;
+      }
+
+      .variation-sale-tag {
+        margin-bottom: 10px;
+        padding: 5px 8px;
+        font-size: 9px;
+      }
+
+      .variation-description {
+        font-size: 12px;
+        line-height: 1.5;
+        margin-bottom: 14px;
+      }
+
+      .variation-assets {
+        padding-top: 12px;
+        font-size: 12px;
+      }
+
+      .variation-assets strong {
+        font-size: 14px;
+      }
+
+      .variation-note {
+        font-size: 11px;
+      }
     }
 
     @media (max-width: 760px) {
-      .page { width: min(100% - 18px, 1240px); }
-      .hero-banner { border-radius: 30px; }
-      .hero-content { left: 18px; right: 18px; bottom: 18px; padding: 0; }
-      .hero h1 { font-size: clamp(14px, 5.5vw, 40px); }
-      .hero-actions { margin-top: 7px; margin-left: -3px; padding: 3px; gap: 4px; }
-      .liquid-button { min-width: 80px; padding: 7px 8px; font-size: 11px; }
-      .hero-toggle { width: 42px; height: 54px; left: clamp(24px, var(--compare), calc(100% - 24px)); top: 16%; }
-      .hero-toggle::after { font-size: 10px; right: 46px; }
-      .hero-toggle.is-before::after { left: 46px; right: auto; }
-      .hero-state-note { left: 18px; right: 18px; bottom: 18px; min-width: 0; max-width: none; padding: 10px; gap: 10px; }
-      .hero-state-thumb { flex-basis: 48px; width: 48px; height: 48px; border-radius: 12px; }
-      .hero-state-title { font-size: 16px; }
-      .hero-state-copy p { font-size: 12px; }
-      .content-pad { padding: 24px; }
-      .improve-demo-copy, .advanced-demo-copy, .animation-demo-copy, .step-demo-title { left: 12px; top: 12px; right: 12px; max-width: 74%; }
-      .improve-demo-copy h3, .advanced-demo-copy h3, .animation-demo-copy h3, .step-demo-title h3 { font-size: 16px; }
-      .improve-demo-copy p, .advanced-demo-copy p, .animation-demo-copy p, .step-demo-title p { font-size: 10px; line-height: 1.45; }
-      .improve-demo-dots { bottom: 10px; padding: 7px 9px; gap: 8px; }
-      .improve-demo-dot { width: 8px; height: 8px; }
-      .advanced-demo-action { left: 12px; top: 78px; padding: 8px 11px; font-size: 10px; }
-      .animation-demo-action { left: 12px; bottom: 12px; padding: 9px 12px; font-size: 11px; }
-      .advanced-demo-close, .animation-demo-reset { top: 12px; right: 12px; width: 36px; height: 36px; font-size: 24px; }
-      .step-demo-center-copy { bottom: 12px; padding: 9px 12px; max-width: 88%; font-size: 12px; }
-      .step-demo-corner-copy { left: 12px; right: 12px; bottom: 12px; width: fit-content; max-width: calc(100% - 24px); font-size: 10px; }
-      .step-demo-control, .step-demo-default-toggle { top: 12px; right: 12px; }
-      .step-demo-default-toggle { right: 100px; min-width: 106px; height: 38px; padding: 0 10px; font-size: 10px; }
-      .variations-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-      .variation-card { padding: 10px; min-height: 250px; border-radius: 18px; }
-      .variation-name { font-size: 16px; }
-      .variation-sale-price { font-size: 26px; }
-      .variation-sale-price span { display: none; }
-      .variation-old-price { font-size: 13px; text-decoration-thickness: 1.5px; }
-      .variation-description { font-size: 10px; line-height: 1.4; margin-bottom: 10px; }
-      .variation-assets { padding-top: 9px; font-size: 10px; line-height: 1.35; }
-      .variation-assets strong { font-size: 12px; }
-      .variation-note { font-size: 9px; line-height: 1.3; }
-      .variation-cta { min-height: 34px; margin-top: 12px; font-size: 11px; }
-      .faq-question { padding: 16px; font-size: 14px; }
-      .faq-answer-inner { margin: 0 12px 12px; padding: 14px; border-radius: 18px; }
-      .faq-answer-inner p { font-size: 13px; line-height: 1.6; }
-      .faq-link-button { width: 100%; min-height: 38px; padding: 9px 12px; font-size: 12px; }
-      .faq-ai-popover { aspect-ratio: 4 / 3; border-radius: 16px; }
+      .page {
+        width: min(100% - 18px, 1240px);
+      }
+
+      .hero-banner {
+        border-radius: 30px;
+      }
+
+      .hero-content {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+        padding: 0;
+      }
+
+      .hero-banner.is-before-view .hero-content {
+        transform: translateY(46px);
+      }
+
+      .hero h1 {
+        font-size: clamp(14px, 5.5vw, 40px);
+      }
+
+      .hero-actions {
+        margin-top: 7px;
+        margin-left: -3px;
+        padding: 3px;
+        gap: 4px;
+      }
+
+      .liquid-button {
+        min-width: 80px;
+        padding: 7px 8px;
+        font-size: 11px;
+      }
+
+      .hero-toggle {
+        width: 42px;
+        height: 54px;
+        left: clamp(24px, var(--compare), calc(100% - 24px));
+        top: 16%;
+      }
+
+      .hero-toggle::after {
+        font-size: 10px;
+        right: 46px;
+      }
+
+      .hero-toggle.is-before::after {
+        left: 46px;
+        right: auto;
+      }
+
+      .hero-state-note {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+        min-width: 0;
+        max-width: none;
+        padding: 10px;
+        gap: 10px;
+      }
+
+      .hero-state-thumb {
+        flex-basis: 48px;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+      }
+
+      .hero-state-title {
+        font-size: 16px;
+      }
+
+      .hero-state-copy p {
+        font-size: 12px;
+      }
+
+      .hero-state-kicker {
+        font-size: 9px;
+        margin-bottom: 4px;
+      }
+
+      .content-pad {
+        padding: 24px;
+      }
+
+      .improve-demo-copy,
+      .advanced-demo-copy,
+      .animation-demo-copy,
+      .step-demo-title {
+        left: 12px;
+        top: 12px;
+        right: 12px;
+        max-width: 74%;
+      }
+
+      .improve-demo-copy h3,
+      .advanced-demo-copy h3,
+      .animation-demo-copy h3,
+      .step-demo-title h3 {
+        font-size: 16px;
+      }
+
+      .improve-demo-copy p,
+      .advanced-demo-copy p,
+      .animation-demo-copy p,
+      .step-demo-title p {
+        font-size: 10px;
+        line-height: 1.45;
+      }
+
+      .advanced-demo-action {
+        left: 12px;
+        top: 78px;
+        padding: 8px 11px;
+        font-size: 10px;
+      }
+
+      .animation-demo-action {
+        left: 12px;
+        bottom: 12px;
+        padding: 9px 12px;
+        font-size: 11px;
+      }
+
+      .advanced-demo-close,
+      .animation-demo-reset {
+        top: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+        font-size: 24px;
+      }
+
+      .step-demo-center-copy {
+        bottom: 12px;
+        padding: 9px 12px;
+        max-width: 88%;
+        font-size: 12px;
+      }
+
+      .step-demo-corner-copy {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        width: fit-content;
+        max-width: calc(100% - 24px);
+        font-size: 10px;
+      }
+
+      .step-demo-control,
+      .step-demo-default-toggle {
+        top: 12px;
+        right: 12px;
+      }
+
+      .step-demo-default-toggle {
+        right: 100px;
+        min-width: 106px;
+        height: 38px;
+        padding: 0 10px;
+        font-size: 10px;
+      }
+
+      .step-demo-control.is-plus {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+      }
+
+      .step-demo-control.is-restore {
+        min-width: 88px;
+        height: 38px;
+        padding: 0 12px;
+      }
+
+      .step-demo-plus {
+        font-size: 22px;
+      }
+
+      .step-demo-restore-label {
+        font-size: 11px;
+      }
+
+      .diff-label {
+        left: 12px;
+        top: 12px;
+        padding: 7px 9px;
+        font-size: 9px;
+      }
+
+      .variations-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .variation-card {
+        padding: 10px;
+        min-height: 250px;
+        border-radius: 18px;
+      }
+
+      .variation-topline {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        margin-bottom: 10px;
+      }
+
+      .variation-name {
+        font-size: 16px;
+        letter-spacing: -0.03em;
+      }
+
+      .variation-badge {
+        padding: 4px 6px;
+        font-size: 7px;
+        letter-spacing: 0.04em;
+      }
+
+      .variation-price {
+        gap: 5px;
+        margin-bottom: 6px;
+      }
+
+      .variation-sale-price {
+        font-size: 26px;
+      }
+
+      .variation-sale-price span {
+        display: none;
+      }
+
+      .variation-old-price {
+        bottom: 2px;
+        font-size: 13px;
+        text-decoration-thickness: 1.5px;
+      }
+
+      .variation-value-label {
+        margin-bottom: 6px;
+        padding: 4px 6px;
+        font-size: 7px;
+        letter-spacing: 0.04em;
+      }
+
+      .variation-sale-tag {
+        margin-bottom: 8px;
+        padding: 4px 6px;
+        font-size: 7px;
+        letter-spacing: 0.04em;
+      }
+
+      .variation-description {
+        font-size: 10px;
+        line-height: 1.4;
+        margin-bottom: 10px;
+      }
+
+      .variation-assets {
+        padding-top: 9px;
+        font-size: 10px;
+        line-height: 1.35;
+      }
+
+      .variation-assets strong {
+        font-size: 12px;
+      }
+
+      .variation-note {
+        font-size: 9px;
+        line-height: 1.3;
+      }
+
+      .variation-cta {
+        min-height: 34px;
+        margin-top: 12px;
+        font-size: 11px;
+      }
+
+      .faq-question {
+        padding: 16px;
+        font-size: 14px;
+      }
+
+      .faq-plus {
+        flex-basis: 30px;
+        width: 30px;
+        height: 30px;
+        font-size: 19px;
+      }
+
+      .faq-answer-inner {
+        margin: 0 12px 12px;
+        padding: 14px;
+        border-radius: 18px;
+      }
+
+      .faq-answer-inner p {
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .faq-link-buttons {
+        gap: 8px;
+      }
+
+      .faq-link-button {
+        width: 100%;
+        min-height: 38px;
+        padding: 9px 12px;
+        font-size: 12px;
+      }
+
+      .faq-ai-popover {
+        aspect-ratio: 4 / 3;
+        border-radius: 16px;
+      }
+
+      .faq-ai-close {
+        top: 10px;
+        right: 10px;
+        width: 34px;
+        height: 34px;
+        font-size: 22px;
+      }
+
+      .back-top-button {
+        min-width: 140px;
+        padding: 12px 20px;
+        font-size: 13px;
+      }
     }
   </style>
 </head>
@@ -532,12 +2681,20 @@
         <div class="hero-compare-stage">
           <div class="hero-image before"></div>
           <div class="hero-image after"></div>
+
           <div class="hero-divider"></div>
-          <button class="hero-toggle" id="heroToggle" type="button" aria-label="Show Default Blender Light"></button>
+
+          <button
+            class="hero-toggle"
+            id="heroToggle"
+            type="button"
+            aria-label="Show Default Blender Light">
+          </button>
         </div>
 
         <div class="hero-content">
           <h1>Light Master Pro</h1>
+
           <div class="hero-actions">
             <a class="liquid-button primary" href="#video"><span>Watch Overview</span></a>
             <a class="liquid-button secondary" href="#features"><span>Explore Features</span></a>
@@ -561,8 +2718,16 @@
           <div class="section-head">
             <h2>Artistic lighting. Made effortless.</h2>
           </div>
-          <p>A powerful library for artistic lighting with 400+ ready-made assets. Instantly place and shape light with full control over behavior, texture, and form.</p>
-          <p style="margin-bottom: 0;">Forget complex setups and technical limitations. <strong>Create visually rich, stylized lighting and make your renders stand out in minutes.</strong></p>
+
+          <p>
+            A powerful library for artistic lighting with 400+ ready-made assets.
+            Instantly place and shape light with full control over behavior, texture, and form.
+          </p>
+
+          <p style="margin-bottom: 0;">
+            Forget complex setups and technical limitations.
+            <strong>Create visually rich, stylized lighting and make your renders stand out in minutes.</strong>
+          </p>
         </div>
       </div>
     </section>
@@ -571,9 +2736,16 @@
       <div class="section-head">
         <h2><strong>Video Overview</strong></h2>
       </div>
+
       <div class="video-shell">
         <div class="video-wrap">
-          <iframe src="https://www.youtube.com/embed/ujGnTHjr3vg?rel=0" title="LightMaster Pro Video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe
+            src="https://www.youtube.com/embed/ujGnTHjr3vg?rel=0"
+            title="LightMaster Pro Video"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
     </section>
@@ -581,7 +2753,9 @@
     <section class="section reveal" id="features">
       <div class="section-head">
         <h2><strong>Key Features</strong></h2>
-        <p>Explore the core features and capabilities of <strong>LightMaster Pro</strong>.</p>
+        <p>
+          Explore the core features and capabilities of <strong>LightMaster Pro</strong>.
+        </p>
       </div>
 
       <div class="features-grid">
@@ -589,23 +2763,35 @@
           <div class="feature-inner">
             <div class="improve-demo-shell" id="improveDemo">
               <div class="improve-demo-stage">
-                <img class="improve-demo-image default" id="improveDemoDefaultImage" src="https://assets.superhivemarket.com/cache/bf9f693743aebc55e2e9e72f59b88f2d.jpg" alt="Improve Your Renders default light preview">
-                <img class="improve-demo-image master" id="improveDemoMasterImage" src="https://assets.superhivemarket.com/cache/eb03c17532713e88e01abcb8ebce68a1.jpg" alt="Improve Your Renders Light Master Pro preview">
+                <img
+                  class="improve-demo-image default"
+                  src="https://assets.superhivemarket.com/cache/bf9f693743aebc55e2e9e72f59b88f2d.jpg"
+                  alt="Improve Your Renders default light preview">
+
+                <img
+                  class="improve-demo-image master"
+                  src="https://assets.superhivemarket.com/cache/eb03c17532713e88e01abcb8ebce68a1.jpg"
+                  alt="Improve Your Renders Light Master Pro preview">
               </div>
 
               <div class="improve-demo-overlay"></div>
               <div class="improve-demo-handle"></div>
 
-              <input class="improve-demo-slider" id="improveDemoSlider" type="range" min="0" max="100" value="0" step="1" aria-label="Compare default lighting and Light Master Pro">
+              <input
+                class="improve-demo-slider"
+                id="improveDemoSlider"
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                step="1"
+                aria-label="Compare default lighting and Light Master Pro">
 
               <div class="improve-demo-copy">
                 <h3>Improve Your Renders</h3>
-                <p>Turn basic default lighting into a more expressive and cinematic look.</p>
-              </div>
-
-              <div class="improve-demo-dots" aria-label="Improve Your Renders media selector">
-                <button class="improve-demo-dot active" type="button" data-improve-set="0" aria-label="Show first Improve Your Renders comparison"></button>
-                <button class="improve-demo-dot" type="button" data-improve-set="1" aria-label="Show second Improve Your Renders comparison"></button>
+                <p>
+                  Turn basic default lighting into a more expressive and cinematic look.
+                </p>
               </div>
             </div>
           </div>
@@ -614,16 +2800,30 @@
         <article class="feature-card">
           <div class="feature-inner">
             <div class="advanced-demo-shell" id="advancedDemo">
-              <img src="https://assets.superhivemarket.com/cache/ee833e32b97c5b6729ea2f3c7d439ce7.gif" alt="Advanced Placement preview">
+              <img
+                src="https://assets.superhivemarket.com/cache/ee833e32b97c5b6729ea2f3c7d439ce7.gif"
+                alt="Advanced Placement preview">
+
               <div class="advanced-demo-overlay"></div>
+
               <div class="advanced-demo-copy">
                 <h3>Advanced Placement</h3>
-                <p>Place and aim lights directly in the viewport with interactive controls and fast iteration.</p>
+                <p>
+                  Place and aim lights directly in the viewport with interactive controls and fast iteration.
+                </p>
               </div>
-              <button class="advanced-demo-action" id="advancedDemoButton" type="button">See More</button>
+
+              <button class="advanced-demo-action" id="advancedDemoButton" type="button">
+                See More
+              </button>
+
               <div class="advanced-demo-popover" id="advancedDemoPopover">
-                <button class="advanced-demo-close" id="advancedDemoClose" type="button" aria-label="Close advanced placement preview">×</button>
-                <img src="https://assets.superhivemarket.com/cache/890265b0806d2a9d1e8253b94c6b1cfa.gif" alt="Advanced Placement detailed preview">
+                <button class="advanced-demo-close" id="advancedDemoClose" type="button" aria-label="Close advanced placement preview">
+                  ×
+                </button>
+                <img
+                  src="https://assets.superhivemarket.com/cache/890265b0806d2a9d1e8253b94c6b1cfa.gif"
+                  alt="Advanced Placement detailed preview">
               </div>
             </div>
           </div>
@@ -646,13 +2846,34 @@
               <div class="step-demo-overlay">
                 <div class="step-demo-title" id="stepDemoTitle">
                   <h3>400+ Lighting Assets</h3>
-                  <p>Choose from more than 400 ready-made assets across multiple categories, including Abstract Light, Caustic, Colored, Flashlight, Light Reflections, Rays, Shadows, Simple Gobos, and Water.</p>
+                  <p>
+                    Choose from more than 400 ready-made assets across multiple categories, including Abstract Light, Caustic, Colored, Flashlight, Light Reflections, Rays, Shadows, Simple Gobos, and Water.
+                  </p>
                 </div>
 
-                <button class="step-demo-center-copy visible" id="stepDemoCenterText" type="button" aria-label="Start adding lights">Click to start adding lights</button>
+                <button
+                  class="step-demo-center-copy visible"
+                  id="stepDemoCenterText"
+                  type="button"
+                  aria-label="Start adding lights">
+                  Click to start adding lights
+                </button>
+
                 <div class="step-demo-corner-copy" id="stepDemoCornerText"></div>
-                <button class="step-demo-default-toggle is-hidden" id="stepDemoDefaultButton" type="button" aria-label="Show default lights">Show default lights</button>
-                <button class="step-demo-control is-plus is-hidden" id="stepDemoButton" type="button" aria-label="Show next step">
+
+                <button
+                  class="step-demo-default-toggle is-hidden"
+                  id="stepDemoDefaultButton"
+                  type="button"
+                  aria-label="Show default lights">
+                  Show default lights
+                </button>
+
+                <button
+                  class="step-demo-control is-plus is-hidden"
+                  id="stepDemoButton"
+                  type="button"
+                  aria-label="Show next step">
                   <span class="step-demo-plus">+</span>
                   <span class="step-demo-restore-label">Restore</span>
                 </button>
@@ -664,14 +2885,31 @@
         <article class="feature-card">
           <div class="feature-inner">
             <div class="animation-demo-shell" id="animationDemo" tabindex="0" aria-label="Click to enable animation">
-              <img id="animationDemoImage" src="https://assets.superhivemarket.com/cache/80205d06db4a3454e221ddc901a32163.jpg" alt="Animation feature static preview">
+              <img
+                id="animationDemoImage"
+                src="https://assets.superhivemarket.com/cache/80205d06db4a3454e221ddc901a32163.jpg"
+                alt="Animation feature static preview">
+
               <div class="animation-demo-overlay"></div>
+
               <div class="animation-demo-copy">
                 <h3>Animation Feature</h3>
-                <p>Enable dynamic asset movement with Flow Maps to add motion and visual interest, while keeping the system lightweight and avoiding unnecessary memory usage.</p>
+                <p>
+                  Enable dynamic asset movement with Flow Maps to add motion and visual interest, while keeping the system lightweight and avoiding unnecessary memory usage.
+                </p>
               </div>
-              <button class="animation-demo-action" id="animationDemoButton" type="button">Click to enable animation</button>
-              <button class="animation-demo-reset" id="animationDemoReset" type="button" aria-label="Reset animation preview">×</button>
+
+              <button class="animation-demo-action" id="animationDemoButton" type="button">
+                Click to enable animation
+              </button>
+
+              <button
+                class="animation-demo-reset"
+                id="animationDemoReset"
+                type="button"
+                aria-label="Reset animation preview">
+                ×
+              </button>
             </div>
           </div>
         </article>
@@ -681,48 +2919,115 @@
     <section class="section reveal" id="gallery">
       <div class="section-head">
         <h2>See the difference</h2>
-        <p>Compare renders with standard lighting and Light Master Pro. You will see how it adds more character, visual depth, and a unique artistic look to your render.</p>
+        <p>
+          Compare renders with standard lighting and Light Master Pro. You will see how it adds more character, visual depth, and a unique artistic look to your render.
+        </p>
       </div>
 
       <div class="media-grid">
         <div class="diff-compare-box" style="--diff-ratio: 1920 / 540;">
-          <div class="diff-image default" style="background-image: url('https://assets.superhivemarket.com/cache/1b48522c7c82e31b4f3bab9868fb9ca4.gif');"></div>
-          <div class="diff-image master" style="background-image: url('https://assets.superhivemarket.com/cache/84708df650d9bdc542cb9bfe977c9c2c.gif');"></div>
+          <div
+            class="diff-image default"
+            style="background-image: url('https://assets.superhivemarket.com/cache/1b48522c7c82e31b4f3bab9868fb9ca4.gif');">
+          </div>
+          <div
+            class="diff-image master"
+            style="background-image: url('https://assets.superhivemarket.com/cache/84708df650d9bdc542cb9bfe977c9c2c.gif');">
+          </div>
           <div class="diff-label">Light Master Pro</div>
           <div class="diff-handle"></div>
-          <input class="diff-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Compare Light Master Pro and default lights">
+          <input
+            class="diff-slider"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="1"
+            aria-label="Compare Light Master Pro and default lights">
         </div>
 
         <div class="diff-compare-box" style="--diff-ratio: 1920 / 540;">
-          <div class="diff-image default" style="background-image: url('https://assets.superhivemarket.com/cache/74a35ce1a8d2e61805f1cf90b8574ddb.gif');"></div>
-          <div class="diff-image master" style="background-image: url('https://assets.superhivemarket.com/cache/0b1238902a4faf3b2a4464064a936572.gif');"></div>
+          <div
+            class="diff-image default"
+            style="background-image: url('https://assets.superhivemarket.com/cache/74a35ce1a8d2e61805f1cf90b8574ddb.gif');">
+          </div>
+          <div
+            class="diff-image master"
+            style="background-image: url('https://assets.superhivemarket.com/cache/0b1238902a4faf3b2a4464064a936572.gif');">
+          </div>
           <div class="diff-label">Light Master Pro</div>
           <div class="diff-handle"></div>
-          <input class="diff-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Compare Light Master Pro and default lights">
+          <input
+            class="diff-slider"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="1"
+            aria-label="Compare Light Master Pro and default lights">
         </div>
 
         <div class="diff-compare-box" style="--diff-ratio: 4000 / 1600;">
-          <div class="diff-image default" style="background-image: url('https://assets.superhivemarket.com/cache/073a4945f40666ea2feb8c1506f74031.jpg');"></div>
-          <div class="diff-image master" style="background-image: url('https://assets.superhivemarket.com/cache/1ecbf5a32fcabfee903aa15a6a5ddcb3.jpg');"></div>
+          <div
+            class="diff-image default"
+            style="background-image: url('https://assets.superhivemarket.com/cache/073a4945f40666ea2feb8c1506f74031.jpg');">
+          </div>
+          <div
+            class="diff-image master"
+            style="background-image: url('https://assets.superhivemarket.com/cache/1ecbf5a32fcabfee903aa15a6a5ddcb3.jpg');">
+          </div>
           <div class="diff-label">Light Master Pro</div>
           <div class="diff-handle"></div>
-          <input class="diff-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Compare Light Master Pro and default lights">
+          <input
+            class="diff-slider"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="1"
+            aria-label="Compare Light Master Pro and default lights">
         </div>
 
         <div class="diff-compare-box" style="--diff-ratio: 4000 / 2000;">
-          <div class="diff-image default" style="background-image: url('https://assets.superhivemarket.com/cache/caf1463b707744a46a361bba60957727.jpg');"></div>
-          <div class="diff-image master" style="background-image: url('https://assets.superhivemarket.com/cache/99ce2f2420b4a2a3bd5050772d441396.jpg');"></div>
+          <div
+            class="diff-image default"
+            style="background-image: url('https://assets.superhivemarket.com/cache/caf1463b707744a46a361bba60957727.jpg');">
+          </div>
+          <div
+            class="diff-image master"
+            style="background-image: url('https://assets.superhivemarket.com/cache/99ce2f2420b4a2a3bd5050772d441396.jpg');">
+          </div>
           <div class="diff-label">Light Master Pro</div>
           <div class="diff-handle"></div>
-          <input class="diff-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Compare Light Master Pro and default lights">
+          <input
+            class="diff-slider"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="1"
+            aria-label="Compare Light Master Pro and default lights">
         </div>
 
         <div class="diff-compare-box" style="--diff-ratio: 2000 / 800;">
-          <div class="diff-image default" style="background-image: url('https://assets.superhivemarket.com/cache/be89bf6c9c0d177ff89c71e12dfa321e.jpg');"></div>
-          <div class="diff-image master" style="background-image: url('https://assets.superhivemarket.com/cache/45a2afa3a65b39cb42f8dc0170343e49.jpg');"></div>
+          <div
+            class="diff-image default"
+            style="background-image: url('https://assets.superhivemarket.com/cache/be89bf6c9c0d177ff89c71e12dfa321e.jpg');">
+          </div>
+          <div
+            class="diff-image master"
+            style="background-image: url('https://assets.superhivemarket.com/cache/45a2afa3a65b39cb42f8dc0170343e49.jpg');">
+          </div>
           <div class="diff-label">Light Master Pro</div>
           <div class="diff-handle"></div>
-          <input class="diff-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Compare Light Master Pro and default lights">
+          <input
+            class="diff-slider"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="1"
+            aria-label="Compare Light Master Pro and default lights">
         </div>
       </div>
     </section>
@@ -731,40 +3036,90 @@
       <div class="section-head" style="text-align: center;">
         <div class="section-chip liquid-sheen">Variations</div>
         <h2>Choose your edition</h2>
-        <p style="margin-left: auto; margin-right: auto;">Pick the version that fits your workflow - from a compact light library to the complete LightMaster Pro collection.</p>
+        <p style="margin-left: auto; margin-right: auto;">
+          Pick the version that fits your workflow - from a compact light library to the complete LightMaster Pro collection.
+        </p>
       </div>
 
       <div class="variations-grid">
         <article class="variation-card">
           <div class="variation-inner">
-            <div class="variation-topline"><h3 class="variation-name">Lite</h3><div class="variation-badge">Starter</div></div>
-            <div class="variation-price"><div class="variation-sale-price">$9<span>USD</span></div><div class="variation-old-price">$18</div></div>
+            <div class="variation-topline">
+              <h3 class="variation-name">Lite</h3>
+              <div class="variation-badge">Starter</div>
+            </div>
+
+            <div class="variation-price">
+              <div class="variation-sale-price">$9<span>USD</span></div>
+              <div class="variation-old-price">$18</div>
+            </div>
+
             <div class="variation-sale-tag">Launch Sale</div>
-            <p class="variation-description">A focused entry version for artists who want to improve their lighting quickly without a large asset library.</p>
-            <div class="variation-assets"><strong>100 assets</strong><div class="variation-note">Essential artistic lighting collection.</div></div>
+
+            <p class="variation-description">
+              A focused entry version for artists who want to improve their lighting quickly without a large asset library.
+            </p>
+
+            <div class="variation-assets">
+              <strong>100 assets</strong>
+              <div class="variation-note">Essential artistic lighting collection.</div>
+            </div>
+
             <button class="variation-cta" type="button">Get it</button>
           </div>
         </article>
 
         <article class="variation-card">
           <div class="variation-inner">
-            <div class="variation-topline"><h3 class="variation-name">Base</h3><div class="variation-badge">Balanced</div></div>
-            <div class="variation-price"><div class="variation-sale-price">$18<span>USD</span></div><div class="variation-old-price">$36</div></div>
+            <div class="variation-topline">
+              <h3 class="variation-name">Base</h3>
+              <div class="variation-badge">Balanced</div>
+            </div>
+
+            <div class="variation-price">
+              <div class="variation-sale-price">$18<span>USD</span></div>
+              <div class="variation-old-price">$36</div>
+            </div>
+
             <div class="variation-sale-tag">Launch Sale</div>
-            <p class="variation-description">A larger lighting toolkit with more variety for regular render work, product shots, interiors, and stylized scenes.</p>
-            <div class="variation-assets"><strong>200 assets</strong><div class="variation-note">Expanded library for flexible use.</div></div>
+
+            <p class="variation-description">
+              A larger lighting toolkit with more variety for regular render work, product shots, interiors, and stylized scenes.
+            </p>
+
+            <div class="variation-assets">
+              <strong>200 assets</strong>
+              <div class="variation-note">Expanded library for flexible use.</div>
+            </div>
+
             <button class="variation-cta" type="button">Get it</button>
           </div>
         </article>
 
         <article class="variation-card featured">
           <div class="variation-inner">
-            <div class="variation-topline"><h3 class="variation-name">Pro</h3><div class="variation-badge">Full Pack</div></div>
-            <div class="variation-price"><div class="variation-sale-price">$33<span>USD</span></div><div class="variation-old-price">$66</div></div>
+            <div class="variation-topline">
+              <h3 class="variation-name">Pro</h3>
+              <div class="variation-badge">Full Pack</div>
+            </div>
+
+            <div class="variation-price">
+              <div class="variation-sale-price">$33<span>USD</span></div>
+              <div class="variation-old-price">$66</div>
+            </div>
+
             <div class="variation-value-label">Most Valuable</div>
             <div class="variation-sale-tag">Launch Sale</div>
-            <p class="variation-description">The complete LightMaster Pro package with the full asset library and maximum creative range for cinematic lighting.</p>
-            <div class="variation-assets"><strong>400+ assets</strong><div class="variation-note">Complete collection with all lighting categories.</div></div>
+
+            <p class="variation-description">
+              The complete LightMaster Pro package with the full asset library and maximum creative range for cinematic lighting.
+            </p>
+
+            <div class="variation-assets">
+              <strong>400+ assets</strong>
+              <div class="variation-note">Complete collection with all lighting categories.</div>
+            </div>
+
             <button class="variation-cta" type="button">Get it</button>
           </div>
         </article>
@@ -775,43 +3130,76 @@
       <div class="section-head" style="text-align: center;">
         <div class="section-chip liquid-sheen">FAQ</div>
         <h2>Frequently asked questions</h2>
-        <p style="margin-left: auto; margin-right: auto;">Quick answers about support, compatibility, performance, AI usage, and related light texture tools.</p>
+        <p style="margin-left: auto; margin-right: auto;">
+          Quick answers about support, compatibility, performance, AI usage, and related light texture tools.
+        </p>
       </div>
 
       <div class="faq-list">
         <article class="faq-item">
           <div class="faq-inner">
-            <button class="faq-question" type="button" aria-expanded="false"><span>Product support and updates</span><span class="faq-plus">+</span></button>
-            <div class="faq-answer"><div class="faq-answer-inner"><p>We provide lifetime support for this product. All future updates are included for free. If you have any questions, feel free to contact me on Superhive and I will be happy to help.</p></div></div>
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Product support and updates</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>We provide lifetime support for this product. All future updates are included for free. If you have any questions, feel free to contact me on Superhive and I will be happy to help.</p>
+              </div>
+            </div>
           </div>
         </article>
 
         <article class="faq-item">
           <div class="faq-inner">
-            <button class="faq-question" type="button" aria-expanded="false"><span>Does it work in EEVEE?</span><span class="faq-plus">+</span></button>
-            <div class="faq-answer"><div class="faq-answer-inner"><p>Yes, Light Master Pro works in EEVEE. Some features may be more limited compared to Cycles because of EEVEE engine limitations.</p></div></div>
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Does it work in EEVEE?</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>Yes, Light Master Pro works in EEVEE. Some features may be more limited compared to Cycles because of EEVEE engine limitations.</p>
+              </div>
+            </div>
           </div>
         </article>
 
         <article class="faq-item">
           <div class="faq-inner">
-            <button class="faq-question" type="button" aria-expanded="false"><span>Are the assets performance-heavy?</span><span class="faq-plus">+</span></button>
-            <div class="faq-answer"><div class="faq-answer-inner"><p>No. The assets are designed to stay lightweight and should not significantly affect scene performance.</p></div></div>
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Are the assets performance-heavy?</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>No. The assets are designed to stay lightweight and should not significantly affect scene performance.</p>
+              </div>
+            </div>
           </div>
         </article>
 
         <article class="faq-item">
           <div class="faq-inner">
-            <button class="faq-question" type="button" aria-expanded="false"><span>I already bought the Light Textures Addon by Nodeworks.</span><span class="faq-plus">+</span></button>
-            <div class="faq-answer"><div class="faq-answer-inner"><p>Light Master Pro and the Light Textures Addon by Nodeworks share a similar creative idea, and Nodeworks and I are colleagues. However, these are separate products. Light Master Pro does not use any assets from the Nodeworks addon.
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>I already bought the Light Textures Addon by Nodeworks.</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>Light Master Pro and the Light Textures Addon by Nodeworks share a similar creative idea, and Nodeworks and I are colleagues. However, these are separate products. Light Master Pro does not use any assets from the Nodeworks addon.
 
-Light Master Pro was created as a more advanced lighting tool with a larger library, expanded controls, and a broader workflow. Owners of the Nodeworks addon will also receive a tool for merging both libraries into the Light Master Pro workflow, allowing Nodeworks light assets to be used inside Light Master Pro.</p></div></div>
+Light Master Pro was created as a more advanced lighting tool with a larger library, expanded controls, and a broader workflow. Owners of the Nodeworks addon will also receive a tool for merging both libraries into the Light Master Pro workflow, allowing Nodeworks light assets to be used inside Light Master Pro.</p>
+              </div>
+            </div>
           </div>
         </article>
 
         <article class="faq-item" id="faqAiItem">
           <div class="faq-inner">
-            <button class="faq-question" type="button" aria-expanded="false"><span>Was AI used in this product?</span><span class="faq-plus">+</span></button>
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Was AI used in this product?</span>
+              <span class="faq-plus">+</span>
+            </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">
                 <p>Light Master Pro includes two main types of assets: digitally simulated light patterns, such as caustics and rays, and assets created from real-world light references, including photographed or observed lighting behavior.
@@ -823,13 +3211,37 @@ AI upscaling tools were also used for selected assets to increase texture resolu
 However, the library is not a set of raw AI-generated images. No assets were added as purely AI-generated light patterns without a real-world photo reference, observed light behavior, or a controlled digital simulation as the source. Every final asset was manually reviewed, post-processed, cleaned, adjusted, categorized, and optimized for use in Blender and 3D production.
 
 Even when AI-assisted tools were used, the final result was refined by hand to make sure the textures are practical, clean, and visually useful for real render workflows.</p>
+
                 <div class="faq-link-buttons">
-                  <button class="faq-link-button faq-ai-trigger" type="button" data-image="https://assets.superhivemarket.com/cache/2853bff864f1aefb8cbabf34444d8a1a.png" data-title="Flashlights Creation"><span>Flashlights Creation</span></button>
-                  <button class="faq-link-button faq-ai-trigger" type="button" data-image="https://assets.superhivemarket.com/cache/53eaff29bf79b0150aaf116b7546be1e.png" data-title="Light Isolation"><span>Light Isolation</span></button>
-                  <button class="faq-link-button faq-ai-trigger" type="button" data-image="https://assets.superhivemarket.com/cache/6ede60d48056f99b6f7821bcef14399e.png" data-title="Digital Artifact Removal"><span>Digital Artifact Removal</span></button>
+                  <button
+                    class="faq-link-button faq-ai-trigger"
+                    type="button"
+                    data-image="https://assets.superhivemarket.com/cache/2853bff864f1aefb8cbabf34444d8a1a.png"
+                    data-title="Flashlights Creation">
+                    <span>Flashlights Creation</span>
+                  </button>
+
+                  <button
+                    class="faq-link-button faq-ai-trigger"
+                    type="button"
+                    data-image="https://assets.superhivemarket.com/cache/53eaff29bf79b0150aaf116b7546be1e.png"
+                    data-title="Light Isolation">
+                    <span>Light Isolation</span>
+                  </button>
+
+                  <button
+                    class="faq-link-button faq-ai-trigger"
+                    type="button"
+                    data-image="https://assets.superhivemarket.com/cache/6ede60d48056f99b6f7821bcef14399e.png"
+                    data-title="Digital Artifact Removal">
+                    <span>Digital Artifact Removal</span>
+                  </button>
                 </div>
+
                 <div class="faq-ai-popover" id="faqAiPopover">
-                  <button class="faq-ai-close" id="faqAiClose" type="button" aria-label="Close AI example preview">×</button>
+                  <button class="faq-ai-close" id="faqAiClose" type="button" aria-label="Close AI example preview">
+                    ×
+                  </button>
                   <img id="faqAiImage" src="" alt="AI usage example preview">
                 </div>
               </div>
@@ -843,23 +3255,79 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
       <div class="section-head" style="text-align: center;">
         <div class="section-chip liquid-sheen">Lazy3D</div>
         <h2>More Lazy3D Addons</h2>
-        <p style="margin-left: auto; margin-right: auto;">A cleaner premium grid for the rest of the Lazy3D lineup.</p>
+        <p style="margin-left: auto; margin-right: auto;">
+          A cleaner premium grid for the rest of the Lazy3D lineup.
+        </p>
       </div>
 
       <div class="addons-grid">
-        <a class="addon-card" href="https://superhivemarket.com/products/physical-fog-addon" target="_blank" rel="noopener noreferrer"><div class="addon-inner"><img src="https://assets.superhivemarket.com/cache/ccc9462aa9ba7e7a1951a306910d3a0f.jpg" alt="Physical Fog"><div class="addon-card-title">Physical Fog</div></div></a>
-        <a class="addon-card" href="https://superhivemarket.com/products/lazy-composer-2-pro" target="_blank" rel="noopener noreferrer"><div class="addon-inner"><img src="https://assets.superhivemarket.com/cache/8422a38a158a2f019bdaac8fd3ab05e7.png" alt="Lazy Composer 2 Pro"><div class="addon-card-title">Lazy Composer 2 Pro</div></div></a>
-        <a class="addon-card" href="https://superhivemarket.com/products/fauna-master-pro" target="_blank" rel="noopener noreferrer"><div class="addon-inner"><img src="https://assets.superhivemarket.com/cache/60686f07bbc879ade8381a9a3342c128.jpg" alt="Fauna Master Pro"><div class="addon-card-title">Fauna Master Pro</div></div></a>
-        <a class="addon-card" href="https://blendermarket.com/products/physical-weather-master" target="_blank" rel="noopener noreferrer"><div class="addon-inner"><img src="https://assets.superhivemarket.com/cache/9695dbd9f004846ec6eec88f8114b2f3.png" alt="Physical Weather FX"><div class="addon-card-title">Physical Weather FX</div></div></a>
-        <a class="addon-card" href="https://superhivemarket.com/products/water-vfx-master-real-time-fluid-effects" target="_blank" rel="noopener noreferrer"><div class="addon-inner"><img src="https://assets.superhivemarket.com/cache/cfcfb17dc2af54669708d3cbcd20f923.png" alt="Water VFX Master"><div class="addon-card-title">Water VFX Master</div></div></a>
-        <a class="addon-card" href="https://superhivemarket.com/products/physical-water-deluxe" target="_blank" rel="noopener noreferrer"><div class="addon-inner"><img src="https://assets.superhivemarket.com/cache/5ef578ab6304302c11de42a2ad6c9c39.png" alt="Physical Water FX"><div class="addon-card-title">Physical Water FX</div></div></a>
-        <a class="addon-card" href="https://superhivemarket.com/products/physical-cables-next-gen" target="_blank" rel="noopener noreferrer"><div class="addon-inner"><img src="https://assets.superhivemarket.com/cache/051a59ae9f8decbaec40456d4fc98767.jpg" alt="Physical Cables Next-Gen"><div class="addon-card-title">Physical Cables Next-Gen</div></div></a>
-        <a class="addon-card" href="https://superhivemarket.com/products/geodroplets-plus-ultimate-droplet-toolkit" target="_blank" rel="noopener noreferrer"><div class="addon-inner"><img src="https://assets.superhivemarket.com/cache/7928c9dbf63d3b85c3c3e5788e6d9adf.png" alt="GeoDroplets Plus"><div class="addon-card-title">GeoDroplets Plus</div></div></a>
+        <a class="addon-card" href="https://superhivemarket.com/products/physical-fog-addon" target="_blank" rel="noopener noreferrer">
+          <div class="addon-inner">
+            <img src="https://assets.superhivemarket.com/cache/ccc9462aa9ba7e7a1951a306910d3a0f.jpg" alt="Physical Fog">
+            <div class="addon-card-title">Physical Fog</div>
+          </div>
+        </a>
+
+        <a class="addon-card" href="https://superhivemarket.com/products/lazy-composer-2-pro" target="_blank" rel="noopener noreferrer">
+          <div class="addon-inner">
+            <img src="https://assets.superhivemarket.com/cache/8422a38a158a2f019bdaac8fd3ab05e7.png" alt="Lazy Composer 2 Pro">
+            <div class="addon-card-title">Lazy Composer 2 Pro</div>
+          </div>
+        </a>
+
+        <a class="addon-card" href="https://superhivemarket.com/products/fauna-master-pro" target="_blank" rel="noopener noreferrer">
+          <div class="addon-inner">
+            <img src="https://assets.superhivemarket.com/cache/60686f07bbc879ade8381a9a3342c128.jpg" alt="Fauna Master Pro">
+            <div class="addon-card-title">Fauna Master Pro</div>
+          </div>
+        </a>
+
+        <a class="addon-card" href="https://blendermarket.com/products/physical-weather-master" target="_blank" rel="noopener noreferrer">
+          <div class="addon-inner">
+            <img src="https://assets.superhivemarket.com/cache/9695dbd9f004846ec6eec88f8114b2f3.png" alt="Physical Weather FX">
+            <div class="addon-card-title">Physical Weather FX</div>
+          </div>
+        </a>
+
+        <a class="addon-card" href="https://superhivemarket.com/products/water-vfx-master-real-time-fluid-effects" target="_blank" rel="noopener noreferrer">
+          <div class="addon-inner">
+            <img src="https://assets.superhivemarket.com/cache/cfcfb17dc2af54669708d3cbcd20f923.png" alt="Water VFX Master">
+            <div class="addon-card-title">Water VFX Master</div>
+          </div>
+        </a>
+
+        <a class="addon-card" href="https://superhivemarket.com/products/physical-water-deluxe" target="_blank" rel="noopener noreferrer">
+          <div class="addon-inner">
+            <img src="https://assets.superhivemarket.com/cache/5ef578ab6304302c11de42a2ad6c9c39.png" alt="Physical Water FX">
+            <div class="addon-card-title">Physical Water FX</div>
+          </div>
+        </a>
+
+        <a class="addon-card" href="https://superhivemarket.com/products/physical-cables-next-gen" target="_blank" rel="noopener noreferrer">
+          <div class="addon-inner">
+            <img src="https://assets.superhivemarket.com/cache/051a59ae9f8decbaec40456d4fc98767.jpg" alt="Physical Cables Next-Gen">
+            <div class="addon-card-title">Physical Cables Next-Gen</div>
+          </div>
+        </a>
+
+        <a class="addon-card" href="https://superhivemarket.com/products/geodroplets-plus-ultimate-droplet-toolkit" target="_blank" rel="noopener noreferrer">
+          <div class="addon-inner">
+            <img src="https://assets.superhivemarket.com/cache/7928c9dbf63d3b85c3c3e5788e6d9adf.png" alt="GeoDroplets Plus">
+            <div class="addon-card-title">GeoDroplets Plus</div>
+          </div>
+        </a>
       </div>
     </section>
 
-    <div class="back-top-wrap"><a class="back-top-button" href="#top"><span>Back to top</span></a></div>
-    <footer class="footer">LightMaster Pro | Artistic Lighting Toolkit</footer>
+    <div class="back-top-wrap">
+      <a class="back-top-button" href="#top">
+        <span>Back to top</span>
+      </a>
+    </div>
+
+    <footer class="footer">
+      LightMaster Pro | Artistic Lighting Toolkit
+    </footer>
   </main>
 
   <script>
@@ -871,6 +3339,7 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
     });
 
     document.addEventListener("DOMContentLoaded", () => {
+
       const syncedGifSources = {
         heroBefore: "https://assets.superhivemarket.com/cache/e833214b5ecfb51e7dedc090551c8750.gif",
         heroAfter: "https://assets.superhivemarket.com/cache/72e19cc67e2bb62aeed6eedc33821f81.gif",
@@ -889,8 +3358,15 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
 
       async function prepareSyncedGifUrl(url, token) {
         try {
-          const response = await fetch(url, { mode: "cors", cache: "force-cache" });
-          if (!response.ok) throw new Error("GIF fetch failed");
+          const response = await fetch(url, {
+            mode: "cors",
+            cache: "force-cache"
+          });
+
+          if (!response.ok) {
+            throw new Error("GIF fetch failed");
+          }
+
           const blob = await response.blob();
           return URL.createObjectURL(blob);
         } catch (error) {
@@ -905,6 +3381,7 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
 
       async function synchronizePageGifs() {
         const syncToken = Date.now();
+
         const preparedEntries = await Promise.all(
           Object.entries(syncedGifSources).map(async ([key, url]) => {
             const preparedUrl = await prepareSyncedGifUrl(url, syncToken);
@@ -919,23 +3396,48 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
           const heroAfter = document.querySelector(".hero-image.after");
           const heroStateThumb = document.querySelector(".hero-state-thumb");
 
-          applySyncedBackground(heroBefore, `linear-gradient(180deg, rgba(8,10,16,0.12) 0%, rgba(8,10,16,0.28) 55%, rgba(8,10,16,0.58) 100%), url("${synced.heroBefore}")`);
-          applySyncedBackground(heroAfter, `linear-gradient(180deg, rgba(8,10,16,0.14) 0%, rgba(8,10,16,0.32) 55%, rgba(8,10,16,0.68) 100%), radial-gradient(circle at 20% 20%, rgba(255,255,255,0.10), transparent 24%), radial-gradient(circle at 80% 30%, rgba(255,255,255,0.08), transparent 20%), url("${synced.heroAfter}")`);
-          applySyncedBackground(heroStateThumb, `linear-gradient(180deg, rgba(8,10,16,0.08) 0%, rgba(8,10,16,0.30) 100%), url("${synced.heroBefore}")`);
+          applySyncedBackground(
+            heroBefore,
+            `linear-gradient(180deg, rgba(8, 10, 16, 0.12) 0%, rgba(8, 10, 16, 0.28) 55%, rgba(8, 10, 16, 0.58) 100%), url("${synced.heroBefore}")`
+          );
+
+          applySyncedBackground(
+            heroAfter,
+            `linear-gradient(180deg, rgba(8, 10, 16, 0.14) 0%, rgba(8, 10, 16, 0.32) 55%, rgba(8, 10, 16, 0.68) 100%), radial-gradient(circle at 20% 20%, rgba(255,255,255,0.10), transparent 24%), radial-gradient(circle at 80% 30%, rgba(255,255,255,0.08), transparent 20%), url("${synced.heroAfter}")`
+          );
+
+          applySyncedBackground(
+            heroStateThumb,
+            `linear-gradient(180deg, rgba(8, 10, 16, 0.08) 0%, rgba(8, 10, 16, 0.30) 100%), url("${synced.heroBefore}")`
+          );
 
           const advancedPreviewImage = document.querySelector("#advancedDemo > img");
           const advancedPopoverImage = document.querySelector("#advancedDemoPopover img");
-          if (advancedPreviewImage) advancedPreviewImage.src = synced.advancedPreview;
-          if (advancedPopoverImage) advancedPopoverImage.src = synced.advancedPopover;
+
+          if (advancedPreviewImage) {
+            advancedPreviewImage.src = synced.advancedPreview;
+          }
+
+          if (advancedPopoverImage) {
+            advancedPopoverImage.src = synced.advancedPopover;
+          }
 
           const gifDiffBoxes = Array.from(document.querySelectorAll(".diff-compare-box")).slice(0, 2);
+
           if (gifDiffBoxes[0]) {
-            applySyncedBackground(gifDiffBoxes[0].querySelector(".diff-image.default"), `url("${synced.diffOneDefault}")`);
-            applySyncedBackground(gifDiffBoxes[0].querySelector(".diff-image.master"), `url("${synced.diffOneMaster}")`);
+            const defaultLayer = gifDiffBoxes[0].querySelector(".diff-image.default");
+            const masterLayer = gifDiffBoxes[0].querySelector(".diff-image.master");
+
+            applySyncedBackground(defaultLayer, `url("${synced.diffOneDefault}")`);
+            applySyncedBackground(masterLayer, `url("${synced.diffOneMaster}")`);
           }
+
           if (gifDiffBoxes[1]) {
-            applySyncedBackground(gifDiffBoxes[1].querySelector(".diff-image.default"), `url("${synced.diffTwoDefault}")`);
-            applySyncedBackground(gifDiffBoxes[1].querySelector(".diff-image.master"), `url("${synced.diffTwoMaster}")`);
+            const defaultLayer = gifDiffBoxes[1].querySelector(".diff-image.default");
+            const masterLayer = gifDiffBoxes[1].querySelector(".diff-image.master");
+
+            applySyncedBackground(defaultLayer, `url("${synced.diffTwoDefault}")`);
+            applySyncedBackground(masterLayer, `url("${synced.diffTwoMaster}")`);
           }
         });
       }
@@ -944,94 +3446,59 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
 
       const heroCompareBox = document.getElementById("heroCompareBox");
       const heroToggle = document.getElementById("heroToggle");
+
       let heroIsAfter = true;
 
       function setHeroComparison(showAfter) {
         heroIsAfter = showAfter;
+
         const value = heroIsAfter ? 100 : 0;
         heroCompareBox.style.setProperty("--compare", value + "%");
+
         heroCompareBox.classList.toggle("is-before-view", !heroIsAfter);
         heroToggle.classList.toggle("is-before", !heroIsAfter);
-        heroToggle.setAttribute("aria-label", heroIsAfter ? "Show Default Blender Light" : "Show LightMaster Pro");
+
+        heroToggle.setAttribute(
+          "aria-label",
+          heroIsAfter ? "Show Default Blender Light" : "Show LightMaster Pro"
+        );
       }
 
       if (heroCompareBox && heroToggle) {
         setHeroComparison(true);
-        heroToggle.addEventListener("click", () => setHeroComparison(!heroIsAfter));
+
+        heroToggle.addEventListener("click", () => {
+          setHeroComparison(!heroIsAfter);
+        });
       }
 
       const improveDemo = document.getElementById("improveDemo");
       const improveDemoSlider = document.getElementById("improveDemoSlider");
-      const improveDemoDefaultImage = document.getElementById("improveDemoDefaultImage");
-      const improveDemoMasterImage = document.getElementById("improveDemoMasterImage");
-      const improveDemoDots = Array.from(document.querySelectorAll(".improve-demo-dot"));
 
-      if (improveDemo && improveDemoSlider && improveDemoDefaultImage && improveDemoMasterImage) {
-        const improveMediaSets = [
-          {
-            defaultSrc: "https://assets.superhivemarket.com/cache/bf9f693743aebc55e2e9e72f59b88f2d.jpg",
-            masterSrc: "https://assets.superhivemarket.com/cache/eb03c17532713e88e01abcb8ebce68a1.jpg",
-            defaultAlt: "Improve Your Renders default light preview",
-            masterAlt: "Improve Your Renders Light Master Pro preview"
-          },
-          {
-            defaultSrc: "https://assets.superhivemarket.com/cache/972709a38773d75260a12fbb78b4f5e9.png",
-            masterSrc: "https://assets.superhivemarket.com/cache/fe317caa806e28350eb596d71fe502a4.png",
-            defaultAlt: "Improve Your Renders second default light preview",
-            masterAlt: "Improve Your Renders second Light Master Pro preview"
-          }
-        ];
-
-        let activeImproveSet = 0;
-        let improveSwitchTimer = null;
-
+      if (improveDemo && improveDemoSlider) {
         function setImproveSliderValue(value) {
           const numericValue = Number(value);
-          const safeValue = Number.isFinite(numericValue) ? Math.max(0, Math.min(100, numericValue)) : 0;
+          const safeValue = Number.isFinite(numericValue)
+            ? Math.max(0, Math.min(100, numericValue))
+            : 0;
+
           improveDemo.style.setProperty("--improve-compare", safeValue + "%");
           improveDemo.classList.toggle("is-sliding", safeValue > 0);
           improveDemo.classList.toggle("is-at-start", safeValue <= 0);
           improveDemo.classList.toggle("is-at-end", safeValue >= 100);
           improveDemo.classList.toggle("is-near-start", safeValue <= 10);
           improveDemo.classList.toggle("is-near-end", safeValue >= 90);
-          improveDemoSlider.value = String(safeValue);
           improveDemoSlider.setAttribute("aria-valuenow", String(safeValue));
         }
 
-        function switchImproveMediaSet(index) {
-          if (!improveMediaSets[index] || index === activeImproveSet) return;
-          activeImproveSet = index;
-          const selectedSet = improveMediaSets[index];
-
-          improveDemo.classList.add("is-switching");
-          improveDemoDefaultImage.src = selectedSet.defaultSrc;
-          improveDemoMasterImage.src = selectedSet.masterSrc;
-          improveDemoDefaultImage.alt = selectedSet.defaultAlt;
-          improveDemoMasterImage.alt = selectedSet.masterAlt;
-
-          setImproveSliderValue(0);
-
-          improveDemoDots.forEach((dot, dotIndex) => {
-            dot.classList.toggle("active", dotIndex === index);
-            dot.setAttribute("aria-pressed", dotIndex === index ? "true" : "false");
-          });
-
-          if (improveSwitchTimer) clearTimeout(improveSwitchTimer);
-          improveSwitchTimer = setTimeout(() => improveDemo.classList.remove("is-switching"), 360);
-        }
-
-        improveDemoSlider.addEventListener("input", () => setImproveSliderValue(improveDemoSlider.value));
-        improveDemoSlider.addEventListener("change", () => setImproveSliderValue(improveDemoSlider.value));
-
-        improveDemoDots.forEach((dot) => {
-          dot.addEventListener("click", (event) => {
-            event.stopPropagation();
-            const index = Number(dot.getAttribute("data-improve-set"));
-            switchImproveMediaSet(index);
-          });
+        improveDemoSlider.addEventListener("input", () => {
+          setImproveSliderValue(improveDemoSlider.value);
         });
 
-        improveDemoDots.forEach((dot, dotIndex) => dot.setAttribute("aria-pressed", dotIndex === 0 ? "true" : "false"));
+        improveDemoSlider.addEventListener("change", () => {
+          setImproveSliderValue(improveDemoSlider.value);
+        });
+
         setImproveSliderValue(improveDemoSlider.value);
       }
 
@@ -1041,12 +3508,31 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
       const advancedDemoPopover = document.getElementById("advancedDemoPopover");
 
       if (advancedDemo && advancedDemoButton && advancedDemoClose && advancedDemoPopover) {
-        function openAdvancedDemo(event) { event.stopPropagation(); advancedDemo.classList.add("is-open"); }
-        function closeAdvancedDemo(event) { if (event) event.stopPropagation(); advancedDemo.classList.remove("is-open"); }
+        function openAdvancedDemo(event) {
+          event.stopPropagation();
+          advancedDemo.classList.add("is-open");
+        }
+
+        function closeAdvancedDemo(event) {
+          if (event) {
+            event.stopPropagation();
+          }
+
+          advancedDemo.classList.remove("is-open");
+        }
+
         advancedDemoButton.addEventListener("click", openAdvancedDemo);
         advancedDemoClose.addEventListener("click", closeAdvancedDemo);
-        advancedDemoPopover.addEventListener("mouseleave", () => advancedDemo.classList.remove("is-open"));
-        document.addEventListener("click", (event) => { if (!advancedDemo.contains(event.target)) advancedDemo.classList.remove("is-open"); });
+
+        advancedDemoPopover.addEventListener("mouseleave", () => {
+          advancedDemo.classList.remove("is-open");
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!advancedDemo.contains(event.target)) {
+            advancedDemo.classList.remove("is-open");
+          }
+        });
       }
 
       const stepDemo = document.getElementById("stepDemo");
@@ -1057,14 +3543,43 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
 
       if (stepDemo && stepDemoButton && stepDemoCenterText && stepDemoCornerText && stepDemoDefaultButton) {
         const stepSlides = Array.from(stepDemo.querySelectorAll(".step-demo-slide"));
+
         const stepMeta = [
-          { centerText: "Click to start adding lights", cornerText: "", isRestore: false },
-          { centerText: "", cornerText: "This is rate number 1", isRestore: false },
-          { centerText: "", cornerText: "This is rate number 2", isRestore: false },
-          { centerText: "", cornerText: "This is rate number 3", isRestore: false },
-          { centerText: "", cornerText: "This is rate number 4", isRestore: false },
-          { centerText: "", cornerText: "This is rate number 5", isRestore: false },
-          { centerText: "", cornerText: "This is rate number 6", isRestore: true }
+          {
+            centerText: "Click to start adding lights",
+            cornerText: "",
+            isRestore: false
+          },
+          {
+            centerText: "",
+            cornerText: "This is rate number 1",
+            isRestore: false
+          },
+          {
+            centerText: "",
+            cornerText: "This is rate number 2",
+            isRestore: false
+          },
+          {
+            centerText: "",
+            cornerText: "This is rate number 3",
+            isRestore: false
+          },
+          {
+            centerText: "",
+            cornerText: "This is rate number 4",
+            isRestore: false
+          },
+          {
+            centerText: "",
+            cornerText: "This is rate number 5",
+            isRestore: false
+          },
+          {
+            centerText: "",
+            cornerText: "This is rate number 6",
+            isRestore: true
+          }
         ];
 
         let currentStep = 0;
@@ -1073,21 +3588,36 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
 
         function playStepTransition() {
           stepDemo.classList.remove("is-switching");
+
           void stepDemo.offsetWidth;
+
           stepDemo.classList.add("is-switching");
-          if (transitionTimer) clearTimeout(transitionTimer);
-          transitionTimer = setTimeout(() => stepDemo.classList.remove("is-switching"), 860);
+
+          if (transitionTimer) {
+            clearTimeout(transitionTimer);
+          }
+
+          transitionTimer = setTimeout(() => {
+            stepDemo.classList.remove("is-switching");
+          }, 860);
         }
 
         function updateStepSlides() {
           const visibleIndex = isDefaultStepVisible ? 7 : currentStep;
-          stepSlides.forEach((slide, slideIndex) => slide.classList.toggle("active", slideIndex === visibleIndex));
+
+          stepSlides.forEach((slide, slideIndex) => {
+            slide.classList.toggle("active", slideIndex === visibleIndex);
+          });
         }
 
         function renderStep(index, animate = true) {
           currentStep = index;
           isDefaultStepVisible = false;
-          if (animate) playStepTransition();
+
+          if (animate) {
+            playStepTransition();
+          }
+
           updateStepSlides();
 
           const currentMeta = stepMeta[index];
@@ -1113,24 +3643,41 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
           stepDemoButton.classList.toggle("is-hidden", isStartStep);
           stepDemoButton.classList.toggle("is-plus", !currentMeta.isRestore);
           stepDemoButton.classList.toggle("is-restore", currentMeta.isRestore);
+
           stepDemoDefaultButton.classList.toggle("is-hidden", !isLastStep);
           stepDemoDefaultButton.textContent = "Show default lights";
           stepDemoDefaultButton.setAttribute("aria-label", "Show default lights");
-          stepDemoButton.setAttribute("aria-label", currentMeta.isRestore ? "Restore the demo to step zero" : "Show next step");
+
+          stepDemoButton.setAttribute(
+            "aria-label",
+            currentMeta.isRestore ? "Restore the demo to step zero" : "Show next step"
+          );
         }
 
-        stepDemoCenterText.addEventListener("click", () => renderStep(1, true));
-        stepDemoButton.addEventListener("click", () => {
-          if (currentStep >= stepMeta.length - 1) renderStep(0, true);
-          else renderStep(currentStep + 1, true);
+        stepDemoCenterText.addEventListener("click", () => {
+          renderStep(1, true);
         });
+
+        stepDemoButton.addEventListener("click", () => {
+          if (currentStep >= stepMeta.length - 1) {
+            renderStep(0, true);
+          } else {
+            renderStep(currentStep + 1, true);
+          }
+        });
+
         stepDemoDefaultButton.addEventListener("click", () => {
           if (currentStep !== stepMeta.length - 1) return;
+
           isDefaultStepVisible = !isDefaultStepVisible;
           playStepTransition();
           updateStepSlides();
+
           stepDemoDefaultButton.textContent = isDefaultStepVisible ? "Show light master" : "Show default lights";
-          stepDemoDefaultButton.setAttribute("aria-label", isDefaultStepVisible ? "Show Light Master Pro lights" : "Show default lights");
+          stepDemoDefaultButton.setAttribute(
+            "aria-label",
+            isDefaultStepVisible ? "Show Light Master Pro lights" : "Show default lights"
+          );
         });
 
         renderStep(0, false);
@@ -1144,14 +3691,18 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
       if (animationDemo && animationDemoImage && animationDemoButton && animationDemoReset) {
         const animationStaticSrc = "https://assets.superhivemarket.com/cache/80205d06db4a3454e221ddc901a32163.jpg";
         const animationGifSrc = "https://assets.superhivemarket.com/cache/cfa574976ce79675204208d2d9b19573.gif";
+
         let animationStarted = false;
 
         function startAnimationDemo() {
           if (animationStarted) return;
+
           animationStarted = true;
           animationDemo.classList.add("is-playing");
           animationDemo.setAttribute("aria-label", "Animation enabled");
+
           animationDemoImage.removeAttribute("src");
+
           window.requestAnimationFrame(() => {
             animationDemoImage.src = addGifSyncToken(animationGifSrc, Date.now());
             animationDemoImage.alt = "Animation feature GIF preview";
@@ -1159,93 +3710,157 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
         }
 
         function resetAnimationDemo(event) {
-          if (event) event.stopPropagation();
+          if (event) {
+            event.stopPropagation();
+          }
+
           animationStarted = false;
           animationDemo.classList.remove("is-playing");
           animationDemo.setAttribute("aria-label", "Click to enable animation");
+
           animationDemoImage.removeAttribute("src");
+
           window.requestAnimationFrame(() => {
             animationDemoImage.src = animationStaticSrc;
             animationDemoImage.alt = "Animation feature static preview";
           });
         }
 
-        animationDemoButton.addEventListener("click", (event) => { event.stopPropagation(); startAnimationDemo(); });
+        animationDemoButton.addEventListener("click", (event) => {
+          event.stopPropagation();
+          startAnimationDemo();
+        });
+
         animationDemoReset.addEventListener("click", resetAnimationDemo);
+
         animationDemo.addEventListener("keydown", (event) => {
           if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
-            if (animationStarted) resetAnimationDemo(event);
-            else startAnimationDemo();
+
+            if (animationStarted) {
+              resetAnimationDemo(event);
+            } else {
+              startAnimationDemo();
+            }
           }
         });
       }
 
       const diffCompareBoxes = Array.from(document.querySelectorAll(".diff-compare-box"));
+
       diffCompareBoxes.forEach((box) => {
         const slider = box.querySelector(".diff-slider");
         const label = box.querySelector(".diff-label");
 
         function setDiffSliderValue(value) {
           const numericValue = Number(value);
-          const safeValue = Number.isFinite(numericValue) ? Math.max(0, Math.min(100, numericValue)) : 0;
+          const safeValue = Number.isFinite(numericValue)
+            ? Math.max(0, Math.min(100, numericValue))
+            : 0;
+
           box.style.setProperty("--compare", safeValue + "%");
           box.classList.toggle("is-sliding", safeValue > 0 && safeValue < 100);
           box.classList.toggle("is-at-start", safeValue <= 0);
           box.classList.toggle("is-at-end", safeValue >= 100);
           box.classList.toggle("is-near-start", safeValue <= 10);
           box.classList.toggle("is-near-end", safeValue >= 90);
-          if (label) label.textContent = safeValue > 50 ? "Default Light" : "Light Master Pro";
-          if (slider) slider.setAttribute("aria-valuenow", String(safeValue));
+
+          if (label) {
+            label.textContent = safeValue > 50 ? "Default Light" : "Light Master Pro";
+          }
+
+          if (slider) {
+            slider.setAttribute("aria-valuenow", String(safeValue));
+          }
         }
 
         if (slider) {
-          slider.addEventListener("input", () => setDiffSliderValue(slider.value));
-          slider.addEventListener("change", () => setDiffSliderValue(slider.value));
+          slider.addEventListener("input", () => {
+            setDiffSliderValue(slider.value);
+          });
+
+          slider.addEventListener("change", () => {
+            setDiffSliderValue(slider.value);
+          });
+
           setDiffSliderValue(slider.value);
         }
       });
 
       const variationButtons = Array.from(document.querySelectorAll(".variation-cta"));
+
       variationButtons.forEach((button) => {
         button.addEventListener("click", () => {
           const isMobile = window.matchMedia("(max-width: 760px)").matches;
+
           if (!isMobile) {
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+
             return;
           }
 
-          const localTarget = document.querySelector(".js-item-addToCart, .btn-add-to-cart, input[value='Add to cart'], button[type='submit']");
+          const localTarget = document.querySelector(
+            ".js-item-addToCart, .btn-add-to-cart, input[value='Add to cart'], button[type='submit']"
+          );
+
           if (localTarget) {
-            localTarget.scrollIntoView({ behavior: "smooth", block: "center" });
+            localTarget.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+
             return;
           }
 
           try {
-            const parentTarget = window.parent.document.querySelector(".js-item-addToCart, .btn-add-to-cart, input[value='Add to cart'], button[type='submit']");
+            const parentTarget = window.parent.document.querySelector(
+              ".js-item-addToCart, .btn-add-to-cart, input[value='Add to cart'], button[type='submit']"
+            );
+
             if (parentTarget) {
-              parentTarget.scrollIntoView({ behavior: "smooth", block: "center" });
+              parentTarget.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+              });
+
               return;
             }
           } catch (error) {
-            window.parent.postMessage({ type: "scroll-to-add-to-cart", source: "light-master-pro-page" }, "*");
+            window.parent.postMessage({
+              type: "scroll-to-add-to-cart",
+              source: "light-master-pro-page"
+            }, "*");
           }
 
-          window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: "smooth"
+          });
         });
       });
 
       const faqItems = Array.from(document.querySelectorAll(".faq-item"));
+
       faqItems.forEach((item) => {
         const question = item.querySelector(".faq-question");
+
         if (!question) return;
+
         question.addEventListener("click", () => {
           const isOpen = item.classList.contains("is-open");
+
           faqItems.forEach((otherItem) => {
             const otherQuestion = otherItem.querySelector(".faq-question");
             otherItem.classList.remove("is-open");
-            if (otherQuestion) otherQuestion.setAttribute("aria-expanded", "false");
+
+            if (otherQuestion) {
+              otherQuestion.setAttribute("aria-expanded", "false");
+            }
           });
+
           if (!isOpen) {
             item.classList.add("is-open");
             question.setAttribute("aria-expanded", "true");
@@ -1261,15 +3876,27 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
 
       if (faqAiItem && faqAiPopover && faqAiImage && faqAiClose && faqAiTriggers.length) {
         function openFaqAiPopover(imageSrc, imageTitle, event) {
-          if (event) event.stopPropagation();
+          if (event) {
+            event.stopPropagation();
+          }
+
           faqAiImage.src = imageSrc;
           faqAiImage.alt = imageTitle || "AI usage example preview";
           faqAiPopover.classList.add("is-open");
-          setTimeout(() => faqAiPopover.scrollIntoView({ behavior: "smooth", block: "nearest" }), 80);
+
+          setTimeout(() => {
+            faqAiPopover.scrollIntoView({
+              behavior: "smooth",
+              block: "nearest"
+            });
+          }, 80);
         }
 
         function closeFaqAiPopover(event) {
-          if (event) event.stopPropagation();
+          if (event) {
+            event.stopPropagation();
+          }
+
           faqAiPopover.classList.remove("is-open");
         }
 
@@ -1277,15 +3904,23 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
           button.addEventListener("click", (event) => {
             const imageSrc = button.getAttribute("data-image");
             const imageTitle = button.getAttribute("data-title");
+
             if (!imageSrc) return;
+
             openFaqAiPopover(imageSrc, imageTitle, event);
           });
         });
 
         faqAiClose.addEventListener("click", closeFaqAiPopover);
-        faqAiPopover.addEventListener("mouseleave", () => faqAiPopover.classList.remove("is-open"));
+
+        faqAiPopover.addEventListener("mouseleave", () => {
+          faqAiPopover.classList.remove("is-open");
+        });
+
         document.addEventListener("click", (event) => {
-          if (!faqAiItem.contains(event.target)) faqAiPopover.classList.remove("is-open");
+          if (!faqAiItem.contains(event.target)) {
+            faqAiPopover.classList.remove("is-open");
+          }
         });
       }
     });
