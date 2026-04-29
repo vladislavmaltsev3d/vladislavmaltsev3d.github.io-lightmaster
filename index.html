@@ -3787,7 +3787,7 @@
               <div class="variation-note">Essential artistic lighting collection.</div>
             </div>
 
-            <button class="variation-cta" type="button">Get it</button>
+            <button class="variation-cta" type="button" data-catalog-url="https://drive.google.com/file/d/1M5ESFSm8zOJuMWQlII9YnbqozFkXUmOr/view?usp=sharing">View Catalog</button>
           </div>
         </article>
 
@@ -3814,7 +3814,7 @@
               <div class="variation-note">Expanded library for flexible use.</div>
             </div>
 
-            <button class="variation-cta" type="button">Get it</button>
+            <button class="variation-cta" type="button" data-catalog-url="https://drive.google.com/file/d/1j7-mdFU6n0VnU5WKFqkP5royGB4Y41TJ/view?usp=sharing">View Catalog</button>
           </div>
         </article>
 
@@ -3842,7 +3842,7 @@
               <div class="variation-note">Complete collection with all lighting categories.</div>
             </div>
 
-            <button class="variation-cta" type="button">Get it</button>
+            <button class="variation-cta" type="button" data-catalog-url="https://drive.google.com/file/d/1gUTQxnvK51WzmTt7zQkR488ezVmrlbJY/view?usp=sharing">View Catalog</button>
           </div>
         </article>
       </div>
@@ -4513,54 +4513,11 @@ Even when AI-assisted tools were used, the final result was refined by hand to m
 
       variationButtons.forEach((button) => {
         button.addEventListener("click", () => {
-          const isMobile = window.matchMedia("(max-width: 760px)").matches;
+          const catalogUrl = button.getAttribute("data-catalog-url");
 
-          if (!isMobile) {
-            window.scrollTo({
-              top: 0,
-              behavior: "smooth"
-            });
+          if (!catalogUrl) return;
 
-            return;
-          }
-
-          const localTarget = document.querySelector(
-            ".js-item-addToCart, .btn-add-to-cart, input[value='Add to cart'], button[type='submit']"
-          );
-
-          if (localTarget) {
-            localTarget.scrollIntoView({
-              behavior: "smooth",
-              block: "center"
-            });
-
-            return;
-          }
-
-          try {
-            const parentTarget = window.parent.document.querySelector(
-              ".js-item-addToCart, .btn-add-to-cart, input[value='Add to cart'], button[type='submit']"
-            );
-
-            if (parentTarget) {
-              parentTarget.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-              });
-
-              return;
-            }
-          } catch (error) {
-            window.parent.postMessage({
-              type: "scroll-to-add-to-cart",
-              source: "light-master-pro-page"
-            }, "*");
-          }
-
-          window.scrollTo({
-            top: document.documentElement.scrollHeight,
-            behavior: "smooth"
-          });
+          window.open(catalogUrl, "_blank", "noopener,noreferrer");
         });
       });
 
