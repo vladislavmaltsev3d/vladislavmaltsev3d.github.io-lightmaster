@@ -3156,6 +3156,49 @@
       border-radius: 0;
     }
 
+  
+    /* Lazy3D creator banner below the overview copy */
+    .lazy3d-creator-banner {
+      display: block;
+      width: 100%;
+      margin-top: 14px;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.22);
+      box-shadow: var(--shadow-md);
+      text-decoration: none;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .lazy3d-creator-banner:hover,
+    .lazy3d-creator-banner:focus-visible {
+      outline: none;
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,0.94);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .lazy3d-creator-banner img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: none;
+      aspect-ratio: 2000 / 300;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    @media (max-width: 560px) {
+      .lazy3d-creator-banner {
+        margin-top: 10px;
+        border-radius: 10px;
+      }
+    }
+
   </style>
 </head>
 
@@ -3216,6 +3259,20 @@
           </p>
         </div>
       </div>
+
+      <a
+        class="lazy3d-creator-banner"
+        href="https://superhivemarket.com/creators/lazy3d"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open the Lazy3D creator page on SuperHive Market">
+        <img
+          src="https://assets.superhivemarket.com/cache/fc011b63fb481eecbf7260d27daa44d4.png"
+          alt="Explore more products from Lazy3D"
+          width="2000"
+          height="300"
+          loading="lazy">
+      </a>
     </section>
 
     <section class="section reveal" id="video">
